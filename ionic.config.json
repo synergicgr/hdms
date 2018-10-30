@@ -1,0 +1,7 @@
+{
+  "name": "hdms",
+  "integrations": {
+    "cordova": {}
+  },
+  "type": "ionic-angular"
+}
