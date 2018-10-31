@@ -22,21 +22,21 @@ export class MyApp {
 
   rootPage: any = HomePage;
 
-  pages: Array<{title: string, component: any}>;
+  pages: Array<{title: string, component: any, icon:string}>;
 
   constructor(public platform: Platform, public statusBar: StatusBar, public splashScreen: SplashScreen) {
     this.initializeApp();
 
     // used for an example of ngFor and navigation
     this.pages = [
-      {title: 'Hellas DMS', component: HellasDmsPage},
-      {title: 'Οι πελατες μας', component: CustomersPage},
-      {title: 'Σημειωσεις', component: NotesPage},
-      {title: 'Πληροφοριες συνδεσης', component: ConnectionInfoPage},
-      {title: 'Tech App', component: TechAppPage},
-      {title: 'Επικοινωνια', component: ContactPage},
-      {title:'Web Dealer', component: WebDealerPage}, 
-      {title: 'Ultra Sync App', component: UltraSyncAppPage},     
+      {title: 'Hellas DMS', component: HellasDmsPage, icon:"../assets/imgs/icon1.png"},
+      {title: 'Οι πελατες μας', component: CustomersPage, icon:"../assets/imgs/icon2.png"},
+      {title: 'Σημειωσεις', component: NotesPage, icon:"../assets/imgs/icon3.png"},
+      {title: 'Πληροφοριες συνδεσης', component: ConnectionInfoPage, icon:"../assets/imgs/icon4.png"},
+      {title: 'Tech App', component: TechAppPage, icon:"../assets/imgs/icon5.png"},
+      {title: 'Επικοινωνια', component: ContactPage, icon:"../assets/imgs/icon6.png"},
+      {title:'Web Dealer', component: WebDealerPage, icon:"../assets/imgs/icon7.png"},
+      {title: 'Ultra Sync App', component: UltraSyncAppPage, icon:"../assets/imgs/icon8.png"},
     ];
 
   }
@@ -57,6 +57,6 @@ export class MyApp {
   }
 
   downloadPriceList():void{
-    
+
   }
 }
