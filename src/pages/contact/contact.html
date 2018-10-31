@@ -1,13 +1,21 @@
 <ion-header>
-    <ion-navbar>
-      <button ion-button menuToggle>
-        <ion-icon name="menu"></ion-icon>
-      </button>
-      <ion-title>Επικοινωνια</ion-title>
-    </ion-navbar>
-  </ion-header>
-  
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Επικοινωνια</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<!--
 <ion-content padding class="ion-content">
     <ion-textarea [(ngModel)]="message" style="color:white;height: 200px;border:1px solid white;" placeholder="Εισάγετε το μήνυμα σας"></ion-textarea>
     <button ion-button full (click)="sendMessage()">Αποστολη</button>
+</ion-content>
+-->
+<ion-content>
+  <ion-tabs #myTabs tabsPlacement="top" color="light-blue">
+    <ion-tab [root]="tab1Root" tabTitle="Επικοινωνια" tabIcon="mail"></ion-tab>
+    <ion-tab [root]="tab2Root" tabTitle="Χαρτης" tabIcon="navigate"></ion-tab>
+  </ion-tabs>
 </ion-content>

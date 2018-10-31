@@ -17,6 +17,8 @@ import { WebDealerPage } from '../pages/web-dealer/web-dealer';
 import { UltraSyncAppPage } from '../pages/ultra-sync-app/ultra-sync-app';
 import { DashboardPage } from '../pages/dashboard/dashboard';
 import { HellasDmsPage } from '../pages/hellas-dms/hellas-dms';
+import { ContactFormPage } from '../pages/contact-form/contact-form';
+import { GoogleMapsPage } from '../pages/google-maps/google-maps';
 
 @NgModule({
   declarations: [
@@ -30,7 +32,9 @@ import { HellasDmsPage } from '../pages/hellas-dms/hellas-dms';
     ContactPage,
     WebDealerPage,
     UltraSyncAppPage,
-    DashboardPage
+    DashboardPage,
+    ContactFormPage,
+    GoogleMapsPage
   ],
   imports: [
     BrowserModule,
@@ -48,7 +52,9 @@ import { HellasDmsPage } from '../pages/hellas-dms/hellas-dms';
     ContactPage,
     WebDealerPage,
     UltraSyncAppPage,
-    DashboardPage
+    DashboardPage,
+    ContactFormPage,
+    GoogleMapsPage
   ],
   providers: [
     StatusBar,

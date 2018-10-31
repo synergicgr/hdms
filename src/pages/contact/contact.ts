@@ -1,5 +1,7 @@
-import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { Component, ViewChild } from '@angular/core';
+import { IonicPage, NavController, NavParams, Tabs } from 'ionic-angular';
+import { ContactFormPage } from '../contact-form/contact-form';
+import { GoogleMapsPage } from '../google-maps/google-maps';
 
 /**
  * Generated class for the ContactPage page.
@@ -14,8 +16,12 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
   templateUrl: 'contact.html',
 })
 export class ContactPage {
-
+  @ViewChild('myTabs') tabRef: Tabs;
   message:string = '';
+
+  tab1Root = ContactFormPage;
+  tab2Root = GoogleMapsPage;
+
   constructor(public navCtrl: NavController, public navParams: NavParams) {
   }
 
@@ -26,5 +32,6 @@ export class ContactPage {
   sendMessage():void{
     
   }
+
 
 }

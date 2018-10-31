@@ -19,7 +19,7 @@
   </ion-header>
 
   <ion-content class="ion-content">
-    <ion-list>
+    <ion-list no-lines>
       <button menuClose style="background: #36365f;color:white;" ion-item *ngFor="let p of pages" (click)="openPage(p)">
         <img src={{p.icon}} height="20px" width="30px" style="margin-top:5px;" />
         {{p.title}}
