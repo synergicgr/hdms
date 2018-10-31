@@ -16,12 +16,13 @@ import { ContactPage } from '../pages/contact/contact';
 import { WebDealerPage } from '../pages/web-dealer/web-dealer';
 import { UltraSyncAppPage } from '../pages/ultra-sync-app/ultra-sync-app';
 import { DashboardPage } from '../pages/dashboard/dashboard';
+import { HellasDmsPage } from '../pages/hellas-dms/hellas-dms';
 
 @NgModule({
   declarations: [
     MyApp,
     HomePage,
-    ListPage,
+    HellasDmsPage,
     CustomersPage,
     NotesPage,
     ConnectionInfoPage,
@@ -39,7 +40,7 @@ import { DashboardPage } from '../pages/dashboard/dashboard';
   entryComponents: [
     MyApp,
     HomePage,
-    ListPage,
+    HellasDmsPage,
     CustomersPage,
     NotesPage,
     ConnectionInfoPage,
@@ -52,7 +53,7 @@ import { DashboardPage } from '../pages/dashboard/dashboard';
   providers: [
     StatusBar,
     SplashScreen,
-    {provide: ErrorHandler, useClass: IonicErrorHandler}
+    { provide: ErrorHandler, useClass: IonicErrorHandler }
   ]
 })
-export class AppModule {}
+export class AppModule { }

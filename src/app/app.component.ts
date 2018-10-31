@@ -12,6 +12,7 @@ import { TechAppPage } from '../pages/tech-app/tech-app';
 import { ContactPage } from '../pages/contact/contact';
 import { WebDealerPage } from '../pages/web-dealer/web-dealer';
 import { UltraSyncAppPage } from '../pages/ultra-sync-app/ultra-sync-app';
+import { HellasDmsPage } from '../pages/hellas-dms/hellas-dms';
 
 @Component({
   templateUrl: 'app.html'
@@ -28,15 +29,14 @@ export class MyApp {
 
     // used for an example of ngFor and navigation
     this.pages = [
-      { title: 'Home', component: HomePage },
-      { title: 'List', component: ListPage },
+      {title: 'Hellas DMS', component: HellasDmsPage},
       {title: 'Οι πελατες μας', component: CustomersPage},
       {title: 'Σημειωσεις', component: NotesPage},
       {title: 'Πληροφοριες συνδεσης', component: ConnectionInfoPage},
       {title: 'Tech App', component: TechAppPage},
       {title: 'Επικοινωνια', component: ContactPage},
       {title:'Web Dealer', component: WebDealerPage}, 
-      {title: 'Ultra Sync App', component: UltraSyncAppPage}     
+      {title: 'Ultra Sync App', component: UltraSyncAppPage},     
     ];
 
   }
