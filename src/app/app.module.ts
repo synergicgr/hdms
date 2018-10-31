@@ -15,6 +15,7 @@ import { TechAppPage } from '../pages/tech-app/tech-app';
 import { ContactPage } from '../pages/contact/contact';
 import { WebDealerPage } from '../pages/web-dealer/web-dealer';
 import { UltraSyncAppPage } from '../pages/ultra-sync-app/ultra-sync-app';
+import { DashboardPage } from '../pages/dashboard/dashboard';
 
 @NgModule({
   declarations: [
@@ -27,7 +28,8 @@ import { UltraSyncAppPage } from '../pages/ultra-sync-app/ultra-sync-app';
     TechAppPage,
     ContactPage,
     WebDealerPage,
-    UltraSyncAppPage
+    UltraSyncAppPage,
+    DashboardPage
   ],
   imports: [
     BrowserModule,
@@ -44,7 +46,8 @@ import { UltraSyncAppPage } from '../pages/ultra-sync-app/ultra-sync-app';
     TechAppPage,
     ContactPage,
     WebDealerPage,
-    UltraSyncAppPage
+    UltraSyncAppPage,
+    DashboardPage
   ],
   providers: [
     StatusBar,
