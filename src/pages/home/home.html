@@ -1,3 +1,4 @@
+<!-- 
 <ion-header>
   <ion-navbar>
     <button ion-button menuToggle>
@@ -15,4 +16,46 @@
   </p>
 
   <button ion-button secondary menuToggle>Toggle Menu</button>
+</ion-content>
+-->
+<ion-header>
+  <ion-navbar>
+    <ion-title>
+      Login
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content class="bg-style">
+  <ion-grid>
+    <ion-row justify-content-center>
+      <ion-col align-self-center size-md="6" size-lg="5" size-xs="12">
+        <div text-center>
+          <h4>Login Form</h4>
+        </div>
+        <div padding text-center>
+          <ion-item no-lines style="border-radius: 10px;" text-wrap>
+            <ion-input type="text" placeholder="Username"></ion-input>
+          </ion-item>
+
+          <ion-item no-lines style="border-radius: 10px; margin-top: 10px;" text-wrap>
+            <ion-input type="password" placeholder="Password"></ion-input>
+          </ion-item>
+
+          <button ion-button clear style="text-align: center;margin-top: 20px;" class="forgotPassword" (click)="forgotPassword()">Ξεχασα τον
+            κωδικό μου</button>
+
+        </div>
+
+        <div padding text-center style="width:100%;display:block;text-align: center;">          
+            <ion-label style="display:inline-block;color:white;">Απομνημόνευση</ion-label>
+            <ion-toggle [(ngModel)]="rememberMe" style="display:inline-block;"></ion-toggle>          
+        </div>
+
+        <div padding text-center style="width:100%;display:block;">
+          <button ion-button round (click)="signIn()" class="login-button">Συνδεση</button>
+        </div>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
 </ion-content>

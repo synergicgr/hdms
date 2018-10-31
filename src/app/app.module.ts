@@ -8,12 +8,26 @@ import { ListPage } from '../pages/list/list';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
+import { CustomersPage } from '../pages/customers/customers';
+import { NotesPage } from '../pages/notes/notes';
+import { ConnectionInfoPage } from '../pages/connection-info/connection-info';
+import { TechAppPage } from '../pages/tech-app/tech-app';
+import { ContactPage } from '../pages/contact/contact';
+import { WebDealerPage } from '../pages/web-dealer/web-dealer';
+import { UltraSyncAppPage } from '../pages/ultra-sync-app/ultra-sync-app';
 
 @NgModule({
   declarations: [
     MyApp,
     HomePage,
-    ListPage
+    ListPage,
+    CustomersPage,
+    NotesPage,
+    ConnectionInfoPage,
+    TechAppPage,
+    ContactPage,
+    WebDealerPage,
+    UltraSyncAppPage
   ],
   imports: [
     BrowserModule,
@@ -23,7 +37,14 @@ import { SplashScreen } from '@ionic-native/splash-screen';
   entryComponents: [
     MyApp,
     HomePage,
-    ListPage
+    ListPage,
+    CustomersPage,
+    NotesPage,
+    ConnectionInfoPage,
+    TechAppPage,
+    ContactPage,
+    WebDealerPage,
+    UltraSyncAppPage
   ],
   providers: [
     StatusBar,

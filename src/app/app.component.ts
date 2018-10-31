@@ -5,6 +5,13 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 
 import { HomePage } from '../pages/home/home';
 import { ListPage } from '../pages/list/list';
+import { CustomersPage } from '../pages/customers/customers';
+import { NotesPage } from '../pages/notes/notes';
+import { ConnectionInfoPage } from '../pages/connection-info/connection-info';
+import { TechAppPage } from '../pages/tech-app/tech-app';
+import { ContactPage } from '../pages/contact/contact';
+import { WebDealerPage } from '../pages/web-dealer/web-dealer';
+import { UltraSyncAppPage } from '../pages/ultra-sync-app/ultra-sync-app';
 
 @Component({
   templateUrl: 'app.html'
@@ -22,7 +29,14 @@ export class MyApp {
     // used for an example of ngFor and navigation
     this.pages = [
       { title: 'Home', component: HomePage },
-      { title: 'List', component: ListPage }
+      { title: 'List', component: ListPage },
+      {title: 'Οι πελατες μας', component: CustomersPage},
+      {title: 'Σημειωσεις', component: NotesPage},
+      {title: 'Πληροφοριες συνδεσης', component: ConnectionInfoPage},
+      {title: 'Tech App', component: TechAppPage},
+      {title: 'Επικοινωνια', component: ContactPage},
+      {title:'Web Dealer', component: WebDealerPage}, 
+      {title: 'Ultra Sync App', component: UltraSyncAppPage}     
     ];
 
   }
