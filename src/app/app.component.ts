@@ -4,7 +4,6 @@ import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 
 import { HomePage } from '../pages/home/home';
-import { ListPage } from '../pages/list/list';
 import { CustomersPage } from '../pages/customers/customers';
 import { NotesPage } from '../pages/notes/notes';
 import { ConnectionInfoPage } from '../pages/connection-info/connection-info';
@@ -22,6 +21,7 @@ import { Network } from '@ionic-native/network';
 export class MyApp {
   @ViewChild(Nav) nav: Nav;
 
+  online:boolean;
   rootPage: any = HomePage;
 
   pages: Array<{title: string, component: any, icon:string}>;
@@ -56,11 +56,12 @@ export class MyApp {
 
   listenConnection():void{
     this.network.onConnect().subscribe(() => {
-
+      this.online = true;
     });
 
     this.network.onDisconnect()
       .subscribe(() => {
+        this.online = false;
         console.log('network was disconnected :-(');
         let alert = this.alertCtrl.create({
           title: 'Internet Connection',
@@ -80,4 +81,12 @@ export class MyApp {
   downloadPriceList():void{
 
   }
+
+  public isOnline():boolean{
+    return this.online == true;
+  }
+
+  public isOffline():boolean{
+    return this.online == false;
+  }  
 }
