@@ -1,5 +1,5 @@
 import { Component, ViewChild } from '@angular/core';
-import { Nav, Platform } from 'ionic-angular';
+import { Nav, Platform, AlertController, Events } from 'ionic-angular';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 
@@ -13,6 +13,8 @@ import { ContactPage } from '../pages/contact/contact';
 import { WebDealerPage } from '../pages/web-dealer/web-dealer';
 import { UltraSyncAppPage } from '../pages/ultra-sync-app/ultra-sync-app';
 import { HellasDmsPage } from '../pages/hellas-dms/hellas-dms';
+import { Network } from '@ionic-native/network';
+
 
 @Component({
   templateUrl: 'app.html'
@@ -24,7 +26,7 @@ export class MyApp {
 
   pages: Array<{title: string, component: any, icon:string}>;
 
-  constructor(public platform: Platform, public statusBar: StatusBar, public splashScreen: SplashScreen) {
+  constructor(private alertCtrl:AlertController,  private network:Network ,public platform: Platform, public statusBar: StatusBar, public splashScreen: SplashScreen) {
     this.initializeApp();
 
     // used for an example of ngFor and navigation
@@ -47,7 +49,26 @@ export class MyApp {
       // Here you can do any higher level native things you might need.
       this.statusBar.styleDefault();
       this.splashScreen.hide();
+
+      this.listenConnection();
     });
+  }
+
+  listenConnection():void{
+    this.network.onConnect().subscribe(() => {
+
+    });
+
+    this.network.onDisconnect()
+      .subscribe(() => {
+        console.log('network was disconnected :-(');
+        let alert = this.alertCtrl.create({
+          title: 'Internet Connection',
+          subTitle: 'You are in offline mode!!!',
+          buttons: ['Dismiss']
+        });
+        alert.present();
+      });
   }
 
   openPage(page) {

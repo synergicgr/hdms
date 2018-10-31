@@ -49,6 +49,14 @@ $toolbar-wp-title-text-color: #ffffff;
 
 $tabs-md-tab-icon-color-active: #FFFF00;
 
+.tabs-md .tab-button {
+  color: #DD2C00 !important;
+ }
+
+ .tabs-md .tab-button[aria-selected=true] {
+   color:#FFC400 !important;
+ }
+
 // App iOS Variables
 // --------------------------------------------------
 // iOS only Sass variables can go here
