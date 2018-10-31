@@ -1,13 +1,82 @@
 <ion-header>
-    <ion-navbar>
-      <button ion-button menuToggle>
-        <ion-icon name="menu"></ion-icon>
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title style="text-align:center;">
+      <img alt="logo" height="40" src="../../assets/imgs/Hellas-Dns-logo.png">
+    </ion-title>
+    <ion-buttons end>
+      <button (click)="searchToggle()">
+        <ion-icon class="ion-icon" name="person"></ion-icon>
       </button>
-      <ion-title>Πληροφοριες συνδεσης</ion-title>
-    </ion-navbar>
-  </ion-header>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
 
+<ion-content padding class="ion-content">
 
-<ion-content padding>
+  <div class="protocol">
+    SIA Protocol
+  </div>
+  <div style="width:100%;display:block;">
+    <ion-label style="display:inline-block;color:#555577;font-size: 20px;">Primary:</ion-label>
+    <ion-label style="display:inline-block;color:white;font-size: 20px;">210-602-8190</ion-label>
+  </div>
+  <div style="width:100%;display:block;">
+    <ion-label style="display:inline-block;color:#555577;font-size: 20px;">Secondary:</ion-label>
+    <ion-label style="display:inline-block;color:white;font-size: 20px;">210-602-0191</ion-label>
+  </div>
+  <div class="network">
+    Network
+  </div>
 
+  <div class="netrec">
+    Net Rec (Caddx)
+  </div>
+
+  <div style="width:100%;">
+    <ion-label style="display:inline-block;color:#555577;font-size: 15px;">Primary:</ion-label>
+    <ion-label style="display:inline-block;color:white;font-size: 15px;">94.70.232.21</ion-label>
+    <ion-label style="display:inline-block;color:#555577;font-size: 15px;margin-left: 10px;">Port:</ion-label>
+    <ion-label style="display:inline-block;color:white;font-size: 15px;">8994</ion-label>
+  </div>
+  <div style="width:100%;">
+    <ion-label style="display:inline-block;color:#555577;font-size: 15px;">Primary:</ion-label>
+    <ion-label style="display:inline-block;color:white;font-size: 15px;">94.70.232.21</ion-label>
+    <ion-label style="display:inline-block;color:#555577;font-size: 15px;margin-left: 10px;">Port:</ion-label>
+    <ion-label style="display:inline-block;color:white;font-size: 15px;">8994</ion-label>
+  </div>
+
+  <div class="netrec">
+    IP Com (TxL-Q200G3 & TxL-Q200G3)
+  </div>
+  <div style="width:100%;">
+    <ion-label style="display:inline-block;color:#555577;font-size: 15px;">Primary:</ion-label>
+    <ion-label style="display:inline-block;color:white;font-size: 15px;">94.70.232.21</ion-label>
+    <ion-label style="display:inline-block;color:#555577;font-size: 15px;margin-left: 10px;">Port:</ion-label>
+    <ion-label style="display:inline-block;color:white;font-size: 15px;">8766</ion-label>
+  </div>
+  <div style="width:100%;">
+    <ion-label style="display:inline-block;color:#555577;font-size: 15px;">Primary:</ion-label>
+    <ion-label style="display:inline-block;color:white;font-size: 15px;">94.70.232.21</ion-label>
+    <ion-label style="display:inline-block;color:#555577;font-size: 15px;margin-left: 10px;">Port:</ion-label>
+    <ion-label style="display:inline-block;color:white;font-size: 15px;">8766</ion-label>
+  </div>
+
+  <div class="netrec">
+    Serion (Paradox)
+  </div>
+  <div style="width:100%;">
+      <ion-label style="display:inline-block;color:#555577;font-size: 15px;">Primary:</ion-label>
+      <ion-label style="display:inline-block;color:white;font-size: 15px;">94.70.232.21</ion-label>
+      <ion-label style="display:inline-block;color:#555577;font-size: 15px;margin-left: 10px;">Port:</ion-label>
+      <ion-label style="display:inline-block;color:white;font-size: 15px;">9998</ion-label>
+    </div>
+    <div style="width:100%;">
+      <ion-label style="display:inline-block;color:#555577;font-size: 15px;">Primary:</ion-label>
+      <ion-label style="display:inline-block;color:white;font-size: 15px;">94.70.232.21</ion-label>
+      <ion-label style="display:inline-block;color:#555577;font-size: 15px;margin-left: 10px;">Port:</ion-label>
+      <ion-label style="display:inline-block;color:white;font-size: 15px;">9998</ion-label>
+    </div>
 </ion-content>
