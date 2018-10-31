@@ -31,7 +31,7 @@
     <ion-row justify-content-center>
       <ion-col align-self-center size-md="6" size-lg="5" size-xs="12">
         <div text-center>
-            <img alt="logo" height="60" src="../../assets/imgs/Hellas-Dns-logo.png">
+          <img alt="logo" height="60" src="../../assets/imgs/Hellas-Dns-logo.png">
         </div>
         <div padding text-center>
           <ion-item no-lines style="border-radius: 10px;" text-wrap>
@@ -42,14 +42,15 @@
             <ion-input type="password" placeholder="Password"></ion-input>
           </ion-item>
 
-          <button ion-button clear style="text-align: center;margin-top: 20px;" class="forgotPassword" (click)="forgotPassword()">Ξεχασα τον
+          <button ion-button clear style="text-align: center;margin-top: 20px;" class="forgotPassword" (click)="forgotPassword()">Ξεχασα
+            τον
             κωδικό μου</button>
 
         </div>
 
-        <div padding text-center style="width:100%;display:block;text-align: center;">          
-            <ion-label style="display:inline-block;color:white;">Απομνημόνευση</ion-label>
-            <ion-toggle [(ngModel)]="rememberMe" style="display:inline-block;"></ion-toggle>          
+        <div padding text-center style="width:100%;display:block;text-align: center;">
+          <ion-label style="display:inline-block;color:white;">Απομνημόνευση</ion-label>
+          <ion-toggle [(ngModel)]="rememberMe" style="display:inline-block;"></ion-toggle>
         </div>
 
         <div padding text-center style="width:100%;display:block;">
@@ -59,3 +60,12 @@
     </ion-row>
   </ion-grid>
 </ion-content>
+
+<ion-footer>
+  <div style="text-align:center;">
+    <button ion-button clear style="color: white;">Οροι χρησης</button>
+    <button ion-button clear style="color: white;">Προσωπικα δεδομενα</button>
+  </div>
+  <p style="text-align:center;color:white;">HellasDMS Copyright 2018</p>
+
+</ion-footer>
