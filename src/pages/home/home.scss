@@ -1,15 +1,19 @@
 page-home {
-    .bg-style{
-      background: #36365f;
+    .bg-style {
+        background: #36365f;
     }
-  
-    .forgotPassword{
-      color:white;
+
+    .forgotPassword {
+        color: white;
     }
-  
-    .login-button{
-      background: #FFC200;
-      color: black;
+
+    .login-button {
+        background: #FFC200;
+        color: black;
+        font-weight: bold;
+    } 
+    
+    .custom-toggle.toggle-checked .toggle-inner {
+        background-color: #FFC200; // Whatever color you want
     }
 }
-  
