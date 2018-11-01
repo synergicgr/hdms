@@ -15,6 +15,8 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 })
 export class CustomersPage {
 
+  sortingAttr:string = "name";
+
  customers:Array<{name: string, surname: string, city: string}> = [
    {name:'Γρηγόρης', surname:'Σαμαράς', city:'Αθήνα'}, 
    {name:'Χάρης', surname:'Γεωργακόπουλος', city:'Θεσσαλονίκη'},
@@ -26,6 +28,13 @@ export class CustomersPage {
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad CustomersPage');
+  }
+
+  public sort():void{
+    if(this.sortingAttr === "name")
+    {
+            
+    }
   }
 
 }
