@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, MenuController } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, MenuController, Platform } from 'ionic-angular';
+import { HomePage } from '../home/home';
 
 /**
  * Generated class for the DashboardPage page.
@@ -15,8 +16,13 @@ import { IonicPage, NavController, NavParams, MenuController } from 'ionic-angul
 })
 export class DashboardPage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public menuCtrl:MenuController) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, public menuCtrl:MenuController, private platform:Platform) {
     this.menuCtrl.enable(true, 'menu');
+    platform.ready().then(() => {
+      platform.registerBackButtonAction(()=>{
+        this.navCtrl.push(HomePage);
+      });
+    });    
   }
 
   ionViewDidLoad() {

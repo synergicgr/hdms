@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, Platform } from 'ionic-angular';
+import { DashboardPage } from '../dashboard/dashboard';
 
 /**
  * Generated class for the ConnectionInfoPage page.
@@ -15,7 +16,12 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 })
 export class ConnectionInfoPage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, private platform:Platform) {
+    platform.ready().then(() => {
+      platform.registerBackButtonAction(()=>{
+        this.navCtrl.push(DashboardPage);
+      });
+    });    
   }
 
   ionViewDidLoad() {

@@ -20,6 +20,8 @@ import { DashboardPage } from '../pages/dashboard/dashboard';
 import { HellasDmsPage } from '../pages/hellas-dms/hellas-dms';
 import { ContactFormPage } from '../pages/contact-form/contact-form';
 import { GoogleMapsPage } from '../pages/google-maps/google-maps';
+import { IonicStorageModule } from '@ionic/storage';
+
 
 @NgModule({
   declarations: [
@@ -38,8 +40,9 @@ import { GoogleMapsPage } from '../pages/google-maps/google-maps';
     GoogleMapsPage
   ],
   imports: [
-    BrowserModule,
-    IonicModule.forRoot(MyApp),
+    BrowserModule,    
+    IonicModule.forRoot(MyApp, { scrollAssist: false, autoFocusAssist: false } ),
+    IonicStorageModule.forRoot()
   ],
   bootstrap: [IonicApp],
   entryComponents: [
