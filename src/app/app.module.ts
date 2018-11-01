@@ -21,6 +21,7 @@ import { HellasDmsPage } from '../pages/hellas-dms/hellas-dms';
 import { ContactFormPage } from '../pages/contact-form/contact-form';
 import { GoogleMapsPage } from '../pages/google-maps/google-maps';
 import { IonicStorageModule } from '@ionic/storage';
+import { InAppBrowser } from '@ionic-native/in-app-browser';
 
 
 @NgModule({
@@ -64,6 +65,7 @@ import { IonicStorageModule } from '@ionic/storage';
     Network,
     StatusBar,
     SplashScreen,
+    InAppBrowser,
     { provide: ErrorHandler, useClass: IonicErrorHandler }
   ]
 })

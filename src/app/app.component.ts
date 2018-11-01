@@ -13,6 +13,8 @@ import { WebDealerPage } from '../pages/web-dealer/web-dealer';
 import { UltraSyncAppPage } from '../pages/ultra-sync-app/ultra-sync-app';
 import { HellasDmsPage } from '../pages/hellas-dms/hellas-dms';
 import { Network } from '@ionic-native/network';
+import { InAppBrowser } from '@ionic-native/in-app-browser';
+
 
 
 @Component({
@@ -21,24 +23,24 @@ import { Network } from '@ionic-native/network';
 export class MyApp {
   @ViewChild(Nav) nav: Nav;
 
-  online:boolean;
+  online: boolean;
   rootPage: any = HomePage;
 
-  pages: Array<{title: string, component: any, icon:string}>;
+  pages: Array<{ title: string, component: any, icon: string }>;
 
-  constructor(private alertCtrl:AlertController,  private network:Network ,public platform: Platform, public statusBar: StatusBar, public splashScreen: SplashScreen) {
+  constructor(private alertCtrl: AlertController, private network: Network, public platform: Platform, public statusBar: StatusBar, public splashScreen: SplashScreen, private inAppBrowser:InAppBrowser) {
     this.initializeApp();
 
     // used for an example of ngFor and navigation
     this.pages = [
-      {title: 'Hellas DMS', component: HellasDmsPage, icon:"../assets/imgs/icon1.png"},
-      {title: 'Οι πελατες μας', component: CustomersPage, icon:"../assets/imgs/icon2.png"},
-      {title: 'Σημειωσεις', component: NotesPage, icon:"../assets/imgs/icon3.png"},
-      {title: 'Πληροφοριες συνδεσης', component: ConnectionInfoPage, icon:"../assets/imgs/icon4.png"},
-      {title: 'Tech App', component: TechAppPage, icon:"../assets/imgs/icon5.png"},
-      {title: 'Επικοινωνια', component: ContactPage, icon:"../assets/imgs/icon6.png"},
-      {title:'Web Dealer', component: WebDealerPage, icon:"../assets/imgs/icon7.png"},
-      {title: 'Ultra Sync App', component: UltraSyncAppPage, icon:"../assets/imgs/icon8.png"},
+      { title: 'Hellas DMS', component: HellasDmsPage, icon: "../assets/imgs/icon1.png" },
+      { title: 'Οι πελατες μας', component: CustomersPage, icon: "../assets/imgs/icon2.png" },
+      { title: 'Σημειωσεις', component: NotesPage, icon: "../assets/imgs/icon3.png" },
+      { title: 'Πληροφοριες συνδεσης', component: ConnectionInfoPage, icon: "../assets/imgs/icon4.png" },
+      { title: 'Tech App', component: TechAppPage, icon: "../assets/imgs/icon5.png" },
+      { title: 'Επικοινωνια', component: ContactPage, icon: "../assets/imgs/icon6.png" },
+      { title: 'Web Dealer', component: WebDealerPage, icon: "../assets/imgs/icon7.png" },
+      { title: 'Ultra Sync App', component: UltraSyncAppPage, icon: "../assets/imgs/icon8.png" },
     ];
 
   }
@@ -54,7 +56,7 @@ export class MyApp {
     });
   }
 
-  listenConnection():void{
+  listenConnection(): void {
     this.network.onConnect().subscribe(() => {
       this.online = true;
     });
@@ -72,21 +74,27 @@ export class MyApp {
       });
   }
 
-  openPage(page) {
+  openPage(page, index) {
     // Reset the content nav to have just this page
     // we wouldn't want the back button to show in this scenario
-    this.nav.setRoot(page.component);
+
+    if (index == 4) {
+      this.inAppBrowser.create("http://www.google.com");
+    }
+    else {
+      this.nav.setRoot(page.component);
+    }
   }
 
-  downloadPriceList():void{
+  downloadPriceList(): void {
 
   }
 
-  public isOnline():boolean{
+  public isOnline(): boolean {
     return this.online == true;
   }
 
-  public isOffline():boolean{
+  public isOffline(): boolean {
     return this.online == false;
-  }  
+  }
 }

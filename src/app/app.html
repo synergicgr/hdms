@@ -20,8 +20,8 @@
 
   <ion-content class="ion-content">
     <ion-list no-lines>
-      <button menuClose style="background: #36365f;color:white;" ion-item *ngFor="let p of pages" (click)="openPage(p)">
-        <img src={{p.icon}} height="20px" width="30px" style="position: relative;top:5px;margin-left: 2px;" />
+      <button menuClose style="background: #36365f;color:#aaaac0;" ion-item *ngFor="let p of pages; let i = index" (click)="openPage(p,i)">
+        <img src={{p.icon}} height="30px" width="30px" style="position: relative;top:6px;margin-left: 2px;margin-right: 30px;" />
         {{p.title}}
       </button>
     </ion-list>
@@ -30,8 +30,8 @@
   <ion-footer no-border>
     <ion-toolbar transparent>
       <button ion-button full text-uppercase style="background:#060639;color:#ffc200;">
-        <img alt="pdf" src="../../assets/imgs/pdf-icon.png" style="margin-right: 5px;" width="20px;">
-        Κατεβαστε τον Τιμοκαταλογο
+        <img alt="pdf" src="../../assets/imgs/pdf-icon.png" style="margin-right: 10px;" width="20px;">
+        <div class="vertical-bar" style="display:inline-block;color:white;margin-right: 10px;"></div> Κατεβαστε τον Τιμοκαταλογο
       </button>
     </ion-toolbar>
   </ion-footer>
