@@ -15,6 +15,12 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 })
 export class CustomersPage {
 
+ customers:Array<{name: string, surname: string, city: string}> = [
+   {name:'Γρηγόρης', surname:'Σαμαράς', city:'Αθήνα'}, 
+   {name:'Χάρης', surname:'Γεωργακόπουλος', city:'Θεσσαλονίκη'},
+   {name:'Ελένη', surname:'Ψαθά', city:'Χαλάνδρι'},
+  ];
+
   constructor(public navCtrl: NavController, public navParams: NavParams) {
   }
 

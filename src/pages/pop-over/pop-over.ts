@@ -33,4 +33,8 @@ export class PopOverPage {
   disconnect():void{
     this.viewCtrl.dismiss();
   }
+
+  public closePopOver():void{
+    this.viewCtrl.dismiss();
+  }
 }

@@ -1,3 +1,15 @@
 page-customers {
+    .ion-content {
+        background: #36365f;
+    }
+    .ion-icon {
+        font-size: 30px; 
+    }
 
+    .vertical-bar:after {
+        content: '';
+        width: 0;
+        height: 100%;
+        border: 1px solid white;
+    }
 }

@@ -1,14 +1,35 @@
 <ion-header>
-    <ion-navbar>
-      <button ion-button menuToggle>
-        <ion-icon name="menu"></ion-icon>
-      </button>
-      <ion-title>Πελατες</ion-title>
-    </ion-navbar>
-  </ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Πελατες</ion-title>
+  </ion-navbar>
+</ion-header>
 
-<ion-content padding>
-  <p>
-    This is the customers page
-  </p>
+<ion-content padding class="ion-content">
+  <div style="float:left;color:#fff">
+    Οι Πελατες μου
+  </div>
+  <div style="float:right;">
+    <ion-icon name="swap" large class="ion-icon"></ion-icon>
+  </div>
+
+  <ion-grid>
+    <ion-row *ngFor="let customer of customers" style="background: #272753;margin-bottom: 2px;">
+      <ion-col style="display: flex;
+      justify-content: center;
+      align-items: center;color:#4e4e72; border-right: 1px solid #37375e;line-height: 5px;" col-5>
+        <p no-margin>{{customer.city}}</p>
+      </ion-col>
+      <ion-col style="color:#4e4e72;" col-6>
+        <p no-margin>{{customer.name}} {{customer.surname}}</p>
+      </ion-col>
+      <ion-col col-1 style="display: flex;
+      justify-content: center;
+      align-items: center;">
+        <ion-icon name="arrow-dropright"></ion-icon>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
 </ion-content>
