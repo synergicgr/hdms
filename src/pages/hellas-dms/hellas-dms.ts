@@ -19,7 +19,7 @@ export class HellasDmsPage {
   constructor(public navCtrl: NavController, public navParams: NavParams, private platform:Platform) {
     platform.ready().then(() => {
       platform.registerBackButtonAction(()=>{
-        this.navCtrl.push(DashboardPage);
+        this.navCtrl.setRoot(DashboardPage);
       });
     });  
   }
