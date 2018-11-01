@@ -3,6 +3,8 @@ import { NavController, MenuController, Platform } from 'ionic-angular';
 import { DashboardPage } from '../dashboard/dashboard';
 import { Storage } from '@ionic/storage';
 import { Keyboard } from 'ionic-native';
+import { NativePageTransitions, NativeTransitionOptions } from '@ionic-native/native-page-transitions';
+
 
 
 @Component({
@@ -16,7 +18,13 @@ export class HomePage {
   username: string = "";
   password: string = "";
 
-  constructor(public navCtrl: NavController, public menuCtrl: MenuController, private platform: Platform, private storage: Storage, private keyboard: Keyboard) {
+  constructor(public navCtrl: NavController,
+    public menuCtrl: MenuController,
+    private platform: Platform,
+    private storage: Storage,
+    private keyboard: Keyboard,
+    private nativePageTransitions: NativePageTransitions) {
+
     this.menuCtrl.enable(false, 'menu');
 
     platform.ready().then(() => {
@@ -50,6 +58,16 @@ export class HomePage {
     else {
       this.storage.set('rememberMe', false);
     }
+
+    
+    let options: NativeTransitionOptions = {
+      direction: 'right',
+      duration: 500,
+      iosdelay: 100,
+      androiddelay: 150,
+    };
+
+    this.nativePageTransitions.slide(options);          
     this.navCtrl.setRoot(DashboardPage);
   }
 
@@ -73,7 +91,9 @@ export class HomePage {
     });
   }
 
-  moveFocus(nextElement):void {
+
+
+  moveFocus(nextElement): void {
     nextElement.setFocus();
   }
 }

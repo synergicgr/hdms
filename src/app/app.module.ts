@@ -23,6 +23,7 @@ import { GoogleMapsPage } from '../pages/google-maps/google-maps';
 import { IonicStorageModule } from '@ionic/storage';
 import { InAppBrowser } from '@ionic-native/in-app-browser';
 import { PopOverPage } from '../pages/pop-over/pop-over';
+import { NativePageTransitions } from '@ionic-native/native-page-transitions';
 
 
 @NgModule({
@@ -69,6 +70,7 @@ import { PopOverPage } from '../pages/pop-over/pop-over';
     StatusBar,
     SplashScreen,
     InAppBrowser,
+    NativePageTransitions,
     { provide: ErrorHandler, useClass: IonicErrorHandler }
   ]
 })
