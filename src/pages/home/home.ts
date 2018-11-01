@@ -5,7 +5,6 @@ import { Storage } from '@ionic/storage';
 import { Keyboard } from 'ionic-native';
 
 
-
 @Component({
   selector: 'page-home',
   templateUrl: 'home.html',
@@ -72,5 +71,9 @@ export class HomePage {
     this.platform.ready().then(() => {
       Keyboard.disableScroll(false);
     });
+  }
+
+  moveFocus(nextElement):void {
+    nextElement.setFocus();
   }
 }
