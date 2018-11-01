@@ -5,12 +5,14 @@ page-home {
 
     .forgotPassword {
         color: white;
+        text-transform: none;
     }
 
     .login-button {
         background: #FFC200;
         color: black;
         font-weight: bold;
+        text-transform: none;
     } 
     
     .custom-toggle.toggle-checked .toggle-inner {
