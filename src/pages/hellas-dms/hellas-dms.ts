@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, Platform } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, Platform, PopoverController } from 'ionic-angular';
 import { DashboardPage } from '../dashboard/dashboard';
+import { PopOverPage } from '../pop-over/pop-over';
 
 /**
  * Generated class for the HellasDmsPage page.
@@ -16,12 +17,20 @@ import { DashboardPage } from '../dashboard/dashboard';
 })
 export class HellasDmsPage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, private platform:Platform) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, private platform:Platform, public popoverCtrl: PopoverController) {
     platform.ready().then(() => {
+
       platform.registerBackButtonAction(()=>{
         this.navCtrl.setRoot(DashboardPage);
       });
     });  
+  }
+
+  presentPopover(myEvent) {
+    let popover = this.popoverCtrl.create(PopOverPage);
+    popover.present({
+      ev: myEvent
+    });
   }
 
   ionViewDidLoad() {

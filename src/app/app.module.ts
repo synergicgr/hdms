@@ -22,6 +22,7 @@ import { ContactFormPage } from '../pages/contact-form/contact-form';
 import { GoogleMapsPage } from '../pages/google-maps/google-maps';
 import { IonicStorageModule } from '@ionic/storage';
 import { InAppBrowser } from '@ionic-native/in-app-browser';
+import { PopOverPage } from '../pages/pop-over/pop-over';
 
 
 @NgModule({
@@ -38,7 +39,8 @@ import { InAppBrowser } from '@ionic-native/in-app-browser';
     UltraSyncAppPage,
     DashboardPage,
     ContactFormPage,
-    GoogleMapsPage
+    GoogleMapsPage,
+    PopOverPage
   ],
   imports: [
     BrowserModule,    
@@ -59,7 +61,8 @@ import { InAppBrowser } from '@ionic-native/in-app-browser';
     UltraSyncAppPage,
     DashboardPage,
     ContactFormPage,
-    GoogleMapsPage
+    GoogleMapsPage,
+    PopOverPage
   ],
   providers: [
     Network,
