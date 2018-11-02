@@ -24,6 +24,9 @@ import { IonicStorageModule } from '@ionic/storage';
 import { InAppBrowser } from '@ionic-native/in-app-browser';
 import { PopOverPage } from '../pages/pop-over/pop-over';
 import { NativePageTransitions } from '@ionic-native/native-page-transitions';
+import { SortPopOverPage } from '../pages/sort-pop-over/sort-pop-over';
+import { CustomersProvider } from '../providers/customers/customers';
+import { HttpClientModule } from '@angular/common/http'; 
 
 
 @NgModule({
@@ -41,12 +44,14 @@ import { NativePageTransitions } from '@ionic-native/native-page-transitions';
     DashboardPage,
     ContactFormPage,
     GoogleMapsPage,
-    PopOverPage
+    PopOverPage,
+    SortPopOverPage
   ],
   imports: [
     BrowserModule,    
     IonicModule.forRoot(MyApp, { scrollAssist: false, autoFocusAssist: false } ),
-    IonicStorageModule.forRoot()
+    IonicStorageModule.forRoot(),
+    HttpClientModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -63,7 +68,8 @@ import { NativePageTransitions } from '@ionic-native/native-page-transitions';
     DashboardPage,
     ContactFormPage,
     GoogleMapsPage,
-    PopOverPage
+    PopOverPage,
+    SortPopOverPage
   ],
   providers: [
     Network,
@@ -72,7 +78,8 @@ import { NativePageTransitions } from '@ionic-native/native-page-transitions';
     InAppBrowser,
     PopOverPage,
     NativePageTransitions,
-    { provide: ErrorHandler, useClass: IonicErrorHandler }
+    { provide: ErrorHandler, useClass: IonicErrorHandler },
+    CustomersProvider
   ]
 })
 export class AppModule { }

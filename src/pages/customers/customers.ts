@@ -1,12 +1,9 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, PopoverController, Platform, Events } from 'ionic-angular';
+import { SortPopOverPage } from '../sort-pop-over/sort-pop-over';
+import { CustomersProvider } from '../../providers/customers/customers';
+import { DashboardPage } from '../dashboard/dashboard';
 
-/**
- * Generated class for the CustomersPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
 
 @IonicPage()
 @Component({
@@ -15,26 +12,53 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 })
 export class CustomersPage {
 
-  sortingAttr:string = "name";
+  private popover;
+  private static popOverController;
+  open: boolean;
 
- customers:Array<{name: string, surname: string, city: string}> = [
-   {name:'Γρηγόρης', surname:'Σαμαράς', city:'Αθήνα'}, 
-   {name:'Χάρης', surname:'Γεωργακόπουλος', city:'Θεσσαλονίκη'},
-   {name:'Ελένη', surname:'Ψαθά', city:'Χαλάνδρι'},
-  ];
+  customers: Array<{ name: string, surname: string, city: string }>;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  constructor(
+    public navCtrl: NavController,
+    public navParams: NavParams,
+    private popOverController: PopoverController,
+    customersProvider: CustomersProvider,
+    platform: Platform,
+    private events:Events
+    ) {
+
+    events.subscribe('dismiss', (data, time) => {
+      // user and time are the same arguments passed in `events.publish(user, time)`
+      this.popover.dismiss();
+    });
+    this.customers = customersProvider.getCustomers();
+
+    platform.ready().then(() => {
+      platform.registerBackButtonAction(() => {
+        if (this.open === true) {
+          this.dismiss();
+          this.open = false;
+        }
+        else {
+          navCtrl.setRoot(DashboardPage);
+        }
+      });
+    });
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad CustomersPage');
   }
 
-  public sort():void{
-    if(this.sortingAttr === "name")
-    {
-            
-    }
+  presentPopover(myEvent) {
+    this.popover = this.popOverController.create(SortPopOverPage);
+    this.popover.present({
+      ev: myEvent
+    });
+    this.open = true;
   }
 
+  public dismiss():void{
+    this.popover.dismiss();
+  }
 }

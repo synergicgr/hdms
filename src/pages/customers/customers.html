@@ -11,33 +11,31 @@
   <div style="float:left;color:#fff">
     Οι Πελατες μου
   </div>
-  <div style="float:right;position: relative;top:-12px;">
-    <ion-label>Ταξινόμηση ανα</ion-label>
+  <div style="float:right;">
+    <button (click)="presentPopover($event)" style="background: transparent !important;">
+      <img width="30" height="30" alt="sorting" src="../../assets/imgs/FILTRA-icon.png">
+    </button>
   </div>
-  <div style="float:right;clear: both;position: relative;top:-15px;">
-    <ion-item class="ion-item" no-lines>
-      <ion-select [(ngModel)]="sortingAttr" class="myCustomSelect">
-        <ion-option value="name">Όνομα</ion-option>
-        <ion-option value="city">Περιοχή</ion-option>
-      </ion-select>
-    </ion-item>
+  <div style="float:right;position:relative;top:-10px;">
+    <ion-label style="color:#fff">Ταξινόμηση ανα</ion-label>
   </div>
 
   <ion-grid>
-    <ion-row *ngFor="let customer of customers" style="background: #272753;margin-bottom: 2px;">
+    <ion-row *ngFor="let customer of customers" style="background: #272753;margin-bottom: 2px;height: 40px;">
       <ion-col style="display: flex;
       justify-content: center;
       align-items: center;color:#4e4e72; border-right: 1px solid #37375e;line-height: 5px;"
         col-5>
         <p no-margin>{{customer.city}}</p>
       </ion-col>
-      <ion-col style="color:#4e4e72;" col-6>
+      <ion-col style="color:#4e4e72;display: flex;
+      align-items: center;" col-6>
         <p no-margin>{{customer.name}} {{customer.surname}}</p>
       </ion-col>
       <ion-col col-1 style="display: flex;
       justify-content: center;
       align-items: center;">
-        <ion-icon name="arrow-dropright"></ion-icon>
+        <img width="30" height="30" alt="right-arrow" src="../../assets/imgs/arrow-icon.png">
       </ion-col>
     </ion-row>
   </ion-grid>
