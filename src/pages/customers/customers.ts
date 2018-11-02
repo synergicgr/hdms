@@ -3,6 +3,7 @@ import { IonicPage, NavController, NavParams, PopoverController, Platform, Event
 import { SortPopOverPage } from '../sort-pop-over/sort-pop-over';
 import { CustomersProvider } from '../../providers/customers/customers';
 import { DashboardPage } from '../dashboard/dashboard';
+import { CustomerInfoPage } from '../customer-info/customer-info';
 
 
 @IonicPage()
@@ -60,5 +61,6 @@ export class CustomersPage {
 
   openCustomer(index:number):void{
     console.log("Customer ", this.customers[index].name);
+    this.navCtrl.push(CustomerInfoPage, this.customers[index]);
   }
 }

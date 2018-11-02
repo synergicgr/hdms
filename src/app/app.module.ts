@@ -27,6 +27,7 @@ import { NativePageTransitions } from '@ionic-native/native-page-transitions';
 import { SortPopOverPage } from '../pages/sort-pop-over/sort-pop-over';
 import { CustomersProvider } from '../providers/customers/customers';
 import { HttpClientModule } from '@angular/common/http'; 
+import { CustomerInfoPage } from '../pages/customer-info/customer-info';
 
 
 @NgModule({
@@ -45,7 +46,8 @@ import { HttpClientModule } from '@angular/common/http';
     ContactFormPage,
     GoogleMapsPage,
     PopOverPage,
-    SortPopOverPage
+    SortPopOverPage,
+    CustomerInfoPage
   ],
   imports: [
     BrowserModule,    
@@ -69,7 +71,8 @@ import { HttpClientModule } from '@angular/common/http';
     ContactFormPage,
     GoogleMapsPage,
     PopOverPage,
-    SortPopOverPage
+    SortPopOverPage,
+    CustomerInfoPage
   ],
   providers: [
     Network,
