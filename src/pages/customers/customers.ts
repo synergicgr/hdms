@@ -36,7 +36,7 @@ export class CustomersPage {
     platform.ready().then(() => {
       platform.registerBackButtonAction(() => {
         if (this.open === true) {
-          this.dismiss();
+          this.popover.dismiss();
           this.open = false;
         }
         else {
@@ -51,14 +51,10 @@ export class CustomersPage {
   }
 
   presentPopover(myEvent) {
-    this.popover = this.popOverController.create(SortPopOverPage);
+    this.popover = this.popOverController.create(SortPopOverPage, [], {cssClass: 'ion-popover'});
     this.popover.present({
       ev: myEvent
     });
     this.open = true;
-  }
-
-  public dismiss():void{
-    this.popover.dismiss();
   }
 }

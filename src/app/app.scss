@@ -34,3 +34,7 @@
 .item {
     min-height: 30px; /* <- this can be whatever you need */
 }
+
+.ion-popover .popover-content {
+    width: 150px !important;
+}
