@@ -57,4 +57,8 @@ export class CustomersPage {
     });
     this.open = true;
   }
+
+  openCustomer(index:number):void{
+    console.log("Customer ", this.customers[index].name);
+  }
 }

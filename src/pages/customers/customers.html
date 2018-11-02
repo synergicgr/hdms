@@ -21,7 +21,7 @@
   </div>
 
   <ion-grid>
-    <ion-row *ngFor="let customer of customers" style="background: #272753;margin-bottom: 2px;height: 40px;">
+    <ion-row *ngFor="let customer of customers; let i = index;" style="background: #272753;margin-bottom: 2px;height: 40px;">
       <ion-col style="display: flex;
       justify-content: center;
       align-items: center;color:#4e4e72; border-right: 1px solid #37375e;line-height: 5px;"
@@ -35,7 +35,9 @@
       <ion-col col-1 style="display: flex;
       justify-content: center;
       align-items: center;">
-        <img width="30" height="30" alt="right-arrow" src="../../assets/imgs/arrow-icon.png">
+        <button style="background: transparent !important;" (click)="openCustomer(i)">
+          <img width="30" height="30" alt="right-arrow" src="../../assets/imgs/arrow-icon.png">
+        </button>
       </ion-col>
     </ion-row>
   </ion-grid>
