@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { ErrorHandler, NgModule } from '@angular/core';
-import { IonicApp, IonicErrorHandler, IonicModule, NavController } from 'ionic-angular';
+import { IonicApp, IonicErrorHandler, IonicModule, NavController, ViewController } from 'ionic-angular';
 import { Network } from '@ionic-native/network';
 
 import { MyApp } from './app.component';
@@ -70,7 +70,7 @@ import { NativePageTransitions } from '@ionic-native/native-page-transitions';
     StatusBar,
     SplashScreen,
     InAppBrowser,
-    PopOverPage,    
+    PopOverPage,
     NativePageTransitions,
     { provide: ErrorHandler, useClass: IonicErrorHandler }
   ]

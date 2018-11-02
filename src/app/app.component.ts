@@ -1,5 +1,5 @@
 import { Component, ViewChild } from '@angular/core';
-import { Nav, Platform, AlertController, Events } from 'ionic-angular';
+import { Nav, Platform, AlertController, Events, ViewController, NavController } from 'ionic-angular';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 
@@ -28,7 +28,14 @@ export class MyApp {
 
   pages: Array<{ title: string, component: any, icon: string }>;
 
-  constructor(private alertCtrl: AlertController, private network: Network, public platform: Platform, public statusBar: StatusBar, public splashScreen: SplashScreen, private inAppBrowser:InAppBrowser) {
+  constructor(
+    private alertCtrl: AlertController,
+    private network: Network,
+    public platform: Platform,
+    public statusBar: StatusBar,
+    public splashScreen: SplashScreen,
+    private inAppBrowser: InAppBrowser,
+    ) {
     this.initializeApp();
 
     // used for an example of ngFor and navigation

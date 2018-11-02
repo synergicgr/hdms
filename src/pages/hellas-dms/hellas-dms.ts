@@ -16,24 +16,38 @@ import { PopOverPage } from '../pop-over/pop-over';
   selector: 'page-hellas-dms',
   templateUrl: 'hellas-dms.html',
 })
-export class HellasDmsPage {  
+export class HellasDmsPage {
 
   private popover;
+  open:boolean;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, private platform:Platform, public popoverCtrl: PopoverController) {
+  constructor(
+    public navCtrl: NavController,
+    public navParams: NavParams,
+    private platform: Platform,
+    public popoverCtrl: PopoverController,
+    private viewCtrl: ViewController
+  ) {
     platform.ready().then(() => {
-
-      platform.registerBackButtonAction(()=>{        
-        this.navCtrl.setRoot(DashboardPage);
+      platform.registerBackButtonAction(() => {
+        if(this.open === true)
+        {
+          this.popover.dismiss();
+          this.open = false;
+        }
+        else{
+          navCtrl.setRoot(DashboardPage);
+        }        
       });
     });
   }
 
   presentPopover(myEvent) {
-    this.popover = this.popoverCtrl.create(PopOverPage);
+    this.popover = this.popoverCtrl.create(PopOverPage, { page: "HellasDMSPage" });
     this.popover.present({
-      ev: myEvent
+      ev: myEvent,
     });
+    this.open = true;    
   }
 
   ionViewDidLoad() {

@@ -1,5 +1,7 @@
-import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, ViewController } from 'ionic-angular';
+import { Component, ViewChild } from '@angular/core';
+import { IonicPage, ViewController, App, Platform } from 'ionic-angular';
+import { DashboardPage } from '../dashboard/dashboard';
+import { HomePage } from '../home/home';
 
 /**
  * Generated class for the PopOverPage page.
@@ -15,7 +17,9 @@ import { IonicPage, NavController, NavParams, ViewController } from 'ionic-angul
 })
 export class PopOverPage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public viewCtrl: ViewController) {
+  private open:boolean = false;  
+
+  constructor(public viewCtrl: ViewController, public app:App, public platform:Platform) {
   }
 
   ionViewDidLoad() {
@@ -34,7 +38,7 @@ export class PopOverPage {
     this.viewCtrl.dismiss();
   }
 
-  public closePopOver():void{
+  public dismiss():void{
     this.viewCtrl.dismiss();
   }
 }

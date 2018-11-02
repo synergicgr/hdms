@@ -16,17 +16,21 @@ import { HomePage } from '../home/home';
 })
 export class DashboardPage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public menuCtrl:MenuController, private platform:Platform) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, public menuCtrl: MenuController, private platform: Platform) {
     this.menuCtrl.enable(true, 'menu');
-    platform.ready().then(() => {
+
+    platform.ready().then(()=>{
       platform.registerBackButtonAction(()=>{
-        this.navCtrl.push(HomePage);
+        navCtrl.setRoot(HomePage);
       });
-    });    
+    })
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad DashboardPage');
   }
+
+  ionViewWillEnter() { this.menuCtrl.enable(true, "menu"); }
+
 
 }
