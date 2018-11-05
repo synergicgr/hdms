@@ -247,32 +247,43 @@
     </ion-col>
   </ion-row>
 
-  <ion-row *ngFor="let alarmUser of alarmUsers; let i = index;" style="margin-bottom:2px;background: #272753;">      
-      <ion-col col-5 style="color:#ffffff">
-        {{alarmUser.username}}
-      </ion-col>
-      <ion-col col-5 style="color:#ffffff">
-        {{alarmUser.name}}
-      </ion-col>
-      <ion-col col-2>
-        <ion-icon float-right name="close" style="color:#ffffff; margin-right:10px"></ion-icon>
+  <ion-row *ngFor="let alarmUser of alarmUsers; let i = index;" style="margin-bottom:2px;background: #272753;">
+    <ion-col col-5 style="color:#ffffff">
+      {{alarmUser.username}}
+    </ion-col>
+    <ion-col col-5 style="color:#ffffff">
+      {{alarmUser.name}}
+    </ion-col>
+    <ion-col col-2>
+      <ion-icon float-right name="close" style="color:#ffffff; margin-right:10px"></ion-icon>
+    </ion-col>
+  </ion-row>
+  <ion-row style="margin-bottom:2px;background: #272753;">
+    <ion-col>
+      <button ion-button full style="background: #33335d">Περισσοτερα</button>
+    </ion-col>
+  </ion-row>
+
+  <ion-row style="margin-top:5px;">
+    <ion-col col-12 col-lg no-padding>
+      <input type="text" style="width: 100%;height: 50px;" class="inputText" no-margin>
+      <span class="floating-label">ΜΗΝΙΑΙΑ ΛΙΣΤΑ ΣΗΜΑΤΩΝ ΣΥΝΑΓΕΡΜΟΥ (REPORT)</span>
+    </ion-col>
+  </ion-row>
+
+  <ion-row style="background: #272753;margin-top: 5px;">
+      <ion-col col-12 col-lg style="color:#59597b;margin-left: 10px;">
+        EXTRA ΠΑΡΑΤΗΡΗΣΕΙΣ
       </ion-col>
     </ion-row>
-    <ion-row style="margin-bottom:2px;background: #272753;">
-      <ion-col>
-        <button ion-button full style="background: #33335d">Περισσοτερα</button>
+  
+    <ion-row style="background: #272753;">
+      <ion-col col-12 col-lg no-padding>
+        <ion-textarea style="height:80px;color:#ffffff"></ion-textarea>
       </ion-col>
     </ion-row>
-
-    <ion-row style="margin-top:5px;">
-        <ion-col col-12 col-lg no-padding>
-          <input type="text" style="width: 100%;height: 50px;" class="inputText" no-margin>
-          <span class="floating-label">ΜΗΝΙΑΙΑ ΛΙΣΤΑ ΣΗΜΑΤΩΝ ΣΥΝΑΓΕΡΜΟΥ (REPORT)</span>
-        </ion-col>
-      </ion-row>
-
 </ion-content>
 
-<ion-footer style="position:fixed;">
+<ion-footer>
   <button ion-button full color="app-yellow" style="color:#000000;font-weight:bold;">Αποστολη</button>
 </ion-footer>
