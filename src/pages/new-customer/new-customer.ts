@@ -15,6 +15,12 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 })
 export class NewCustomerPage {
 
+  phoneNotices: Array<{ name: string, phone: string }> = [
+    { name: "Ελένη Γεωργίου", phone: "211 45 55 456" },
+    { name: "Βαγγέλης Γεωργίου", phone: "687 64 52 354" },
+    { name: "Αγγελική Γεωργίου", phone: "687 64 52 354" },
+  ];
+
   constructor(public navCtrl: NavController, public navParams: NavParams) {
   }
 

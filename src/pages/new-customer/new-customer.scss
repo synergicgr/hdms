@@ -27,7 +27,7 @@ page-new-customer {
 
     
     input[type="radio"]+label { font-size: 12px;}
-    input[type="radio"]:checked+label { color: #ffffff;}
+    input[type="radio"]:checked+label { color: #ffffff !important;}
 
 }
 

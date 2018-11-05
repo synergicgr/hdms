@@ -89,31 +89,61 @@
   </ion-row>
 
   <ion-row style="background: #272753;">
-    <ion-col col-12 col-lg style="color:#59597b;margin-left: 10px;">
-      <ion-list radio-group no-lines>        
+    <ion-col col-12 col-lg style="color:#59597b;margin-left: 5px;">
+      <ion-list radio-group no-lines>
 
         <ion-item style="background:  #272753;">
-            <input name="selection" type="radio" value="store" style="margin-right: 10px;">
-            <label for="label4">Κατάστημα</label>
+          <input name="selection" type="radio" value="store" style="margin-right: 10px;">
+          <label for="label4" style="color:#59597b">Κατάστημα</label>
         </ion-item>
         <ion-item style="background:  #272753;">
-            <input name="selection" type="radio" value="apartment" style="margin-right: 10px;">
-            <label for="label4">Διαμέρισμα</label>
+          <input name="selection" type="radio" value="apartment" style="margin-right: 10px;">
+          <label for="label4" style="color:#59597b">Διαμέρισμα</label>
         </ion-item>
         <ion-item style="background:  #272753;">
-            <input name="selection" type="radio" value="office" style="margin-right: 10px;">
-            <label for="label4">Γραφείο</label>
-        </ion-item>
-        <ion-item style="background:  #272753;">          
-            <input name="selection" type="radio" value="detachedHouse" style="margin-right: 10px;">
-            <label for="label4">Μονοκατοικία</label>
+          <input name="selection" type="radio" value="office" style="margin-right: 10px;">
+          <label for="label4" style="color:#59597b">Γραφείο</label>
         </ion-item>
         <ion-item style="background:  #272753;">
-            <input type="radio" name="selection" value="other" style="margin-right: 10px;">
-            <label for="label4" style="margin-right: 10px;">Άλλο</label>
-            <input type="text" style="width:100%;background: #36365f;border: 0;">
-          </ion-item>
+          <input name="selection" type="radio" value="detachedHouse" style="margin-right: 10px;">
+          <label for="label4" style="color:#59597b">Μονοκατοικία</label>
+        </ion-item>
+        <ion-item style="background:  #272753;">
+          <input type="radio" name="selection" value="other" style="margin-right: 10px;">
+          <label for="label4" style="margin-right: 10px;color:#59597b">Άλλο</label>
+          <input type="text" style="width:100%;background: #36365f;border: 0;">
+        </ion-item>
       </ion-list>
+    </ion-col>
+  </ion-row>
+
+  <ion-row style="margin-top:5px;">
+    <ion-col col-12 col-lg no-padding>
+      <input type="text" style="width: 100%;height: 50px;" class="inputText" no-margin>
+      <span class="floating-label">ΤΗΛΕΦΩΝΟ ΧΩΡΟΥ</span>
+    </ion-col>
+  </ion-row>
+
+  <ion-row style="margin-top:5px;background: #272753">
+    <ion-col col-11 style="color:#59597b;padding-left: 10px;font-size: 12px">
+      ΤΗΛΕΦΩΝΑ ΕΙΔΟΠΟΙΗΣΗΣ (ΣΕΙΡΑ ΠΡΟΤΕΡΑΙΟΤΗΤΑΣ)
+    </ion-col>
+    <ion-col col-1>
+      <ion-icon float-right name="add" style="color: #ffc200;padding-right: 10px;"></ion-icon>
+    </ion-col>
+  </ion-row>
+  <ion-row *ngFor="let phoneNotice of phoneNotices; let i = index;" style="margin-bottom:2px;background: #272753;">
+    <ion-col col-1>
+      <img src="../assets/imgs/drag-icon.png" style="height:20px;width:20px;">
+    </ion-col>
+    <ion-col col-5 style="color:#ffffff">
+      {{phoneNotice.name}}
+    </ion-col> 
+    <ion-col col-5 style="color:#ffffff">
+      {{phoneNotice.phone}}
+    </ion-col>
+    <ion-col col-1>
+      <ion-icon float-right name="close" style="color:#ffffff; margin-right:10px"></ion-icon>
     </ion-col>
   </ion-row>
 
