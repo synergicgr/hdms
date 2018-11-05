@@ -28,6 +28,7 @@ import { SortPopOverPage } from '../pages/sort-pop-over/sort-pop-over';
 import { CustomersProvider } from '../providers/customers/customers';
 import { HttpClientModule } from '@angular/common/http'; 
 import { CustomerInfoPage } from '../pages/customer-info/customer-info';
+import { NewCustomerPage } from '../pages/new-customer/new-customer';
 
 
 @NgModule({
@@ -47,7 +48,8 @@ import { CustomerInfoPage } from '../pages/customer-info/customer-info';
     GoogleMapsPage,
     PopOverPage,
     SortPopOverPage,
-    CustomerInfoPage
+    CustomerInfoPage,
+    NewCustomerPage
   ],
   imports: [
     BrowserModule,    
@@ -72,7 +74,8 @@ import { CustomerInfoPage } from '../pages/customer-info/customer-info';
     GoogleMapsPage,
     PopOverPage,
     SortPopOverPage,
-    CustomerInfoPage
+    CustomerInfoPage,
+    NewCustomerPage
   ],
   providers: [
     Network,
