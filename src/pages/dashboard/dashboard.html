@@ -8,6 +8,60 @@
 </ion-header>
 
 
-<ion-content padding>
+<ion-content padding class="ion-content">
+
+  <ion-row>
+    <ion-col col-1 no-padding>
+      <img src="../assets/imgs/icon6.png" style="width:30px;height:30px;">
+    </ion-col>
+    <ion-col col-5 no-padding>
+      <div style="color:#ffffff">Ειδοποιήσεις<ion-badge style="margin-left:5px;" id="notifications-badge" color="app-yellow">5</ion-badge>
+      </div>
+    </ion-col>
+    <ion-col col-5 no-padding>
+      <div style="color:#ffffff"> Δειτε ολες τις ειδοποιήσεις σας
+      </div>
+    </ion-col>
+    <ion-col col-1>
+      <ion-icon style="color: white;" name="arrow-dropright"></ion-icon>
+    </ion-col>
+  </ion-row>
+  <ion-row *ngIf="showNotification">
+    <ion-col>
+      Some text
+    </ion-col>
+  </ion-row>
+
+  <ion-row style="margin-top:10px">
+    <ion-col col-1 no-padding>
+      <img src="../assets/imgs/icon6.png" style="width:30px;height:30px;">
+    </ion-col>
+    <ion-col col-5 no-padding>
+      <div style="color:#ffffff">Σημειώσεις<ion-badge style="margin-left:5px;" id="notifications-badge" color="app-yellow">10</ion-badge>
+      </div>
+    </ion-col>
+    <ion-col col-5 no-padding>
+      <div style="color:#ffffff"> Δείτε όλες τις σημειώσεις σας
+      </div>
+    </ion-col>
+    <ion-col col-1>
+      <ion-icon style="color: white;" name="arrow-dropright"></ion-icon>
+    </ion-col>
+  </ion-row>
+
+  <ion-row *ngIf="!showNotification">
+    <ion-col>
+        <div style="display: block">
+            <canvas baseChart height="200"
+                    [colors]="barChartColors"
+                    [datasets]="barChartData"
+                    [labels]="barChartLabels"
+                    [options]="barChartOptions"
+                    [legend]="barChartLegend"
+                    [chartType]="barChartType"></canvas>
+          </div>
+    </ion-col>
+  </ion-row>
+
 
 </ion-content>

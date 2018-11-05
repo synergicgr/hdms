@@ -30,6 +30,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { CustomerInfoPage } from '../pages/customer-info/customer-info';
 import { NewCustomerPage } from '../pages/new-customer/new-customer';
 import { InstallerDetailsPage } from '../pages/installer-details/installer-details';
+import { ChartsModule } from 'ng2-charts';
 
 
 @NgModule({
@@ -57,7 +58,8 @@ import { InstallerDetailsPage } from '../pages/installer-details/installer-detai
     BrowserModule,    
     IonicModule.forRoot(MyApp, { scrollAssist: false, autoFocusAssist: false } ),
     IonicStorageModule.forRoot(),
-    HttpClientModule
+    HttpClientModule,
+    ChartsModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [

@@ -16,6 +16,31 @@ import { HomePage } from '../home/home';
 })
 export class DashboardPage {
 
+  showNotification: boolean = false;
+  public barChartOptions:any = {
+    legend:{display:false},
+    scaleShowVerticalLines: false,
+    responsive: true
+  };
+
+  //Chart Labels
+  public barChartLabels:string[] = ['Δευ', 'Τρι', 'Τετ', 'Πεμ', 'Παρ', 'Σαβ', 'Κυρ'];
+  public barChartType:string = 'bar';
+  public barChartLegend:boolean = true;
+ 
+  //Chart data
+  public barChartData:any[] = [
+    {data: [66, 55, 83, 82, 56, 51, 43], label:"Ημέρες"},
+  ];
+
+  barChartColors: any [] =[
+    {
+        backgroundColor:'rgba(6, 6, 57, 1)',
+        borderWidth: 0
+    },
+    
+]
+
   constructor(public navCtrl: NavController, public navParams: NavParams, public menuCtrl: MenuController, private platform: Platform) {
     this.menuCtrl.enable(true, 'menu');
 
