@@ -21,6 +21,24 @@ export class NewCustomerPage {
     { name: "Αγγελική Γεωργίου", phone: "687 64 52 354" },
   ];
 
+  zones: Array<{ name: string, id: string }> = [
+    { name: "ΖΩΝΗ 1", id: "ΑΒ1128336" },
+    { name: "ΖΩΝΗ 2", id: "ΑΒ1128336" },
+    { name: "ΖΩΝΗ 3", id: "ΑΒ1128336" },
+    { name: "ΖΩΝΗ 4", id: "ΑΒ1128336" },
+    { name: "ΖΩΝΗ 5", id: "ΑΒ1128336" },
+    { name: "ΖΩΝΗ 6", id: "ΑΒ1128336" },
+    { name: "ΖΩΝΗ 7", id: "ΑΒ1128336" },
+    { name: "ΖΩΝΗ 8", id: "ΑΒ1128336" },
+  ];
+
+  alarmUsers: Array<{ username: string, name: string }> = [
+    { username: "K25LS", name: "Μαρία" },
+    { username: "MARY1", name: "Μαρία" },
+    { username: "USERKF", name: "Μαρία" },
+    { username: "K25LS", name: "Μαρία" },
+  ];
+
   constructor(public navCtrl: NavController, public navParams: NavParams) {
   }
 

@@ -1,21 +1,19 @@
 page-new-customer {
-    input:focus ~ .floating-label,
-    input:not(:focus):valid ~ .floating-label {
+    input:focus~.floating-label,
+    input:not(:focus):valid~.floating-label {
         top: 5px;
         bottom: 10px;
         left: 10px;
         font-size: 11px;
         opacity: 1;
     }
-    
     .inputText {
         font-size: 14px;
         background: #272753;
-        border:0;
+        border: 0;
         padding-left: 10px;
         color: #FFFFFF;
     }
-    
     .floating-label {
         position: absolute;
         pointer-events: none;
@@ -24,10 +22,19 @@ page-new-customer {
         transition: 0.2s ease all;
         color: #59597b;
     }
-
-    
-    input[type="radio"]+label { font-size: 12px;}
-    input[type="radio"]:checked+label { color: #ffffff !important;}
-
+    input[type="radio"]+label {
+        font-size: 12px;
+    }
+    input[type="radio"]:checked+label {
+        color: #ffffff !important;
+    }
+    .range-md .range-knob-handle .range-pin {
+        transform: translate3d(0, 0, 0) scale(1);
+    }
+    .range-md:not(.range-has-pin) .range-knob-handle .range-knob {
+        transform: scale(1);
+    }
+    .range-ios .range-knob-handle .range-pin {
+        transform: translate3d(0, 0, 0) scale(1);
+    }
 }
-

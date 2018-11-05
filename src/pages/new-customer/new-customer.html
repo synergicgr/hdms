@@ -138,7 +138,7 @@
     </ion-col>
     <ion-col col-5 style="color:#ffffff">
       {{phoneNotice.name}}
-    </ion-col> 
+    </ion-col>
     <ion-col col-5 style="color:#ffffff">
       {{phoneNotice.phone}}
     </ion-col>
@@ -147,5 +147,132 @@
     </ion-col>
   </ion-row>
 
+  <ion-row style="background: #272753;margin-top: 20px;">
+    <ion-col col-12 col-lg style="color:#59597b;margin-left: 10px;">
+      ΤΥΠΟΣ ΜΟΝΑΔΟΣ ΣΥΝΑΓΕΡΜΟΥ
+    </ion-col>
+  </ion-row>
+
+  <ion-row style="background: #272753;">
+    <ion-col col-12 col-lg no-padding>
+      <ion-textarea style="height:80px;color:#ffffff"></ion-textarea>
+    </ion-col>
+  </ion-row>
+
+  <ion-row style="background: #272753;margin-top: 5px;">
+    <ion-col col-12 col-lg style="color:#59597b;margin-left: 10px;">
+      FORMAT
+    </ion-col>
+  </ion-row>
+
+  <ion-row style="background: #272753;">
+    <ion-col col-12 col-lg style="color:#59597b;margin-left: 5px;">
+      <ion-list radio-group no-lines>
+
+        <ion-item style="background:  #272753;">
+          <input name="selection2" type="radio" value="cid" style="margin-right: 10px;">
+          <label for="label4" style="color:#59597b">CID</label>
+        </ion-item>
+        <ion-item style="background:  #272753;">
+          <input name="selection2" type="radio" value="sia" style="margin-right: 10px;">
+          <label for="label4" style="color:#59597b">SIA</label>
+        </ion-item>
+        <ion-item style="background:  #272753;">
+          <input name="selection2" type="radio" value="fourPlusTwo" style="margin-right: 10px;">
+          <label for="label4" style="color:#59597b">4+2</label>
+        </ion-item>
+      </ion-list>
+    </ion-col>
+  </ion-row>
+
+  <ion-row style="background: #272753;margin-top: 5px;">
+    <ion-col col-12 col-lg style="color:#59597b;margin-left: 10px;">
+      ΣΥΧΝΟΤΗΤΑ 24ΩΡΟΥ ΤΕΣΤ
+    </ion-col>
+  </ion-row>
+
+  <ion-row style="background: #272753;">
+    <ion-col col-12>
+      <ion-range min="1" max="24" step="1" snaps="true" pin="true" color="app-yellow"></ion-range>
+    </ion-col>
+  </ion-row>
+
+  <ion-row style="margin-top:5px;background: #272753">
+    <ion-col col-11 style="color:#59597b;padding-left: 10px;font-size: 12px">
+      ΖΩΝΟΠΟΙΗΣΗ ΣΥΣΤΗΜΑΤΟΣ
+    </ion-col>
+    <ion-col col-1>
+      <ion-icon float-right name="add" style="color: #ffc200;padding-right: 10px;"></ion-icon>
+    </ion-col>
+  </ion-row>
+
+  <ion-row *ngFor="let zone of zones; let i = index;" style="margin-bottom:2px;background: #272753;">
+    <ion-col col-1>
+      <img src="../assets/imgs/drag-icon.png" style="width:20px;height:20px;">
+    </ion-col>
+    <ion-col col-5 style="color:#ffffff">
+      {{zone.name}}
+    </ion-col>
+    <ion-col col-5 style="color:#ffffff">
+      {{zone.id}}
+    </ion-col>
+    <ion-col col-1>
+      <ion-icon float-right name="close" style="color:#ffffff; margin-right:10px"></ion-icon>
+    </ion-col>
+  </ion-row>
+  <ion-row style="margin-bottom:2px;background: #272753;">
+    <ion-col>
+      <button ion-button full style="background: #33335d">Περισσοτερα</button>
+    </ion-col>
+  </ion-row>
+
+  <ion-row style="background: #272753;margin-top: 5px;">
+    <ion-col col-12 col-lg style="color:#59597b;margin-left: 10px;">
+      ΕΒΔΟΜΑΔΙΑΙΟ ΩΡΑΡΙΟ ON/OFF ΠΑΡΑΚΟΛΟΥΘΗΣΗΣ
+    </ion-col>
+  </ion-row>
+
+  <ion-row style="background: #272753;">
+    <ion-col col-12 col-lg no-padding>
+      <ion-textarea style="height:80px;color:#ffffff"></ion-textarea>
+    </ion-col>
+  </ion-row>
+
+  <ion-row style="margin-top:5px;background: #272753">
+    <ion-col col-11 style="color:#59597b;padding-left: 10px;font-size: 12px">
+      ΟΝΟΜΑΤΑ ΧΡΗΣΤΩΝ ΣΥΝΑΓΕΡΜΟΥ (Users)
+    </ion-col>
+    <ion-col col-1>
+      <ion-icon float-right name="add" style="color: #ffc200;padding-right: 10px;"></ion-icon>
+    </ion-col>
+  </ion-row>
+
+  <ion-row *ngFor="let alarmUser of alarmUsers; let i = index;" style="margin-bottom:2px;background: #272753;">      
+      <ion-col col-5 style="color:#ffffff">
+        {{alarmUser.username}}
+      </ion-col>
+      <ion-col col-5 style="color:#ffffff">
+        {{alarmUser.name}}
+      </ion-col>
+      <ion-col col-2>
+        <ion-icon float-right name="close" style="color:#ffffff; margin-right:10px"></ion-icon>
+      </ion-col>
+    </ion-row>
+    <ion-row style="margin-bottom:2px;background: #272753;">
+      <ion-col>
+        <button ion-button full style="background: #33335d">Περισσοτερα</button>
+      </ion-col>
+    </ion-row>
+
+    <ion-row style="margin-top:5px;">
+        <ion-col col-12 col-lg no-padding>
+          <input type="text" style="width: 100%;height: 50px;" class="inputText" no-margin>
+          <span class="floating-label">ΜΗΝΙΑΙΑ ΛΙΣΤΑ ΣΗΜΑΤΩΝ ΣΥΝΑΓΕΡΜΟΥ (REPORT)</span>
+        </ion-col>
+      </ion-row>
 
 </ion-content>
+
+<ion-footer style="position:fixed;">
+  <button ion-button full color="app-yellow" style="color:#000000;font-weight:bold;">Αποστολη</button>
+</ion-footer>
