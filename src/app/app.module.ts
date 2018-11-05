@@ -29,6 +29,7 @@ import { CustomersProvider } from '../providers/customers/customers';
 import { HttpClientModule } from '@angular/common/http'; 
 import { CustomerInfoPage } from '../pages/customer-info/customer-info';
 import { NewCustomerPage } from '../pages/new-customer/new-customer';
+import { InstallerDetailsPage } from '../pages/installer-details/installer-details';
 
 
 @NgModule({
@@ -49,7 +50,8 @@ import { NewCustomerPage } from '../pages/new-customer/new-customer';
     PopOverPage,
     SortPopOverPage,
     CustomerInfoPage,
-    NewCustomerPage
+    NewCustomerPage,
+    InstallerDetailsPage
   ],
   imports: [
     BrowserModule,    
@@ -75,7 +77,8 @@ import { NewCustomerPage } from '../pages/new-customer/new-customer';
     PopOverPage,
     SortPopOverPage,
     CustomerInfoPage,
-    NewCustomerPage
+    NewCustomerPage,
+    InstallerDetailsPage
   ],
   providers: [
     Network,

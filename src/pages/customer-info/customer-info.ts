@@ -3,6 +3,7 @@ import { IonicPage, NavController, NavParams, Tabs } from 'ionic-angular';
 import { TechAppPage } from '../tech-app/tech-app';
 import { WebDealerPage } from '../web-dealer/web-dealer';
 import { NewCustomerPage } from '../new-customer/new-customer';
+import { InstallerDetailsPage } from '../installer-details/installer-details';
 
 /**
  * Generated class for the CustomerInfoPage page.
@@ -19,8 +20,7 @@ import { NewCustomerPage } from '../new-customer/new-customer';
 export class CustomerInfoPage {
 
   tab1Root = NewCustomerPage;
-  tab2Root = WebDealerPage;
-  tab3Root = TechAppPage;
+  tab2Root = InstallerDetailsPage;  
 
   @ViewChild('tabs') tabRef: Tabs;
 
