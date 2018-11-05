@@ -7,31 +7,115 @@
     </ion-col>
   </ion-row>
 
-  <ion-row style="margin-top:10px;">
+  <ion-row style="margin-top:5px;">
     <ion-col col-12 col-lg no-padding>
       <input type="text" style="width: 100%;height: 50px;" class="inputText" no-margin>
       <span class="floating-label">ΚΩΔΙΚΟΣ ΠΕΛΑΤΗ (CSID 6ψηφια)</span>
     </ion-col>
   </ion-row>
 
-  <ion-row style="margin-top:10px;">
+  <ion-row style="margin-top:5px;">
     <ion-col col-12 col-lg no-padding>
       <input type="text" style="width: 100%;height: 50px;" class="inputText" no-margin>
       <span class="floating-label">ΒΟΗΘΗΤΙΚΟΣ ΚΩΔΙΚΟΣ ΠΕΛΑΤΗ (PASSCODE 10ψηφια)</span>
     </ion-col>
   </ion-row>
 
-  <ion-row style="margin-top:10px;">
+  <ion-row style="margin-top:5px;">
     <ion-col col-12 col-lg no-padding>
       <input type="text" style="width: 100%;height: 50px;" class="inputText" no-margin>
       <span class="floating-label">ΚΩΔΙΚΟΣ ΑΠΕΙΛΗΣ DURESS CODE (6ψηφια)</span>
     </ion-col>
   </ion-row>
 
-  <ion-row style="margin-top:10px;">
-      <ion-col col-12 col-lg no-padding>
-        <input type="text" style="width: 100%;height: 50px;" class="inputText" no-margin>
-        <span class="floating-label">ΗΜΕΡΟΜΗΝΙΑ ΣΥΝΔΕΣΗΣ ΠΕΛΑΤΗ</span>
-      </ion-col>
-    </ion-row>
+  <ion-row style="margin-top:5px;">
+    <ion-col col-12 col-lg no-padding>
+      <input type="text" style="width: 100%;height: 50px;" class="inputText" no-margin>
+      <span class="floating-label">ΗΜΕΡΟΜΗΝΙΑ ΣΥΝΔΕΣΗΣ ΠΕΛΑΤΗ</span>
+    </ion-col>
+  </ion-row>
+
+
+  <ion-row style="margin-top:30px;">
+    <ion-col col-12 col-lg no-padding>
+      <input type="text" style="width: 100%;height: 50px;" class="inputText" no-margin>
+      <span class="floating-label">ΕΠΩΝΥΜΙΑ ΣΥΝΔΡΟΜΗΤΗ</span>
+    </ion-col>
+  </ion-row>
+
+  <ion-row style="margin-top:5px;background: #272753;">
+    <ion-col col-12 col-lg no-padding style="color:#59597b;margin-left: 10px;">
+      ΔΙΕΥΘΥΝΣΗ ΑΣΦΑΛΙΖΟΜΕΝΟΥ ΧΩΡΟΥ
+    </ion-col>
+  </ion-row>
+
+  <ion-row style="background: #272753">
+    <ion-col col-6 col-lg no-padding>
+      <input type="text" style="width: 100%;height: 50px;" class="inputText" no-margin>
+      <span class="floating-label">ΟΔΟΣ - ΑΡΙΘΜΟΣ</span>
+    </ion-col>
+    <ion-col col-6 col-lg no-padding>
+      <input type="text" style="width: 100%;height: 50px;" class="inputText" no-margin>
+      <span class="floating-label">ΠΟΛΗ</span>
+    </ion-col>
+  </ion-row>
+  <ion-row style="background: #272753">
+    <ion-col col-6 col-lg no-padding>
+      <input type="text" style="width: 100%;height: 50px;" class="inputText" no-margin>
+      <span class="floating-label">ΤΚ</span>
+    </ion-col>
+    <ion-col col-6 col-lg no-padding>
+      <input type="text" style="width: 100%;height: 50px;" class="inputText" no-margin>
+      <span class="floating-label">ΟΡΟΦΟΣ</span>
+    </ion-col>
+  </ion-row>
+
+  <ion-row style="background: #272753;margin-top: 5px;">
+    <ion-col col-12 col-lg style="color:#59597b;margin-left: 10px;">
+      ΑΝΑΛΥΤΙΚΗ ΠΕΡΙΓΡΑΦΗ (ΟΔΗΓΙΕΣ) ΑΣΦΑΛΙΖΟΜΕΝΟΥ ΧΩΡΟΥ
+    </ion-col>
+  </ion-row>
+
+  <ion-row style="background: #272753;">
+    <ion-col col-12 col-lg no-padding>
+      <ion-textarea style="height:80px;color:#ffffff"></ion-textarea>
+    </ion-col>
+  </ion-row>
+
+  <ion-row style="background: #272753;margin-top: 5px;">
+    <ion-col col-12 col-lg style="color:#59597b;margin-left: 10px;">
+      ΕΙΔΟΣ ΑΣΦΑΛΙΖΟΜΕΝΟΥ ΧΩΡΟΥ
+    </ion-col>
+  </ion-row>
+
+  <ion-row style="background: #272753;">
+    <ion-col col-12 col-lg style="color:#59597b;margin-left: 10px;">
+      <ion-list radio-group no-lines>        
+
+        <ion-item style="background:  #272753;">
+            <input name="selection" type="radio" value="store" style="margin-right: 10px;">
+            <label for="label4">Κατάστημα</label>
+        </ion-item>
+        <ion-item style="background:  #272753;">
+            <input name="selection" type="radio" value="apartment" style="margin-right: 10px;">
+            <label for="label4">Διαμέρισμα</label>
+        </ion-item>
+        <ion-item style="background:  #272753;">
+            <input name="selection" type="radio" value="office" style="margin-right: 10px;">
+            <label for="label4">Γραφείο</label>
+        </ion-item>
+        <ion-item style="background:  #272753;">          
+            <input name="selection" type="radio" value="detachedHouse" style="margin-right: 10px;">
+            <label for="label4">Μονοκατοικία</label>
+        </ion-item>
+        <ion-item style="background:  #272753;">
+            <input type="radio" name="selection" value="other" style="margin-right: 10px;">
+            <label for="label4" style="margin-right: 10px;">Άλλο</label>
+            <input type="text" style="width:100%;background: #36365f;border: 0;">
+          </ion-item>
+      </ion-list>
+    </ion-col>
+  </ion-row>
+
+
 </ion-content>

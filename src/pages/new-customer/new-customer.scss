@@ -1,6 +1,6 @@
 page-new-customer {
-    input:focus~.floating-label,
-    input:not(:focus):valid~.floating-label {
+    input:focus ~ .floating-label,
+    input:not(:focus):valid ~ .floating-label {
         top: 5px;
         bottom: 10px;
         left: 10px;
@@ -24,5 +24,10 @@ page-new-customer {
         transition: 0.2s ease all;
         color: #59597b;
     }
+
+    
+    input[type="radio"]+label { font-size: 12px;}
+    input[type="radio"]:checked+label { color: #ffffff;}
+
 }
 
