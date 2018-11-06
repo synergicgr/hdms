@@ -1,32 +1,32 @@
 page-hellas-dms {
-
-    .ion-content{
+    .ion-content {
         background: #36365f;
     }
-
-    .p1{
+    .p1 {
         font-size: 20px;
         color: white;
         position: relative;
-        top:20px;
+        top: 20px;
     }
-
-    .p2{
+    .p2 {
         font-size: 40px;
         color: #ffc200;
         display: inline-block;
     }
-
-    .col1{
+    .col1 {
         font-size: 20px;
         color: white;
-        border: thin solid white;
     }
-
-    .col2{
+    .col2 {
         font-size: 20px;
         color: white;
-        border: thin solid white;
     }
-
+    hr {
+        display: block;
+        height: 1px;
+        border: 0;
+        border-top: 1px solid #070752;
+        margin: 1em 0;
+        padding: 0;
+    }
 }
