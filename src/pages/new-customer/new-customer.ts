@@ -25,11 +25,11 @@ export class NewCustomerPage {
     { name: "ΖΩΝΗ 8", id: "ΑΒ1128336" , editable:false },
   ];
 
-  alarmUsers: Array<{ username: string, name: string }> = [
-    { username: "K25LS", name: "Μαρία" },
-    { username: "MARY1", name: "Μαρία" },
-    { username: "USERKF", name: "Μαρία" },
-    { username: "K25LS", name: "Μαρία" },
+  alarmUsers: Array<{ username: string, name: string, editable:boolean }> = [
+    { username: "K25LS", name: "Μαρία", editable:false },
+    { username: "MARY1", name: "Μαρία" , editable:false},
+    { username: "USERKF", name: "Μαρία" , editable:false},
+    { username: "K25LS", name: "Μαρία" , editable:false},
   ];
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {
@@ -57,5 +57,9 @@ export class NewCustomerPage {
 
   addZone():void{
     this.zones.push({ name: "", id: "", editable:true });
+  }
+
+  addAlarmUser():void{
+    this.alarmUsers.push({ username: "", name: "", editable:true },);
   }
 }

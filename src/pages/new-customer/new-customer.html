@@ -208,7 +208,7 @@
     <ion-col col-12>
       <ion-range min="1" max="24" step="1" snaps="true" pin="true" color="app-yellow"></ion-range>
       <div style="position:relative; top:-20px;">
-        <span style="position:relative; left:45px;">4</span>
+        <span style="position:relative; left:43px;">4</span>
         <span style="position:relative; left:85px;">8</span>
         <span style="position:relative; left:120px;">12</span>
         <span style="position:relative; left:155px;">16</span>
@@ -278,20 +278,30 @@
       ΟΝΟΜΑΤΑ ΧΡΗΣΤΩΝ ΣΥΝΑΓΕΡΜΟΥ (Users)
     </ion-col>
     <ion-col col-1>
-      <ion-icon float-right name="add" style="color: #ffc200;padding-right: 10px;"></ion-icon>
+      <ion-icon float-right name="add" style="color: #ffc200;padding-right: 10px;" (click)="addAlarmUser()"></ion-icon>
     </ion-col>
   </ion-row>
 
   <ion-row *ngFor="let alarmUser of alarmUsers; let i = index;" style="margin-bottom:2px;background: #272753;">
-    <ion-col col-5 style="color:#ffffff">
+    <ion-col col-5 style="color:#ffffff" *ngIf="alarmUser.editable === false">
       {{alarmUser.username}}
     </ion-col>
-    <ion-col col-5 style="color:#ffffff">
+    <ion-col col-5 style="color:#ffffff" *ngIf="alarmUser.editable === false">
       {{alarmUser.name}}
     </ion-col>
-    <ion-col col-2>
+    <ion-col col-2 *ngIf="alarmUser.editable === false">
       <ion-icon float-right name="close" style="color:#ffffff; margin-right:10px" (click)="removeAlarmUser(i)"></ion-icon>
     </ion-col>
+    <ion-col col-5 style="color:#ffffff" *ngIf="alarmUser.editable === true">
+      <ion-input type="text" placeholder="Χρήστης" style="position:relative;left:-7px;"></ion-input>
+    </ion-col>
+    <ion-col col-5 style="color:#ffffff" *ngIf="alarmUser.editable === true">
+      <ion-input type="text" placeholder="Όνομα" style="position:relative;left:-7px;"></ion-input>
+    </ion-col>
+    <ion-col col-2 *ngIf="alarmUser.editable === true">
+      <ion-icon float-right name="close" style="color:#ffffff; margin-right:10px; position: relative;top:15px;" (click)="removeAlarmUser(i)"></ion-icon>
+    </ion-col>
+
   </ion-row>
 
   <ion-row style="margin-top:5px;">
