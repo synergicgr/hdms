@@ -15,7 +15,7 @@
       <img src="../assets/imgs/icon6.png" style="width:30px;height:30px;">
     </ion-col>
     <ion-col col-5 no-padding>
-      <div style="color:#ffffff">Ειδοποιήσεις<ion-badge style="margin-left:5px;" id="notifications-badge" color="app-yellow">5</ion-badge>
+      <div style="color:#ffffff; position: relative; top:5px;">Ειδοποιήσεις<ion-badge style="margin-left:5px;" id="notifications-badge" color="app-yellow">5</ion-badge>
       </div>
     </ion-col>
     <ion-col col-5 no-padding>
@@ -26,6 +26,7 @@
       <ion-icon style="color: white;" [name]="notificationIcon" (click)="toggle()"></ion-icon>
     </ion-col>
   </ion-row>
+  <hr>
   <ion-row *ngIf="showNotification">
     <ion-col>
       <div style="display: block">
@@ -40,7 +41,7 @@
       <img src="../assets/imgs/icon6.png" style="width:30px;height:30px;">
     </ion-col>
     <ion-col col-5 no-padding>
-      <div style="color:#ffffff">Σημειώσεις<ion-badge style="margin-left:5px;" id="notifications-badge" color="app-yellow">10</ion-badge>
+      <div style="color:#ffffff;position: relative; top:5px;">Σημειώσεις<ion-badge style="margin-left:5px;" id="notifications-badge" color="app-yellow">10</ion-badge>
       </div>
     </ion-col>
     <ion-col col-5 no-padding>
@@ -51,6 +52,8 @@
       <ion-icon style="color: white;" [name]="notesIcon" (click)="toggle()"></ion-icon>
     </ion-col>
   </ion-row>
+
+  <hr>
 
   <ion-row *ngIf="!showNotification">
     <ion-col>
@@ -64,7 +67,7 @@
 
 <ion-footer no-border>
     <ion-toolbar transparent>
-      <button ion-button full large style="background:#060639;color:#ffc200;">
+      <button ion-button full style="background:#060639;color:#ffc200;">
         <img alt="pdf" src="../../assets/imgs/pdf-icon.png" style="margin-right: 20px;" width="20px;">
         <div class="vertical-bar" style="display:inline-block;margin-right: 20px;"></div>
         <div style="display:inline-block;text-transform:none;">Κατεβάστε τον Τιμοκατάλογο</div>

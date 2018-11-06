@@ -44,6 +44,6 @@ export class NewCustomerPage {
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad NewCustomerPage');
-  }
+  }  
 
 }

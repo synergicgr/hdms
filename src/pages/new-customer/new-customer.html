@@ -129,7 +129,7 @@
       ΤΗΛΕΦΩΝΑ ΕΙΔΟΠΟΙΗΣΗΣ (ΣΕΙΡΑ ΠΡΟΤΕΡΑΙΟΤΗΤΑΣ)
     </ion-col>
     <ion-col col-1>
-      <ion-icon float-right name="add" style="color: #ffc200;padding-right: 10px;"></ion-icon>
+      <ion-icon float-right name="add" style="color: #ffc200;padding-right: 10px;" (click)="addPhoneNotices()"></ion-icon>
     </ion-col>
   </ion-row>
   <ion-row *ngFor="let phoneNotice of phoneNotices; let i = index;" style="margin-bottom:2px;background: #272753;">
