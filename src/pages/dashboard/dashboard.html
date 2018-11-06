@@ -55,6 +55,12 @@
 
   <hr>
 
+  <div *ngIf="!showNotification">
+    <div style="display:inline-block;color:#ffc200; font-size: 40px;">19</div>
+    <div style="display:inline-block;color:#ffffff;width:100px;border-right:1px solid white;">Εβδομαδιαίες εγγραφές</div>
+    <div style="display:inline-block;color:#ffffff;width:120px;margin-left: 10px;">Δείτε τις εγγραφές σας</div>
+    <div style="display:inline-block;color:#ffffff;"><ion-icon name="ios-arrow-dropright" style="position:relative; top: -5px;left:-20px;"></ion-icon></div>
+  </div>
   <ion-row *ngIf="!showNotification">
     <ion-col>
       <div style="display: block">
