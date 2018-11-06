@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, MenuController, Platform } from 'ionic-angular';
 import { HomePage } from '../home/home';
+import { NotesPage } from '../notes/notes';
 
 /**
  * Generated class for the DashboardPage page.
@@ -60,16 +61,7 @@ export class DashboardPage {
 
   ionViewWillEnter() { this.menuCtrl.enable(true, "menu"); }
 
-  public toggle():void{
-    if(this.showNotification == true)
-    {
-      this.notificationIcon = 'ios-arrow-dropright';
-      this.notesIcon = 'ios-arrow-dropdown';      
-    }
-    else{
-      this.notificationIcon = 'ios-arrow-dropdown';
-      this.notesIcon = 'ios-arrow-dropright';
-    }
-    this.showNotification = !this.showNotification;    
+  public goToNotes():void{
+    this.navCtrl.setRoot(NotesPage);
   }
 }
