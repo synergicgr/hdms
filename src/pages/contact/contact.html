@@ -1,11 +1,18 @@
 <ion-header>
-  <ion-navbar>
-    <button ion-button menuToggle>
-      <ion-icon name="menu"></ion-icon>
-    </button>
-    <ion-title>Επικοινωνια</ion-title>
-  </ion-navbar>
-</ion-header>
+    <ion-navbar>
+      <button ion-button menuToggle>
+        <ion-icon name="menu"></ion-icon>
+      </button>
+      <ion-title style="text-align:center;">
+        <img alt="logo" height="60" src="../../assets/imgs/Hellas-Dns-logo.png" style="margin-right:20px;">
+      </ion-title>
+      <ion-buttons end>
+        <button ion-button color="white" icon-only menuClose (click)="presentPopover2($event)">
+          <ion-icon name="person"></ion-icon>
+        </button>
+      </ion-buttons>
+    </ion-navbar>
+  </ion-header>
 
 <!--
 <ion-content padding class="ion-content">
@@ -14,7 +21,7 @@
 </ion-content>
 -->
 <ion-content>
-  <ion-tabs #myTabs tabsPlacement="top">
+  <ion-tabs #myTab tabsPlacement="top">
     <ion-tab [root]="tab1Root" tabTitle="Επικοινωνια" tabIcon="mail"></ion-tab>
     <ion-tab [root]="tab2Root" tabTitle="Χαρτης" tabIcon="navigate"></ion-tab>
   </ion-tabs>

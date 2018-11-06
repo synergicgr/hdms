@@ -29,7 +29,7 @@ export class GoogleMapsPage {
 
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {
-    this.loadMap();
+    //this.loadMap();
   }
 
   loadMap(): void {

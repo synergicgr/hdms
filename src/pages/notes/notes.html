@@ -1,16 +1,38 @@
 <ion-header>
-  <ion-navbar>
-    <button ion-button menuToggle>
-      <ion-icon name="menu"></ion-icon>
-    </button>
-    <ion-title>Σημειωσεις</ion-title>
-  </ion-navbar>
-</ion-header>
+    <ion-navbar>
+      <button ion-button menuToggle>
+        <ion-icon name="menu"></ion-icon>
+      </button>
+      <ion-title style="text-align:center;">
+        <img alt="logo" height="60" src="../../assets/imgs/Hellas-Dns-logo.png" style="margin-right:20px;">
+      </ion-title>
+      <ion-buttons end>
+        <button ion-button color="white" icon-only menuClose (click)="presentPopover($event)">
+          <ion-icon name="person"></ion-icon>
+        </button>
+      </ion-buttons>
+    </ion-navbar>
+  </ion-header>
 
-
-
-<ion-content padding>
-  <p>
-    This is the notes page
-  </p>
+<ion-content padding class="ion-content">
+  <ion-row>
+    <ion-col>
+      <ion-icon float-right name="add" style="font-size:30px;" color="app-yellow"></ion-icon>
+    </ion-col>
+  </ion-row>
+  <ion-row *ngFor="let note of notes; let i = index;" style="background:#272753;margin-bottom: 2px">
+    <ion-col col-3 style="color:#5a5a7c;display: flex!important;
+    align-content: center!important;
+    align-items: center!important;border-right: thin solid #5a5a7c;">
+      {{note.showDate}}
+    </ion-col>
+    <ion-col col-7 style="color:#5a5a7c;border-right: thin solid #5a5a7c;">
+      {{note.content | truncate : 40}}
+    </ion-col>
+    <ion-col col-2 style="display: flex!important;
+    align-content: center!important;
+    align-items: center!important;">
+      <img src="../assets/imgs/eye-icon.png" width="30" height="30">
+    </ion-col>
+  </ion-row>
 </ion-content>

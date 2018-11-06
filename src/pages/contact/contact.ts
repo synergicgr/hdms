@@ -16,11 +16,15 @@ import { GoogleMapsPage } from '../google-maps/google-maps';
   templateUrl: 'contact.html',
 })
 export class ContactPage {
-  @ViewChild('myTabs') tabRef: Tabs;
-  message:string = '';
 
   tab1Root = ContactFormPage;
   tab2Root = GoogleMapsPage;
+
+  @ViewChild('myTab') tabRef: Tabs;
+  
+  message:string = '';
+
+  
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {
   }

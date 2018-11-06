@@ -32,6 +32,8 @@ import { NewCustomerPage } from '../pages/new-customer/new-customer';
 import { InstallerDetailsPage } from '../pages/installer-details/installer-details';
 import { ChartsModule } from 'ng2-charts';
 import { NotificationsPage } from '../pages/notifications/notifications';
+import { TruncateModule } from '@yellowspot/ng-truncate';
+
 
 
 @NgModule({
@@ -61,7 +63,8 @@ import { NotificationsPage } from '../pages/notifications/notifications';
     IonicModule.forRoot(MyApp, { scrollAssist: false, autoFocusAssist: false } ),
     IonicStorageModule.forRoot(),
     HttpClientModule,
-    ChartsModule
+    ChartsModule,
+    TruncateModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [
