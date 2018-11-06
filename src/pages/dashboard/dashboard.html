@@ -24,27 +24,11 @@
       </div>
     </ion-col>
     <ion-col col-1>
-      <ion-icon style="color: white;" [name]="notificationIcon" (click)="toggle()"></ion-icon>
+      <ion-icon style="color: white;" name="ios-arrow-dropright" (click)="toggle()"></ion-icon>
     </ion-col>
   </ion-row>
   <hr>
-  <div *ngIf="showNotification">
-      <div style="display:inline-block;color:#ffc200; font-size: 40px;">19</div>
-      <div style="display:inline-block;color:#ffffff;width:100px;border-right:1px solid white;">Εβδομαδιαίες ειδοποιήσεις</div>
-      <div style="display:inline-block;color:#ffffff;width:120px;margin-left: 10px;">Δείτε τις ειδοποιήσεις σας</div>
-      <div style="display:inline-block;color:#ffffff;">
-        <ion-icon name="ios-arrow-dropright" style="position:relative; top: -5px;"></ion-icon>
-      </div>
-    </div>
-  <ion-row *ngIf="showNotification">
-    <ion-col>
-      <div style="display: block">
-        <canvas baseChart height="200" [colors]="barChartColors" [datasets]="barChartData" [labels]="barChartLabels"
-          [options]="barChartOptions" [legend]="barChartLegend" [chartType]="barChartType"></canvas>
-      </div>
-    </ion-col>
-  </ion-row>
-
+  
   <ion-row style="margin-top:10px">
     <ion-col col-1 no-padding>
       <img src="../assets/imgs/icon6.png" style="width:30px;height:30px;">
@@ -59,21 +43,21 @@
       </div>
     </ion-col>
     <ion-col col-1>
-      <ion-icon style="color: white;" [name]="notesIcon" (click)="toggle()"></ion-icon>
+      <ion-icon style="color: white;" name="ios-arrow-dropright" (click)="toggle()"></ion-icon>
     </ion-col>
   </ion-row>
 
   <hr>
 
-  <div *ngIf="!showNotification">
-    <div style="display:inline-block;color:#ffc200; font-size: 40px;">19</div>
+  <div>
+    <div style="display:inline-block;color:#ffc200; font-size: 40px;">10</div>
     <div style="display:inline-block;color:#ffffff;width:100px;border-right:1px solid white;">Εβδομαδιαίες εγγραφές</div>
     <div style="display:inline-block;color:#ffffff;width:120px;margin-left: 10px;">Δείτε τις εγγραφές σας</div>
     <div style="display:inline-block;color:#ffffff;">
       <ion-icon name="ios-arrow-dropright" style="position:relative; top: -5px;left:-20px;"></ion-icon>
     </div>
   </div>
-  <ion-row *ngIf="!showNotification">
+  <ion-row>
     <ion-col>
       <div style="display: block">
         <canvas baseChart height="200" [colors]="barChartColors" [datasets]="barChartData" [labels]="barChartLabels"
