@@ -27,6 +27,9 @@ export class DashboardPage {
   public barChartLabels:string[] = ['Δευ', 'Τρι', 'Τετ', 'Πεμ', 'Παρ', 'Σαβ', 'Κυρ'];
   public barChartType:string = 'bar';
   public barChartLegend:boolean = true;
+
+  notificationIcon:string = 'ios-arrow-dropright';
+  notesIcon:string = 'ios-arrow-dropdown';
  
   //Chart data
   public barChartData:any[] = [
@@ -57,5 +60,16 @@ export class DashboardPage {
 
   ionViewWillEnter() { this.menuCtrl.enable(true, "menu"); }
 
-
+  public toggle():void{
+    if(this.showNotification == true)
+    {
+      this.notificationIcon = 'ios-arrow-dropright';
+      this.notesIcon = 'ios-arrow-dropdown';      
+    }
+    else{
+      this.notificationIcon = 'ios-arrow-dropdown';
+      this.notesIcon = 'ios-arrow-dropright';
+    }
+    this.showNotification = !this.showNotification;    
+  }
 }

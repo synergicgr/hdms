@@ -23,12 +23,15 @@
       </div>
     </ion-col>
     <ion-col col-1>
-      <ion-icon style="color: white;" name="arrow-dropright"></ion-icon>
+      <ion-icon style="color: white;" [name]="notificationIcon" (click)="toggle()"></ion-icon>
     </ion-col>
   </ion-row>
   <ion-row *ngIf="showNotification">
     <ion-col>
-      Some text
+      <div style="display: block">
+        <canvas baseChart height="200" [colors]="barChartColors" [datasets]="barChartData" [labels]="barChartLabels"
+          [options]="barChartOptions" [legend]="barChartLegend" [chartType]="barChartType"></canvas>
+      </div>
     </ion-col>
   </ion-row>
 
@@ -45,21 +48,16 @@
       </div>
     </ion-col>
     <ion-col col-1>
-      <ion-icon style="color: white;" name="arrow-dropright"></ion-icon>
+      <ion-icon style="color: white;" [name]="notesIcon" (click)="toggle()"></ion-icon>
     </ion-col>
   </ion-row>
 
   <ion-row *ngIf="!showNotification">
     <ion-col>
-        <div style="display: block">
-            <canvas baseChart height="200"
-                    [colors]="barChartColors"
-                    [datasets]="barChartData"
-                    [labels]="barChartLabels"
-                    [options]="barChartOptions"
-                    [legend]="barChartLegend"
-                    [chartType]="barChartType"></canvas>
-          </div>
+      <div style="display: block">
+        <canvas baseChart height="200" [colors]="barChartColors" [datasets]="barChartData" [labels]="barChartLabels"
+          [options]="barChartOptions" [legend]="barChartLegend" [chartType]="barChartType"></canvas>
+      </div>
     </ion-col>
   </ion-row>
 
