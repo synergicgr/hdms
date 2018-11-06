@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, MenuController, Platform } from 'ionic-angular';
 import { HomePage } from '../home/home';
 import { NotesPage } from '../notes/notes';
+import { NotificationsPage } from '../notifications/notifications';
 
 /**
  * Generated class for the DashboardPage page.
@@ -63,5 +64,9 @@ export class DashboardPage {
 
   public goToNotes():void{
     this.navCtrl.setRoot(NotesPage);
+  }
+
+  public goToNotifications():void{
+    this.navCtrl.setRoot(NotificationsPage);
   }
 }

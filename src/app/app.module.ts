@@ -31,6 +31,7 @@ import { CustomerInfoPage } from '../pages/customer-info/customer-info';
 import { NewCustomerPage } from '../pages/new-customer/new-customer';
 import { InstallerDetailsPage } from '../pages/installer-details/installer-details';
 import { ChartsModule } from 'ng2-charts';
+import { NotificationsPage } from '../pages/notifications/notifications';
 
 
 @NgModule({
@@ -52,7 +53,8 @@ import { ChartsModule } from 'ng2-charts';
     SortPopOverPage,
     CustomerInfoPage,
     NewCustomerPage,
-    InstallerDetailsPage
+    InstallerDetailsPage,
+    NotificationsPage
   ],
   imports: [
     BrowserModule,    
@@ -80,7 +82,8 @@ import { ChartsModule } from 'ng2-charts';
     SortPopOverPage,
     CustomerInfoPage,
     NewCustomerPage,
-    InstallerDetailsPage
+    InstallerDetailsPage,
+    NotificationsPage
   ],
   providers: [
     Network,
