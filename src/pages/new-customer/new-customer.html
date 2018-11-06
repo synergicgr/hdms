@@ -94,23 +94,23 @@
 
         <ion-item style="background:  #272753;">
           <input name="selection" type="radio" value="store" style="margin-right: 10px;">
-          <label for="label4" style="color:#59597b">Κατάστημα</label>
+          <label style="color:#59597b">Κατάστημα</label>
         </ion-item>
         <ion-item style="background:  #272753;">
           <input name="selection" type="radio" value="apartment" style="margin-right: 10px;">
-          <label for="label4" style="color:#59597b">Διαμέρισμα</label>
+          <label style="color:#59597b">Διαμέρισμα</label>
         </ion-item>
         <ion-item style="background:  #272753;">
           <input name="selection" type="radio" value="office" style="margin-right: 10px;">
-          <label for="label4" style="color:#59597b">Γραφείο</label>
+          <label style="color:#59597b">Γραφείο</label>
         </ion-item>
         <ion-item style="background:  #272753;">
           <input name="selection" type="radio" value="detachedHouse" style="margin-right: 10px;">
-          <label for="label4" style="color:#59597b">Μονοκατοικία</label>
+          <label style="color:#59597b">Μονοκατοικία</label>
         </ion-item>
         <ion-item style="background:  #272753;">
           <input type="radio" name="selection" value="other" style="margin-right: 10px;">
-          <label for="label4" style="margin-right: 10px;color:#59597b">Άλλο</label>
+          <label style="margin-right: 10px;color:#59597b">Άλλο</label>
           <input type="text" style="width:100%;background: #36365f;border: 0;">
         </ion-item>
       </ion-list>
@@ -133,17 +133,30 @@
     </ion-col>
   </ion-row>
   <ion-row *ngFor="let phoneNotice of phoneNotices; let i = index;" style="margin-bottom:2px;background: #272753;">
-    <ion-col col-1>
+    <ion-col col-1 *ngIf="phoneNotice.editable === false">
       <img src="../assets/imgs/drag-icon.png" style="height:20px;width:20px;">
     </ion-col>
-    <ion-col col-5 style="color:#ffffff">
+    <ion-col col-5 style="color:#ffffff" *ngIf="phoneNotice.editable === false">
       {{phoneNotice.name}}
     </ion-col>
-    <ion-col col-5 style="color:#ffffff">
+    <ion-col col-5 style="color:#ffffff" *ngIf="phoneNotice.editable === false">
       {{phoneNotice.phone}}
     </ion-col>
-    <ion-col col-1>
-      <ion-icon float-right name="close" style="color:#ffffff; margin-right:10px"></ion-icon>
+    <ion-col col-1 *ngIf="phoneNotice.editable === false">
+      <ion-icon float-right name="close" style="color:#ffffff; margin-right:10px" (click)="removePhoneNotice(i)"></ion-icon>
+    </ion-col>
+
+    <ion-col col-1 *ngIf="phoneNotice.editable === true">
+      <img src="../assets/imgs/drag-icon.png" style="height:20px;width:20px;position: relative;top:10px;">
+    </ion-col>
+    <ion-col col-5 style="color:#ffffff" *ngIf="phoneNotice.editable === true">
+      <ion-input style="position: relative;left: -10px;" type="text" placeholder="Χρήστης"></ion-input>
+    </ion-col>
+    <ion-col col-5 style="color:#ffffff" *ngIf="phoneNotice.editable === true">
+      <ion-input type="text" placeholder="Τηλέφωνο"></ion-input>
+    </ion-col>
+    <ion-col col-1 *ngIf="phoneNotice.editable === true">
+      <ion-icon float-right name="close" style="color:#ffffff; margin-right:10px" (click)="removePhoneNotice(i)"></ion-icon>
     </ion-col>
   </ion-row>
 
@@ -200,7 +213,7 @@
         <span style="position:relative; left:120px;">12</span>
         <span style="position:relative; left:155px;">16</span>
         <span style="position:relative; left:190px;">20</span>
-        <span style="position:relative; left:220px;">24</span>        
+        <span style="position:relative; left:220px;">24</span>
       </div>
 
     </ion-col>
@@ -211,22 +224,35 @@
       ΖΩΝΟΠΟΙΗΣΗ ΣΥΣΤΗΜΑΤΟΣ
     </ion-col>
     <ion-col col-1>
-      <ion-icon float-right name="add" style="color: #ffc200;padding-right: 10px;"></ion-icon>
+      <ion-icon float-right name="add" style="color: #ffc200;padding-right: 10px;" (click)="addZone()"></ion-icon>
     </ion-col>
   </ion-row>
 
   <ion-row *ngFor="let zone of zones; let i = index;" style="margin-bottom:2px;background: #272753;">
-    <ion-col col-1>
+    <ion-col col-1 *ngIf="zone.editable === false">
       <img src="../assets/imgs/drag-icon.png" style="width:20px;height:20px;">
     </ion-col>
-    <ion-col col-5 style="color:#ffffff">
+    <ion-col col-5 style="color:#ffffff" *ngIf="zone.editable === false">
       {{zone.name}}
     </ion-col>
-    <ion-col col-5 style="color:#ffffff">
+    <ion-col col-5 style="color:#ffffff" *ngIf="zone.editable === false">
       {{zone.id}}
     </ion-col>
-    <ion-col col-1>
-      <ion-icon float-right name="close" style="color:#ffffff; margin-right:10px"></ion-icon>
+    <ion-col col-1 *ngIf="zone.editable === false">
+      <ion-icon float-right name="close" style="color:#ffffff; margin-right:10px" (click)="removeZone(i);"></ion-icon>
+    </ion-col>
+
+    <ion-col col-1 *ngIf="zone.editable === true">
+      <img src="../assets/imgs/drag-icon.png" style="width:20px;height:20px;position: relative;top:10px;">
+    </ion-col>
+    <ion-col col-5 style="color:#ffffff" *ngIf="zone.editable === true">
+      <ion-input type="text" placeholder="Zone name" style="margin-left:-7px"></ion-input>
+    </ion-col>
+    <ion-col col-5 style="color:#ffffff" *ngIf="zone.editable === true">
+      <ion-input type="text" placeholder="Zone id" style="margin-left:-7px"></ion-input>
+    </ion-col>
+    <ion-col col-1 *ngIf="zone.editable === true">
+      <ion-icon float-right name="close" style="color:#ffffff; margin-right:10px;position: relative;top:15px;" (click)="removeZone(i);"></ion-icon>
     </ion-col>
   </ion-row>
   <ion-row style="margin-bottom:2px;background: #272753;">
@@ -264,7 +290,7 @@
       {{alarmUser.name}}
     </ion-col>
     <ion-col col-2>
-      <ion-icon float-right name="close" style="color:#ffffff; margin-right:10px"></ion-icon>
+      <ion-icon float-right name="close" style="color:#ffffff; margin-right:10px" (click)="removeAlarmUser(i)"></ion-icon>
     </ion-col>
   </ion-row>
 
