@@ -4,6 +4,7 @@ import { SortPopOverPage } from '../sort-pop-over/sort-pop-over';
 import { CustomersProvider } from '../../providers/customers/customers';
 import { DashboardPage } from '../dashboard/dashboard';
 import { CustomerInfoPage } from '../customer-info/customer-info';
+import { PopOverPage } from '../pop-over/pop-over';
 
 
 @IonicPage()
@@ -14,8 +15,9 @@ import { CustomerInfoPage } from '../customer-info/customer-info';
 export class CustomersPage {
 
   private popover;
-  private static popOverController;
-  open: boolean;
+  private popover2;
+  openPopOver1: boolean;
+  openPopOver2: boolean;
 
   customers: Array<{ name: string, surname: string, city: string }>;
 
@@ -32,13 +34,23 @@ export class CustomersPage {
       // user and time are the same arguments passed in `events.publish(user, time)`
       this.popover.dismiss();
     });
+
+    events.subscribe('dismiss2', (data, time) => {
+      this.popover2.dismiss();
+    });
+
     this.customers = customersProvider.getCustomers();
 
     platform.ready().then(() => {
       platform.registerBackButtonAction(() => {
-        if (this.open === true) {
+        if (this.openPopOver1 === true) {
           this.popover.dismiss();
-          this.open = false;
+          this.openPopOver1 = false;
+        }
+        else if(this.openPopOver2 === true)
+        {
+          this.popover2.dismiss();
+          this.openPopOver2 = false;
         }
         else {
           navCtrl.setRoot(DashboardPage);
@@ -56,7 +68,15 @@ export class CustomersPage {
     this.popover.present({
       ev: myEvent
     });
-    this.open = true;
+    this.openPopOver1 = true;
+  }
+
+  presentPopover2(myEvent){
+    this.popover2 = this.popOverController.create(PopOverPage);
+    this.popover2.present({
+      ev: myEvent
+    });
+    this.openPopOver2 = true;
   }
 
   openCustomer(index:number):void{

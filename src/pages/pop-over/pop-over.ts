@@ -1,5 +1,5 @@
 import { Component, ViewChild } from '@angular/core';
-import { IonicPage, ViewController, App, Platform } from 'ionic-angular';
+import { IonicPage, ViewController, App, Platform, Events } from 'ionic-angular';
 import { DashboardPage } from '../dashboard/dashboard';
 import { HomePage } from '../home/home';
 
@@ -19,7 +19,7 @@ export class PopOverPage {
 
   private open:boolean = false;  
 
-  constructor(public viewCtrl: ViewController, public app:App, public platform:Platform) {
+  constructor(public viewCtrl: ViewController, public app:App, public platform:Platform, public events:Events) {
   }
 
   ionViewDidLoad() {
@@ -40,5 +40,9 @@ export class PopOverPage {
 
   public dismiss():void{
     this.viewCtrl.dismiss();
+  }
+
+  dismissPopover():void{
+    this.events.publish('dismiss2', {}, Date.now());
   }
 }
