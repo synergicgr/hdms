@@ -1,5 +1,5 @@
 import { Component, ViewChild } from '@angular/core';
-import { IonicPage, ViewController, App, Platform, Events } from 'ionic-angular';
+import { IonicPage, ViewController, App, Platform, Events, NavController } from 'ionic-angular';
 import { DashboardPage } from '../dashboard/dashboard';
 import { HomePage } from '../home/home';
 
@@ -35,7 +35,8 @@ export class PopOverPage {
   }
 
   disconnect():void{
-    this.viewCtrl.dismiss();
+    this.events.publish('logout',{}, Date.now());
+    this.viewCtrl.dismiss(); 
   }
 
   public dismiss():void{
