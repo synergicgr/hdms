@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, Platform } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, Platform, PopoverController } from 'ionic-angular';
 import { DashboardPage } from '../dashboard/dashboard';
+import { PopOverPage } from '../pop-over/pop-over';
 
 /**
  * Generated class for the ConnectionInfoPage page.
@@ -16,12 +17,30 @@ import { DashboardPage } from '../dashboard/dashboard';
 })
 export class ConnectionInfoPage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, private platform:Platform) {
+  private popover;
+  open:boolean;
+
+  constructor(public navCtrl: NavController, public navParams: NavParams, private platform:Platform, private popoverCtrl:PopoverController) {
     platform.ready().then(() => {
-      platform.registerBackButtonAction(()=>{
-        this.navCtrl.setRoot(DashboardPage);
+      platform.registerBackButtonAction(() => {
+        if(this.open === true)
+        {
+          this.popover.dismiss();
+          this.open = false;
+        }
+        else{
+          navCtrl.setRoot(DashboardPage);
+        }        
       });
-    });    
+    });   
+  }
+
+  presentPopover(myEvent) {
+    this.popover = this.popoverCtrl.create(PopOverPage);
+    this.popover.present({
+      ev: myEvent,
+    });
+    this.open = true;    
   }
 
   ionViewDidLoad() {
