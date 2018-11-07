@@ -8,6 +8,31 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 })
 export class NewCustomerPage {
 
+  installerName:string;
+  customerPass:string;
+  customerAuxiliaryPass:string;
+  duressCode:string;
+  customerConnectionDate:string;
+  subscriberName:string;
+  insuredAreaAddress:string;
+  insuredAreaCity:string;
+  insuredAreaPostCode:string;
+  insuredAreaFloor:string;
+  insuredAreaDescription:string;
+  insuredAreaType:string;
+  insuredAreaTypeOther:string;
+  areaPhone:string;
+  alarmUnitType:string;
+  format:string;
+  frequency24HourTest:number;
+  weeklyTimeMonitoring:string;
+  policeStation:string;
+  directTransmissionPhones:string;
+  operationControlHours:string;
+  monthlyAlarmList:string;
+  otherRemarks:string;
+
+
   phoneNotices: Array<{ name: string, phone: string, editable:boolean}> = [
     { name: "Ελένη Γεωργίου", phone: "211 45 55 456", editable:false },
     { name: "Βαγγέλης Γεωργίου", phone: "687 64 52 354", editable:false },
