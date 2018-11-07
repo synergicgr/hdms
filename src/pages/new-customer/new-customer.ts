@@ -37,7 +37,6 @@ export class NewCustomerPage {
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad NewCustomerPage');
-    console.log(this.phoneNoticesSliced);
   }
 
   removeZone(index):void{
