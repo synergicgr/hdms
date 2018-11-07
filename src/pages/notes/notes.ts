@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, Platform, PopoverController } from 'ionic-angular';
 import { DashboardPage } from '../dashboard/dashboard';
 import { PopOverPage } from '../pop-over/pop-over';
+import { ViewNotePage } from '../view-note/view-note';
 
 
 /**
@@ -53,6 +54,7 @@ export class NotesPage {
     console.log('ionViewDidLoad NotesPage');
   }
 
-
-
+  openNote(index):void{
+    this.navCtrl.setRoot(ViewNotePage, {note:this.notes[index]});
+  }
 }

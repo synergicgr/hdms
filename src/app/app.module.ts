@@ -33,6 +33,7 @@ import { InstallerDetailsPage } from '../pages/installer-details/installer-detai
 import { ChartsModule } from 'ng2-charts';
 import { NotificationsPage } from '../pages/notifications/notifications';
 import { TruncateModule } from '@yellowspot/ng-truncate';
+import { ViewNotePage } from '../pages/view-note/view-note';
 
 
 
@@ -56,7 +57,8 @@ import { TruncateModule } from '@yellowspot/ng-truncate';
     CustomerInfoPage,
     NewCustomerPage,
     InstallerDetailsPage,
-    NotificationsPage
+    NotificationsPage,
+    ViewNotePage
   ],
   imports: [
     BrowserModule,    
@@ -86,7 +88,8 @@ import { TruncateModule } from '@yellowspot/ng-truncate';
     CustomerInfoPage,
     NewCustomerPage,
     InstallerDetailsPage,
-    NotificationsPage
+    NotificationsPage,
+    ViewNotePage
   ],
   providers: [
     Network,

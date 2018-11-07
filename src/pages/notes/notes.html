@@ -15,6 +15,9 @@
 </ion-header>
 
 <ion-content padding class="ion-content">
+  <div style="color:#ffc200;font-size: 20px;margin-bottom: 20px;">
+    Σημειώσεις
+  </div>
   <ion-row>
     <ion-col>
       <ion-icon float-right name="add" style="font-size:30px;" color="app-yellow"></ion-icon>
@@ -32,7 +35,7 @@
     <ion-col col-2 style="display: flex !important;
     align-content: center !important;
     align-items: center !important;">
-      <img src="../assets/imgs/eye-icon.png" width="30" height="30">
+      <img src="../assets/imgs/eye-icon.png" width="30" height="30" (click)="openNote(i)">      
     </ion-col>
   </ion-row>
 </ion-content>
