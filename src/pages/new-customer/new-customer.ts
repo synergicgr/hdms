@@ -9,12 +9,10 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 export class NewCustomerPage {
 
   phoneNotices: Array<{ name: string, phone: string, editable:boolean}> = [
-    // { name: "Ελένη Γεωργίου", phone: "211 45 55 456", editable:false },
-    // { name: "Βαγγέλης Γεωργίου", phone: "687 64 52 354", editable:false },
-    // { name: "Αγγελική Γεωργίου", phone: "687 64 52 354", editable:false },
+    { name: "Ελένη Γεωργίου", phone: "211 45 55 456", editable:false },
+    { name: "Βαγγέλης Γεωργίου", phone: "687 64 52 354", editable:false },
+    { name: "Αγγελική Γεωργίου", phone: "687 64 52 354", editable:false },
   ];
-
-  phoneNoticesSliced: Array<{ name: string, phone: string, editable:boolean}> = this.phoneNotices.slice(0, -1);
 
   zones: Array<{ name: string, id: string, editable:boolean }> = [
     { name: "ΖΩΝΗ 1", id: "ΑΒ1128336", editable:false },

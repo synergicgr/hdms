@@ -173,7 +173,7 @@
             {{phoneNotices[phoneNotices.length-1].phone}}
         </ion-col>
         <ion-col col-1 *ngIf="phoneNotices[phoneNotices.length-1].editable === false">
-          <ion-icon float-right name="close" style="color:#ffffff; margin-right:10px" (click)="removePhoneNotice(i)"></ion-icon>
+          <ion-icon float-right name="close" style="color:#ffffff; margin-right:10px" (click)="removePhoneNotice(phoneNotices.length-1)"></ion-icon>
         </ion-col>
     
         <ion-col col-1 *ngIf="phoneNotices[phoneNotices.length-1].editable === true">
@@ -186,7 +186,7 @@
           <ion-input style="position: relative;left: -7px;" type="text" placeholder="Τηλέφωνο"></ion-input>
         </ion-col>
         <ion-col col-1 *ngIf="phoneNotices[phoneNotices.length-1].editable === true">
-          <ion-icon float-right name="close" style="color:#ffffff; margin-right:10px;position: relative;top:15px;" (click)="removePhoneNotice(i)"></ion-icon>
+          <ion-icon float-right name="close" style="color:#ffffff; margin-right:10px;position: relative;top:15px;" (click)="removePhoneNotice(phoneNotices.length-1)"></ion-icon>
         </ion-col>
   </ion-row>
 
