@@ -1,8 +1,9 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, MenuController, Platform } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, MenuController, Platform, PopoverController } from 'ionic-angular';
 import { HomePage } from '../home/home';
 import { NotesPage } from '../notes/notes';
 import { NotificationsPage } from '../notifications/notifications';
+import { PopOverPage } from '../pop-over/pop-over';
 
 /**
  * Generated class for the DashboardPage page.
@@ -32,6 +33,9 @@ export class DashboardPage {
 
   notificationIcon:string = 'ios-arrow-dropright';
   notesIcon:string = 'ios-arrow-dropdown';
+
+  private popover;
+  open:boolean;
  
   //Chart data
   public barChartData:any[] = [
@@ -46,14 +50,21 @@ export class DashboardPage {
     
 ]
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public menuCtrl: MenuController, private platform: Platform) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, public popoverCtrl: PopoverController, public menuCtrl: MenuController, private platform: Platform) {
     this.menuCtrl.enable(true, 'menu');
 
-    platform.ready().then(()=>{
-      platform.registerBackButtonAction(()=>{
-        navCtrl.setRoot(HomePage);
+    platform.ready().then(() => {
+      platform.registerBackButtonAction(() => {
+        if(this.open === true)
+        {
+          this.popover.dismiss();
+          this.open = false;
+        }
+        else{
+          navCtrl.setRoot(HomePage);
+        }        
       });
-    })
+    });
   }
 
   ionViewDidLoad() {
@@ -68,5 +79,13 @@ export class DashboardPage {
 
   public goToNotifications():void{
     this.navCtrl.setRoot(NotificationsPage);
+  }
+
+  presentPopover(myEvent) {
+    this.popover = this.popoverCtrl.create(PopOverPage);
+    this.popover.present({
+      ev: myEvent,
+    });
+    this.open = true;    
   }
 }

@@ -43,7 +43,7 @@ export class HellasDmsPage {
   }
 
   presentPopover(myEvent) {
-    this.popover = this.popoverCtrl.create(PopOverPage, { page: "HellasDMSPage" });
+    this.popover = this.popoverCtrl.create(PopOverPage);
     this.popover.present({
       ev: myEvent,
     });
