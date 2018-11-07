@@ -3,14 +3,14 @@
 
   <ion-row>
     <ion-col col-12 col-lg no-padding>
-      <input type="text" style="width: 100%;height: 50px;border-radius: 10px;" class="inputText" no-margin>
+      <input type="text" style="width: 100%;height: 50px;border-radius: 10px;" class="inputText" no-margin [(ngModel)]="name">
       <span class="floating-label">ΕΠΩΝΥΜΙΑ</span>
     </ion-col>
   </ion-row>
 
   <ion-row style="margin-top:5px;">
     <ion-col col-12 col-lg no-padding>
-      <input type="text" style="width: 100%;height: 50px;border-radius: 10px;" class="inputText" no-margin>
+      <input type="text" style="width: 100%;height: 50px;border-radius: 10px;" class="inputText" no-margin [(ngModel)]="afm">
       <span class="floating-label">ΑΦΜ | ΔΟΥ</span>
     </ion-col>
   </ion-row>
@@ -23,7 +23,7 @@
 
   <ion-row style="background: #272753;border-bottom-left-radius: 10px;border-bottom-right-radius: 10px;">
     <ion-col col-12 col-lg no-padding>
-      <ion-textarea style="height:80px;color:#ffffff; margin-left: 5px;"></ion-textarea>
+      <ion-textarea style="height:80px;color:#ffffff; margin-left: 5px;" [(ngModel)]="proffesionalDescription"></ion-textarea>
     </ion-col>
   </ion-row>
 
@@ -35,21 +35,21 @@
 
   <ion-row style="background: #272753">
     <ion-col col-6 col-lg no-padding>
-      <input type="text" style="width: 100%;height: 50px;" class="inputText" no-margin>
+      <input type="text" style="width: 100%;height: 50px;" class="inputText" no-margin [(ngModel)]="insuredAreaAddress">
       <span class="floating-label">ΟΔΟΣ - ΑΡΙΘΜΟΣ</span>
     </ion-col>
     <ion-col col-6 col-lg no-padding>
-      <input type="text" style="width: 100%;height: 50px;" class="inputText" no-margin>
+      <input type="text" style="width: 100%;height: 50px;" class="inputText" no-margin [(ngModel)]="insuredAreaCity">
       <span class="floating-label">ΠΟΛΗ</span>
     </ion-col>
   </ion-row>
   <ion-row style="background: #272753; border-bottom-left-radius: 10px; border-bottom-right-radius: 10px;">
     <ion-col col-6 col-lg no-padding>
-      <input type="text" style="width: 100%;height: 50px;border-bottom-left-radius: 10px;" class="inputText" no-margin>
+      <input type="text" style="width: 100%;height: 50px;border-bottom-left-radius: 10px;" class="inputText" no-margin [(ngModel)]="insuredAreaPostCode">
       <span class="floating-label">ΤΚ</span>
     </ion-col>
     <ion-col col-6 col-lg no-padding>
-      <input type="text" style="width: 100%;height: 50px;border-bottom-right-radius: 10px;" class="inputText" no-margin>
+      <input type="text" style="width: 100%;height: 50px;border-bottom-right-radius: 10px;" class="inputText" no-margin [(ngModel)]="insuredAreaFloor">
       <span class="floating-label">ΟΡΟΦΟΣ</span>
     </ion-col>
   </ion-row>
@@ -62,26 +62,26 @@
   </ion-row>
   <ion-row>
     <ion-col col-12 no-padding>
-      <input type="text" style="width: 100%;height: 50px;" class="inputText" no-margin>
+      <input type="text" style="width: 100%;height: 50px;" class="inputText" no-margin [(ngModel)]="landlinePhone">
       <span class="floating-label">FAX</span>
     </ion-col>
   </ion-row>
   <ion-row>
     <ion-col col-12 no-padding>
-      <input type="text" style="width: 100%;height: 50px;border-bottom-left-radius: 10px; border-bottom-right-radius: 10px;" class="inputText" no-margin>
+      <input type="text" style="width: 100%;height: 50px;border-bottom-left-radius: 10px; border-bottom-right-radius: 10px;" class="inputText" no-margin [(ngModel)]="mobilePhone">
       <span class="floating-label">ΚΙΝΗΤΟ ΤΗΛΕΦΩΝΟ</span>
     </ion-col>
   </ion-row>
 
   <ion-row style="margin-top:5px;">
     <ion-col col-12 no-padding>
-      <input type="text" style="width: 100%;height: 50px;border-top-left-radius: 10px; border-top-right-radius: 10px;" class="inputText" no-margin>
+      <input type="text" style="width: 100%;height: 50px;border-top-left-radius: 10px; border-top-right-radius: 10px;" class="inputText" no-margin [(ngModel)]="email">
       <span class="floating-label">EMAIL ΕΠΙΚΟΙΝΩΝΙΑΣ</span>
     </ion-col>
   </ion-row>
   <ion-row>
     <ion-col col-12 no-padding>
-      <input type="text" style="width: 100%;height: 50px;border-bottom-left-radius: 10px; border-bottom-right-radius: 10px;" class="inputText" no-margin>
+      <input type="text" style="width: 100%;height: 50px;border-bottom-left-radius: 10px; border-bottom-right-radius: 10px;" class="inputText" no-margin [(ngModel)]="website">
       <span class="floating-label">WEB SITE</span>
     </ion-col>
   </ion-row>
@@ -94,7 +94,7 @@
 
   <ion-row style="background: #272753;border-bottom-left-radius: 10px; border-bottom-right-radius: 10px;">
     <ion-col col-12 col-lg style="color:#8c8ca9;margin-left: 5px;">
-      <ion-list radio-group no-lines>
+      <ion-list radio-group no-lines [(ngModel)]="collectionPolicy">
 
         <ion-item style="background:  #272753;">
           <input name="selection" type="radio" value="selfCollection" style="margin-right: 10px;">
@@ -116,7 +116,7 @@
 
   <ion-row style="background: #272753;border-bottom-left-radius: 10px; border-bottom-right-radius: 10px;">
     <ion-col col-12 col-lg style="color:#8c8ca9;margin-left: 5px;">
-      <ion-list radio-group no-lines>
+      <ion-list radio-group no-lines [(ngModel)]="emailInvoice">
 
         <ion-item style="background:  #272753;">
           <input name="selection2" type="radio" value="yes" style="margin-right: 10px;">
@@ -138,8 +138,7 @@
 
   <ion-row style="background: #272753;border-bottom-left-radius: 10px; border-bottom-right-radius: 10px;">
     <ion-col col-12 col-lg style="color:#8c8ca9;margin-left: 5px;">
-      <ion-list radio-group no-lines>
-
+      <ion-list radio-group no-lines [(ngModel)]="billingAddressOnly">
         <ion-item style="background:  #272753;">
           <input name="selection3" type="radio" value="yes" style="margin-right: 10px;">
           <label style="color:#8c8ca9">YES</label>
