@@ -37,4 +37,8 @@ page-new-customer {
     .range-ios .range-knob-handle .range-pin {
         transform: translate3d(0, 0, 0) scale(1);
     }
+    
+    input{
+        border-radius:10px;
+    }
 }
