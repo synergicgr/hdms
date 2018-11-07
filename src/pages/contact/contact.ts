@@ -1,7 +1,9 @@
 import { Component, ViewChild } from '@angular/core';
-import { IonicPage, NavController, NavParams, Tabs } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, Tabs, PopoverController, Platform } from 'ionic-angular';
 import { ContactFormPage } from '../contact-form/contact-form';
 import { GoogleMapsPage } from '../google-maps/google-maps';
+import { PopOverPage } from '../pop-over/pop-over';
+import { DashboardPage } from '../dashboard/dashboard';
 
 /**
  * Generated class for the ContactPage page.
@@ -17,6 +19,9 @@ import { GoogleMapsPage } from '../google-maps/google-maps';
 })
 export class ContactPage {
 
+  private popover;
+  open: boolean;
+
   tab1Root = ContactFormPage;
   tab2Root = GoogleMapsPage;
 
@@ -24,9 +29,18 @@ export class ContactPage {
   
   message:string = '';
 
-  
-
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, private popoverCtrl:PopoverController, private platform:Platform) {
+    platform.ready().then(() => {
+      platform.registerBackButtonAction(() => {
+        if (this.open === true) {
+          this.popover.dismiss();
+          this.open = false;
+        }
+        else {
+          navCtrl.setRoot(DashboardPage);
+        }
+      });
+    });
   }
 
   ionViewDidLoad() {
@@ -37,5 +51,12 @@ export class ContactPage {
     
   }
 
+  presentPopover(myEvent) {
+    this.popover = this.popoverCtrl.create(PopOverPage);
+    this.popover.present({
+      ev: myEvent,
+    });
+    this.open = true;
+  }
 
 }
