@@ -15,11 +15,11 @@
         </div>
         <div padding text-center>
           <ion-item no-lines style="border-radius: 10px;" text-wrap>
-            <ion-input type="text" placeholder="Username" [(ngModel)]="username" (keyup.enter)="moveFocus(b)">{{username}}</ion-input>
+            <ion-input type="text" placeholder="Username" [(ngModel)]="username" (keyup.enter)="moveFocus(b)" [(ngModel)]="username"></ion-input>
           </ion-item>
 
           <ion-item no-lines style="border-radius: 10px; margin-top: 10px;" text-wrap>
-            <ion-input type="password" placeholder="Password" [(ngModel)]="password" #b (keyup.enter)="signIn()">{{password}}</ion-input>
+            <ion-input type="password" placeholder="Password" [(ngModel)]="password" #b (keyup.enter)="signIn()" [(ngModel)]="password"></ion-input>
           </ion-item>
 
           <button ion-button clear style="text-align: center;margin-top: 20px;" class="forgotPassword" (click)="forgotPassword()">
