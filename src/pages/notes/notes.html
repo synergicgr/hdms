@@ -18,24 +18,73 @@
   <div style="color:#ffc200;font-size: 20px;margin-bottom: 20px;">
     Σημειώσεις
   </div>
-  <ion-row>
-    <ion-col>
-      <ion-icon float-right name="add" style="font-size:30px;" color="app-yellow"></ion-icon>
-    </ion-col>
+
+
+  <ion-row *ngIf="notes.length === 1" style="background:#272753;margin-bottom: 2px; border-radius: 10px;">    
+      <ion-col col-3 style="color:#8c8ca9;display: flex!important;
+      align-content: center!important;
+      align-items: center!important;border-right: thin solid #5a5a7c;">
+        {{notes[0].showDate}}
+      </ion-col>
+      <ion-col col-7 style="color:#8c8ca9;border-right: thin solid #5a5a7c;">
+        {{notes[0].content | truncate : 40}}
+      </ion-col>
+      <ion-col col-2 style="
+      display: flex !important; align-content: center !important; align-items: center !important;">
+        <img src="../assets/imgs/eye-icon.png" width="30" height="30" (click)="openNote(0)">
+      </ion-col>       
   </ion-row>
-  <ion-row *ngFor="let note of notes; let i = index;" style="background:#272753;margin-bottom: 2px">
-    <ion-col col-3 style="color:#8c8ca9;display: flex!important;
-    align-content: center!important;
-    align-items: center!important;border-right: thin solid #5a5a7c;">
-      {{note.showDate}}
-    </ion-col>
-    <ion-col col-7 style="color:#8c8ca9;border-right: thin solid #5a5a7c;">
-      {{note.content | truncate : 40}}
-    </ion-col>
-    <ion-col col-2 style="display: flex !important;
-    align-content: center !important;
-    align-items: center !important;">
-      <img src="../assets/imgs/eye-icon.png" width="30" height="30" (click)="openNote(i)">      
-    </ion-col>
+
+  <ion-row *ngIf="notes.length != 1 && notes.length > 0" style="background:#272753;margin-bottom: 2px; border-top-left-radius: 10px; border-top-right-radius: 10px;">    
+      <ion-col col-3 style="color:#8c8ca9;display: flex!important;
+      align-content: center!important;
+      align-items: center!important;border-right: thin solid #5a5a7c;">
+        {{notes[0].showDate}}
+      </ion-col>
+      <ion-col col-7 style="color:#8c8ca9;border-right: thin solid #5a5a7c;">
+        {{notes[0].content | truncate : 40}}
+      </ion-col>
+      <ion-col col-2 style="
+      display: flex !important; align-content: center !important; align-items: center !important;">
+        <img src="../assets/imgs/eye-icon.png" width="30" height="30" (click)="openNote(0)">
+      </ion-col>       
   </ion-row>
+
+  <ion-row *ngFor="let note of notes.slice(1,-1); let i = index" style="background:#272753;margin-bottom: 2px;">
+      <ion-col col-3 style="color:#8c8ca9;display: flex!important;
+      align-content: center!important;
+      align-items: center!important;border-right: thin solid #5a5a7c;">
+        {{note.showDate}}
+      </ion-col>
+      <ion-col col-7 style="color:#8c8ca9;border-right: thin solid #5a5a7c;">
+        {{note.content | truncate : 40}}
+      </ion-col>
+      <ion-col col-2 style="
+      display: flex !important; align-content: center !important; align-items: center !important;">
+        <img src="../assets/imgs/eye-icon.png" width="30" height="30" (click)="openNote(i+1)">
+      </ion-col>
+  </ion-row>
+
+  <ion-row *ngIf="notes.length > 0" style="background:#272753;margin-bottom: 2px; border-bottom-left-radius: 10px; border-bottom-right-radius: 10px;">
+      <ion-col col-3 style="color:#8c8ca9;display: flex!important;
+      align-content: center!important;
+      align-items: center!important;border-right: thin solid #5a5a7c;">
+        {{notes[notes.length - 1].showDate}}
+      </ion-col>
+      <ion-col col-7 style="color:#8c8ca9;border-right: thin solid #5a5a7c;">
+        {{notes[notes.length - 1].content | truncate : 40}}
+      </ion-col>
+      <ion-col col-2 style="
+      display: flex !important; align-content: center !important; align-items: center !important;">
+        <img src="../assets/imgs/eye-icon.png" width="30" height="30" (click)="openNote(notes.length - 1)">
+      </ion-col>
+  </ion-row>
+
+
+  <ion-fab bottom right>
+    <button ion-fab color="app-yellow" (click)="addNote()">
+      <ion-icon name="add" color="dark"></ion-icon>
+    </button>
+  </ion-fab>
+
 </ion-content>
