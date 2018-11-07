@@ -1,8 +1,8 @@
 <ion-content class="ion-content">
   <div style="color:#ffc200;margin-bottom: 10px;">ΕΓΓΡΑΦΗ ΝΕΟΥ ΠΕΛΑΤΗ</div>
-  
+
   <ion-row>
-    <ion-col col-12 col-lg no-padding >
+    <ion-col col-12 col-lg no-padding>
       <input type="text" style="width: 100%;height: 50px;" class="inputText" no-margin>
       <span class="floating-label">ΟΝΟΜΑ ΕΓΚΑΤΑΣΤΑΤΗ</span>
     </ion-col>
@@ -162,53 +162,53 @@
     </ion-col>
   </ion-row>
 
-  <ion-row *ngIf="phoneNotices.length > 0" style="background: #272753;border-bottom-left-radius: 10px; border-bottom-right-radius: 10px;" >
-      <ion-col col-1 *ngIf="phoneNotices[phoneNotices.length-1].editable === false">
-          <img src="../assets/imgs/drag-icon.png" style="height:20px;width:20px;">
-        </ion-col>
-        <ion-col col-5 style="color:#ffffff" *ngIf="phoneNotices[phoneNotices.length-1].editable === false">
-          {{phoneNotices[phoneNotices.length-1].name}}
-        </ion-col>
-        <ion-col col-5 style="color:#ffffff" *ngIf="phoneNotices[phoneNotices.length-1].editable === false">
-            {{phoneNotices[phoneNotices.length-1].phone}}
-        </ion-col>
-        <ion-col col-1 *ngIf="phoneNotices[phoneNotices.length-1].editable === false">
-          <ion-icon float-right name="close" style="color:#ffffff; margin-right:10px" (click)="removePhoneNotice(phoneNotices.length-1)"></ion-icon>
-        </ion-col>
-    
-        <ion-col col-1 *ngIf="phoneNotices[phoneNotices.length-1].editable === true">
-          <img src="../assets/imgs/drag-icon.png" style="height:20px;width:20px;position: relative;top:10px;">
-        </ion-col>
-        <ion-col col-5 style="color:#ffffff" *ngIf="phoneNotices[phoneNotices.length-1].editable === true">
-          <ion-input style="position: relative;left: -7px;" type="text" placeholder="Χρήστης"></ion-input>
-        </ion-col>
-        <ion-col col-5 style="color:#ffffff" *ngIf="phoneNotices[phoneNotices.length-1].editable === true">
-          <ion-input style="position: relative;left: -7px;" type="text" placeholder="Τηλέφωνο"></ion-input>
-        </ion-col>
-        <ion-col col-1 *ngIf="phoneNotices[phoneNotices.length-1].editable === true">
-          <ion-icon float-right name="close" style="color:#ffffff; margin-right:10px;position: relative;top:15px;" (click)="removePhoneNotice(phoneNotices.length-1)"></ion-icon>
-        </ion-col>
+  <ion-row *ngIf="phoneNotices.length > 0" style="background: #272753;border-bottom-left-radius: 10px; border-bottom-right-radius: 10px;">
+    <ion-col col-1 *ngIf="phoneNotices[phoneNotices.length-1].editable === false">
+      <img src="../assets/imgs/drag-icon.png" style="height:20px;width:20px;">
+    </ion-col>
+    <ion-col col-5 style="color:#ffffff" *ngIf="phoneNotices[phoneNotices.length-1].editable === false">
+      {{phoneNotices[phoneNotices.length-1].name}}
+    </ion-col>
+    <ion-col col-5 style="color:#ffffff" *ngIf="phoneNotices[phoneNotices.length-1].editable === false">
+      {{phoneNotices[phoneNotices.length-1].phone}}
+    </ion-col>
+    <ion-col col-1 *ngIf="phoneNotices[phoneNotices.length-1].editable === false">
+      <ion-icon float-right name="close" style="color:#ffffff; margin-right:10px" (click)="removePhoneNotice(phoneNotices.length-1)"></ion-icon>
+    </ion-col>
+
+    <ion-col col-1 *ngIf="phoneNotices[phoneNotices.length-1].editable === true">
+      <img src="../assets/imgs/drag-icon.png" style="height:20px;width:20px;position: relative;top:10px;">
+    </ion-col>
+    <ion-col col-5 style="color:#ffffff" *ngIf="phoneNotices[phoneNotices.length-1].editable === true">
+      <ion-input style="position: relative;left: -7px;" type="text" placeholder="Χρήστης"></ion-input>
+    </ion-col>
+    <ion-col col-5 style="color:#ffffff" *ngIf="phoneNotices[phoneNotices.length-1].editable === true">
+      <ion-input style="position: relative;left: -7px;" type="text" placeholder="Τηλέφωνο"></ion-input>
+    </ion-col>
+    <ion-col col-1 *ngIf="phoneNotices[phoneNotices.length-1].editable === true">
+      <ion-icon float-right name="close" style="color:#ffffff; margin-right:10px;position: relative;top:15px;" (click)="removePhoneNotice(phoneNotices.length-1)"></ion-icon>
+    </ion-col>
   </ion-row>
 
-  <ion-row style="background: #272753;margin-top: 20px;">
+  <ion-row style="background: #272753;margin-top: 20px;border-top-left-radius: 10px;border-top-right-radius: 10px;">
     <ion-col col-12 col-lg style="color:#59597b;margin-left: 10px;">
       ΤΥΠΟΣ ΜΟΝΑΔΟΣ ΣΥΝΑΓΕΡΜΟΥ
     </ion-col>
   </ion-row>
 
-  <ion-row style="background: #272753;">
+  <ion-row style="background: #272753;border-bottom-left-radius: 10px; border-bottom-right-radius: 10px;">
     <ion-col col-12 col-lg no-padding>
       <ion-textarea style="height:80px;color:#ffffff; margin-left: 10px;"></ion-textarea>
     </ion-col>
   </ion-row>
 
-  <ion-row style="background: #272753;margin-top: 5px;">
+  <ion-row style="background: #272753;margin-top: 5px;border-top-left-radius: 10px; border-top-right-radius: 10px;">
     <ion-col col-12 col-lg style="color:#59597b;margin-left: 10px;">
       FORMAT
     </ion-col>
   </ion-row>
 
-  <ion-row style="background: #272753;">
+  <ion-row style="background: #272753;border-bottom-left-radius: 10px; border-bottom-right-radius: 10px;">
     <ion-col col-12 col-lg style="color:#59597b;margin-left: 5px;">
       <ion-list radio-group no-lines>
 
@@ -228,13 +228,13 @@
     </ion-col>
   </ion-row>
 
-  <ion-row style="background: #272753;margin-top: 5px;">
+  <ion-row style="background: #272753;margin-top: 5px;border-top-left-radius: 10px; border-top-right-radius: 10px;">
     <ion-col col-12 col-lg style="color:#59597b;margin-left: 10px;">
       ΣΥΧΝΟΤΗΤΑ 24ΩΡΟΥ ΤΕΣΤ
     </ion-col>
   </ion-row>
 
-  <ion-row style="background: #272753;">
+  <ion-row style="background: #272753;border-bottom-left-radius: 10px; border-bottom-right-radius: 10px;">
     <ion-col col-12>
       <ion-range min="1" max="24" step="1" snaps="true" pin="true" color="app-yellow"></ion-range>
       <div style="position:relative; top:-20px;">
@@ -249,7 +249,7 @@
     </ion-col>
   </ion-row>
 
-  <ion-row style="margin-top:5px;background: #272753">
+  <ion-row style="margin-top:5px;background: #272753; border-top-left-radius: 10px; border-top-right-radius: 10px;">
     <ion-col col-11 style="color:#59597b;padding-left: 10px;font-size: 12px">
       ΖΩΝΟΠΟΙΗΣΗ ΣΥΣΤΗΜΑΤΟΣ
     </ion-col>
@@ -258,7 +258,7 @@
     </ion-col>
   </ion-row>
 
-  <ion-row *ngFor="let zone of zones; let i = index;" style="margin-bottom:2px;background: #272753;">
+  <ion-row *ngFor="let zone of zones.slice(0,-1); let i = index;" style="margin-bottom:2px;background: #272753;">
     <ion-col col-1 *ngIf="zone.editable === false">
       <img src="../assets/imgs/drag-icon.png" style="width:20px;height:20px;">
     </ion-col>
@@ -285,6 +285,36 @@
       <ion-icon float-right name="close" style="color:#ffffff; margin-right:10px;position: relative;top:15px;" (click)="removeZone(i);"></ion-icon>
     </ion-col>
   </ion-row>
+
+  <ion-row *ngIf="zones.length > 0" style="border-bottom-left-radius: 10px; border-bottom-right-radius: 10px;background: #272753;margin-bottom: 5px;">
+      
+    <ion-col col-1 *ngIf="zones[zones.length-1].editable === false">
+          <img src="../assets/imgs/drag-icon.png" style="width:20px;height:20px;">
+        </ion-col>
+        <ion-col col-5 style="color:#ffffff" *ngIf="zones[zones.length-1].editable === false">
+          {{zones[zones.length-1].name}}
+        </ion-col>
+        <ion-col col-5 style="color:#ffffff" *ngIf="zones[zones.length-1].editable === false">
+          {{zones[zones.length-1].id}}
+        </ion-col>
+        <ion-col col-1 *ngIf="zones[zones.length-1].editable === false">
+          <ion-icon float-right name="close" style="color:#ffffff; margin-right:10px" (click)="removeZone(zones.length-1);"></ion-icon>
+        </ion-col>
+    
+        <ion-col col-1 *ngIf="zones[zones.length-1].editable === true">
+          <img src="../assets/imgs/drag-icon.png" style="width:20px;height:20px;position: relative;top:10px;">
+        </ion-col>
+        <ion-col col-5 style="color:#ffffff" *ngIf="zones[zones.length-1].editable === true">
+          <ion-input type="text" placeholder="Zone name" style="margin-left:-7px"></ion-input>
+        </ion-col>
+        <ion-col col-5 style="color:#ffffff" *ngIf="zones[zones.length-1].editable === true">
+          <ion-input type="text" placeholder="Zone id" style="margin-left:-7px"></ion-input>
+        </ion-col>
+        <ion-col col-1 *ngIf="zones[zones.length-1].editable === true">
+          <ion-icon float-right name="close" style="color:#ffffff; margin-right:10px;position: relative;top:15px;" (click)="removeZone(zones.length-1);"></ion-icon>
+        </ion-col>
+  </ion-row>
+
   <ion-row style="margin-bottom:2px;background: #272753;">
     <ion-col>
       <button ion-button full style="background: #33335d">Περισσοτερα</button>
