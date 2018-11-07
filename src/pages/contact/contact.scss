@@ -10,6 +10,7 @@ page-contact {
     }
     .tabs-md .tab-button[aria-selected=true] {
         color: #FFC400 !important;
+        border-bottom: 2px solid #ffc200;
     }
     .tabs-md .tab-button[aria-selected=true] .tab-button-icon {
         color: #FFC400 !important;
