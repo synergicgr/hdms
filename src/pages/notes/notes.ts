@@ -59,4 +59,9 @@ export class NotesPage {
   openNote(index):void{
     this.navCtrl.setRoot(ViewNotePage, {note:this.notes[index]});
   }
+
+  deleteNote(index):void{
+    console.log("Deleting", this.notes[index]);
+    this.notes.splice(index, 1);
+  }
 }
