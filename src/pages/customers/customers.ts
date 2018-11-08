@@ -5,6 +5,7 @@ import { CustomersProvider } from '../../providers/customers/customers';
 import { DashboardPage } from '../dashboard/dashboard';
 import { CustomerInfoPage } from '../customer-info/customer-info';
 import { PopOverPage } from '../pop-over/pop-over';
+import { templateJitUrl } from '@angular/compiler';
 
 @IonicPage()
 @Component({
@@ -17,8 +18,9 @@ export class CustomersPage {
   private popover2;
   openPopOver1: boolean;
   openPopOver2: boolean;
+  searchInput:string;
 
-  customers: Array<{ name: string, surname: string, city: string }>;
+  customers: Array<{ name: string, surname: string, city: string, visible:boolean }>;
 
   constructor(
     public navCtrl: NavController,
@@ -118,5 +120,59 @@ export class CustomersPage {
       ]
     });
     alert.present();
+  }
+
+  onInput(event):void{
+    let value = event.target.value;
+
+    for(let i = 0; i < this.customers.length; i++)
+    {
+      if(value === "")
+      {
+        this.customers[i].visible = true;
+      }
+      else if(this.customers[i].name.startsWith(value) || this.customers[i].surname.startsWith(value) || this.customers[i].city.startsWith(value))
+      {
+        this.customers[i].visible = true;
+      }
+      else{
+        this.customers[i].visible = false;
+      }
+    }
+  }
+
+  onCancel(event):void{
+    for(let i = 0; i < this.customers.length; i++)
+    {
+      this.customers[i].visible = true;
+    }
+  }
+
+  getVisibleCustomersCount(){
+    let count = 0;
+
+    for(let i = 0; i < this.customers.length; i++)
+    {
+      if(this.customers[i].visible === true)
+      {
+        count += 1;
+      }
+    }
+
+    return count;
+  }
+
+  public getVisibleCustomers(){
+    let temp = [];
+
+    for(let i = 0; i < this.customers.length; i++)
+    {
+      if(this.customers[i].visible === true)
+      {
+        temp.push(this.customers[i]);
+      }
+    }
+
+    return temp;
   }
 }

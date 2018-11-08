@@ -1,5 +1,4 @@
 <ion-content class="ion-content">
-  <div style="color:#ffc200;margin-bottom: 10px;">ΕΓΓΡΑΦΗ ΝΕΟΥ ΠΕΛΑΤΗ</div>
 
   <ion-row>
     <ion-col col-12 col-lg no-padding>
@@ -260,7 +259,17 @@
     </ion-col>
   </ion-row>
 
-  <ion-row style="margin-top:5px;background: #272753; border-top-left-radius: 10px; border-top-right-radius: 10px;">
+
+  <ion-row *ngIf="zones.length === 0" style="margin-top:5px;background: #272753; border-radius: 10px;">
+    <ion-col col-11 style="color:#8c8ca9;padding-left: 10px;font-size: 9px">
+      ΖΩΝΟΠΟΙΗΣΗ ΣΥΣΤΗΜΑΤΟΣ
+    </ion-col>
+    <ion-col col-1>
+      <ion-icon float-right name="add" style="color: #ffc200;padding-right: 10px;font-size: 20px;" (click)="addZone()"></ion-icon>
+    </ion-col>
+  </ion-row>
+
+  <ion-row *ngIf="zones.length > 0" style="margin-top:5px;background: #272753; border-top-left-radius: 10px; border-top-right-radius: 10px;">
     <ion-col col-11 style="color:#8c8ca9;padding-left: 10px;font-size: 9px">
       ΖΩΝΟΠΟΙΗΣΗ ΣΥΣΤΗΜΑΤΟΣ
     </ion-col>
@@ -326,7 +335,7 @@
     </ion-col>
   </ion-row>
 
-  <ion-row style="margin-bottom:2px;background: #272753;border-radius: 10px;">
+  <ion-row style="margin-top:5px; margin-bottom:2px;background: #272753;border-radius: 10px;">
     <ion-col>
       <button ion-button full style="background: #33335d">Περισσοτερα</button>
     </ion-col>
@@ -372,7 +381,17 @@
     </ion-col>
   </ion-row>
 
-  <ion-row style="margin-top:5px;background: #272753;border-top-left-radius: 10px; border-top-right-radius: 10px;">
+
+  <ion-row *ngIf="alarmUsers.length === 0" style="margin-top:5px;background: #272753;border-radius: 10px;">
+    <ion-col col-11 style="color:#8c8ca9;padding-left: 10px;font-size: 9px">
+      ΟΝΟΜΑΤΑ ΧΡΗΣΤΩΝ ΣΥΝΑΓΕΡΜΟΥ (Users)
+    </ion-col>
+    <ion-col col-1>
+      <ion-icon float-right name="add" style="color: #ffc200;padding-right: 10px;font-size: 20px;" (click)="addAlarmUser()"></ion-icon>
+    </ion-col>
+  </ion-row>
+
+  <ion-row *ngIf="alarmUsers.length > 0" style="margin-top:5px;background: #272753;border-top-left-radius: 10px; border-top-right-radius: 10px;">
     <ion-col col-11 style="color:#8c8ca9;padding-left: 10px;font-size: 9px">
       ΟΝΟΜΑΤΑ ΧΡΗΣΤΩΝ ΣΥΝΑΓΕΡΜΟΥ (Users)
     </ion-col>

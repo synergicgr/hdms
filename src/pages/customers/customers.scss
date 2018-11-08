@@ -16,5 +16,11 @@ page-customers {
     }
     .myCustomSelect {
         max-width: 100% !important;
+    }
+    .searchbar-md.has-content .searchbar-search-icon {
+        display: none !important;
+    }
+    .searchbar-md.has-content .searchbar-md-cancel {
+        display: block !important;
     }    
 }

@@ -25,6 +25,7 @@ export class CustomerInfoPage {
   @ViewChild('tabs') tabRef: Tabs;
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {
+    console.log(navParams.data.draft);
   }
 
   ionViewDidLoad() {

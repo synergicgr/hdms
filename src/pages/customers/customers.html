@@ -15,8 +15,16 @@
 </ion-header>
 
 <ion-content class="ion-content">
-  <div style="float:left;color:#fff; margin-top: 12px;margin-left: 10px;">
-    {{customers.length}} Πελάτες
+  <div style="background:#272753;">
+      <ion-searchbar
+      [(ngModel)]="searchInput"
+      [showCancelButton]="true"
+      (ionInput)="onInput($event)"
+      (ionCancel)="onCancel($event)">
+    </ion-searchbar>
+  </div>
+  <div style="float:left;color:#ffc200; margin-top: 7px;margin-left: 10px;font-size: 20px;">
+    {{getVisibleCustomersCount()}} Πελάτες
   </div>
   <div style="float:right;position: relative;top:5px;">
     <button (click)="presentPopover($event)" style="background: transparent !important;">
@@ -28,8 +36,8 @@
   </div>
 
   <ion-grid>
-    <ion-row *ngFor="let customer of customers; let i = index;" style="background: #272753; margin-bottom: 2px; padding-bottom:10px;height: 60px;border-radius: 10px;" (click)="openCustomer(i)">
-      <ion-col col-11>
+    <ion-row *ngFor="let customer of getVisibleCustomers(); let i = index;" style="background: #272753; margin-bottom: 2px; padding-bottom:10px;height: 60px;border-radius: 10px;" (click)="openCustomer(i)">
+      <ion-col col-11 >
         <div>
           <div style="color:#8c8ca9; position: relative;top:5px;">{{customer.name}} {{customer.surname}}</div>
           <div style="color:#8c8ca9;position: relative;top:5px;">{{customer.city}}</div>
@@ -37,7 +45,7 @@
       </ion-col>
       <ion-col col-1 style="display: flex;
       justify-content: center;
-      align-items: center;">
+      align-items: center;" *ngIf="customer.visible === true">
           <img width="10" height="10" alt="right-arrow" style="position: relative;top:5px;" src="../../assets/imgs/arrow-icon.png">
       </ion-col>        
     </ion-row>

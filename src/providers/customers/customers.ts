@@ -1,27 +1,22 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { CustomersPage } from '../../pages/customers/customers';
+import { visitAll } from '@angular/compiler';
 
-/*
-  Generated class for the CustomersProvider provider.
-
-  See https://angular.io/guide/dependency-injection for more info on providers
-  and Angular DI.
-*/
 @Injectable()
 export class CustomersProvider {
 
-  customers:Array<{name: string, surname: string, city: string}> = [
-    {name:'Γρηγόρης', surname:'Σαμαράς', city:'Αθήνα'}, 
-    {name:'Χάρης', surname:'Γεωργακόπουλος', city:'Θεσσαλονίκη'},
-    {name:'Ελένη', surname:'Ψαθά', city:'Χαλάνδρι'},
+  customers:Array<{name: string, surname: string, city: string, visible:boolean, draft:boolean}> = [
+    {name:'Γρηγόρης', surname:'Σαμαράς', city:'Αθήνα', visible:true, draft:true}, 
+    {name:'Χάρης', surname:'Γεωργακόπουλος', city:'Θεσσαλονίκη', visible:true, draft:true},
+    {name:'Ελένη', surname:'Ψαθά', city:'Χαλάνδρι', visible:true, draft:false},
    ];
 
   constructor(public http: HttpClient) {
     console.log('Hello CustomersProvider Provider');
   }
 
-  getCustomers():Array<{name: string, surname: string, city: string}>{
+  getCustomers():Array<{name: string, surname: string, city: string, visible:boolean, draft:boolean}>{
     return this.customers;
   }
 

@@ -1,8 +1,20 @@
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<ion-header>
+    <ion-navbar>      
+      <ion-title style="color:#ffc200">
+          <span style="font-size:14px;opacity: 0.75;">ΕΓΓΡΑΦΗ ΝΕΟΥ ΠΕΛΑΤΗ</span>
+      </ion-title>
+      <ion-buttons end *ngIf="navParams.data.draft === true">
+        <button ion-button small block color="app-yellow">
+          Delete
+        </button>
+      </ion-buttons>      
+    </ion-navbar>
+  </ion-header>
+
 <ion-content padding>
   <ion-tabs #tabs tabsPlacement="top">
-    <ion-tab [root]="tab1Root" [rootParams]="navParams.data" tabTitle="ΝΕΟΣ ΠΕΛΑΤΗΣ"></ion-tab>
-    <ion-tab [root]="tab2Root" [rootParams]="navParams.data" tabTitle="ΣΤΟΙΧΕΙΑ ΕΓΚΑΤΑΣΤΑΤΗ"></ion-tab>
+    <ion-tab [root]="tab1Root" [rootParams]="navParams.data" tabTitle="ΠΕΛΑΤΗΣ"></ion-tab>
+    <ion-tab [root]="tab2Root" [rootParams]="navParams.data" tabTitle="ΕΓΚΑΤΑΣΤΑΤΗΣ"></ion-tab>
   </ion-tabs>
 
 </ion-content>
