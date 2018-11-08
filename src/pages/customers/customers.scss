@@ -17,10 +17,9 @@ page-customers {
     .myCustomSelect {
         max-width: 100% !important;
     }
-    .searchbar-md.has-content .searchbar-search-icon {
-        display: none !important;
+
+    .searchbar-md .searchbar-input {
+        background: transparent !important;
+        color: #fff;
     }
-    .searchbar-md.has-content .searchbar-md-cancel {
-        display: block !important;
-    }    
 }

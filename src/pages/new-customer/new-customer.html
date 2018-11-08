@@ -44,17 +44,17 @@
   </ion-row>
 
   <ion-row style="margin-top:5px;background: #272753;border-top-left-radius: 10px; border-top-right-radius: 10px;">
-    <ion-col col-12 col-lg no-padding style="color:#8c8ca9;margin-left: 10px;font-size: 9px;">
+    <ion-col col-12 col-lg no-padding style="color:#8c8ca9;margin-left: 10px;margin-top:20px; font-size: 9px;position: relative;bottom: 10px;">
       ΔΙΕΥΘΥΝΣΗ ΑΣΦΑΛΙΖΟΜΕΝΟΥ ΧΩΡΟΥ
     </ion-col>
   </ion-row>
 
-  <ion-row style="background: #272753">
-    <ion-col col-6 col-lg no-padding>
+  <ion-row style="background: #272753;">
+    <ion-col col-6 col-lg no-padding style="position:relative;top:10px;">
       <input type="text" style="width: 100%;height: 50px;" class="inputText" no-margin [(ngModel)]="insuredAreaAddress">
       <span class="floating-label">ΟΔΟΣ - ΑΡΙΘΜΟΣ</span>
     </ion-col>
-    <ion-col col-6 col-lg no-padding>
+    <ion-col col-6 col-lg no-padding style="position:relative;top:10px;">
       <input type="text" style="width: 100%;height: 50px;" class="inputText" no-margin [(ngModel)]="insuredAreaCity">
       <span class="floating-label">ΠΟΛΗ</span>
     </ion-col>
@@ -248,12 +248,12 @@
     <ion-col col-12>
       <ion-range min="1" max="24" step="1" snaps="true" pin="true" color="app-yellow" [(ngModel)]="frequency24HourTest"></ion-range>
       <div style="position:relative; top:-20px;">
-        <span style="position:relative; left:43px;">4</span>
-        <span style="position:relative; left:85px;">8</span>
-        <span style="position:relative; left:120px;">12</span>
-        <span style="position:relative; left:155px;">16</span>
-        <span style="position:relative; left:190px;">20</span>
-        <span style="position:relative; left:220px;">24</span>
+        <span style="position:relative; left:43px;color:#8c8ca9;">4</span>
+        <span style="position:relative; left:85px;color:#8c8ca9;">8</span>
+        <span style="position:relative; left:120px;color:#8c8ca9;">12</span>
+        <span style="position:relative; left:155px;color:#8c8ca9;">16</span>
+        <span style="position:relative; left:190px;color:#8c8ca9;">20</span>
+        <span style="position:relative; left:220px;color:#8c8ca9;">24</span>
       </div>
 
     </ion-col>
