@@ -106,11 +106,11 @@ export class CustomersPage {
           text: 'Cancel',
           role: 'cancel',
           handler: data => {
-            
+
           }
         },
         {
-          text: 'Προσθήκη',
+          text: 'Προσθηκη',
           handler: data => {
             this.customersProvider.addCustomer({name:data.name, surname:data.surname, city:data.city});
           }

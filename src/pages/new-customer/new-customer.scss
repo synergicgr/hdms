@@ -4,11 +4,10 @@ page-new-customer {
         top: 5px;
         bottom: 10px;
         left: 10px;
-        font-size: 11px;
         opacity: 1;
     }
     .inputText {
-        font-size: 14px;
+        font-size: 12px;
         background: #272753;
         border: 0;
         padding-left: 10px;
@@ -19,6 +18,7 @@ page-new-customer {
         pointer-events: none;
         left: 20px;
         top: 18px;
+        font-size: 9px;
         transition: 0.2s ease all;
         color: #8c8ca9;
     }
@@ -36,5 +36,9 @@ page-new-customer {
     }
     .range-ios .range-knob-handle .range-pin {
         transform: translate3d(0, 0, 0) scale(1);
+    }
+    
+    textarea{
+        font-size: 12px;
     }
 }

@@ -4,7 +4,7 @@
       <ion-icon name="menu"></ion-icon>
     </button>
     <ion-title style="text-align:center;">
-      <img alt="logo" height="50" src="../../assets/imgs/Hellas-Dns-logo.png" style="margin-right:20px;">
+      <img alt="logo" height="50px" src="../../assets/imgs/Hellas-Dns-logo.png" style="margin-right:20px;">
     </ion-title>
     <ion-buttons end>
       <button ion-button color="white" icon-only menuClose (click)="presentPopover2($event)">
@@ -31,33 +31,15 @@
     <ion-row *ngFor="let customer of customers; let i = index;" style="background: #272753; margin-bottom: 2px; padding-bottom:10px;height: 60px;border-radius: 10px;" (click)="openCustomer(i)">
       <ion-col col-11>
         <div>
-          <div style="color:#8c8ca9;">{{customer.name}} {{customer.surname}}</div>
-          <div style="color:#8c8ca9;">{{customer.city}}</div>
+          <div style="color:#8c8ca9; position: relative;top:5px;">{{customer.name}} {{customer.surname}}</div>
+          <div style="color:#8c8ca9;position: relative;top:5px;">{{customer.city}}</div>
         </div>
       </ion-col>
       <ion-col col-1 style="display: flex;
       justify-content: center;
       align-items: center;">
-          <img width="20" height="20" alt="right-arrow" src="../../assets/imgs/arrow-icon.png">
-      </ion-col>
-            
-      <!-- <ion-col style="display: flex;
-      justify-content: center;
-      align-items: center;color:#8c8ca9; border-right: 1px solid #37375e;line-height: 5px;"
-        col-5>
-        <p no-margin>{{customer.city}}</p>
-      </ion-col>
-      <ion-col style="color:#8c8ca9;display: flex;
-      align-items: center;" col-5>
-        <p no-margin>{{customer.name}} {{customer.surname}}</p>
-      </ion-col>
-      <ion-col col-2 style="display: flex;
-      justify-content: center;
-      align-items: center;">
-        <button style="background: transparent !important;" (click)="openCustomer(i)">
-          <img width="30" height="30" alt="right-arrow" src="../../assets/imgs/arrow-icon.png">
-        </button>
-      </ion-col> -->
+          <img width="10" height="10" alt="right-arrow" style="position: relative;top:5px;" src="../../assets/imgs/arrow-icon.png">
+      </ion-col>        
     </ion-row>
   </ion-grid>
 

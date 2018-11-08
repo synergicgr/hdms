@@ -32,9 +32,24 @@
 }
 
 .item {
-    min-height: 30px; /* <- this can be whatever you need */
+    min-height: 30px;
+    /* <- this can be whatever you need */
 }
 
 .ion-popover .popover-content {
     width: 150px !important;
+}
+
+ion-navbar.toolbar {
+    height: 50px !important;
+}
+
+//on Android
+ion-navbar.toolbar-md {
+    height: 50px !important;
+}
+
+//on iOS
+ion-navbar.toolbar.toolbar-ios {
+    height: 50px !important;
 }

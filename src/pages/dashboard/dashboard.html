@@ -4,7 +4,7 @@
       <ion-icon name="menu"></ion-icon>
     </button>
     <ion-title style="text-align:center;">
-      <img alt="logo" height="60" src="../../assets/imgs/Hellas-Dns-logo.png" style="margin-right:20px;">
+      <img alt="logo" height="50px" src="../../assets/imgs/Hellas-Dns-logo.png" style="position:relative;right:10px;">
     </ion-title>
     <ion-buttons end>
       <button ion-button color="white" icon-only menuClose (click)="presentPopover($event)">
@@ -16,21 +16,17 @@
 
 <ion-content padding class="ion-content">
 
-  <div style="color:#ffc200;font-size: 20px;margin-bottom: 20px;">
-    Dashboard
-  </div>
-
   <ion-row>
     <ion-col col-1 no-padding>
       <img src="../assets/imgs/icon6.png" style="width:30px;height:30px;position: relative;right: 5px;">
     </ion-col>
     <ion-col col-5 no-padding>
-      <div style="color:#ffffff; position: relative; top:5px;right:5px;">Ειδοποιήσεις<ion-badge style="margin-left:5px;" id="notifications-badge"
+      <div style="color:#ffffff; position: relative; top:5px;">Ειδοποιήσεις<ion-badge style="margin-left:5px;border-radius:100%;" id="notifications-badge"
           color="app-yellow">5</ion-badge>
       </div>
     </ion-col>
     <ion-col col-5 no-padding>
-      <div style="color:#ffffff"> Δειτε ολες τις ειδοποιήσεις σας
+      <div style="color:#ffffff;position: relative;top:5px;">Οι ειδοποιήσεις σας
       </div>
     </ion-col>
     <ion-col col-1>
@@ -44,12 +40,12 @@
       <img src="../assets/imgs/icon3.png" style="width:30px;height:30px;">
     </ion-col>
     <ion-col col-5 no-padding>
-      <div style="color:#ffffff;position: relative; top:5px;">Σημειώσεις<ion-badge style="margin-left:5px;" id="notifications-badge"
+      <div style="color:#ffffff;position: relative; top:5px;">Σημειώσεις<ion-badge style="margin-left:10px;border-radius:100%;" id="notifications-badge"
           color="app-yellow">10</ion-badge>
       </div>
     </ion-col>
     <ion-col col-5 no-padding>
-      <div style="color:#ffffff"> Δείτε όλες τις σημειώσεις σας
+      <div style="color:#ffffff;position: relative;top:5px;"> Οι σημειώσεις σας
       </div>
     </ion-col>
     <ion-col col-1>
@@ -59,12 +55,12 @@
 
   <hr>
 
-  <div style="margin-top: 40px;">
+  <div style="margin-top: 20px;">
     <div style="display:inline-block;color:#ffc200; font-size: 40px;">10</div>
     <div style="display:inline-block;color:#ffffff;width:100px;border-right:1px solid white;">Εβδομαδιαίες εγγραφές</div>
-    <div style="display:inline-block;color:#ffffff;width:120px;margin-left: 10px;">Δείτε τις εγγραφές σας</div>
+    <div style="display:inline-block;color:#ffffff;width:120px;margin-left: 10px;">Οι εγγραφές σας</div>
     <div style="display:inline-block;color:#ffffff;">
-      <ion-icon name="ios-arrow-dropright" style="position:relative; top: -5px;left:-20px;font-size: 30px;"></ion-icon>
+      <ion-icon name="ios-arrow-dropright" style="font-size: 30px;"></ion-icon>
     </div>
   </div>
   <ion-row>
