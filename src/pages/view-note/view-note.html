@@ -20,14 +20,32 @@
   </div>
 
   <ion-row>
-    <ion-col col-12 style="color:#8c8ca9">
-      {{note.showDate}}
+    <ion-col col-12>
+      <input type="text" style="width: 100%;height: 50px;border-radius: 10px;" class="inputText" no-margin [(ngModel)]="note.creationDate">
+      <span class="floating-label">ΗΜΕΡΟΜΗΝΙΑ</span>
     </ion-col>
+
   </ion-row>
   <ion-row>
-    <ion-col col-12 style="color:#8c8ca9">
-      {{note.content}}
+    <ion-col col-12>
+      <input type="text" style="width: 100%;height: 50px;border-radius: 10px;" class="inputText" no-margin [(ngModel)]="note.title">
+      <span class="floating-label">ΤΙΤΛΟΣ</span>
     </ion-col>
   </ion-row>
+
+  <ion-row style="background: #272753;border-top-left-radius: 10px;border-top-right-radius: 10px;">
+    <ion-col col-12 col-lg style="color:#8c8ca9;margin-left: 10px;">
+      ΠΕΡΙΕΧΟΜΕΝΟ
+    </ion-col>
+  </ion-row>
+  <ion-row style="background: #272753;border-bottom-left-radius: 10px;border-bottom-right-radius: 10px;">
+    <ion-col col-12>
+      <ion-textarea style="height:80px;color:#ffffff; margin-left: 5px;" [(ngModel)]="note.content"></ion-textarea>
+    </ion-col>
+  </ion-row>
+
+  <button ion-button full color="app-yellow" style="font-weight:bold;margin-top:20px;">
+    ΑΠΟΘΗΚΕΥΣΗ
+  </button>
 
 </ion-content>
