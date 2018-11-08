@@ -35,8 +35,6 @@ import { NotificationsPage } from '../pages/notifications/notifications';
 import { TruncateModule } from '@yellowspot/ng-truncate';
 import { ViewNotePage } from '../pages/view-note/view-note';
 
-
-
 @NgModule({
   declarations: [
     MyApp,
@@ -58,8 +56,8 @@ import { ViewNotePage } from '../pages/view-note/view-note';
     NewCustomerPage,
     InstallerDetailsPage,
     NotificationsPage,
-    ViewNotePage
-  ],
+    ViewNotePage,
+    ],
   imports: [
     BrowserModule,    
     IonicModule.forRoot(MyApp, { scrollAssist: false, autoFocusAssist: false } ),
@@ -89,7 +87,8 @@ import { ViewNotePage } from '../pages/view-note/view-note';
     NewCustomerPage,
     InstallerDetailsPage,
     NotificationsPage,
-    ViewNotePage
+    ViewNotePage,
+  
   ],
   providers: [
     Network,

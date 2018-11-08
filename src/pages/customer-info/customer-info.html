@@ -1,7 +1,8 @@
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <ion-content padding>
   <ion-tabs #tabs tabsPlacement="top">
-    <ion-tab [root]="tab1Root" tabTitle="Νεος πελατης"></ion-tab>
-    <ion-tab [root]="tab2Root" tabTitle="Στοιχεια εγκαταστατη"></ion-tab>
+    <ion-tab [root]="tab1Root" [rootParams]="navParams.data" tabTitle="Νεος πελατης"></ion-tab>
+    <ion-tab [root]="tab2Root" [rootParams]="navParams.data" tabTitle="Στοιχεια εγκαταστατη"></ion-tab>
   </ion-tabs>
 
 </ion-content>

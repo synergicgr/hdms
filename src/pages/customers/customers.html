@@ -4,7 +4,7 @@
       <ion-icon name="menu"></ion-icon>
     </button>
     <ion-title style="text-align:center;">
-      <img alt="logo" height="60" src="../../assets/imgs/Hellas-Dns-logo.png" style="margin-right:20px;">
+      <img alt="logo" height="50" src="../../assets/imgs/Hellas-Dns-logo.png" style="margin-right:20px;">
     </ion-title>
     <ion-buttons end>
       <button ion-button color="white" icon-only menuClose (click)="presentPopover2($event)">
@@ -14,22 +14,34 @@
   </ion-navbar>
 </ion-header>
 
-<ion-content padding class="ion-content">
-  <div style="float:left;color:#fff">
-    Οι Πελατες μου
+<ion-content class="ion-content">
+  <div style="float:left;color:#fff; margin-top: 12px;margin-left: 10px;">
+    {{customers.length}} Πελάτες
   </div>
-  <div style="float:right;">
+  <div style="float:right;position: relative;top:5px;">
     <button (click)="presentPopover($event)" style="background: transparent !important;">
       <img width="30" height="30" alt="sorting" src="../../assets/imgs/FILTRA-icon.png">
     </button>
   </div>
-  <div style="float:right;position:relative;top:-10px;">
+  <div style="float:right;position: relative; top: -2px;">
     <ion-label style="color:#fff">Ταξινόμηση ανα</ion-label>
   </div>
 
   <ion-grid>
-    <ion-row *ngFor="let customer of customers; let i = index;" style="background: #272753;margin-bottom: 2px;height: 40px;border-radius: 10px;">
-      <ion-col style="display: flex;
+    <ion-row *ngFor="let customer of customers; let i = index;" style="background: #272753; margin-bottom: 2px; padding-bottom:10px;height: 60px;border-radius: 10px;" (click)="openCustomer(i)">
+      <ion-col col-11>
+        <div>
+          <div style="color:#8c8ca9;">{{customer.name}} {{customer.surname}}</div>
+          <div style="color:#8c8ca9;">{{customer.city}}</div>
+        </div>
+      </ion-col>
+      <ion-col col-1 style="display: flex;
+      justify-content: center;
+      align-items: center;">
+          <img width="20" height="20" alt="right-arrow" src="../../assets/imgs/arrow-icon.png">
+      </ion-col>
+            
+      <!-- <ion-col style="display: flex;
       justify-content: center;
       align-items: center;color:#8c8ca9; border-right: 1px solid #37375e;line-height: 5px;"
         col-5>
@@ -45,7 +57,14 @@
         <button style="background: transparent !important;" (click)="openCustomer(i)">
           <img width="30" height="30" alt="right-arrow" src="../../assets/imgs/arrow-icon.png">
         </button>
-      </ion-col>
+      </ion-col> -->
     </ion-row>
   </ion-grid>
+
+
+  <ion-fab bottom right>
+    <button ion-fab color="app-yellow" (click)="presentPrompt()">
+      <ion-icon name="add" color="dark"></ion-icon>
+    </button>
+  </ion-fab>
 </ion-content>

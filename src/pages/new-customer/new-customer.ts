@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import * as $ from 'jquery';
 
 @IonicPage()
 @Component({
@@ -34,30 +35,30 @@ export class NewCustomerPage {
 
 
   phoneNotices: Array<{ name: string, phone: string, editable:boolean}> = [
-    { name: "Ελένη Γεωργίου", phone: "211 45 55 456", editable:false },
-    { name: "Βαγγέλης Γεωργίου", phone: "687 64 52 354", editable:false },
-    { name: "Αγγελική Γεωργίου", phone: "687 64 52 354", editable:false },
+    // { name: "Ελένη Γεωργίου", phone: "211 45 55 456", editable:false },
+    // { name: "Βαγγέλης Γεωργίου", phone: "687 64 52 354", editable:false },
+    // { name: "Αγγελική Γεωργίου", phone: "687 64 52 354", editable:false },
   ];
 
   zones: Array<{ name: string, id: string, editable:boolean }> = [
-    { name: "ΖΩΝΗ 1", id: "ΑΒ1128336", editable:false },
-    { name: "ΖΩΝΗ 2", id: "ΑΒ1128336" , editable:false },
-    { name: "ΖΩΝΗ 3", id: "ΑΒ1128336" , editable:false },
-    { name: "ΖΩΝΗ 4", id: "ΑΒ1128336" , editable:false },
-    { name: "ΖΩΝΗ 5", id: "ΑΒ1128336" , editable:false },
-    { name: "ΖΩΝΗ 6", id: "ΑΒ1128336" , editable:false },
-    { name: "ΖΩΝΗ 7", id: "ΑΒ1128336" , editable:false },
-    { name: "ΖΩΝΗ 8", id: "ΑΒ1128336" , editable:false },
+    // { name: "ΖΩΝΗ 1", id: "ΑΒ1128336", editable:false },
+    // { name: "ΖΩΝΗ 2", id: "ΑΒ1128336" , editable:false },
+    // { name: "ΖΩΝΗ 3", id: "ΑΒ1128336" , editable:false },
+    // { name: "ΖΩΝΗ 4", id: "ΑΒ1128336" , editable:false },
+    // { name: "ΖΩΝΗ 5", id: "ΑΒ1128336" , editable:false },
+    // { name: "ΖΩΝΗ 6", id: "ΑΒ1128336" , editable:false },
+    // { name: "ΖΩΝΗ 7", id: "ΑΒ1128336" , editable:false },
+    // { name: "ΖΩΝΗ 8", id: "ΑΒ1128336" , editable:false },
   ];
 
   alarmUsers: Array<{ username: string, name: string, editable:boolean }> = [
-    { username: "K25LS", name: "Μαρία", editable:false },
-    { username: "MARY1", name: "Μαρία" , editable:false},
-    { username: "USERKF", name: "Μαρία" , editable:false},
-    { username: "K25LS", name: "Μαρία" , editable:false},
+    // { username: "K25LS", name: "Μαρία", editable:false },
+    // { username: "MARY1", name: "Μαρία" , editable:false},
+    // { username: "USERKF", name: "Μαρία" , editable:false},
+    // { username: "K25LS", name: "Μαρία" , editable:false},
   ];
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  constructor(public navCtrl: NavController, public navParams: NavParams) {    
   }
 
   ionViewDidLoad() {

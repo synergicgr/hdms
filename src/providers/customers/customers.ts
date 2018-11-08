@@ -75,4 +75,8 @@ export class CustomersProvider {
       });
     }     
   }
+
+  public addCustomer(customer):void{
+    this.customers.push(customer);
+  }
 }

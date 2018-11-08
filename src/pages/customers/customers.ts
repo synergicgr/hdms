@@ -1,11 +1,10 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, PopoverController, Platform, Events } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, PopoverController, Platform, Events, AlertController } from 'ionic-angular';
 import { SortPopOverPage } from '../sort-pop-over/sort-pop-over';
 import { CustomersProvider } from '../../providers/customers/customers';
 import { DashboardPage } from '../dashboard/dashboard';
 import { CustomerInfoPage } from '../customer-info/customer-info';
 import { PopOverPage } from '../pop-over/pop-over';
-
 
 @IonicPage()
 @Component({
@@ -25,9 +24,10 @@ export class CustomersPage {
     public navCtrl: NavController,
     public navParams: NavParams,
     private popOverController: PopoverController,
-    customersProvider: CustomersProvider,
-    platform: Platform,
-    private events:Events
+    private customersProvider: CustomersProvider,
+    private platform: Platform,
+    private events:Events,
+    private alertCtrl:AlertController
     ) {
 
     events.subscribe('dismiss', (data, time) => {
@@ -82,5 +82,41 @@ export class CustomersPage {
   openCustomer(index:number):void{
     console.log("Customer ", this.customers[index].name);
     this.navCtrl.push(CustomerInfoPage, this.customers[index]);
+  }
+
+  presentPrompt() {
+    let alert = this.alertCtrl.create({
+      title: 'Προσθήκη πελάτη',
+      inputs: [
+        {
+          name: 'name',
+          placeholder: 'Όνομα'
+        },
+        {
+          name: 'surname',
+          placeholder: 'Επίθετο',
+        },
+        {
+          name: 'city',
+          placeholder: 'Πόλη',
+        }
+      ],
+      buttons: [
+        {
+          text: 'Cancel',
+          role: 'cancel',
+          handler: data => {
+            
+          }
+        },
+        {
+          text: 'Προσθήκη',
+          handler: data => {
+            this.customersProvider.addCustomer({name:data.name, surname:data.surname, city:data.city});
+          }
+        }
+      ]
+    });
+    alert.present();
   }
 }
