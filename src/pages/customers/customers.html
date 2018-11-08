@@ -39,7 +39,8 @@
     <ion-row *ngFor="let customer of getVisibleCustomers(); let i = index;" style="background: #272753; margin-bottom: 2px; padding-bottom:10px;height: 60px;border-radius: 10px;" (click)="openCustomer(i)">
       <ion-col col-11 >
         <div>
-          <div style="color:#8c8ca9; position: relative;top:5px;">{{customer.name}} {{customer.surname}}</div>
+          <div style="display: inline-block;color:#8c8ca9; position: relative;top:5px;">{{customer.name}} {{customer.surname}}</div>
+          <div style="display: inline-block;position:relative; top: 5px; color:red;margin-left: 10px;" *ngIf="customer.draft === true">Draft</div>
           <div style="color:#8c8ca9;position: relative;top:5px;">{{customer.city}}</div>
         </div>
       </ion-col>
@@ -53,7 +54,7 @@
 
 
   <ion-fab bottom right>
-    <button ion-fab color="app-yellow" (click)="presentPrompt()">
+    <button ion-fab color="app-yellow" (click)="goToNewCustomer()">
       <ion-icon name="add" color="dark"></ion-icon>
     </button>
   </ion-fab>

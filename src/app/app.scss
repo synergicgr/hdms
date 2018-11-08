@@ -57,3 +57,11 @@ ion-navbar.toolbar.toolbar-ios {
 ion-header ion-icon.back-button-icon.icon {
     color: #ffc200;
 }
+
+.tab-button-text {
+    font-size: 10px !important;
+}
+
+.tabs-md .tab-button {
+    min-height: 4.6rem;
+}

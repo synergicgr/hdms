@@ -86,42 +86,6 @@ export class CustomersPage {
     this.navCtrl.push(CustomerInfoPage, this.customers[index]);
   }
 
-  presentPrompt() {
-    let alert = this.alertCtrl.create({
-      title: 'Προσθήκη πελάτη',
-      inputs: [
-        {
-          name: 'name',
-          placeholder: 'Όνομα'
-        },
-        {
-          name: 'surname',
-          placeholder: 'Επίθετο',
-        },
-        {
-          name: 'city',
-          placeholder: 'Πόλη',
-        }
-      ],
-      buttons: [
-        {
-          text: 'Cancel',
-          role: 'cancel',
-          handler: data => {
-
-          }
-        },
-        {
-          text: 'Προσθηκη',
-          handler: data => {
-            this.customersProvider.addCustomer({name:data.name, surname:data.surname, city:data.city});
-          }
-        }
-      ]
-    });
-    alert.present();
-  }
-
   onInput(event):void{
     let value = event.target.value;
 
@@ -174,5 +138,9 @@ export class CustomersPage {
     }
 
     return temp;
+  }
+
+  public goToNewCustomer():void{
+    this.navCtrl.push(CustomerInfoPage);
   }
 }
