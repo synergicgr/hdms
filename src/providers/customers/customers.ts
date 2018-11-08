@@ -74,4 +74,21 @@ export class CustomersProvider {
   public addCustomer(customer):void{
     this.customers.push(customer);
   }
+
+  public delete(data):void{
+    let index = 0;
+    for(let i = 0; i < this.customers.length; i++)
+    {
+      console.log("data name ",data.name, " data surname ", data.surname);
+      console.log("Customer: ",this.customers[i].name," ",this.customers[i].surname);
+      if(this.customers[i].name === data.name && this.customers[i].surname === data.surname)
+      {
+        index = i;
+      }
+    }
+
+    console.log("Index to delete ", index);
+
+    this.customers.splice(index, 1);
+  }
 }

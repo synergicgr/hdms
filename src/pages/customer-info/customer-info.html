@@ -4,8 +4,8 @@
           <span style="font-size:14px;opacity: 0.75;">ΕΓΓΡΑΦΗ ΝΕΟΥ ΠΕΛΑΤΗ</span>
       </ion-title>
       <ion-buttons end *ngIf="navParams.data.draft === true">
-        <button ion-button small block color="app-yellow">
-          Delete
+        <button ion-button small color="app-yellow" (click)="deleteCustomer()">
+          Διαγραφη
         </button>
       </ion-buttons>      
     </ion-navbar>
