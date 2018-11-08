@@ -106,10 +106,13 @@ export class CustomersPage {
   }
 
   onCancel(event):void{
-    for(let i = 0; i < this.customers.length; i++)
-    {
-      this.customers[i].visible = true;
-    }
+    event.target.value = "";    
+    this.onInput(event);
+  }
+
+  onClear(event):void{
+    event.target.value = "";    
+    this.onInput(event);
   }
 
   getVisibleCustomersCount(){
