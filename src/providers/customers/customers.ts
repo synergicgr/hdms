@@ -6,17 +6,17 @@ import { visitAll } from '@angular/compiler';
 @Injectable()
 export class CustomersProvider {
 
-  customers:Array<{name: string, surname: string, city: string, visible:boolean, draft:boolean}> = [
-    {name:'Γρηγόρης', surname:'Σαμαράς', city:'Αθήνα', visible:true, draft:true}, 
-    {name:'Χάρης', surname:'Γεωργακόπουλος', city:'Θεσσαλονίκη', visible:true, draft:true},
-    {name:'Ελένη', surname:'Ψαθά', city:'Χαλάνδρι', visible:true, draft:false},
+  customers:Array<{name: string, surname: string, city: string, visible:boolean, draft:boolean, publishedDate:string}> = [
+    {name:'Γρηγόρης', surname:'Σαμαράς', city:'Αθήνα', visible:true, draft:true, publishedDate:""}, 
+    {name:'Χάρης', surname:'Γεωργακόπουλος', city:'Θεσσαλονίκη', visible:true, draft:true, publishedDate:""},
+    {name:'Ελένη', surname:'Ψαθά', city:'Χαλάνδρι', visible:true, draft:false, publishedDate:"2018-11-07"},
    ];
 
   constructor(public http: HttpClient) {
     console.log('Hello CustomersProvider Provider');
   }
 
-  getCustomers():Array<{name: string, surname: string, city: string, visible:boolean, draft:boolean}>{
+  getCustomers():Array<{name: string, surname: string, city: string, visible:boolean, draft:boolean, publishedDate:string}>{
     return this.customers;
   }
 

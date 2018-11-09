@@ -29,22 +29,23 @@
   <div style="float:left;color:#ffc200; margin-top: 7px;margin-left: 10px;font-size: 20px;">
     {{getVisibleCustomersCount()}} Πελάτες
   </div>
-  <div style="float:right;position: relative;top:5px;">
+  <div style="float:right;position: relative;top:5px;right:5px;">
     <button (click)="presentPopover($event)" style="background: transparent !important;">
       <img width="30" height="30" alt="sorting" src="../../assets/imgs/FILTRA-icon.png">
     </button>
   </div>
   <div style="float:right;position: relative; top: -2px;">
-    <ion-label style="color:#fff">Ταξινόμηση ανα</ion-label>
+    <ion-label style="color:#747490">Ταξινόμηση ανα</ion-label>
   </div>
 
   <ion-grid class="grid">
     <ion-row *ngFor="let customer of getVisibleCustomers(); let i = index;" style="background: #272753; margin-bottom: 2px; padding-bottom:10px;height: 60px;border-radius: 10px;" (click)="openCustomer(i)">
       <ion-col col-12 >
-        <div>
-          <div style="display: inline-block;color:#8c8ca9; position: relative;top:5px;">{{customer.name}} {{customer.surname}}</div>
-          <div style="position:relative; top: 5px; float:right;color:red;margin-left: 10px;font-size: 12px;" *ngIf="customer.draft === true">Draft</div>
-          <div style="color:#8c8ca9;position: relative;top:5px;">{{customer.city}}</div>
+        <div>          
+          <div style="display: inline-block;color:#fff; position: relative;top:5px;font-size: 13px;margin-left: 10px;">{{customer.name}} {{customer.surname}}</div>
+          <div style="float:right;color:red;margin-left: 10px;font-size: 12px;position: relative;top:15px;" *ngIf="customer.draft === true">Draft</div>
+          <div style="position:relative; top: 15px; float:right;color:#747490;margin-left: 10px;font-size: 12px;" *ngIf="customer.draft === false">{{customer.publishedDate}}</div>
+          <div style="color:#747490;position: relative;top:5px;font-size: 10px;margin-left: 10px;">{{customer.city}}</div>
         </div>
       </ion-col>             
     </ion-row>

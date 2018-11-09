@@ -462,6 +462,6 @@
   </ion-row>
 </ion-content>
 
-<ion-footer>
+<ion-footer *ngIf="navParams.data.draft == true">
   <button ion-button full color="app-yellow" style="color:#000000;font-weight:bold;">Αποστολη</button>
 </ion-footer>
