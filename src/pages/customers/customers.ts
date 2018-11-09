@@ -144,6 +144,6 @@ export class CustomersPage {
   }
 
   public goToNewCustomer():void{
-    this.navCtrl.push(CustomerInfoPage);
+    this.navCtrl.setRoot(CustomerInfoPage);
   }
 }
