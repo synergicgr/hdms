@@ -59,6 +59,24 @@ export class NewCustomerPage {
   ];
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {    
+
+    $(function() {
+
+      $('ion-item #textinput').focus(function() {
+        $('input:radio[id=radioSelection]').prop('checked', true);
+      });
+    
+      $('ion-item #textinput').blur(function() {
+        $('input:radio[id=radioSelection]').prop('checked', false);
+      });
+    
+      //Suggestion: You can add this so that when user clicks on the radio btn, it will fucos on the textbox      
+      $('input:radio[id=radioSelection]').click(function(){
+        $('ion-item #textinput').focus();
+        console.log("Selected");
+      });
+    
+    });
   }
 
   ionViewDidLoad() {
