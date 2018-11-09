@@ -17,9 +17,13 @@ page-customers {
     .myCustomSelect {
         max-width: 100% !important;
     }
-
     .searchbar-md .searchbar-input {
         background: transparent !important;
         color: #fff;
+    }
+
+    .grid {
+        padding-left: 10px;
+        padding-right: 10px;
     }
 }

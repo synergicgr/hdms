@@ -38,20 +38,15 @@
     <ion-label style="color:#fff">Ταξινόμηση ανα</ion-label>
   </div>
 
-  <ion-grid>
+  <ion-grid class="grid">
     <ion-row *ngFor="let customer of getVisibleCustomers(); let i = index;" style="background: #272753; margin-bottom: 2px; padding-bottom:10px;height: 60px;border-radius: 10px;" (click)="openCustomer(i)">
-      <ion-col col-11 >
+      <ion-col col-12 >
         <div>
           <div style="display: inline-block;color:#8c8ca9; position: relative;top:5px;">{{customer.name}} {{customer.surname}}</div>
-          <div style="display: inline-block;position:relative; top: 5px; color:red;margin-left: 10px;font-size: 12px;" *ngIf="customer.draft === true">Draft</div>
+          <div style="position:relative; top: 5px; float:right;color:red;margin-left: 10px;font-size: 12px;" *ngIf="customer.draft === true">Draft</div>
           <div style="color:#8c8ca9;position: relative;top:5px;">{{customer.city}}</div>
         </div>
-      </ion-col>
-      <ion-col col-1 style="display: flex;
-      justify-content: center;
-      align-items: center;" >
-          <img width="10" height="10" alt="right-arrow" style="position: relative;top:5px;" src="../../assets/imgs/arrow-icon.png">
-      </ion-col>        
+      </ion-col>             
     </ion-row>
   </ion-grid>
 

@@ -1,20 +1,20 @@
 <ion-header>
-    <ion-navbar>      
-      <ion-title style="color:#ffc200">
-          <span style="font-size:14px;opacity: 0.75;">ΕΓΓΡΑΦΗ ΝΕΟΥ ΠΕΛΑΤΗ</span>
-      </ion-title>
-      <ion-buttons end *ngIf="navParams.data.draft === true">
-        <button ion-button small color="app-yellow" (click)="deleteCustomer()">
-          Διαγραφη
-        </button>
-      </ion-buttons>      
-    </ion-navbar>
-  </ion-header>
+  <ion-navbar>
+    <ion-title style="color:#ffc200">
+      <span style="font-size:14px;opacity: 0.75;" *ngIf="navParams.data.draft == false">{{navParams.data.name}} {{navParams.data.surname}}</span>
+      <span style="font-size:14px;opacity: 0.75;" *ngIf="navParams.data.draft == true">ΕΓΓΡΑΦΗ ΝΕΟΥ ΠΕΛΑΤΗ</span>
+    </ion-title>
+    <ion-buttons end *ngIf="navParams.data.draft === true">
+      <ion-icon name="trash" color="app-yellow" (click)="deleteCustomer()" style="font-size: 30px;margin-right:10px;">
+      </ion-icon>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
 
 <ion-content padding>
   <ion-tabs #tabs tabsPlacement="top">
     <ion-tab [root]="tab1Root" [rootParams]="navParams.data" tabTitle="ΠΕΛΑΤΗΣ"></ion-tab>
-    <ion-tab [root]="tab2Root" [rootParams]="navParams.data" tabTitle="ΕΓΚΑΤΑΣΤΑΣΗ"></ion-tab>
+    <ion-tab [root]="tab2Root" [rootParams]="navParams.data" tabTitle="ΕΓΚΑΤΑΣΤΑΤΗΣ"></ion-tab>
   </ion-tabs>
 
 </ion-content>
