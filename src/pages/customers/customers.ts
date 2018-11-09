@@ -138,9 +138,14 @@ export class CustomersPage {
 
   getVisibleCustomersCount() {
     let count = 0;
-
+    let enabled = this.customersProvider.enabled;
+    let disabled = this.customersProvider.disabled;
+    
     for (let i = 0; i < this.customers.length; i++) {
-      if (this.customers[i].visible === true) {
+      if(this.customers[i].enabled == true && enabled == true && this.customers[i].visible == true){
+        count += 1;
+      }
+      else if(this.customers[i].enabled == false && disabled == true && this.customers[i].visible == true){
         count += 1;
       }
     }
@@ -156,11 +161,11 @@ export class CustomersPage {
 
     for (let i = 0; i < this.customers.length; i++) {
 
-      if(this.customers[i].enabled == true && enabled == true)
+      if(this.customers[i].enabled == true && enabled == true && this.customers[i].visible == true)
       {
         temp.push(this.customers[i]);
       }
-      else if(this.customers[i].enabled == false && disabled == true)
+      else if(this.customers[i].enabled == false && disabled == true && this.customers[i].visible == true)
       {
         temp.push(this.customers[i]);
       }
