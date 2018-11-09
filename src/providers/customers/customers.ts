@@ -6,17 +6,20 @@ import { visitAll } from '@angular/compiler';
 @Injectable()
 export class CustomersProvider {
 
-  customers:Array<{name: string, surname: string, city: string, visible:boolean, draft:boolean, publishedDate:string}> = [
-    {name:'Γρηγόρης', surname:'Σαμαράς', city:'Αθήνα', visible:true, draft:true, publishedDate:""}, 
-    {name:'Χάρης', surname:'Γεωργακόπουλος', city:'Θεσσαλονίκη', visible:true, draft:true, publishedDate:""},
-    {name:'Ελένη', surname:'Ψαθά', city:'Χαλάνδρι', visible:true, draft:false, publishedDate:"2018-11-07"},
+  public enabled:boolean = true;
+  public disabled:boolean = false;
+
+  customers:Array<{name: string, surname: string, city: string, visible:boolean, draft:boolean, publishedDate:string, enabled:boolean}> = [
+    {name:'Γρηγόρης', surname:'Σαμαράς', city:'Αθήνα', visible:true, draft:true, publishedDate:"", enabled:true}, 
+    {name:'Χάρης', surname:'Γεωργακόπουλος', city:'Θεσσαλονίκη', visible:true, draft:true, publishedDate:"", enabled:true},
+    {name:'Ελένη', surname:'Ψαθά', city:'Χαλάνδρι', visible:true, draft:false, publishedDate:"2018-11-07", enabled:true},
    ];
 
   constructor(public http: HttpClient) {
     console.log('Hello CustomersProvider Provider');
   }
 
-  getCustomers():Array<{name: string, surname: string, city: string, visible:boolean, draft:boolean, publishedDate:string}>{
+  getCustomers():Array<{name: string, surname: string, city: string, visible:boolean, draft:boolean, publishedDate:string, enabled:boolean}>{
     return this.customers;
   }
 
@@ -90,5 +93,15 @@ export class CustomersProvider {
     console.log("Index to delete ", index);
 
     this.customers.splice(index, 1);
+  }
+
+  public setEnabled(enabled):void
+  {
+    this.enabled = enabled;
+  }
+
+  public setDisabled(disabled)
+  {
+    this.disabled = disabled;
   }
 }

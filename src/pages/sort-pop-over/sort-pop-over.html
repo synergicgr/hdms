@@ -1,8 +1,45 @@
-<ion-content style="background:#36365f; overflow: hidden;">
+<ion-header>
+  <ion-navbar style="background:#36365f;">
+    <ion-buttons end>
+      <button ion-button color="white" icon-only (click)="dismiss()">
+        <ion-icon name="close"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+<ion-content style="background:#36365f;">
+  <ion-row>
+    <ion-col style="color:#747490">
+      Εμφάνιση:
+    </ion-col>
+  </ion-row>
+
   <ion-list no-lines>
-    <button ion-item style="background:#36365f;color:#aaaac0;text-transform: none;text-align: center;" (click)="sortNameAZ();dismiss();">Ονομα Α-Ζ</button>
-    <button ion-item style="background:#36365f;color:#aaaac0;text-transform: none;text-align: center;" (click)="sortNameZA();dismiss();">Ονομα Ζ-Α</button>
-    <button ion-item style="background:#36365f;color:#aaaac0;text-transform: none;text-align: center;" (click)="sortCityAZ();dismiss();">Περιοχή Α-Ζ</button>
-    <button ion-item style="background:#36365f;color:#aaaac0;text-transform: none;text-align: center;" (click)="sortCityZA();dismiss();">Περιοχή Ζ-Α</button>
+    <ion-item>
+      <ion-label style="color: #aaaac0">Ενεργοί</ion-label>
+      <ion-checkbox [(ngModel)]="enabled" (ionChange)="changedEnabled()"></ion-checkbox>
+    </ion-item>
+    <ion-item>
+      <ion-label style="color: #aaaac0">Ανενεργοί</ion-label>
+      <ion-checkbox [(ngModel)]="disabled" (ionChange)="changedDisabled()"></ion-checkbox>
+    </ion-item>
+  </ion-list>
+
+  <ion-row>
+    <ion-col style="color: #747480">
+      Ταξινόμηση ανά:
+    </ion-col>
+  </ion-row>
+
+  <ion-list no-lines>
+    <button ion-item style="background:#36365f;color:#aaaac0;text-transform: none;text-align: center;" (click)="sortNameAZ();dismiss();">Ονομα
+      Α-Ζ</button>
+    <button ion-item style="background:#36365f;color:#aaaac0;text-transform: none;text-align: center;" (click)="sortNameZA();dismiss();">Ονομα
+      Ζ-Α</button>
+    <button ion-item style="background:#36365f;color:#aaaac0;text-transform: none;text-align: center;" (click)="sortCityAZ();dismiss();">Περιοχή
+      Α-Ζ</button>
+    <button ion-item style="background:#36365f;color:#aaaac0;text-transform: none;text-align: center;" (click)="sortCityZA();dismiss();">Περιοχή
+      Ζ-Α</button>
   </ion-list>
 </ion-content>

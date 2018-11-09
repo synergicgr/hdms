@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, Events } from 'ionic-angular';
 import { CustomersPage } from '../customers/customers';
 import { CustomersProvider } from '../../providers/customers/customers';
+import { Storage } from '@ionic/storage';
 
 /**
  * Generated class for the SortPopOverPage page.
@@ -17,7 +18,12 @@ import { CustomersProvider } from '../../providers/customers/customers';
 })
 export class SortPopOverPage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, private customersProvider:CustomersProvider, private events:Events) {    
+  enabled:boolean = true;
+  disabled:boolean = false;
+
+  constructor(public navCtrl: NavController, public navParams: NavParams, private customersProvider:CustomersProvider, private events:Events) {
+    this.enabled = customersProvider.enabled;
+    this.disabled = customersProvider.disabled;        
   }
 
   ionViewDidLoad() {
@@ -42,5 +48,13 @@ export class SortPopOverPage {
 
   dismiss():void{
     this.events.publish('dismiss', {}, Date.now());
+  }
+
+  changedDisabled():void{
+    this.customersProvider.setDisabled(this.disabled); 
+  }
+
+  changedEnabled():void{
+    this.customersProvider.setEnabled(this.enabled);
   }
 }

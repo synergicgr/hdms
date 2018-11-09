@@ -1,3 +1,18 @@
 page-sort-pop-over {
+    .toolbar-background {
+        background-color: #36365f;
+    }
+    .item {
+        background: #36365f;
+    }
 
+    ion-item{
+        .input-wrapper{
+            flex:none;
+            margin-right: auto;
+        }
+        ion-checkbox.checkbox{
+            margin-right: 10px !important;
+        }
+    }
 }

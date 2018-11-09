@@ -5,7 +5,8 @@ import { CustomersProvider } from '../../providers/customers/customers';
 import { DashboardPage } from '../dashboard/dashboard';
 import { CustomerInfoPage } from '../customer-info/customer-info';
 import { PopOverPage } from '../pop-over/pop-over';
-import { templateJitUrl } from '@angular/compiler';
+import { templateJitUrl, unescapeIdentifier } from '@angular/compiler';
+import { Storage } from '@ionic/storage';
 
 @IonicPage()
 @Component({
@@ -18,9 +19,9 @@ export class CustomersPage {
   private popover2;
   openPopOver1: boolean;
   openPopOver2: boolean;
-  searchInput:string;
+  searchInput: string;
 
-  customers: Array<{ name: string, surname: string, city: string, visible:boolean }>;
+  customers: Array<{ name: string, surname: string, city: string, visible: boolean, enabled: boolean }>;
 
   constructor(
     public navCtrl: NavController,
@@ -28,9 +29,10 @@ export class CustomersPage {
     private popOverController: PopoverController,
     private customersProvider: CustomersProvider,
     private platform: Platform,
-    private events:Events,
-    private alertCtrl:AlertController
-    ) {
+    private events: Events,
+    private alertCtrl: AlertController,
+    private storage: Storage
+  ) {
 
     events.subscribe('dismiss', (data, time) => {
       // user and time are the same arguments passed in `events.publish(user, time)`
@@ -49,8 +51,7 @@ export class CustomersPage {
           this.popover.dismiss();
           this.openPopOver1 = false;
         }
-        else if(this.openPopOver2 === true)
-        {
+        else if (this.openPopOver2 === true) {
           this.popover2.dismiss();
           this.openPopOver2 = false;
         }
@@ -66,14 +67,14 @@ export class CustomersPage {
   }
 
   presentPopover(myEvent) {
-    this.popover = this.popOverController.create(SortPopOverPage, [], {cssClass: 'ion-popover'});
+    this.popover = this.popOverController.create(SortPopOverPage, [], { cssClass: 'ion-popover' });
     this.popover.present({
       ev: myEvent
     });
     this.openPopOver1 = true;
   }
 
-  presentPopover2(myEvent){
+  presentPopover2(myEvent) {
     this.popover2 = this.popOverController.create(PopOverPage);
     this.popover2.present({
       ev: myEvent
@@ -81,47 +82,65 @@ export class CustomersPage {
     this.openPopOver2 = true;
   }
 
-  openCustomer(index:number):void{
+  openCustomer(index: number): void {
     console.log("Customer ", this.customers[index].name);
     this.navCtrl.push(CustomerInfoPage, this.customers[index]);
   }
 
-  onInput(event):void{
+  onInput(event): void {
     let value = event.target.value;
+    let enabled = undefined;
+    let disabled = undefined;
 
-    for(let i = 0; i < this.customers.length; i++)
-    {
-      if(value === "")
-      {
+    enabled = this.customersProvider.enabled;
+    disabled = this.customersProvider.disabled;
+
+    for (let i = 0; i < this.customers.length; i++) {
+      if ((value === "" && this.customers[i].enabled == true && enabled == true) || (value === "" && this.customers[i].enabled === false && disabled == true)) {
         this.customers[i].visible = true;
       }
-      else if(this.customers[i].name.startsWith(value) || this.customers[i].surname.startsWith(value) || this.customers[i].city.startsWith(value))
-      {
+      else if (
+        (
+          (this.customers[i].name.startsWith(value)
+            || this.customers[i].surname.startsWith(value)
+            || this.customers[i].city.startsWith(value)
+          )
+          && this.customers[i].enabled == true
+          && enabled == true
+        )
+        ||
+        (
+          (this.customers[i].name.startsWith(value)
+            || this.customers[i].surname.startsWith(value)
+            || this.customers[i].city.startsWith(value)
+          )
+          && this.customers[i].enabled == false
+          && disabled == true
+        )
+      ) {
         this.customers[i].visible = true;
       }
-      else{
+      else {
         this.customers[i].visible = false;
       }
     }
   }
 
-  onCancel(event):void{
-    event.target.value = "";    
+  onCancel(event): void {
+    event.target.value = "";
     this.onInput(event);
   }
 
-  onClear(event):void{
-    event.target.value = "";    
+  onClear(event): void {
+    event.target.value = "";
     this.onInput(event);
   }
 
-  getVisibleCustomersCount(){
+  getVisibleCustomersCount() {
     let count = 0;
 
-    for(let i = 0; i < this.customers.length; i++)
-    {
-      if(this.customers[i].visible === true)
-      {
+    for (let i = 0; i < this.customers.length; i++) {
+      if (this.customers[i].visible === true) {
         count += 1;
       }
     }
@@ -129,21 +148,32 @@ export class CustomersPage {
     return count;
   }
 
-  public getVisibleCustomers(){
+  public getVisibleCustomers() {
     let temp = [];
 
-    for(let i = 0; i < this.customers.length; i++)
-    {
-      if(this.customers[i].visible === true)
+    let enabled = this.customersProvider.enabled;
+    let disabled = this.customersProvider.disabled;
+
+    for (let i = 0; i < this.customers.length; i++) {
+
+      if(this.customers[i].enabled == true && enabled == true)
       {
         temp.push(this.customers[i]);
       }
+      else if(this.customers[i].enabled == false && disabled == true)
+      {
+        temp.push(this.customers[i]);
+      }
+
+      // if (this.customers[i].visible === true) {
+      //   temp.push(this.customers[i]);
+      // }
     }
 
     return temp;
   }
 
-  public goToNewCustomer():void{
+  public goToNewCustomer(): void {
     this.navCtrl.setRoot(CustomerInfoPage);
   }
 }
