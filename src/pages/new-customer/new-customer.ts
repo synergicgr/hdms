@@ -96,41 +96,39 @@ export class NewCustomerPage implements OnInit {
 
   ngOnInit() {
     if (this.navParams.data) {
-      console.log("Nav Param data in NewCustomerPage", this.navParams.data);
+      this.getDataStorage().then((value) => {
+        value.forEach(element => {
+          if (element.subscriberName.split(" ")[0] === this.navParams.data.name && element.subscriberName.split(" ")[1] === this.navParams.data.surname) {
+            this.subscriberName = element.subscriberName;
+            this.insuredAreaCity = element.insuredAreaCity;
+            this.installerName = element.installerName;
+            this.customerPass = element.customerPass;
+            this.customerAuxiliaryPass = element.customerAuxiliaryPass;
+            this.duressCode = element.duressCode;
+            this.customerConnectionDate = element.customerConnectionDate;          
+            this.customerPass = element.customerPass;
+            this.customerAuxiliaryPass = element.customerAuxiliaryPass;              
+            this.insuredAreaAddress = element.insuredAreaAddress;
+            this.insuredAreaCity = element.insuredAreaCity;
+            this.insuredAreaPostCode = element.insuredAreaPostCode;
+            this.insuredAreaFloor = element.insuredAreaFloor;
+            this.insuredAreaDescription = element.insuredAreaDescription;
+            this.insuredAreaType = element.insuredAreaType;
+            this.insuredAreaTypeOther = element.insuredAreaTypeOther;
+            this.areaPhone = element.areaPhone;
+            this.alarmUnitType = element.alarmUnitType;
+            this.format = element.format;
+            this.frequency24HourTest = element.frequency24HourTest;
+            this.weeklyTimeMonitoring = element.weeklyTimeMonitoring;
+            this.policeStation = element.policeStation;
+            this.directTransmissionPhones = element.directTransmissionPhones;
+            this.operationControlHours = element.operationControlHours;
+            this.monthlyAlarmList = element.monthlyAlarmList;
+            this.otherRemarks = element.otherRemarks;          
+          }
+        })
+      });
     }
-
-    this.getDataStorage().then((value) => {
-      value.forEach(element => {
-        if (element.subscriberName.split(" ")[0] === this.navParams.data.name && element.subscriberName.split(" ")[1] === this.navParams.data.surname) {
-          this.subscriberName = element.subscriberName;
-          this.insuredAreaCity = element.insuredAreaCity;
-          this.installerName = element.installerName;
-          this.customerPass = element.customerPass;
-          this.customerAuxiliaryPass = element.customerAuxiliaryPass;
-          this.duressCode = element.duressCode;
-          this.customerConnectionDate = element.customerConnectionDate;          
-          this.customerPass = element.customerPass;
-          this.customerAuxiliaryPass = element.customerAuxiliaryPass;              
-          this.insuredAreaAddress = element.insuredAreaAddress;
-          this.insuredAreaCity = element.insuredAreaCity;
-          this.insuredAreaPostCode = element.insuredAreaPostCode;
-          this.insuredAreaFloor = element.insuredAreaFloor;
-          this.insuredAreaDescription = element.insuredAreaDescription;
-          this.insuredAreaType = element.insuredAreaType;
-          this.insuredAreaTypeOther = element.insuredAreaTypeOther;
-          this.areaPhone = element.areaPhone;
-          this.alarmUnitType = element.alarmUnitType;
-          this.format = element.format;
-          this.frequency24HourTest = element.frequency24HourTest;
-          this.weeklyTimeMonitoring = element.weeklyTimeMonitoring;
-          this.policeStation = element.policeStation;
-          this.directTransmissionPhones = element.directTransmissionPhones;
-          this.operationControlHours = element.operationControlHours;
-          this.monthlyAlarmList = element.monthlyAlarmList;
-          this.otherRemarks = element.otherRemarks;          
-        }
-      })
-    });
   }
 
   removeZone(index): void {
