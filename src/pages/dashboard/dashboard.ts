@@ -54,24 +54,23 @@ export class DashboardPage {
     public navParams: NavParams,
     public popoverCtrl: PopoverController,
     public menuCtrl: MenuController,
-    private platform: Platform, 
-    private events:Events) {
+    private platform: Platform,
+    private events: Events) {
     this.menuCtrl.enable(true, 'menu');
 
     events.subscribe('logout', (user, time) => {
       this.logout();
     });
 
-    platform.ready().then(() => {
-      platform.registerBackButtonAction(() => {
-        if (this.open === true) {
-          this.popover.dismiss();
-          this.open = false;
-        }
-        else {
-          navCtrl.setRoot(HomePage);
-        }
-      });
+
+    platform.registerBackButtonAction(() => {
+      if (this.open === true) {
+        this.popover.dismiss();
+        this.open = false;
+      }
+      else {
+        navCtrl.setRoot(HomePage);
+      }
     });
   }
 
@@ -79,7 +78,9 @@ export class DashboardPage {
     console.log('ionViewDidLoad DashboardPage');
   }
 
-  ionViewWillEnter() { this.menuCtrl.enable(true, "menu"); }
+  ionViewWillEnter() { 
+    // this.menuCtrl.enable(true, "menu"); 
+  }
 
   public goToNotes(): void {
     this.navCtrl.setRoot(NotesPage);

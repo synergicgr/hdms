@@ -50,6 +50,7 @@ export class HomePage {
   }
 
   signIn() {
+    // this.storage.clear();
     if (this.rememberMe == true) {
       this.storage.set('rememberMe', true);
       this.storage.set('username', this.username);
@@ -58,7 +59,6 @@ export class HomePage {
     else {
       this.storage.set('rememberMe', false);
     }
-
     
     let options: NativeTransitionOptions = {
       direction: 'right',
@@ -67,7 +67,7 @@ export class HomePage {
       androiddelay: 150,
     };
 
-    this.nativePageTransitions.slide(options);          
+    // this.nativePageTransitions.slide(options);          
     this.navCtrl.setRoot(DashboardPage);
   }
 

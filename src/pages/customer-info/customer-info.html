@@ -3,17 +3,18 @@
 
     <ion-buttons left>
       <button ion-button navPop>
-          <ion-icon name="ios-arrow-back"></ion-icon>
+        <ion-icon name="ios-arrow-back"></ion-icon>
       </button>
     </ion-buttons>
     <ion-title style="color:#ffc200">
       <span style="font-size:14px;opacity: 0.75;margin-left: 10px;" *ngIf="navParams.data.draft == false">{{navParams.data.name}}
         {{navParams.data.surname}}</span>
-      <span style="font-size:14px;opacity: 0.75;margin-left: 10px;" *ngIf="navParams.data.draft == true">ΕΓΓΡΑΦΗ ΝΕΟΥ ΠΕΛΑΤΗ</span>
+      <span style="font-size:14px;opacity: 0.75;margin-left: 10px;" *ngIf="navParams.data.draft == true || isEmptyArray(navParams.data)">ΕΓΓΡΑΦΗ ΝΕΟΥ
+        ΠΕΛΑΤΗ</span>
     </ion-title>
     <ion-buttons end *ngIf="navParams.data.draft === true">
       <button ion-button (click)="deleteCustomer()" icon-only>
-        <ion-icon name="trash" color="app-yellow" style="font-size: 30px;margin-right:10px;">
+        <ion-icon name="trash" color="app-yellow" style="font-size: 25px;margin-right:10px;">
         </ion-icon>
       </button>
     </ion-buttons>

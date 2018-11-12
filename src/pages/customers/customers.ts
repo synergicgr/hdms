@@ -1,19 +1,19 @@
-import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, PopoverController, Platform, Events, AlertController } from 'ionic-angular';
+import { Component, OnInit } from '@angular/core';
+import { IonicPage, NavController, NavParams, PopoverController, Platform, Events, AlertController, MenuController, App } from 'ionic-angular';
 import { SortPopOverPage } from '../sort-pop-over/sort-pop-over';
 import { CustomersProvider } from '../../providers/customers/customers';
 import { DashboardPage } from '../dashboard/dashboard';
 import { CustomerInfoPage } from '../customer-info/customer-info';
 import { PopOverPage } from '../pop-over/pop-over';
 import { templateJitUrl, unescapeIdentifier } from '@angular/compiler';
-import { Storage } from '@ionic/storage';
+import { Storage, StorageConfigToken } from '@ionic/storage';
 
 @IonicPage()
 @Component({
   selector: 'page-customers',
   templateUrl: 'customers.html',
 })
-export class CustomersPage {
+export class CustomersPage implements OnInit{
 
   private popover;
   private popover2;
@@ -21,7 +21,7 @@ export class CustomersPage {
   openPopOver2: boolean;
   searchInput: string;
 
-  customers: Array<{ name: string, surname: string, city: string, visible: boolean, enabled: boolean }>;
+  customers: Array<{name: string, surname: string, city: string, visible:boolean, draft:boolean, publishedDate:string, enabled:boolean}>;
 
   constructor(
     public navCtrl: NavController,
@@ -31,7 +31,8 @@ export class CustomersPage {
     private platform: Platform,
     private events: Events,
     private alertCtrl: AlertController,
-    private storage: Storage
+    private storage: Storage,
+    private menuCtrl:MenuController,
   ) {
 
     events.subscribe('dismiss', (data, time) => {
@@ -42,8 +43,6 @@ export class CustomersPage {
     events.subscribe('dismiss2', (data, time) => {
       this.popover2.dismiss();
     });
-
-    this.customers = customersProvider.getCustomers();
 
     platform.ready().then(() => {
       platform.registerBackButtonAction(() => {
@@ -60,6 +59,11 @@ export class CustomersPage {
         }
       });
     });
+  }
+
+  ngOnInit(){
+    this.menuCtrl.enable(false);
+    this.customers = this.customersProvider.getCustomers();
   }
 
   ionViewDidLoad() {
@@ -140,7 +144,7 @@ export class CustomersPage {
     let count = 0;
     let enabled = this.customersProvider.enabled;
     let disabled = this.customersProvider.disabled;
-    
+
     for (let i = 0; i < this.customers.length; i++) {
       if(this.customers[i].enabled == true && enabled == true && this.customers[i].visible == true){
         count += 1;
@@ -179,6 +183,6 @@ export class CustomersPage {
   }
 
   public goToNewCustomer(): void {
-    this.navCtrl.setRoot(CustomerInfoPage);
+    this.navCtrl.push(CustomerInfoPage);
   }
 }

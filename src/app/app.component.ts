@@ -40,14 +40,14 @@ export class MyApp {
 
     // used for an example of ngFor and navigation
     this.pages = [
-      { title: 'Hellas DMS', component: HellasDmsPage, icon: "../assets/imgs/icon1.png" },
-      { title: 'Οι πελατες μας', component: CustomersPage, icon: "../assets/imgs/icon2.png" },
-      { title: 'Σημειωσεις', component: NotesPage, icon: "../assets/imgs/icon3.png" },
-      { title: 'Πληροφοριες συνδεσης', component: ConnectionInfoPage, icon: "../assets/imgs/icon4.png" },
-      { title: 'Tech App', component: TechAppPage, icon: "../assets/imgs/icon5.png" },
-      { title: 'Επικοινωνια', component: ContactPage, icon: "../assets/imgs/icon6.png" },
-      { title: 'Web Dealer', component: WebDealerPage, icon: "../assets/imgs/icon7.png" },
-      { title: 'Ultra Sync App', component: UltraSyncAppPage, icon: "../assets/imgs/icon8.png" },
+      { title: 'Hellas DMS', component: HellasDmsPage, icon: "assets/imgs/icon1.png" },
+      { title: 'Οι πελατες μας', component: CustomersPage, icon: "assets/imgs/icon2.png" },
+      { title: 'Σημειωσεις', component: NotesPage, icon: "assets/imgs/icon3.png" },
+      { title: 'Πληροφοριες συνδεσης', component: ConnectionInfoPage, icon: "assets/imgs/icon4.png" },
+      { title: 'Tech App', component: TechAppPage, icon: "assets/imgs/icon5.png" },
+      { title: 'Επικοινωνια', component: ContactPage, icon: "assets/imgs/icon6.png" },
+      { title: 'Web Dealer', component: WebDealerPage, icon: "assets/imgs/icon7.png" },
+      { title: 'Ultra Sync App', component: UltraSyncAppPage, icon: "assets/imgs/icon8.png" },
     ];
 
   }

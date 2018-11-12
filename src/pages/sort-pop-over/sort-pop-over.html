@@ -13,11 +13,11 @@
   <ion-list no-lines>
     <ion-item>
       <ion-label style="color: #aaaac0">Ενεργοί</ion-label>
-      <ion-checkbox [(ngModel)]="enabled" (ionChange)="changedEnabled()"></ion-checkbox>
+      <ion-checkbox [(ngModel)]="enabled" item-right (ionChange)="changedEnabled()"></ion-checkbox>
     </ion-item>
     <ion-item>
       <ion-label style="color: #aaaac0">Ανενεργοί</ion-label>
-      <ion-checkbox [(ngModel)]="disabled" (ionChange)="changedDisabled()"></ion-checkbox>
+      <ion-checkbox [(ngModel)]="disabled" item-right (ionChange)="changedDisabled()"></ion-checkbox>
     </ion-item>
   </ion-list>
 

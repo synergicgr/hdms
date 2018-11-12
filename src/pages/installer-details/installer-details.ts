@@ -38,4 +38,11 @@ export class InstallerDetailsPage {
     console.log('ionViewDidLoad InstallerDetailsPage');
   }
 
+  isEmptyArray(data): any {
+    for (var key in data) {
+      if (data.hasOwnProperty(key))
+        return false;
+    }
+    return true;
+  }
 }

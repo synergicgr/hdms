@@ -2,35 +2,35 @@
 
   <ion-row>
     <ion-col col-12 col-lg no-padding>
-      <input type="text" style="width: 100%;height: 50px;border-radius: 10px;" class="inputText" no-margin [(ngModel)]="installerName">
+      <input type="text" style="width: 100%;height: 50px;border-radius: 5px;" class="inputText" no-margin [(ngModel)]="installerName">
       <span class="floating-label">ΟΝΟΜΑ ΕΓΚΑΤΑΣΤΑΤΗ</span>
     </ion-col>
   </ion-row>
 
   <ion-row style="margin-top:5px;">
     <ion-col col-12 col-lg no-padding>
-      <input type="text" style="width: 100%;height: 50px;border-radius: 10px;" class="inputText" no-margin [(ngModel)]="customerPass">
+      <input type="text" style="width: 100%;height: 50px;border-radius: 5px;" class="inputText" no-margin [(ngModel)]="customerPass">
       <span class="floating-label">ΚΩΔΙΚΟΣ ΠΕΛΑΤΗ (CSID 6ψηφια)</span>
     </ion-col>
   </ion-row>
 
   <ion-row style="margin-top:5px;">
     <ion-col col-12 col-lg no-padding>
-      <input type="text" style="width: 100%;height: 50px;border-radius: 10px;" class="inputText" no-margin [(ngModel)]="customerAuxilaryPass">
+      <input type="text" style="width: 100%;height: 50px;border-radius: 5px;" class="inputText" no-margin [(ngModel)]="customerAuxilaryPass">
       <span class="floating-label">ΒΟΗΘΗΤΙΚΟΣ ΚΩΔΙΚΟΣ ΠΕΛΑΤΗ (PASSCODE 10ψηφια)</span>
     </ion-col>
   </ion-row>
 
   <ion-row style="margin-top:5px;">
     <ion-col col-12 col-lg no-padding>
-      <input type="text" style="width: 100%;height: 50px;border-radius: 10px;" class="inputText" no-margin [(ngModel)]="duressCode">
+      <input type="text" style="width: 100%;height: 50px;border-radius: 5px;" class="inputText" no-margin [(ngModel)]="duressCode">
       <span class="floating-label">ΚΩΔΙΚΟΣ ΑΠΕΙΛΗΣ DURESS CODE (6ψηφια)</span>
     </ion-col>
   </ion-row>
 
   <ion-row style="margin-top:5px;">
     <ion-col col-12 col-lg no-padding>
-      <input type="text" style="width: 100%;height: 50px;border-radius: 10px;" class="inputText" no-margin [(ngModel)]="customerConnectionDate">
+      <input type="text" style="width: 100%;height: 50px;border-radius: 5px;" class="inputText" no-margin [(ngModel)]="customerConnectionDate">
       <span class="floating-label">ΗΜΕΡΟΜΗΝΙΑ ΣΥΝΔΕΣΗΣ ΠΕΛΑΤΗ</span>
     </ion-col>
   </ion-row>
@@ -38,12 +38,12 @@
 
   <ion-row style="margin-top:30px;">
     <ion-col col-12 col-lg no-padding>
-      <input type="text" style="width: 100%;height: 50px;border-radius: 10px;" class="inputText" no-margin [(ngModel)]="subscriberName">
+      <input type="text" style="width: 100%;height: 50px;border-radius: 5px;" class="inputText" no-margin [(ngModel)]="subscriberName">
       <span class="floating-label">ΕΠΩΝΥΜΙΑ ΣΥΝΔΡΟΜΗΤΗ</span>
     </ion-col>
   </ion-row>
 
-  <ion-row style="margin-top:5px;background: #272753;border-top-left-radius: 10px; border-top-right-radius: 10px;">
+  <ion-row style="margin-top:5px;background: #272753;border-top-left-radius: 5px; border-top-right-radius: 5px;">
     <ion-col col-12 col-lg no-padding style="color:#8c8ca9;margin-left: 10px;margin-top:20px; font-size: 9px;position: relative;bottom: 10px;">
       ΔΙΕΥΘΥΝΣΗ ΑΣΦΑΛΙΖΟΜΕΝΟΥ ΧΩΡΟΥ
     </ion-col>
@@ -59,38 +59,38 @@
       <span class="floating-label">ΠΟΛΗ</span>
     </ion-col>
   </ion-row>
-  <ion-row style="background: #272753; border-bottom-left-radius: 10px; border-bottom-right-radius: 10px;">
+  <ion-row style="background: #272753; border-bottom-left-radius: 5px; border-bottom-right-radius: 5px;">
     <ion-col col-6 col-lg no-padding>
       <input type="text" style="width: 100%;height: 50px;border-bottom-left-radius: 10px;" class="inputText" no-margin
         [(ngModel)]="insuredAreaPostCode">
       <span class="floating-label">ΤΚ</span>
     </ion-col>
     <ion-col col-6 col-lg no-padding>
-      <input type="text" style="width: 100%;height: 50px;border-bottom-right-radius: 10px;" class="inputText" no-margin
+      <input type="text" style="width: 100%;height: 50px;border-bottom-left-radius: 5px; border-bottom-right-radius: 5px;" class="inputText" no-margin
         [(ngModel)]="insuredAreaFloor">
       <span class="floating-label">ΟΡΟΦΟΣ</span>
     </ion-col>
   </ion-row>
 
-  <ion-row style="background: #272753;margin-top: 5px;border-top-left-radius: 10px;border-top-right-radius: 10px;">
+  <ion-row style="background: #272753;margin-top: 5px;border-top-left-radius: 5px;border-top-right-radius: 5px;">
     <ion-col col-12 col-lg style="color:#8c8ca9;margin-left: 10px;font-size: 9px;">
       ΑΝΑΛΥΤΙΚΗ ΠΕΡΙΓΡΑΦΗ (ΟΔΗΓΙΕΣ) ΑΣΦΑΛΙΖΟΜΕΝΟΥ ΧΩΡΟΥ
     </ion-col>
   </ion-row>
 
-  <ion-row style="background: #272753;border-bottom-left-radius: 10px; border-bottom-right-radius: 10px;">
+  <ion-row style="background: #272753;border-bottom-left-radius: 5px; border-bottom-right-radius: 5px;">
     <ion-col col-12 col-lg no-padding>
       <ion-textarea style="height:80px;color:#ffffff;margin-left: 10px;" [(ngModel)]="insuredAreaDescription"></ion-textarea>
     </ion-col>
   </ion-row>
 
-  <ion-row style="background: #272753;margin-top: 5px;border-top-left-radius: 10px; border-top-right-radius: 10px;">
+  <ion-row style="background: #272753;margin-top: 5px;border-top-left-radius: 5px; border-top-right-radius: 5px;">
     <ion-col col-12 col-lg style="color:#8c8ca9;margin-left: 10px;font-size: 9px;">
       ΕΙΔΟΣ ΑΣΦΑΛΙΖΟΜΕΝΟΥ ΧΩΡΟΥ
     </ion-col>
   </ion-row>
 
-  <ion-row style="background: #272753;border-bottom-left-radius: 10px; border-bottom-right-radius: 10px;">
+  <ion-row style="background: #272753;border-bottom-left-radius: 5px; border-bottom-right-radius: 5px;">
     <ion-col col-12 col-lg style="color:#8c8ca9;margin-left: 5px;">
       <ion-list radio-group no-lines [(ngModel)]="insuredAreaType">
         <ion-item style="background:  #272753;">
@@ -121,12 +121,12 @@
 
   <ion-row style="margin-top:5px;">
     <ion-col col-12 col-lg no-padding>
-      <input type="text" style="width: 100%;height: 50px;border-radius: 10px;" class="inputText" no-margin [(ngModel)]="areaPhone">
+      <input type="text" style="width: 100%;height: 50px;border-radius: 5px;" class="inputText" no-margin [(ngModel)]="areaPhone">
       <span class="floating-label">ΤΗΛΕΦΩΝΟ ΧΩΡΟΥ</span>
     </ion-col>
   </ion-row>
 
-  <ion-row *ngIf="phoneNotices.length === 0" style="margin-top:5px;background: #272753;border-radius: 10px;">
+  <ion-row *ngIf="phoneNotices.length === 0" style="margin-top:5px;background: #272753;border-radius: 5px;">
     <ion-col col-11 style="color:#8c8ca9;padding-left: 10px;font-size: 9px">
       ΤΗΛΕΦΩΝΑ ΕΙΔΟΠΟΙΗΣΗΣ (ΣΕΙΡΑ ΠΡΟΤΕΡΑΙΟΤΗΤΑΣ)
     </ion-col>
@@ -135,7 +135,7 @@
     </ion-col>
   </ion-row>
 
-  <ion-row *ngIf="phoneNotices.length > 0" style="margin-top:5px;background: #272753;border-top-left-radius: 10px; border-top-right-radius: 10px;">
+  <ion-row *ngIf="phoneNotices.length > 0" style="margin-top:5px;background: #272753;border-top-left-radius: 5px; border-top-right-radius: 5px;">
     <ion-col col-11 style="color:#8c8ca9;padding-left: 10px;font-size: 9px">
       ΤΗΛΕΦΩΝΑ ΕΙΔΟΠΟΙΗΣΗΣ (ΣΕΙΡΑ ΠΡΟΤΕΡΑΙΟΤΗΤΑΣ)
     </ion-col>
@@ -172,7 +172,7 @@
     </ion-col>
   </ion-row>
 
-  <ion-row *ngIf="phoneNotices.length > 0" style="background: #272753;border-bottom-left-radius: 10px; border-bottom-right-radius: 10px;">
+  <ion-row *ngIf="phoneNotices.length > 0" style="background: #272753;border-bottom-left-radius: 5px; border-bottom-right-radius: 5px;">
     <ion-col col-1 *ngIf="phoneNotices[phoneNotices.length-1].editable === false">
       <img src="../assets/imgs/drag-icon.png" style="height:20px;width:20px;">
     </ion-col>
@@ -200,25 +200,25 @@
     </ion-col>
   </ion-row>
 
-  <ion-row style="background: #272753;margin-top: 20px;border-top-left-radius: 10px;border-top-right-radius: 10px;">
+  <ion-row style="background: #272753;margin-top: 20px;border-top-left-radius: 5px;border-top-right-radius: 5px;">
     <ion-col col-12 col-lg style="color:#8c8ca9;margin-left: 10px;font-size:9px;">
       ΤΥΠΟΣ ΜΟΝΑΔΟΣ ΣΥΝΑΓΕΡΜΟΥ
     </ion-col>
   </ion-row>
 
-  <ion-row style="background: #272753;border-bottom-left-radius: 10px; border-bottom-right-radius: 10px;">
+  <ion-row style="background: #272753;border-bottom-left-radius: 5px; border-bottom-right-radius: 5px;">
     <ion-col col-12 col-lg no-padding>
       <ion-textarea style="height:80px;color:#ffffff; margin-left: 10px;" [(ngModel)]="alarmUnitType"></ion-textarea>
     </ion-col>
   </ion-row>
 
-  <ion-row style="background: #272753;margin-top: 5px;border-top-left-radius: 10px; border-top-right-radius: 10px;">
+  <ion-row style="background: #272753;margin-top: 5px;border-top-left-radius: 5px; border-top-right-radius: 5px;">
     <ion-col col-12 col-lg style="color:#8c8ca9;margin-left: 10px;font-size: 9px;">
       FORMAT
     </ion-col>
   </ion-row>
 
-  <ion-row style="background: #272753;border-bottom-left-radius: 10px; border-bottom-right-radius: 10px;">
+  <ion-row style="background: #272753;border-bottom-left-radius: 5px; border-bottom-right-radius: 5px;">
     <ion-col col-12 col-lg style="color:#8c8ca9;margin-left: 5px;">
       <ion-list radio-group no-lines [(ngModel)]="format">
 
@@ -238,13 +238,13 @@
     </ion-col>
   </ion-row>
 
-  <ion-row style="background: #272753;margin-top: 5px;border-top-left-radius: 10px; border-top-right-radius: 10px;">
+  <ion-row style="background: #272753;margin-top: 5px;border-top-left-radius: 5px; border-top-right-radius: 5px;">
     <ion-col col-12 col-lg style="color:#8c8ca9;margin-left: 10px;font-size: 9px;">
       ΣΥΧΝΟΤΗΤΑ 24ΩΡΟΥ ΤΕΣΤ
     </ion-col>
   </ion-row>
 
-  <ion-row style="background: #272753;border-bottom-left-radius: 10px; border-bottom-right-radius: 10px;">
+  <ion-row style="background: #272753;border-bottom-left-radius: 5px; border-bottom-right-radius: 5px;">
     <ion-col col-12>
       <ion-range min="1" max="24" step="1" snaps="true" pin="true" color="app-yellow" [(ngModel)]="frequency24HourTest"></ion-range>
       <div style="position:relative; top:-20px;">
@@ -260,7 +260,7 @@
   </ion-row>
 
 
-  <ion-row *ngIf="zones.length === 0" style="margin-top:5px;background: #272753; border-radius: 10px;">
+  <ion-row *ngIf="zones.length === 0" style="margin-top:5px;background: #272753; border-radius: 5px;">
     <ion-col col-11 style="color:#8c8ca9;padding-left: 10px;font-size: 9px">
       ΖΩΝΟΠΟΙΗΣΗ ΣΥΣΤΗΜΑΤΟΣ
     </ion-col>
@@ -269,7 +269,7 @@
     </ion-col>
   </ion-row>
 
-  <ion-row *ngIf="zones.length > 0" style="margin-top:5px;background: #272753; border-top-left-radius: 10px; border-top-right-radius: 10px;">
+  <ion-row *ngIf="zones.length > 0" style="margin-top:5px;background: #272753; border-top-left-radius: 5px; border-top-right-radius: 5px;">
     <ion-col col-11 style="color:#8c8ca9;padding-left: 10px;font-size: 9px">
       ΖΩΝΟΠΟΙΗΣΗ ΣΥΣΤΗΜΑΤΟΣ
     </ion-col>
@@ -306,7 +306,7 @@
     </ion-col>
   </ion-row>
 
-  <ion-row *ngIf="zones.length > 0" style="border-bottom-left-radius: 10px; border-bottom-right-radius: 10px;background: #272753;margin-bottom: 5px;">
+  <ion-row *ngIf="zones.length > 0" style="border-bottom-left-radius: 5px; border-bottom-right-radius: 5px;background: #272753;margin-bottom: 5px;">
 
     <ion-col col-1 *ngIf="zones[zones.length-1].editable === false">
       <img src="../assets/imgs/drag-icon.png" style="width:20px;height:20px;">
@@ -335,19 +335,19 @@
     </ion-col>
   </ion-row>
 
-  <ion-row style="margin-top:5px; margin-bottom:2px;background: #272753;border-radius: 10px;">
+  <ion-row style="margin-top:5px; margin-bottom:2px;background: #272753;border-radius: 5px;">
     <ion-col>
       <button ion-button full style="background: #33335d" [disabled]="zones.length === 0">Περισσοτερα</button>
     </ion-col>
   </ion-row>
 
-  <ion-row style="background: #272753;margin-top: 5px;border-top-left-radius: 10px; border-top-right-radius: 10px;">
+  <ion-row style="background: #272753;margin-top: 5px;border-top-left-radius: 5px; border-top-right-radius: 5px;">
     <ion-col col-12 col-lg style="color:#8c8ca9;margin-left: 10px;font-size: 9px;">
       ΕΒΔΟΜΑΔΙΑΙΟ ΩΡΑΡΙΟ ON/OFF ΠΑΡΑΚΟΛΟΥΘΗΣΗΣ
     </ion-col>
   </ion-row>
 
-  <ion-row style="background: #272753;border-bottom-left-radius: 10px;border-bottom-right-radius: 10px">
+  <ion-row style="background: #272753;border-bottom-left-radius: 5px;border-bottom-right-radius: 5px">
     <ion-col col-12 col-lg no-padding>
       <ion-textarea style="height:80px;color:#ffffff; margin-left: 10px;" [(ngModel)]="weeklyTimeMonitoring"></ion-textarea>
     </ion-col>
@@ -355,7 +355,7 @@
 
   <ion-row style="margin-top:5px;">
     <ion-col col-12 col-lg no-padding>
-      <input type="text" style="width: 100%;height: 50px;border-top-left-radius: 10px;border-top-right-radius: 10px;"
+      <input type="text" style="width: 100%;height: 50px;border-top-left-radius: 5px;border-top-right-radius: 5px;"
         class="inputText" no-margin [(ngModel)]="policeStation">
       <span class="floating-label">ΑΣΤΥΝΟΜΙΚΟ ΤΜΗΜΑ ΠΕΡΙΟΧΗΣ</span>
     </ion-col>
@@ -375,14 +375,14 @@
 
   <ion-row>
     <ion-col col-12 col-lg no-padding>
-      <input type="text" style="width: 100%;height: 50px;border-bottom-left-radius: 10px;border-bottom-right-radius: 10px;"
+      <input type="text" style="width: 100%;height: 50px;border-bottom-left-radius: 5px;border-bottom-right-radius: 5px;"
         class="inputText" no-margin [(ngModel)]="operationControlHours">
       <span class="floating-label">ΩΡΕΣ ΕΛΕΓΧΟΥ ΕΠΕΜΒΑΣΗΣ</span>
     </ion-col>
   </ion-row>
 
 
-  <ion-row *ngIf="alarmUsers.length === 0" style="margin-top:5px;background: #272753;border-radius: 10px;">
+  <ion-row *ngIf="alarmUsers.length === 0" style="margin-top:5px;background: #272753;border-radius: 5px;">
     <ion-col col-11 style="color:#8c8ca9;padding-left: 10px;font-size: 9px">
       ΟΝΟΜΑΤΑ ΧΡΗΣΤΩΝ ΣΥΝΑΓΕΡΜΟΥ (Users)
     </ion-col>
@@ -391,7 +391,7 @@
     </ion-col>
   </ion-row>
 
-  <ion-row *ngIf="alarmUsers.length > 0" style="margin-top:5px;background: #272753;border-top-left-radius: 10px; border-top-right-radius: 10px;">
+  <ion-row *ngIf="alarmUsers.length > 0" style="margin-top:5px;background: #272753;border-top-left-radius: 5px; border-top-right-radius: 5px;">
     <ion-col col-11 style="color:#8c8ca9;padding-left: 10px;font-size: 9px">
       ΟΝΟΜΑΤΑ ΧΡΗΣΤΩΝ ΣΥΝΑΓΕΡΜΟΥ (Users)
     </ion-col>
@@ -421,7 +421,7 @@
     </ion-col>
   </ion-row>
 
-  <ion-row *ngIf="alarmUsers.length > 0" style="margin-bottom:2px;background: #272753;border-bottom-left-radius: 10px; border-bottom-right-radius: 10px;">
+  <ion-row *ngIf="alarmUsers.length > 0" style="margin-bottom:2px;background: #272753;border-bottom-left-radius: 5px; border-bottom-right-radius: 5px;">
     <ion-col col-5 style="color:#ffffff" *ngIf="alarmUsers[alarmUsers.length-1].editable === false">
       {{alarmUsers[alarmUsers.length-1].username}}
     </ion-col>
@@ -444,24 +444,24 @@
 
   <ion-row style="margin-top:5px;">
     <ion-col col-12 col-lg no-padding>
-      <input type="text" style="width: 100%;height: 50px;border-radius: 10px;" class="inputText" no-margin [(ngModel)]="monthlyAlarmList">
+      <input type="text" style="width: 100%;height: 50px;border-radius: 5px;" class="inputText" no-margin [(ngModel)]="monthlyAlarmList">
       <span class="floating-label">ΜΗΝΙΑΙΑ ΛΙΣΤΑ ΣΗΜΑΤΩΝ ΣΥΝΑΓΕΡΜΟΥ (REPORT)</span>
     </ion-col>
   </ion-row>
 
-  <ion-row style="background: #272753;margin-top: 5px;border-top-left-radius: 10px; border-top-right-radius: 10px;">
+  <ion-row style="background: #272753;margin-top: 5px;border-top-left-radius: 5px; border-top-right-radius: 5px;">
     <ion-col col-12 col-lg style="color:#8c8ca9;margin-left: 10px;font-size:9px;">
       EXTRA ΠΑΡΑΤΗΡΗΣΕΙΣ
     </ion-col>
   </ion-row>
 
-  <ion-row style="background: #272753;border-bottom-left-radius: 10px; border-bottom-right-radius: 10px;">
+  <ion-row style="background: #272753;border-bottom-left-radius: 5px; border-bottom-right-radius: 5px;">
     <ion-col col-12 col-lg no-padding>
       <ion-textarea style="height:80px;color:#ffffff;margin-left: 10px;" [(ngModel)]="otherRemarks"></ion-textarea>
     </ion-col>
   </ion-row>
 </ion-content>
 
-<ion-footer *ngIf="navParams.data.draft == true">
-  <button ion-button full color="app-yellow" style="color:#000000;font-weight:bold;">Αποστολη</button>
+<ion-footer *ngIf="navParams.data.draft == true || isEmptyArray(navParams.data)">
+  <button ion-button full color="app-yellow" style="color:#000000;font-weight:bold;" (click)="submit()">Αποστολη</button>
 </ion-footer>

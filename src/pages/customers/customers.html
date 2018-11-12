@@ -4,7 +4,7 @@
       <ion-icon name="menu"></ion-icon>
     </button>
     <ion-title style="text-align:center;">
-      <img alt="logo" height="50px" src="../../assets/imgs/Hellas-Dns-logo.png" style="margin-right:20px;">
+      <img alt="logo" height="50px" src="assets/imgs/Hellas-Dns-logo.png" style="margin-right:20px;">
     </ion-title>
     <ion-buttons end>
       <button ion-button color="white" icon-only menuClose (click)="presentPopover2($event)">
@@ -31,7 +31,7 @@
   </div>
   <div style="float:right;position: relative;top:5px;right:5px;">
     <button (click)="presentPopover($event)" style="background: transparent !important;">
-      <img width="30" height="30" alt="sorting" src="../../assets/imgs/FILTRA-icon.png">
+      <img width="30" height="30" alt="sorting" src="assets/imgs/FILTRA-icon.png">
     </button>
   </div>
   <div style="float:right;position: relative; top: -2px;">
@@ -43,8 +43,8 @@
       <ion-col col-12 >
         <div>          
           <div style="display: inline-block;color:#fff; position: relative;top:5px;font-size: 13px;margin-left: 10px;">{{customer.name}} {{customer.surname}}</div>
-          <div style="float:right;color:red;margin-left: 10px;font-size: 12px;position: relative;top:15px;" *ngIf="customer.draft === true">Draft</div>
-          <div style="position:relative; top: 15px; float:right;color:#747490;margin-left: 10px;font-size: 12px;" *ngIf="customer.draft === false">{{customer.publishedDate}}</div>
+          <div style="float:right;color:red;font-size: 12px;position: relative;top:15px;margin-right: 10px;" *ngIf="customer.draft === true">Draft</div>
+          <div style="position:relative; top: 15px; float:right;color:#747490;font-size: 12px;margin-right: 10px;" *ngIf="customer.draft === false">{{customer.publishedDate}}</div>
           <div style="color:#747490;position: relative;top:5px;font-size: 10px;margin-left: 10px;">{{customer.city}}</div>
         </div>
       </ion-col>             

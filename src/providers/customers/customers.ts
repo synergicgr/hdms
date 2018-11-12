@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { CustomersPage } from '../../pages/customers/customers';
-import { visitAll } from '@angular/compiler';
+import { Storage } from '@ionic/storage';
 
 @Injectable()
 export class CustomersProvider {
@@ -10,16 +10,34 @@ export class CustomersProvider {
   public disabled:boolean = false;
 
   customers:Array<{name: string, surname: string, city: string, visible:boolean, draft:boolean, publishedDate:string, enabled:boolean}> = [
-    {name:'Γρηγόρης', surname:'Σαμαράς', city:'Αθήνα', visible:true, draft:true, publishedDate:"", enabled:true}, 
-    {name:'Χάρης', surname:'Γεωργακόπουλος', city:'Θεσσαλονίκη', visible:true, draft:true, publishedDate:"", enabled:true},
-    {name:'Ελένη', surname:'Ψαθά', city:'Χαλάνδρι', visible:true, draft:false, publishedDate:"2018-11-07", enabled:true},
+    // {name:'Γρηγόρης', surname:'Σαμαράς', city:'Αθήνα', visible:true, draft:true, publishedDate:"", enabled:true}, 
+    // {name:'Χάρης', surname:'Γεωργακόπουλος', city:'Θεσσαλονίκη', visible:true, draft:true, publishedDate:"", enabled:true},
+    // {name:'Ελένη', surname:'Ψαθά', city:'Χαλάνδρι', visible:true, draft:false, publishedDate:"2018-11-07", enabled:true},
    ];
 
-  constructor(public http: HttpClient) {
-    console.log('Hello CustomersProvider Provider');
+  constructor(public http: HttpClient, private storage:Storage) {
+    this.storage.get('customers').then((value)=>{
+      if(value)
+      {
+        value.forEach(element => {
+          let name = element.subscriberName.split(" ")[0];
+          let surname = element.subscriberName.split(" ")[1];
+          let city = element.insuredAreaCity;
+          let visible = true;
+          let draft = false;
+          let publishedDate = element.publishedDate;
+          let enabled = element.enabled;
+
+          this.customers.push({name:name, surname:surname, city:city, visible:visible, draft:draft, publishedDate:publishedDate, enabled:enabled});
+        });
+        console.log('Local storage customers', value);
+      }
+    });
+
+    console.log('Service Provider customers', this.customers);        
   }
 
-  getCustomers():Array<{name: string, surname: string, city: string, visible:boolean, draft:boolean, publishedDate:string, enabled:boolean}>{
+  getCustomers():Array<{name: string, surname: string, city: string, visible:boolean, draft:boolean, publishedDate:string, enabled:boolean}>{    
     return this.customers;
   }
 
@@ -75,6 +93,7 @@ export class CustomersProvider {
   }
 
   public addCustomer(customer):void{
+    console.log("Customer to add ",customer);
     this.customers.push(customer);
   }
 

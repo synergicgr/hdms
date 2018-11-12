@@ -5,20 +5,17 @@ page-sort-pop-over {
     .item {
         background: #36365f;
     }
-
-    ion-item{
-        .input-wrapper{
-            flex:none;
+    ion-item {
+        .input-wrapper {
+            flex: none;
             margin-right: auto;
         }
-        ion-checkbox.checkbox{
+        ion-checkbox.checkbox {
             margin-right: 10px !important;
         }
     }
-
-    .checkbox-md .checkbox-checked{
+    .checkbox-md .checkbox-checked {
         border-color: #ffc200 !important;
         background-color: #ffc200 !important;
-    
     }
 }

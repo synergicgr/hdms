@@ -22,20 +22,20 @@ import { CustomersPage } from '../customers/customers';
 export class CustomerInfoPage {
 
   tab1Root = NewCustomerPage;
-  tab2Root = InstallerDetailsPage;  
+  tab2Root = InstallerDetailsPage;
 
   @ViewChild('tabs') tabRef: Tabs;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, private customersProvider:CustomersProvider, private alertCtrl:AlertController) {
-    console.log(navParams.data.draft);
+  constructor(public navCtrl: NavController, public navParams: NavParams, private customersProvider: CustomersProvider, private alertCtrl: AlertController) {
+    console.log(navParams.data);
   }
 
   ionViewDidLoad() {
     this.tabRef.select(0);
     console.log('ionViewDidLoad CustomerInfoPage');
   }
-  
-  public deleteCustomer():void{
+
+  public deleteCustomer(): void {
     let alert = this.alertCtrl.create({
       title: 'Διαγραφή',
       message: 'Θέλετε όντως να διαγράψετε τον πελάτη?',
@@ -53,6 +53,14 @@ export class CustomerInfoPage {
         }
       ]
     });
-    alert.present();    
+    alert.present();
+  }
+
+  isEmptyArray(data): any {
+    for (var key in data) {
+      if (data.hasOwnProperty(key))
+        return false;
+    }
+    return true;
   }
 }
