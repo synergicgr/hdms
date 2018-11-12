@@ -1,16 +1,17 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { IonicPage, NavController, NavParams, App, Platform } from 'ionic-angular';
 import * as $ from 'jquery';
 import { Storage } from '@ionic/storage';
 import { CustomersProvider } from '../../providers/customers/customers';
 import { CustomersPage } from '../customers/customers';
+import { updateNodeContext } from 'ionic-angular/umd/components/virtual-scroll/virtual-util';
 
 @IonicPage()
 @Component({
   selector: 'page-new-customer',
   templateUrl: 'new-customer.html',
 })
-export class NewCustomerPage {
+export class NewCustomerPage implements OnInit {
 
   installerName: string;
   customerPass: string;
@@ -66,13 +67,13 @@ export class NewCustomerPage {
     public navParams: NavParams,
     private storage: Storage,
     private customersProvider: CustomersProvider,
-    private app:App,
-    private platform:Platform
-    ) {
+    private app: App,
+    private platform: Platform
+  ) {
 
-      platform.registerBackButtonAction(()=>{
-        this.app.getRootNav().setRoot(CustomersPage);
-      });
+    platform.registerBackButtonAction(() => {
+      this.app.getRootNav().setRoot(CustomersPage);
+    });
 
     $(function () {
 
@@ -93,8 +94,42 @@ export class NewCustomerPage {
     });
   }
 
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad NewCustomerPage');
+  ionViewDidLoad(){
+    let customers;
+
+    customers = this.getDataStorage().then((value) => {
+      value.forEach(element => {
+        if (element.subscriberName.split(" ")[0] === this.navParams.data.name && element.subscriberName.split(" ")[1] === this.navParams.data.surname) {
+          this.subscriberName = element.subscriberName;
+          this.insuredAreaCity = element.insuredAreaCity;
+        }
+      })
+    });    
+
+    console.log("New customer Page customers from Storage ", customers);
+  }
+
+  ngOnInit() {
+    if (this.navParams.data) {
+      console.log("Nav Param data in NewCustomerPage", this.navParams.data);
+
+      
+      // for(let i = 0; i < customers.length; i++)
+      // {
+      //   if (customers[i].subscriberName.split(" ")[0] === this.navParams.data.name && customers[i].subscriberName.split(" ")[1] === this.navParams.data.surname) {
+      //     this.subscriberName = customers[i].subscriberName;
+      //     this.insuredAreaCity = customers[i].insuredAreaCity;
+      //   }
+      // }
+
+      // customers.forEach(element => {
+      //   if (element.subscriberName.split(" ")[0] === this.navParams.data.name && element.subscriberName.split(" ")[1] === this.navParams.data.surname) {
+      //     console.log(element);
+      //     this.subscriberName = element.subscriberName;
+      //     this.insuredAreaCity = element.insuredAreaCity;
+      //   }
+      // })
+    }
   }
 
   removeZone(index): void {
@@ -140,7 +175,7 @@ export class NewCustomerPage {
         city: this.insuredAreaCity,
         visible: true,
         draft: false,
-        publishedDate: d.getFullYear()+" "+d.getMonth()+" "+d.getDate()+" "+d.getHours()+" "+d.getMinutes(),
+        publishedDate: d.getFullYear() + " " + d.getMonth() + " " + d.getDate() + " " + d.getHours() + " " + d.getMinutes(),
         enabled: true
       }
     );
@@ -214,4 +249,8 @@ export class NewCustomerPage {
 
     this.app.getRootNav().setRoot(CustomersPage);
   }
+
+  public async getDataStorage() {        
+    return await this.storage.get("customers");
+}
 }
