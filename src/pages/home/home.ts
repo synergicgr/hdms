@@ -68,7 +68,7 @@ export class HomePage {
     };
 
     // this.nativePageTransitions.slide(options);          
-    this.navCtrl.setRoot(DashboardPage);
+    this.navCtrl.setRoot(DashboardPage, {}, {animate:true,animation:'android-transition',duration:500,direction:'back'});
   }
 
   signUp() {
