@@ -60,15 +60,7 @@ export class HomePage {
       this.storage.set('rememberMe', false);
     }
     
-    let options: NativeTransitionOptions = {
-      direction: 'right',
-      duration: 500,
-      iosdelay: 100,
-      androiddelay: 150,
-    };
-
-    // this.nativePageTransitions.slide(options);          
-    this.navCtrl.setRoot(DashboardPage, {}, {animate:true,animation:'android-transition',duration:500,direction:'back'});
+    this.navCtrl.setRoot(DashboardPage, {}, {animate:true, animation:'android-transition', duration:500, direction:'back'});
   }
 
   signUp() {
