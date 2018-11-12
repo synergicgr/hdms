@@ -130,6 +130,9 @@ export class NewCustomerPage {
   }
 
   submit(): void {
+
+    const d = new Date();
+
     this.customersProvider.addCustomer(
       {
         name: this.subscriberName.split(" ")[0],
@@ -137,7 +140,7 @@ export class NewCustomerPage {
         city: this.insuredAreaCity,
         visible: true,
         draft: false,
-        publishedDate: Date.now().toString(),
+        publishedDate: d.getFullYear()+" "+d.getMonth()+" "+d.getDate()+" "+d.getHours()+" "+d.getMinutes(),
         enabled: true
       }
     );
