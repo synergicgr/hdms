@@ -62,7 +62,6 @@ export class CustomersPage implements OnInit{
   }
 
   ngOnInit(){
-    this.menuCtrl.enable(false);
     this.customers = this.customersProvider.getCustomers();
   }
 

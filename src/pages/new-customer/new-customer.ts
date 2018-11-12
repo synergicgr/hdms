@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, App } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, App, Platform } from 'ionic-angular';
 import * as $ from 'jquery';
 import { Storage } from '@ionic/storage';
 import { CustomersProvider } from '../../providers/customers/customers';
@@ -66,8 +66,13 @@ export class NewCustomerPage {
     public navParams: NavParams,
     private storage: Storage,
     private customersProvider: CustomersProvider,
-    private app:App
+    private app:App,
+    private platform:Platform
     ) {
+
+      platform.registerBackButtonAction(()=>{
+        this.app.getRootNav().setRoot(CustomersPage);
+      });
 
     $(function () {
 
