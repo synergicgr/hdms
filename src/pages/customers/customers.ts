@@ -13,7 +13,7 @@ import { Storage, StorageConfigToken } from '@ionic/storage';
   selector: 'page-customers',
   templateUrl: 'customers.html',
 })
-export class CustomersPage implements OnInit{
+export class CustomersPage implements OnInit {
 
   private popover;
   private popover2;
@@ -21,7 +21,7 @@ export class CustomersPage implements OnInit{
   openPopOver2: boolean = false;
   searchInput: string;
 
-  customers: Array<{name: string, surname: string, city: string, visible:boolean, draft:boolean, publishedDate:string, enabled:boolean}>;
+  customers: Array<{ name: string, surname: string, city: string, visible: boolean, draft: boolean, publishedDate: string, enabled: boolean }>;
 
   constructor(
     public navCtrl: NavController,
@@ -32,16 +32,18 @@ export class CustomersPage implements OnInit{
     private events: Events,
     private alertCtrl: AlertController,
     private storage: Storage,
-    private menuCtrl:MenuController,
+    private menuCtrl: MenuController,
   ) {
 
   }
 
-  ngOnInit(){
+  ngOnInit() {
     this.customers = this.customersProvider.getCustomers();
 
+    this.popover = this.popOverController.create(SortPopOverPage, [], { cssClass: 'ion-popover' });
+    this.popover2 = this.popOverController.create(PopOverPage);
+
     this.events.subscribe('dismiss', (data, time) => {
-      // user and time are the same arguments passed in `events.publish(user, time)`
       this.popover.dismiss();
     });
 
@@ -51,8 +53,8 @@ export class CustomersPage implements OnInit{
 
     this.platform.ready().then(() => {
       this.platform.registerBackButtonAction(() => {
-        console.log("Back button popOver1:", this.openPopOver1, " popOver2:", this.openPopOver2 );
-        
+        console.log("Back button popOver1:", this.openPopOver1, " popOver2:", this.openPopOver2);
+
         if (this.openPopOver1 === true) {
           this.popover.dismiss();
         }
@@ -71,27 +73,26 @@ export class CustomersPage implements OnInit{
   }
 
   presentPopover(myEvent) {
-    this.popover = this.popOverController.create(SortPopOverPage, [], { cssClass: 'ion-popover' });
     this.popover.present({
       ev: myEvent
     });
     this.openPopOver1 = true;
-    this.popover.onDidDismiss(()=>{
-      this.openPopOver1 = false;      
+    this.popover.onDidDismiss(() => {
+      this.openPopOver1 = false;
     });
-    
+
   }
 
   presentPopover2(myEvent) {
-    this.popover2 = this.popOverController.create(PopOverPage);
+    
     this.popover2.present({
       ev: myEvent
     });
     this.openPopOver2 = true;
-    this.popover2.onDidDismiss(()=>{
+    this.popover2.onDidDismiss(() => {
       this.openPopOver2 = false;
     })
-    
+
   }
 
   openCustomer(index: number): void {
@@ -154,10 +155,10 @@ export class CustomersPage implements OnInit{
     let disabled = this.customersProvider.disabled;
 
     for (let i = 0; i < this.customers.length; i++) {
-      if(this.customers[i].enabled == true && enabled == true && this.customers[i].visible == true){
+      if (this.customers[i].enabled == true && enabled == true && this.customers[i].visible == true) {
         count += 1;
       }
-      else if(this.customers[i].enabled == false && disabled == true && this.customers[i].visible == true){
+      else if (this.customers[i].enabled == false && disabled == true && this.customers[i].visible == true) {
         count += 1;
       }
     }
@@ -173,12 +174,10 @@ export class CustomersPage implements OnInit{
 
     for (let i = 0; i < this.customers.length; i++) {
 
-      if(this.customers[i].enabled == true && enabled == true && this.customers[i].visible == true)
-      {
+      if (this.customers[i].enabled == true && enabled == true && this.customers[i].visible == true) {
         temp.push(this.customers[i]);
       }
-      else if(this.customers[i].enabled == false && disabled == true && this.customers[i].visible == true)
-      {
+      else if (this.customers[i].enabled == false && disabled == true && this.customers[i].visible == true) {
         temp.push(this.customers[i]);
       }
 
@@ -194,21 +193,18 @@ export class CustomersPage implements OnInit{
     this.navCtrl.push(CustomerInfoPage);
   }
 
-  handleClick(event)
-  {
-    console.log(event.target.id);
-    if(event.target.id == "filter")
-    {
-      this.openPopOver1 = true;      
-    }
-    else if(event.target.id == "account")
-    {
-      this.openPopOver2 = true;
-    }
+  handleClick(event) {
+    // console.log(event.target.id);
+    // if (event.target.id == "filter") {
+    //   this.openPopOver1 = true;
+    // }
+    // else if (event.target.id == "account") {
+    //   this.openPopOver2 = true;
+    // }
   }
 
-  onPageWillLeave(){
-    this.events.unsubscribe('dismiss', ()=>{});
-    this.events.unsubscribe('dismiss2', ()=>{});
+  onPageWillLeave() {
+    this.events.unsubscribe('dismiss', () => { });
+    this.events.unsubscribe('dismiss2', () => { });
   }
 }
