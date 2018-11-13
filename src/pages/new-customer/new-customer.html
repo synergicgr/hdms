@@ -16,7 +16,7 @@
 
   <ion-row style="margin-top:5px;">
     <ion-col col-12 col-lg no-padding>
-      <input type="text" style="width: 100%;height: 50px;border-radius: 5px;" class="inputText" no-margin [(ngModel)]="customerAuxilaryPass">
+      <input type="text" style="width: 100%;height: 50px;border-radius: 5px;" class="inputText" no-margin [(ngModel)]="customerAuxiliaryPass">
       <span class="floating-label">ΒΟΗΘΗΤΙΚΟΣ ΚΩΔΙΚΟΣ ΠΕΛΑΤΗ (PASSCODE 10ψηφια)</span>
     </ion-col>
   </ion-row>
@@ -66,8 +66,8 @@
       <span class="floating-label">ΤΚ</span>
     </ion-col>
     <ion-col col-6 col-lg no-padding>
-      <input type="text" style="width: 100%;height: 50px;border-bottom-left-radius: 5px; border-bottom-right-radius: 5px;" class="inputText" no-margin
-        [(ngModel)]="insuredAreaFloor">
+      <input type="text" style="width: 100%;height: 50px;border-bottom-left-radius: 5px; border-bottom-right-radius: 5px;"
+        class="inputText" no-margin [(ngModel)]="insuredAreaFloor">
       <span class="floating-label">ΟΡΟΦΟΣ</span>
     </ion-col>
   </ion-row>
@@ -94,26 +94,41 @@
     <ion-col col-12 col-lg style="color:#8c8ca9;margin-left: 5px;">
       <ion-list radio-group no-lines [(ngModel)]="insuredAreaType">
         <ion-item style="background:  #272753;">
-          <input name="selection" type="radio" value="store" style="margin-right: 10px;">
-          <label style="color:#8c8ca9">Κατάστημα</label>
+          <!-- <input name="selection" type="radio" value="store" style="margin-right: 10px;"> -->
+          <ion-radio item-left value="store"></ion-radio>
+          <ion-label style="color:#8c8ca9;font-size:12px;">Κατάστημα</ion-label>
+          <!-- <label style="color:#8c8ca9">Κατάστημα</label> -->
         </ion-item>
         <ion-item style="background:  #272753;">
-          <input name="selection" type="radio" value="apartment" style="margin-right: 10px;">
-          <label style="color:#8c8ca9">Διαμέρισμα</label>
+          <!-- <input name="selection" type="radio" value="apartment" style="margin-right: 10px;"> -->
+          <ion-radio item-left value="apartment"></ion-radio>
+          <!-- <label style="color:#8c8ca9">Διαμέρισμα</label> -->
+          <ion-label style="color:#8c8ca9;font-size: 12px">Διαμέρισμα</ion-label>
         </ion-item>
         <ion-item style="background:  #272753;">
-          <input name="selection" type="radio" value="office" style="margin-right: 10px;">
-          <label style="color:#8c8ca9">Γραφείο</label>
+          <!-- <input name="selection" type="radio" value="office" style="margin-right: 10px;"> -->
+          <ion-radio item-left value="office"></ion-radio>
+          <!-- <label style="color:#8c8ca9">Γραφείο</label> -->
+          <ion-label style="color:#8c8ca9;font-size:12px;">Γραφείο</ion-label>
         </ion-item>
         <ion-item style="background:  #272753;">
-          <input name="selection" type="radio" value="detachedHouse" style="margin-right: 10px;">
-          <label style="color:#8c8ca9">Μονοκατοικία</label>
+          <!-- <input name="selection" type="radio" value="detachedHouse" style="margin-right: 10px;"> -->
+          <ion-radio item-left value="detachedHouse"></ion-radio>
+          <ion-label style="color:#8c8ca9;font-size:12px;">Μονοκατοικία</ion-label>
+          <!-- <label style="color:#8c8ca9">Μονοκατοικία</label> -->
         </ion-item>
-        <ion-item style="background:  #272753;" >
-          <input type="radio" name="selection" value="other" id="radioSelection" style="margin-right: 10px;">
-          <label style="margin-right: 10px;color:#8c8ca9">Άλλο</label>
-          <input type="text" style="width:100%;background: #36365f;color:#ffffff;border: 0;font-size: 12px;"
-            [(ngModel)]="insuredAreaTypeOther" id="textinput">
+        <ion-item style="background:  #272753;">
+          <!-- <input type="radio" name="selection" value="other" id="radioSelection" style="margin-right: 10px;"> -->
+          <ion-radio item-left value="other">
+          </ion-radio>
+          <!-- <label style="margin-right: 10px;color:#8c8ca9">Άλλο</label> -->
+          <ion-label style="color:#8c8ca9;margin-right: 20px; font-size: 12px;">Άλλο</ion-label>
+        </ion-item>
+        <ion-item *ngIf="insuredAreaType === 'other'" style="background:  #272753;border-bottom: none;box-shadow:none;" no-lines>
+          <ion-label style="color:#8c8ca9;margin-right: 20px;font-size: 12px;">Παρακαλώ διευκρινήστε</ion-label>
+          <ion-input style="border-bottom: none;box-shadow:none; width:100%;background: #36365f;color:#ffffff;border: 0;font-size: 12px;" [(ngModel)]="insuredAreaTypeOther"></ion-input>
+          <!-- <input type="text" style="width:100%;background: #36365f;color:#ffffff;border: 0;font-size: 12px;"
+            [(ngModel)]="insuredAreaTypeOther" id="textinput"> -->
         </ion-item>
       </ion-list>
     </ion-col>
@@ -146,7 +161,7 @@
 
   <ion-row *ngFor="let phoneNotice of phoneNotices.slice(0, -1); let i = index;" style="margin-bottom:2px;background: #272753;">
     <ion-col col-1 *ngIf="phoneNotice.editable === false">
-      <img src="../assets/imgs/drag-icon.png" style="height:20px;width:20px;">
+      <img src="assets/imgs/drag-icon.png" style="height:20px;width:20px;">
     </ion-col>
     <ion-col col-5 style="color:#ffffff" *ngIf="phoneNotice.editable === false">
       {{phoneNotice.name}}
@@ -159,7 +174,7 @@
     </ion-col>
 
     <ion-col col-1 *ngIf="phoneNotice.editable === true">
-      <img src="../assets/imgs/drag-icon.png" style="height:20px;width:20px;position: relative;top:10px;">
+      <img src="assets/imgs/drag-icon.png" style="height:20px;width:20px;position: relative;top:10px;">
     </ion-col>
     <ion-col col-5 style="color:#ffffff" *ngIf="phoneNotice.editable === true">
       <ion-input style="position: relative;left: -7px;" type="text" placeholder="Χρήστης" [(ngModel)]="phoneNotices[i].name"></ion-input>
@@ -174,7 +189,7 @@
 
   <ion-row *ngIf="phoneNotices.length > 0" style="background: #272753;border-bottom-left-radius: 5px; border-bottom-right-radius: 5px;">
     <ion-col col-1 *ngIf="phoneNotices[phoneNotices.length-1].editable === false">
-      <img src="../assets/imgs/drag-icon.png" style="height:20px;width:20px;">
+      <img src="assets/imgs/drag-icon.png" style="height:20px;width:20px;">
     </ion-col>
     <ion-col col-5 style="color:#ffffff" *ngIf="phoneNotices[phoneNotices.length-1].editable === false">
       {{phoneNotices[phoneNotices.length-1].name}}
@@ -187,7 +202,7 @@
     </ion-col>
 
     <ion-col col-1 *ngIf="phoneNotices[phoneNotices.length-1].editable === true">
-      <img src="../assets/imgs/drag-icon.png" style="height:20px;width:20px;position: relative;top:10px;">
+      <img src="assets/imgs/drag-icon.png" style="height:20px;width:20px;position: relative;top:10px;">
     </ion-col>
     <ion-col col-5 style="color:#ffffff" *ngIf="phoneNotices[phoneNotices.length-1].editable === true">
       <ion-input style="position: relative;left: -7px;" type="text" placeholder="Χρήστης" [(ngModel)]="phoneNotices[phoneNotices.length-1].name"></ion-input>
@@ -221,18 +236,25 @@
   <ion-row style="background: #272753;border-bottom-left-radius: 5px; border-bottom-right-radius: 5px;">
     <ion-col col-12 col-lg style="color:#8c8ca9;margin-left: 5px;">
       <ion-list radio-group no-lines [(ngModel)]="format">
+        <ion-item style="background:  #272753;">
+          <!-- <label for="label4" style="color:#8c8ca9">CID</label> -->
+          <ion-label style="color:#8c8ca9;font-size: 12px;">CID</ion-label>
+          <ion-radio item-left value="cid"></ion-radio>
+          <!-- <input name="selection2" type="radio" value="cid" style="margin-right: 10px;"> -->
 
-        <ion-item style="background:  #272753;">
-          <input name="selection2" type="radio" value="cid" style="margin-right: 10px;">
-          <label for="label4" style="color:#8c8ca9">CID</label>
         </ion-item>
         <ion-item style="background:  #272753;">
-          <input name="selection2" type="radio" value="sia" style="margin-right: 10px;">
-          <label for="label4" style="color:#8c8ca9">SIA</label>
+          <ion-label style="color:#8c8ca9;font-size: 12px;">SIA</ion-label>
+          <!-- <label for="label4" style="color:#8c8ca9">SIA</label> -->
+          <ion-radio item-left value="sia"></ion-radio>
+          <!-- <input name="selection2" type="radio" value="sia" style="margin-right: 10px;"> -->
+
         </ion-item>
         <ion-item style="background:  #272753;">
-          <input name="selection2" type="radio" value="fourPlusTwo" style="margin-right: 10px;">
-          <label for="label4" style="color:#8c8ca9">4+2</label>
+          <ion-label style="color:#8c8ca9; font-size: 12px;">4+2</ion-label>
+          <ion-radio item-left value="fourPlusTwo"></ion-radio>
+          <!-- <input name="selection2" type="radio" value="fourPlusTwo" style="margin-right: 10px;"> -->
+
         </ion-item>
       </ion-list>
     </ion-col>
@@ -280,7 +302,7 @@
 
   <ion-row *ngFor="let zone of zones.slice(0,-1); let i = index;" style="margin-bottom:2px;background: #272753;">
     <ion-col col-1 *ngIf="zone.editable === false">
-      <img src="../assets/imgs/drag-icon.png" style="width:20px;height:20px;">
+      <img src="assets/imgs/drag-icon.png" style="width:20px;height:20px;">
     </ion-col>
     <ion-col col-5 style="color:#ffffff" *ngIf="zone.editable === false">
       {{zone.name}}
@@ -293,7 +315,7 @@
     </ion-col>
 
     <ion-col col-1 *ngIf="zone.editable === true">
-      <img src="../assets/imgs/drag-icon.png" style="width:20px;height:20px;position: relative;top:10px;">
+      <img src="assets/imgs/drag-icon.png" style="width:20px;height:20px;position: relative;top:10px;">
     </ion-col>
     <ion-col col-5 style="color:#ffffff" *ngIf="zone.editable === true">
       <ion-input type="text" placeholder="Zone name" style="margin-left:-7px" [(ngModel)]="zones[i].name"></ion-input>
@@ -309,7 +331,7 @@
   <ion-row *ngIf="zones.length > 0" style="border-bottom-left-radius: 5px; border-bottom-right-radius: 5px;background: #272753;margin-bottom: 5px;">
 
     <ion-col col-1 *ngIf="zones[zones.length-1].editable === false">
-      <img src="../assets/imgs/drag-icon.png" style="width:20px;height:20px;">
+      <img src="assets/imgs/drag-icon.png" style="width:20px;height:20px;">
     </ion-col>
     <ion-col col-5 style="color:#ffffff" *ngIf="zones[zones.length-1].editable === false">
       {{zones[zones.length-1].name}}
@@ -322,7 +344,7 @@
     </ion-col>
 
     <ion-col col-1 *ngIf="zones[zones.length-1].editable === true">
-      <img src="../assets/imgs/drag-icon.png" style="width:20px;height:20px;position: relative;top:10px;">
+      <img src="assets/imgs/drag-icon.png" style="width:20px;height:20px;position: relative;top:10px;">
     </ion-col>
     <ion-col col-5 style="color:#ffffff" *ngIf="zones[zones.length-1].editable === true">
       <ion-input type="text" placeholder="Zone name" style="margin-left:-7px" [(ngModel)]="zones[zones.length-1].name"></ion-input>

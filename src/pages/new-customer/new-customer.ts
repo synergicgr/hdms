@@ -36,7 +36,7 @@ export class NewCustomerPage implements OnInit {
   operationControlHours: string;
   monthlyAlarmList: string;
   otherRemarks: string;
-
+  enabled:boolean;  
 
   phoneNotices: Array<{ name: string, phone: string, editable: boolean }> = [
     // { name: "Ελένη Γεωργίου", phone: "211 45 55 456", editable:false },
@@ -106,8 +106,6 @@ export class NewCustomerPage implements OnInit {
             this.customerAuxiliaryPass = element.customerAuxiliaryPass;
             this.duressCode = element.duressCode;
             this.customerConnectionDate = element.customerConnectionDate;          
-            this.customerPass = element.customerPass;
-            this.customerAuxiliaryPass = element.customerAuxiliaryPass;              
             this.insuredAreaAddress = element.insuredAreaAddress;
             this.insuredAreaCity = element.insuredAreaCity;
             this.insuredAreaPostCode = element.insuredAreaPostCode;
@@ -124,7 +122,11 @@ export class NewCustomerPage implements OnInit {
             this.directTransmissionPhones = element.directTransmissionPhones;
             this.operationControlHours = element.operationControlHours;
             this.monthlyAlarmList = element.monthlyAlarmList;
-            this.otherRemarks = element.otherRemarks;          
+            this.otherRemarks = element.otherRemarks;
+            this.zones = element.zones;
+            this.phoneNotices = element.phoneNotices;
+            this.alarmUsers = element.alarmUsers;
+            this.enabled = element.enabled;          
           }
         })
       });
@@ -209,7 +211,10 @@ export class NewCustomerPage implements OnInit {
           monthlyAlarmList: this.monthlyAlarmList,
           otherRemarks: this.otherRemarks,
           datePublished: new Date(),
-          enabled: true
+          enabled: true,
+          zones:this.zones,
+          alarmUsers:this.alarmUsers,
+          phoneNotices:this.phoneNotices,
         });
 
         this.storage.set('customers', value);
@@ -241,6 +246,9 @@ export class NewCustomerPage implements OnInit {
           monthlyAlarmList: this.monthlyAlarmList,
           otherRemarks: this.otherRemarks,
           datePublished: new Date(),
+          zones:this.zones,
+          phoneNotices:this.phoneNotices,
+          alarmUsers:this.alarmUsers,
           enabled: true
         }]);
       }
