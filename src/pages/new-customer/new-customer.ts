@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { IonicPage, NavController, NavParams, App, Platform } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, App, Platform, Events } from 'ionic-angular';
 import * as $ from 'jquery';
 import { Storage } from '@ionic/storage';
 import { CustomersProvider } from '../../providers/customers/customers';
@@ -36,7 +36,23 @@ export class NewCustomerPage implements OnInit {
   operationControlHours: string;
   monthlyAlarmList: string;
   otherRemarks: string;
-  enabled:boolean;  
+  enabled: boolean;
+
+  installer_name: string;
+  installer_afm: string;
+  installer_proffesionalDescription: string;
+  installer_insuredAreaAddress: string;
+  installer_insuredAreaCity: string;
+  installer_insuredAreaPostCode: string;
+  installer_insuredAreaFloor: string;
+  installer_fax:string;
+  installer_landlinePhone: string;
+  installer_mobilePhone: string;
+  installer_email: string;
+  installer_website: string;
+  installer_collectionPolicy: string;
+  installer_emailInvoice: string;
+  installer_billingAddressOnly: string;
 
   phoneNotices: Array<{ name: string, phone: string, editable: boolean }> = [
     // { name: "Ελένη Γεωργίου", phone: "211 45 55 456", editable:false },
@@ -68,7 +84,8 @@ export class NewCustomerPage implements OnInit {
     private storage: Storage,
     private customersProvider: CustomersProvider,
     private app: App,
-    private platform: Platform
+    private platform: Platform,
+    private events: Events
   ) {
 
     platform.registerBackButtonAction(() => {
@@ -95,6 +112,67 @@ export class NewCustomerPage implements OnInit {
   }
 
   ngOnInit() {
+
+    this.events.subscribe('installer-details-name', (data) =>{
+      this.installer_name = data.name;
+    });
+
+    this.events.subscribe('installer-details-afm', (data) =>{
+      this.installer_afm = data.afm;
+    });
+
+    this.events.subscribe('installer-details-proffesionalDescription', (data) =>{
+      this.installer_proffesionalDescription = data.proffesionalDescription;
+    });
+    
+    this.events.subscribe('installer-details-addrNum', (data) =>{
+      this.installer_insuredAreaAddress = data.insuredAreaAddress;
+    });
+
+    this.events.subscribe('installer-details-city', (data) =>{
+      this.installer_insuredAreaCity = data.insuredAreaCity;
+    });
+
+    this.events.subscribe('installer-details-postCode', (data) =>{
+      this.installer_insuredAreaPostCode = data.insuredAreaPostCode;
+    });
+    
+    this.events.subscribe('installer-details-floor', (data) =>{
+      this.installer_insuredAreaFloor = data.insuredAreaFloor;
+    }); 
+
+    this.events.subscribe('installer-details-landline', (data) =>{
+      this.installer_landlinePhone = data.landlinePhone;
+    }); 
+
+    this.events.subscribe('installer-details-mobile', (data) =>{
+      this.installer_mobilePhone = data.mobilePhone;
+    }); 
+
+    this.events.subscribe('installer-details-email', (data) =>{
+      this.installer_email = data.email;
+    });
+    
+    this.events.subscribe('installer-details-website', (data) =>{
+      this.installer_website = data.website;
+    });
+
+    this.events.subscribe('installer-details-collection', (data) =>{
+      this.installer_collectionPolicy = data.collectionPolicy;
+    });
+
+    this.events.subscribe('installer-details-invoice', (data) =>{
+      this.installer_emailInvoice = data.emailInvoice;
+    });
+
+    this.events.subscribe('installer-details-billing', (data) =>{
+      this.installer_billingAddressOnly = data.billingAddressOnly;
+    });
+
+    this.events.subscribe('installer-details-fax', (data) =>{
+      this.installer_fax = data.fax;
+    });
+
     if (this.navParams.data) {
       this.getDataStorage().then((value) => {
         value.forEach(element => {
@@ -105,7 +183,7 @@ export class NewCustomerPage implements OnInit {
             this.customerPass = element.customerPass;
             this.customerAuxiliaryPass = element.customerAuxiliaryPass;
             this.duressCode = element.duressCode;
-            this.customerConnectionDate = element.customerConnectionDate;          
+            this.customerConnectionDate = element.customerConnectionDate;
             this.insuredAreaAddress = element.insuredAreaAddress;
             this.insuredAreaCity = element.insuredAreaCity;
             this.insuredAreaPostCode = element.insuredAreaPostCode;
@@ -126,7 +204,7 @@ export class NewCustomerPage implements OnInit {
             this.zones = element.zones;
             this.phoneNotices = element.phoneNotices;
             this.alarmUsers = element.alarmUsers;
-            this.enabled = element.enabled;          
+            this.enabled = element.enabled;
           }
         })
       });
@@ -165,7 +243,7 @@ export class NewCustomerPage implements OnInit {
     return true;
   }
 
-  submit(): void {
+  submit(): void {    
 
     const d = new Date();
 
@@ -212,9 +290,24 @@ export class NewCustomerPage implements OnInit {
           otherRemarks: this.otherRemarks,
           datePublished: new Date(),
           enabled: true,
-          zones:this.zones,
-          alarmUsers:this.alarmUsers,
-          phoneNotices:this.phoneNotices,
+          zones: this.zones,
+          alarmUsers: this.alarmUsers,
+          phoneNotices: this.phoneNotices,
+          installer_name : this.installer_name,
+          installer_afm : this.installer_afm,
+          installer_proffesionalDescription : this.installer_proffesionalDescription,
+          installer_insuredAreaAddress : this.installer_insuredAreaAddress,
+          installer_insuredAreaCity : this.installer_insuredAreaCity,
+          installer_insuredAreaPostCode : this.installer_insuredAreaPostCode,
+          installer_insuredAreaFloor : this.installer_insuredAreaFloor,
+          installer_landlinePhone : this.installer_landlinePhone,
+          installer_mobilePhone : this.installer_mobilePhone,
+          installer_email : this.installer_email,
+          installer_website : this.installer_website,
+          installer_collectionPolicy : this.installer_collectionPolicy,
+          installer_emailInvoice : this.installer_emailInvoice,
+          installer_billingAddressOnly : this.installer_billingAddressOnly,
+          installer_fax: this.installer_fax
         });
 
         this.storage.set('customers', value);
@@ -246,10 +339,25 @@ export class NewCustomerPage implements OnInit {
           monthlyAlarmList: this.monthlyAlarmList,
           otherRemarks: this.otherRemarks,
           datePublished: new Date(),
-          zones:this.zones,
-          phoneNotices:this.phoneNotices,
-          alarmUsers:this.alarmUsers,
-          enabled: true
+          zones: this.zones,
+          phoneNotices: this.phoneNotices,
+          alarmUsers: this.alarmUsers,
+          enabled: true,
+          installer_name : this.installer_name,
+          installer_afm : this.installer_afm,
+          installer_proffesionalDescription : this.installer_proffesionalDescription,
+          installer_insuredAreaAddress : this.installer_insuredAreaAddress,
+          installer_insuredAreaCity : this.installer_insuredAreaCity,
+          installer_insuredAreaPostCode : this.installer_insuredAreaPostCode,
+          installer_insuredAreaFloor : this.installer_insuredAreaFloor,
+          installer_landlinePhone : this.installer_landlinePhone,
+          installer_mobilePhone : this.installer_mobilePhone,
+          installer_email : this.installer_email,
+          installer_website : this.installer_website,
+          installer_collectionPolicy : this.installer_collectionPolicy,
+          installer_emailInvoice : this.installer_emailInvoice,
+          installer_billingAddressOnly : this.installer_billingAddressOnly,
+          installer_fax: this.installer_fax
         }]);
       }
     });

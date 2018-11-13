@@ -41,4 +41,8 @@ page-new-customer {
     textarea{
         font-size: 12px;
     }
+
+    .item-md .radio-md[item-left], .item-md .radio-md[item-start] {
+        margin: 11px 17px 10px -10px;
+    }
 }
