@@ -17,8 +17,8 @@ export class CustomersPage implements OnInit{
 
   private popover;
   private popover2;
-  openPopOver1: boolean;
-  openPopOver2: boolean;
+  openPopOver1: boolean = false;
+  openPopOver2: boolean = false;
   searchInput: string;
 
   customers: Array<{name: string, surname: string, city: string, visible:boolean, draft:boolean, publishedDate:string, enabled:boolean}>;
@@ -35,34 +35,35 @@ export class CustomersPage implements OnInit{
     private menuCtrl:MenuController,
   ) {
 
-    events.subscribe('dismiss', (data, time) => {
-      // user and time are the same arguments passed in `events.publish(user, time)`
-      this.popover.dismiss();
-    });
-
-    events.subscribe('dismiss2', (data, time) => {
-      this.popover2.dismiss();
-    });
-
-    platform.ready().then(() => {
-      platform.registerBackButtonAction(() => {
-        if (this.openPopOver1 === true) {
-          this.popover.dismiss();
-          this.openPopOver1 = false;
-        }
-        else if (this.openPopOver2 === true) {
-          this.popover2.dismiss();
-          this.openPopOver2 = false;
-        }
-        else {
-          navCtrl.setRoot(DashboardPage);
-        }
-      });
-    });
   }
 
   ngOnInit(){
     this.customers = this.customersProvider.getCustomers();
+
+    this.events.subscribe('dismiss', (data, time) => {
+      // user and time are the same arguments passed in `events.publish(user, time)`
+      this.popover.dismiss();
+    });
+
+    this.events.subscribe('dismiss2', (data, time) => {
+      this.popover2.dismiss();
+    });
+
+    this.platform.ready().then(() => {
+      this.platform.registerBackButtonAction(() => {
+        console.log("Back button popOver1:", this.openPopOver1, " popOver2:", this.openPopOver2 );
+        
+        if (this.openPopOver1 === true) {
+          this.popover.dismiss();
+        }
+        else if (this.openPopOver2 === true) {
+          this.popover2.dismiss();
+        }
+        else {
+          this.navCtrl.setRoot(DashboardPage);
+        }
+      });
+    });
   }
 
   ionViewDidLoad() {
@@ -75,6 +76,10 @@ export class CustomersPage implements OnInit{
       ev: myEvent
     });
     this.openPopOver1 = true;
+    this.popover.onDidDismiss(()=>{
+      this.openPopOver1 = false;      
+    });
+    
   }
 
   presentPopover2(myEvent) {
@@ -83,6 +88,10 @@ export class CustomersPage implements OnInit{
       ev: myEvent
     });
     this.openPopOver2 = true;
+    this.popover2.onDidDismiss(()=>{
+      this.openPopOver2 = false;
+    })
+    
   }
 
   openCustomer(index: number): void {
@@ -183,5 +192,23 @@ export class CustomersPage implements OnInit{
 
   public goToNewCustomer(): void {
     this.navCtrl.push(CustomerInfoPage);
+  }
+
+  handleClick(event)
+  {
+    console.log(event.target.id);
+    if(event.target.id == "filter")
+    {
+      this.openPopOver1 = true;      
+    }
+    else if(event.target.id == "account")
+    {
+      this.openPopOver2 = true;
+    }
+  }
+
+  onPageWillLeave(){
+    this.events.unsubscribe('dismiss', ()=>{});
+    this.events.unsubscribe('dismiss2', ()=>{});
   }
 }

@@ -7,14 +7,14 @@
       <img alt="logo" height="50px" src="assets/imgs/Hellas-Dns-logo.png" style="margin-right:20px;">
     </ion-title>
     <ion-buttons end>
-      <button ion-button color="white" icon-only menuClose (click)="presentPopover2($event)">
+      <button id="account" ion-button color="white" icon-only (click)="presentPopover2($event);handleClick($event);">
         <ion-icon name="person"></ion-icon>
       </button>
     </ion-buttons>
   </ion-navbar>
 </ion-header>
 
-<ion-content class="ion-content">
+<ion-content class="ion-content" (click)="handleClick($event)">
   <div>
       <ion-searchbar
       style="background: transparent !important;"
@@ -30,8 +30,8 @@
     {{getVisibleCustomersCount()}} Πελάτες
   </div>
   <div style="float:right;position: relative;top:5px;right:5px;">
-    <button (click)="presentPopover($event)" style="background: transparent !important;">
-      <img width="30" height="30" alt="sorting" src="assets/imgs/FILTRA-icon.png">
+    <button (click)="presentPopover($event); openPopOver1 = true;" style="background: transparent !important;">
+      <img id="filter" width="30" height="30" alt="sorting" src="assets/imgs/FILTRA-icon.png">
     </button>
   </div>
   <div style="float:right;position: relative; top: -2px;">
