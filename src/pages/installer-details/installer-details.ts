@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { IonicPage, NavController, NavParams, Events } from 'ionic-angular';
 import { Storage } from '@ionic/storage';
 
@@ -14,7 +14,7 @@ import { Storage } from '@ionic/storage';
   selector: 'page-installer-details',
   templateUrl: 'installer-details.html',
 })
-export class InstallerDetailsPage {
+export class InstallerDetailsPage{
 
   name: string;
   afm: string;
@@ -32,11 +32,37 @@ export class InstallerDetailsPage {
   emailInvoice: string;
   billingAddressOnly: string;
 
+  customer_installerName: string;
+  customer_customerPass: string;
+  customer_AuxiliaryPass: string;
+  customer_duressCode: string;
+  customer_ConnectionDate: string;
+  customer_subscriberName: string;
+  customer_insuredAreaAddress: string;
+  customer_insuredAreaCity: string;
+  customer_insuredAreaPostCode: string;
+  customer_insuredAreaFloor: string;
+  customer_insuredAreaDescription: string;
+  customer_insuredAreaType: string;
+  customer_insuredAreaTypeOther: string;
+  customer_areaPhone: string;
+  customer_alarmUnitType: string;
+  customer_format: string;
+  customer_frequency24HourTest: number;
+  customer_weeklyTimeMonitoring: string;
+  customer_policeStation: string;
+  customer_directTransmissionPhones: string;
+  customer_operationControlHours: string;
+  customer_monthlyAlarmList: string;
+  customer_otherRemarks: string;
+  customer_enabled: boolean;
+
 
   constructor(public navCtrl: NavController, public navParams: NavParams, private events: Events, private storage: Storage) {
   }
 
   ionViewDidLoad() {
+
     this.storage.get('customers').then((value) => {
       value.forEach(element => {
         if (element.subscriberName.split(" ")[0] === this.navParams.data.name && element.subscriberName.split(" ")[1] === this.navParams.data.surname) {
@@ -69,22 +95,7 @@ export class InstallerDetailsPage {
   }
 
   submit(): void {
-    this.events.publish('installer-details', {
-      name: this.name,
-      afm: this.afm,
-      proffesionalDescription: this.proffesionalDescription,
-      insuredAreaAddress: this.insuredAreaAddress,
-      insuredAreaCity: this.insuredAreaCity,
-      insuredAreaPostCode: this.insuredAreaPostCode,
-      insuredAreaFloor: this.insuredAreaFloor,
-      landlinePhone: this.landlinePhone,
-      mobilePhone: this.mobilePhone,
-      email: this.email,
-      website: this.website,
-      collectionPolicy: this.collectionPolicy,
-      emailInvoice: this.emailInvoice,
-      billingAddressOnly: this.billingAddressOnly
-    });
+    this.events.publish('submit', {subscriberName:this.customer_subscriberName});
   }
 
   submitName():void{

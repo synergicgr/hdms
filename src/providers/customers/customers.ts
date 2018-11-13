@@ -8,6 +8,9 @@ export class CustomersProvider {
 
   public enabled: boolean = true;
   public disabled: boolean = false;
+  public subscriberName:string;
+  public installerName:string;
+  public customerPass:string;
 
   customers: Array<{ name: string, surname: string, city: string, visible: boolean, draft: boolean, publishedDate: string, enabled: boolean }> = [
     // {name:'Γρηγόρης', surname:'Σαμαράς', city:'Αθήνα', visible:true, draft:true, publishedDate:"", enabled:true}, 
@@ -109,5 +112,18 @@ export class CustomersProvider {
 
   public setDisabled(disabled) {
     this.disabled = disabled;
-  }  
+  } 
+  
+  setSubscriber(name):void
+  {
+    this.subscriberName = name;
+  }
+
+  setInstallerName(name):void{
+    this.installerName = name;
+  }
+  
+  setCustomerPass(pass):void{
+    this.customerPass = pass;
+  }
 }

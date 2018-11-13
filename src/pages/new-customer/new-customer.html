@@ -2,14 +2,14 @@
 
   <ion-row>
     <ion-col col-12 col-lg no-padding>
-      <input type="text" style="width: 100%;height: 50px;border-radius: 5px;" class="inputText" no-margin [(ngModel)]="installerName">
+      <input type="text" style="width: 100%;height: 50px;border-radius: 5px;" class="inputText" no-margin [(ngModel)]="installerName" (change)="saveInstallerName()">
       <span class="floating-label">ΟΝΟΜΑ ΕΓΚΑΤΑΣΤΑΤΗ</span>
     </ion-col>
   </ion-row>
 
   <ion-row style="margin-top:5px;">
     <ion-col col-12 col-lg no-padding>
-      <input type="text" style="width: 100%;height: 50px;border-radius: 5px;" class="inputText" no-margin [(ngModel)]="customerPass">
+      <input type="text" style="width: 100%;height: 50px;border-radius: 5px;" class="inputText" no-margin [(ngModel)]="customerPass" (change)="saveCustomerPass()">
       <span class="floating-label">ΚΩΔΙΚΟΣ ΠΕΛΑΤΗ (CSID 6ψηφια)</span>
     </ion-col>
   </ion-row>
@@ -38,7 +38,7 @@
 
   <ion-row style="margin-top:30px;">
     <ion-col col-12 col-lg no-padding>
-      <input type="text" style="width: 100%;height: 50px;border-radius: 5px;" class="inputText" no-margin [(ngModel)]="subscriberName">
+      <input type="text" style="width: 100%;height: 50px;border-radius: 5px;" class="inputText" no-margin [(ngModel)]="subscriberName" (change)="saveSubscriber()">
       <span class="floating-label">ΕΠΩΝΥΜΙΑ ΣΥΝΔΡΟΜΗΤΗ</span>
     </ion-col>
   </ion-row>

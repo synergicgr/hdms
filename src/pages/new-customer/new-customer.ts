@@ -173,6 +173,12 @@ export class NewCustomerPage implements OnInit {
       this.installer_fax = data.fax;
     });
 
+    this.events.subscribe('submit', (data) =>{
+      console.log("Event submit ", data.subscriberName);
+      // this.subscriberName = data.subscriberName;
+      this.submit();
+    });
+
     if (this.navParams.data) {
       this.getDataStorage().then((value) => {
         value.forEach(element => {
@@ -246,6 +252,10 @@ export class NewCustomerPage implements OnInit {
   submit(): void {    
 
     const d = new Date();
+
+    this.subscriberName = this.customersProvider.subscriberName;
+    this.installerName = this.customersProvider.installerName;
+    this.customerPass = this.customersProvider.customerPass;
 
     this.customersProvider.addCustomer(
       {
@@ -367,5 +377,17 @@ export class NewCustomerPage implements OnInit {
 
   public async getDataStorage() {
     return await this.storage.get("customers");
+  }
+
+  saveSubscriber():void{
+    this.customersProvider.setSubscriber(this.subscriberName);    
+  }
+
+  saveInstallerName():void{
+    this.customersProvider.setInstallerName(this.installerName);
+  }
+
+  saveCustomerPass():void{
+    this.customersProvider.setCustomerPass(this.customerPass);
   }
 }
