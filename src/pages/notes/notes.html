@@ -68,8 +68,7 @@
 
   <ion-row *ngFor="let note of notes.slice(1,-1); let i = index" style="background:#272753;margin-bottom: 2px;">
     <ion-col col-3 style="color:#8c8ca9;display: flex !important;
-    justify-content: center !important;
-    align-items: center !important; vertical-align: middle;border-right: thin solid #5a5a7c;">
+     vertical-align: middle;border-right: thin solid #5a5a7c;">
       <div>
         <div style="font-size:12px">{{note.showDate.split(" ")[0]}}</div>
         <div style="float:right;font-size: 12px">{{note.showDate.split(" ")[1]}}</div>
