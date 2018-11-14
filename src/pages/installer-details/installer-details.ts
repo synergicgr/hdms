@@ -4,13 +4,6 @@ import { Storage } from '@ionic/storage';
 import { CustomersProvider } from '../../providers/customers/customers';
 import { CustomersPage } from '../customers/customers';
 
-/**
- * Generated class for the InstallerDetailsPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
-
 @IonicPage()
 @Component({
   selector: 'page-installer-details',
