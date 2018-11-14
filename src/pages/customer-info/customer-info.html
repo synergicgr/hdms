@@ -8,7 +8,8 @@
     <ion-title style="color:#ffc200">
       <span style="font-size:14px;opacity: 0.75;margin-left: 10px;" *ngIf="navParams.data.draft == false">{{navParams.data.name}}
         {{navParams.data.surname}}</span>
-      <span style="font-size:14px;opacity: 0.75;margin-left: 10px;" *ngIf="navParams.data.draft == true || isEmptyArray(navParams.data)">ΕΓΓΡΑΦΗ ΝΕΟΥ
+      <span style="font-size:14px;opacity: 0.75;margin-left: 10px;" *ngIf="navParams.data.draft == true || isEmptyArray(navParams.data)">ΕΓΓΡΑΦΗ
+        ΝΕΟΥ
         ΠΕΛΑΤΗ</span>
     </ion-title>
     <ion-buttons end *ngIf="navParams.data.draft === true">
@@ -16,6 +17,10 @@
         <ion-icon name="trash" color="app-yellow" style="font-size: 25px;margin-right:10px;">
         </ion-icon>
       </button>
+    </ion-buttons>
+    <ion-buttons end *ngIf="navParams.data">
+      <ion-label style="color:#ffffff; position:relative; top:15px;right:15px;">Ενεργός</ion-label>
+      <ion-checkbox style="color:#ffffff;position: relative;bottom: 20px" [(ngModel)]="enabled"></ion-checkbox>         
     </ion-buttons>
   </ion-navbar>
 </ion-header>

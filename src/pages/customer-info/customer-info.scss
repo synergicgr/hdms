@@ -1,4 +1,9 @@
 page-customer-info {
+
+    // .toolbar-background {
+    //     background-color: black;
+    //   }
+
     .ion-content {
         background: #36365f;
     }
@@ -16,5 +21,9 @@ page-customer-info {
     .toolbar-title-md{
         position: relative;
         right: 20px;
+    }
+    
+    ion-checkbox{
+        margin-top:5px;
     }
 }

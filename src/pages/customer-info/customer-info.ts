@@ -6,6 +6,7 @@ import { NewCustomerPage } from '../new-customer/new-customer';
 import { InstallerDetailsPage } from '../installer-details/installer-details';
 import { CustomersProvider } from '../../providers/customers/customers';
 import { CustomersPage } from '../customers/customers';
+import { Storage } from '@ionic/storage';
 
 /**
  * Generated class for the CustomerInfoPage page.
@@ -23,11 +24,28 @@ export class CustomerInfoPage {
 
   tab1Root = NewCustomerPage;
   tab2Root = InstallerDetailsPage;
+  enabled: boolean;
 
   @ViewChild('tabs') tabRef: Tabs;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, private customersProvider: CustomersProvider, private alertCtrl: AlertController) {
+  constructor(public navCtrl: NavController,
+    public navParams: NavParams,
+    private customersProvider: CustomersProvider,
+    private alertCtrl: AlertController,
+    private storage: Storage) {
     console.log(navParams.data);
+
+    if (navParams.data) {
+      this.storage.get('customers').then((value) => {
+        if (value) {
+          value.forEach(element => {
+            if (navParams.data.name == element.subscriberName.split(" ")[0] && navParams.data.surname == element.subscriberName.split(" ")[1]) {
+              this.enabled = element.enabled;
+            }
+          });
+        }
+      });
+    }
   }
 
   ionViewDidLoad() {
