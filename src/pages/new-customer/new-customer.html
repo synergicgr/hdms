@@ -205,10 +205,10 @@
       <img src="assets/imgs/drag-icon.png" style="height:20px;width:20px;position: relative;top:10px;">
     </ion-col>
     <ion-col col-5 style="color:#ffffff" *ngIf="phoneNotices[phoneNotices.length-1].editable === true">
-      <ion-input style="position: relative;left: -7px;" type="text" placeholder="Χρήστης" [(ngModel)]="phoneNotices[phoneNotices.length-1].name"></ion-input>
+      <ion-input style="position: relative;left: -7px;" type="text" placeholder="Χρήστης" [(ngModel)]="phoneNotices[phoneNotices.length-1].name" (ionChange)="savePhoneNotices()"></ion-input>
     </ion-col>
     <ion-col col-5 style="color:#ffffff" *ngIf="phoneNotices[phoneNotices.length-1].editable === true">
-      <ion-input style="position: relative;left: -7px;" type="text" placeholder="Τηλέφωνο" [(ngModel)]="phoneNotices[phoneNotices.length-1].phone"></ion-input>
+      <ion-input style="position: relative;left: -7px;" type="text" placeholder="Τηλέφωνο" [(ngModel)]="phoneNotices[phoneNotices.length-1].phone" (ionChange)="savePhoneNotices()"></ion-input>
     </ion-col>
     <ion-col col-1 *ngIf="phoneNotices[phoneNotices.length-1].editable === true">
       <ion-icon float-right name="close" style="color:#ffffff; margin-right:10px;position: relative;top:15px;" (click)="removePhoneNotice(phoneNotices.length-1)"></ion-icon>

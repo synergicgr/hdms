@@ -80,8 +80,8 @@ export class NewCustomerPage implements OnInit {
     // { username: "K25LS", name: "Μαρία" , editable:false},
   ];
 
-  private source = new BehaviorSubject<{ name: string, phone: string, editable: boolean }[]>([]);
-  data$ = this.source.asObservable();
+  private phoneNoticeSource = new BehaviorSubject<{ name: string, phone: string, editable: boolean }[]>([]);
+  phoneNoticeData = this.phoneNoticeSource.asObservable();
 
   constructor(
     public navCtrl: NavController,
@@ -116,7 +116,7 @@ export class NewCustomerPage implements OnInit {
 
   ngOnInit() {
 
-    this.data$.subscribe(data => {
+    this.phoneNoticeData.subscribe(data => {
       this.customersProvider.setPhoneNotices(this.phoneNotices);    
     });
 
@@ -238,7 +238,7 @@ export class NewCustomerPage implements OnInit {
 
   addPhoneNotices(): void {
     this.phoneNotices.push({ name: "", phone: "", editable: true });
-    this.source.next([{ name: "", phone: "", editable: true }]);
+    this.phoneNoticeSource.next([{ name: "", phone: "", editable: true }]);
   }
 
   addZone(): void {
@@ -403,5 +403,9 @@ export class NewCustomerPage implements OnInit {
 
   saveAuxiliaryPass():void{
     this.customersProvider.setCustomerAuxiliaryPass(this.customerAuxiliaryPass);
-  }  
+  }
+  
+  savePhoneNotices():void{
+    this.customersProvider.setPhoneNotices(this.phoneNotices);
+  }
 }
