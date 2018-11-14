@@ -83,6 +83,9 @@ export class NewCustomerPage implements OnInit {
   private phoneNoticeSource = new BehaviorSubject<{ name: string, phone: string, editable: boolean }[]>([]);
   phoneNoticeData = this.phoneNoticeSource.asObservable();
 
+  private zonesSource = new BehaviorSubject<{ name: string, id: string, editable: boolean }[]>([]);
+  zonesData = this.zonesSource.asObservable();
+
   constructor(
     public navCtrl: NavController,
     public navParams: NavParams,
@@ -107,6 +110,7 @@ export class NewCustomerPage implements OnInit {
     });
     
     this.phoneNotices = this.customersProvider.phoneNotices;
+    this.zones = this.customersProvider.zones;
   }
 
   onPageWillLeave() {
@@ -119,6 +123,10 @@ export class NewCustomerPage implements OnInit {
     this.phoneNoticeData.subscribe(data => {
       this.customersProvider.setPhoneNotices(this.phoneNotices);    
     });
+
+    this.zonesData.subscribe(data =>{
+      this.customersProvider.setZones(this.zones);
+    })
 
     this.events.subscribe('installer-details-name', (data) =>{
       this.installer_name = data.name;
@@ -226,6 +234,7 @@ export class NewCustomerPage implements OnInit {
 
   removeZone(index): void {
     this.zones.splice(index, 1);
+    this.zonesSource.next([]);
   }
 
   removeAlarmUser(index): void {
@@ -234,6 +243,7 @@ export class NewCustomerPage implements OnInit {
 
   removePhoneNotice(index): void {
     this.phoneNotices.splice(index, 1);
+    this.phoneNoticeSource.next([]);
   }
 
   addPhoneNotices(): void {
