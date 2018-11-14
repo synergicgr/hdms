@@ -18,7 +18,7 @@
         </ion-icon>
       </button>
     </ion-buttons>
-    <ion-buttons end *ngIf="navParams.data">
+    <ion-buttons end *ngIf="!isEmptyArray(navParams.data)">
       <ion-label style="color:#ffffff; position:relative; top:15px;right:15px;">Ενεργός</ion-label>
       <ion-checkbox style="color:#ffffff;position: relative;bottom: 20px" [(ngModel)]="enabled"></ion-checkbox>         
     </ion-buttons>
