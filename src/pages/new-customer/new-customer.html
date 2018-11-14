@@ -23,14 +23,14 @@
 
   <ion-row style="margin-top:5px;">
     <ion-col col-12 col-lg no-padding>
-      <input type="text" style="width: 100%;height: 50px;border-radius: 5px;" class="inputText" no-margin [(ngModel)]="duressCode">
+      <input type="text" style="width: 100%;height: 50px;border-radius: 5px;" class="inputText" no-margin [(ngModel)]="duressCode" (change)="saveDuressCode()">
       <span class="floating-label">ΚΩΔΙΚΟΣ ΑΠΕΙΛΗΣ DURESS CODE (6ψηφια)</span>
     </ion-col>
   </ion-row>
 
   <ion-row style="margin-top:5px;">
     <ion-col col-12 col-lg no-padding>
-      <input type="text" style="width: 100%;height: 50px;border-radius: 5px;" class="inputText" no-margin [(ngModel)]="customerConnectionDate">
+      <input type="text" style="width: 100%;height: 50px;border-radius: 5px;" class="inputText" no-margin [(ngModel)]="customerConnectionDate" (change)="saveConnectionDate()">
       <span class="floating-label">ΗΜΕΡΟΜΗΝΙΑ ΣΥΝΔΕΣΗΣ ΠΕΛΑΤΗ</span>
     </ion-col>
   </ion-row>
@@ -51,23 +51,23 @@
 
   <ion-row style="background: #272753;">
     <ion-col col-6 col-lg no-padding style="position:relative;top:10px;">
-      <input type="text" style="width: 100%;height: 50px;" class="inputText" no-margin [(ngModel)]="insuredAreaAddress">
+      <input type="text" style="width: 100%;height: 50px;" class="inputText" no-margin [(ngModel)]="insuredAreaAddress" (change)="saveInsuredAreaAddress()">
       <span class="floating-label">ΟΔΟΣ - ΑΡΙΘΜΟΣ</span>
     </ion-col>
     <ion-col col-6 col-lg no-padding style="position:relative;top:10px;">
-      <input type="text" style="width: 100%;height: 50px;" class="inputText" no-margin [(ngModel)]="insuredAreaCity">
+      <input type="text" style="width: 100%;height: 50px;" class="inputText" no-margin [(ngModel)]="insuredAreaCity" (change)="saveInsuredAreaCity()">
       <span class="floating-label">ΠΟΛΗ</span>
     </ion-col>
   </ion-row>
   <ion-row style="background: #272753; border-bottom-left-radius: 5px; border-bottom-right-radius: 5px;">
     <ion-col col-6 col-lg no-padding>
       <input type="text" style="width: 100%;height: 50px;border-bottom-left-radius: 10px;" class="inputText" no-margin
-        [(ngModel)]="insuredAreaPostCode">
+        [(ngModel)]="insuredAreaPostCode" (change)="saveInsuredAreaPostCode()">
       <span class="floating-label">ΤΚ</span>
     </ion-col>
     <ion-col col-6 col-lg no-padding>
       <input type="text" style="width: 100%;height: 50px;border-bottom-left-radius: 5px; border-bottom-right-radius: 5px;"
-        class="inputText" no-margin [(ngModel)]="insuredAreaFloor">
+        class="inputText" no-margin [(ngModel)]="insuredAreaFloor" (change)="saveInsuredAreaFloor()">
       <span class="floating-label">ΟΡΟΦΟΣ</span>
     </ion-col>
   </ion-row>
@@ -80,7 +80,7 @@
 
   <ion-row style="background: #272753;border-bottom-left-radius: 5px; border-bottom-right-radius: 5px;">
     <ion-col col-12 col-lg no-padding>
-      <ion-textarea style="height:80px;color:#ffffff;margin-left: 10px;" [(ngModel)]="insuredAreaDescription"></ion-textarea>
+      <ion-textarea style="height:80px;color:#ffffff;margin-left: 10px;" [(ngModel)]="insuredAreaDescription" (ionChange)="saveInsuredAreaDescription()"></ion-textarea>
     </ion-col>
   </ion-row>
 
@@ -95,38 +95,38 @@
       <ion-list radio-group no-lines [(ngModel)]="insuredAreaType">
         <ion-item style="background:  #272753;">
           <!-- <input name="selection" type="radio" value="store" style="margin-right: 10px;"> -->
-          <ion-radio item-left value="store"></ion-radio>
+          <ion-radio item-left value="store" (ionSelect)="saveInsuredAreaType()"></ion-radio>
           <ion-label style="color:#8c8ca9;font-size:12px;">Κατάστημα</ion-label>
           <!-- <label style="color:#8c8ca9">Κατάστημα</label> -->
         </ion-item>
         <ion-item style="background:  #272753;">
           <!-- <input name="selection" type="radio" value="apartment" style="margin-right: 10px;"> -->
-          <ion-radio item-left value="apartment"></ion-radio>
+          <ion-radio item-left value="apartment" (ionSelect)="saveInsuredAreaType()"></ion-radio>
           <!-- <label style="color:#8c8ca9">Διαμέρισμα</label> -->
           <ion-label style="color:#8c8ca9;font-size: 12px">Διαμέρισμα</ion-label>
         </ion-item>
         <ion-item style="background:  #272753;">
           <!-- <input name="selection" type="radio" value="office" style="margin-right: 10px;"> -->
-          <ion-radio item-left value="office"></ion-radio>
+          <ion-radio item-left value="office" (ionSelect)="saveInsuredAreaType()"></ion-radio>
           <!-- <label style="color:#8c8ca9">Γραφείο</label> -->
           <ion-label style="color:#8c8ca9;font-size:12px;">Γραφείο</ion-label>
         </ion-item>
         <ion-item style="background:  #272753;">
           <!-- <input name="selection" type="radio" value="detachedHouse" style="margin-right: 10px;"> -->
-          <ion-radio item-left value="detachedHouse"></ion-radio>
+          <ion-radio item-left value="detachedHouse" (ionSelect)="saveInsuredAreaType()"></ion-radio>
           <ion-label style="color:#8c8ca9;font-size:12px;">Μονοκατοικία</ion-label>
           <!-- <label style="color:#8c8ca9">Μονοκατοικία</label> -->
         </ion-item>
         <ion-item style="background:  #272753;">
           <!-- <input type="radio" name="selection" value="other" id="radioSelection" style="margin-right: 10px;"> -->
-          <ion-radio item-left value="other">
+          <ion-radio item-left value="other" (ionSelect)="saveInsuredAreaType()">
           </ion-radio>
           <!-- <label style="margin-right: 10px;color:#8c8ca9">Άλλο</label> -->
           <ion-label style="color:#8c8ca9;margin-right: 20px; font-size: 12px;">Άλλο</ion-label>
         </ion-item>
         <ion-item *ngIf="insuredAreaType === 'other'" style="background:  #272753;border-bottom: none;box-shadow:none;" no-lines>
           <ion-label style="color:#8c8ca9;margin-right: 20px;font-size: 12px;">Παρακαλώ διευκρινήστε</ion-label>
-          <ion-input style="border-bottom: none;box-shadow:none; width:100%;background: #36365f;color:#ffffff;border: 0;font-size: 12px;" [(ngModel)]="insuredAreaTypeOther"></ion-input>
+          <ion-input style="border-bottom: none;box-shadow:none; width:100%;background: #36365f;color:#ffffff;border: 0;font-size: 12px;" [(ngModel)]="insuredAreaTypeOther" (ionChange)="saveInsuredAreaTypeOther()"></ion-input>
           <!-- <input type="text" style="width:100%;background: #36365f;color:#ffffff;border: 0;font-size: 12px;"
             [(ngModel)]="insuredAreaTypeOther" id="textinput"> -->
         </ion-item>
@@ -136,7 +136,7 @@
 
   <ion-row style="margin-top:5px;">
     <ion-col col-12 col-lg no-padding>
-      <input type="text" style="width: 100%;height: 50px;border-radius: 5px;" class="inputText" no-margin [(ngModel)]="areaPhone">
+      <input type="text" style="width: 100%;height: 50px;border-radius: 5px;" class="inputText" no-margin [(ngModel)]="areaPhone" (change)="saveAreaPhone()">
       <span class="floating-label">ΤΗΛΕΦΩΝΟ ΧΩΡΟΥ</span>
     </ion-col>
   </ion-row>
@@ -177,10 +177,10 @@
       <img src="assets/imgs/drag-icon.png" style="height:20px;width:20px;position: relative;top:10px;">
     </ion-col>
     <ion-col col-5 style="color:#ffffff" *ngIf="phoneNotice.editable === true">
-      <ion-input style="position: relative;left: -7px;" type="text" placeholder="Χρήστης" [(ngModel)]="phoneNotices[i].name"></ion-input>
+      <ion-input style="position: relative;left: -7px;" type="text" placeholder="Χρήστης" [(ngModel)]="phoneNotices[i].name" (ionChange)="savePhoneNotices()"></ion-input>
     </ion-col>
     <ion-col col-5 style="color:#ffffff" *ngIf="phoneNotice.editable === true">
-      <ion-input style="position: relative;left: -7px;" type="text" placeholder="Τηλέφωνο" [(ngModel)]="phoneNotices[i].phone"></ion-input>
+      <ion-input style="position: relative;left: -7px;" type="text" placeholder="Τηλέφωνο" [(ngModel)]="phoneNotices[i].phone" (ionChange)="savePhoneNotices()"></ion-input>
     </ion-col>
     <ion-col col-1 *ngIf="phoneNotice.editable === true">
       <ion-icon float-right name="close" style="color:#ffffff; margin-right:10px;position: relative;top:15px;" (click)="removePhoneNotice(i)"></ion-icon>
@@ -223,7 +223,7 @@
 
   <ion-row style="background: #272753;border-bottom-left-radius: 5px; border-bottom-right-radius: 5px;">
     <ion-col col-12 col-lg no-padding>
-      <ion-textarea style="height:80px;color:#ffffff; margin-left: 10px;" [(ngModel)]="alarmUnitType"></ion-textarea>
+      <ion-textarea style="height:80px;color:#ffffff; margin-left: 10px;" [(ngModel)]="alarmUnitType" (ionChange)="saveAlarmUnitType()"></ion-textarea>
     </ion-col>
   </ion-row>
 
@@ -239,20 +239,20 @@
         <ion-item style="background:  #272753;">
           <!-- <label for="label4" style="color:#8c8ca9">CID</label> -->
           <ion-label style="color:#8c8ca9;font-size: 12px;">CID</ion-label>
-          <ion-radio item-left value="cid"></ion-radio>
+          <ion-radio item-left value="cid" (ionSelect)="saveFormat()"></ion-radio>
           <!-- <input name="selection2" type="radio" value="cid" style="margin-right: 10px;"> -->
 
         </ion-item>
         <ion-item style="background:  #272753;">
           <ion-label style="color:#8c8ca9;font-size: 12px;">SIA</ion-label>
           <!-- <label for="label4" style="color:#8c8ca9">SIA</label> -->
-          <ion-radio item-left value="sia"></ion-radio>
+          <ion-radio item-left value="sia" (ionSelect)="saveFormat()"></ion-radio>
           <!-- <input name="selection2" type="radio" value="sia" style="margin-right: 10px;"> -->
 
         </ion-item>
         <ion-item style="background:  #272753;">
           <ion-label style="color:#8c8ca9; font-size: 12px;">4+2</ion-label>
-          <ion-radio item-left value="fourPlusTwo"></ion-radio>
+          <ion-radio item-left value="fourPlusTwo" (ionSelect)="saveFormat()"></ion-radio>
           <!-- <input name="selection2" type="radio" value="fourPlusTwo" style="margin-right: 10px;"> -->
 
         </ion-item>
@@ -268,7 +268,7 @@
 
   <ion-row style="background: #272753;border-bottom-left-radius: 5px; border-bottom-right-radius: 5px;">
     <ion-col col-12>
-      <ion-range min="1" max="24" step="1" snaps="true" pin="true" color="app-yellow" [(ngModel)]="frequency24HourTest"></ion-range>
+      <ion-range min="1" max="24" step="1" snaps="true" pin="true" color="app-yellow" [(ngModel)]="frequency24HourTest" (ionChange)="saveFrequency24HourTest()"></ion-range>
       <div style="position:relative; top:-20px;">
         <span style="position:relative; left:43px;color:#8c8ca9;">4</span>
         <span style="position:relative; left:85px;color:#8c8ca9;">8</span>
@@ -371,14 +371,14 @@
 
   <ion-row style="background: #272753;border-bottom-left-radius: 5px;border-bottom-right-radius: 5px">
     <ion-col col-12 col-lg no-padding>
-      <ion-textarea style="height:80px;color:#ffffff; margin-left: 10px;" [(ngModel)]="weeklyTimeMonitoring"></ion-textarea>
+      <ion-textarea style="height:80px;color:#ffffff; margin-left: 10px;" [(ngModel)]="weeklyTimeMonitoring" (ionChange)="saveWeeklyTimeMonitoring()"></ion-textarea>
     </ion-col>
   </ion-row>
 
   <ion-row style="margin-top:5px;">
     <ion-col col-12 col-lg no-padding>
       <input type="text" style="width: 100%;height: 50px;border-top-left-radius: 5px;border-top-right-radius: 5px;"
-        class="inputText" no-margin [(ngModel)]="policeStation">
+        class="inputText" no-margin [(ngModel)]="policeStation" (change)="savePoliceStation()">
       <span class="floating-label">ΑΣΤΥΝΟΜΙΚΟ ΤΜΗΜΑ ΠΕΡΙΟΧΗΣ</span>
     </ion-col>
   </ion-row>
@@ -391,14 +391,14 @@
 
   <ion-row style="background: #272753;">
     <ion-col col-12 col-lg no-padding>
-      <ion-textarea style="height:80px;color:#ffffff;margin-left: 5px" [(ngModel)]="directTransmissionPhones"></ion-textarea>
+      <ion-textarea style="height:80px;color:#ffffff;margin-left: 5px" [(ngModel)]="directTransmissionPhones" (ionChange)="saveDirectTransmissionPhones()"></ion-textarea>
     </ion-col>
   </ion-row>
 
   <ion-row>
     <ion-col col-12 col-lg no-padding>
       <input type="text" style="width: 100%;height: 50px;border-bottom-left-radius: 5px;border-bottom-right-radius: 5px;"
-        class="inputText" no-margin [(ngModel)]="operationControlHours">
+        class="inputText" no-margin [(ngModel)]="operationControlHours" (change)="saveOperationControlHours()">
       <span class="floating-label">ΩΡΕΣ ΕΛΕΓΧΟΥ ΕΠΕΜΒΑΣΗΣ</span>
     </ion-col>
   </ion-row>
@@ -466,7 +466,7 @@
 
   <ion-row style="margin-top:5px;">
     <ion-col col-12 col-lg no-padding>
-      <input type="text" style="width: 100%;height: 50px;border-radius: 5px;" class="inputText" no-margin [(ngModel)]="monthlyAlarmList">
+      <input type="text" style="width: 100%;height: 50px;border-radius: 5px;" class="inputText" no-margin [(ngModel)]="monthlyAlarmList" (change)="saveMonthlyAlarmList()"> 
       <span class="floating-label">ΜΗΝΙΑΙΑ ΛΙΣΤΑ ΣΗΜΑΤΩΝ ΣΥΝΑΓΕΡΜΟΥ (REPORT)</span>
     </ion-col>
   </ion-row>
@@ -479,7 +479,7 @@
 
   <ion-row style="background: #272753;border-bottom-left-radius: 5px; border-bottom-right-radius: 5px;">
     <ion-col col-12 col-lg no-padding>
-      <ion-textarea style="height:80px;color:#ffffff;margin-left: 10px;" [(ngModel)]="otherRemarks"></ion-textarea>
+      <ion-textarea style="height:80px;color:#ffffff;margin-left: 10px;" [(ngModel)]="otherRemarks" (ionChange)="saveOtherRemarks()"></ion-textarea>
     </ion-col>
   </ion-row>
 </ion-content>

@@ -98,28 +98,38 @@ export class NewCustomerPage implements OnInit {
     private platform: Platform,
     private events: Events
   ) {
-    
-    // this.phoneNoticesObservable = from(this.phoneNotices)
-    // .subscribe(v => {console.log(v)});
-
-    // const phoneNoticesObserver = {
-    //   next: data => console.log(this.phoneNotices)
-    // }
-
-    // this.phoneNoticesObservable.subscribe(phoneNoticesObserver);
 
     platform.registerBackButtonAction(() => {
       this.app.getRootNav().setRoot(CustomersPage);
     });
     
-    this.phoneNotices = this.customersProvider.phoneNotices;
-    this.zones = this.customersProvider.zones;
-    this.alarmUsers = this.customersProvider.alarmUsers;
-  }
+    // this.phoneNotices = this.customersProvider.phoneNotices;
+    // this.zones = this.customersProvider.zones;
+    // this.alarmUsers = this.customersProvider.alarmUsers;
 
-  onPageWillLeave() {
-    this.events.unsubscribe('submit' , ()=>{      
-    });
+    // this.installerName = this.customersProvider.installerName;
+    // this.customerPass = this.customersProvider.customerPass;
+    // this.duressCode = this.customersProvider.customerDuressCode;
+    // this.customerConnectionDate = this.customersProvider.customerConnectionDate;
+    // this.subscriberName = this.customersProvider.subscriberName;
+    // this.insuredAreaAddress = this.customersProvider.customerInsuredAreaAddress;
+    // this.insuredAreaCity = this.customersProvider.customerInsuredAreaCity;
+    // this.insuredAreaPostCode = this.customersProvider.customerInsuredAreaPostCode;
+    // this.insuredAreaFloor = this.customersProvider.customerInsuredAreaFloor;
+    // this.insuredAreaDescription = this.customersProvider.customerInsuredAreaDescription;
+    // this.insuredAreaType = this.customersProvider.customerInsuredAreaType;
+    // this.insuredAreaTypeOther = this.customersProvider.customerInsuredAreaTypeOther;
+    // this.areaPhone = this.customersProvider.customerAreaPhone;
+    // this.alarmUnitType = this.customersProvider.customerAlarmUnitType;
+    // this.format = this.customersProvider.customerFormat;
+    // this.frequency24HourTest = this.customersProvider.customerFrequency24HourTest;
+    // this.weeklyTimeMonitoring = this.customersProvider.customerWeeklyTimeMonitoring;
+    // this.policeStation = this.customersProvider.customerPoliceStation;
+    // this.directTransmissionPhones = this.customersProvider.customerDirectTransmissionPhones;
+    // this.operationControlHours = this.customersProvider.customerOperationControlHours;
+    // this.monthlyAlarmList = this.customersProvider.customerMonthlyAlarmList;
+    // this.otherRemarks = this.customersProvider.customerOtherRemarks;
+    // this.enabled = this.customersProvider.enabled;  
   }
 
   ngOnInit() {
@@ -196,18 +206,17 @@ export class NewCustomerPage implements OnInit {
       this.installer_fax = data.fax;
     });
 
-    this.events.subscribe('submit', (data) =>{
-      console.log("Event submit ", data.subscriberName);
-      // this.subscriberName = data.subscriberName;
-      this.submit();
-    });
-
     if (this.navParams.data) {
       this.getDataStorage().then((value) => {
+
+        console.log("Storage array "+JSON.stringify(value));
+
         value.forEach(element => {
+          console.log("Storage loop");
+          console.log("Element in Storage ",element);
           if (element.subscriberName.split(" ")[0] === this.navParams.data.name && element.subscriberName.split(" ")[1] === this.navParams.data.surname) {
+            console.log("In Storage loop");
             this.subscriberName = element.subscriberName;
-            this.insuredAreaCity = element.insuredAreaCity;
             this.installerName = element.installerName;
             this.customerPass = element.customerPass;
             this.customerAuxiliaryPass = element.customerAuxiliaryPass;
@@ -283,10 +292,32 @@ export class NewCustomerPage implements OnInit {
     console.log('In submit');
     const d = new Date();
 
-    this.subscriberName = this.customersProvider.subscriberName;
-    this.installerName = this.customersProvider.installerName;
-    this.customerPass = this.customersProvider.customerPass;
-    this.customerAuxiliaryPass = this.customersProvider.customerAuxiliaryPass;
+    // this.subscriberName = this.customersProvider.subscriberName;
+    // this.customerPass = this.customersProvider.customerPass;
+    // this.customerAuxiliaryPass = this.customersProvider.customerAuxiliaryPass;
+    // this.installerName = this.customersProvider.installerName;
+    // this.customerPass = this.customersProvider.customerPass;
+    // this.duressCode = this.customersProvider.customerDuressCode;
+    // this.customerConnectionDate = this.customersProvider.customerConnectionDate;
+    // this.subscriberName = this.customersProvider.subscriberName;
+    // this.insuredAreaAddress = this.customersProvider.customerInsuredAreaAddress;
+    // this.insuredAreaCity = this.customersProvider.customerInsuredAreaCity;
+    // this.insuredAreaPostCode = this.customersProvider.customerInsuredAreaPostCode;
+    // this.insuredAreaFloor = this.customersProvider.customerInsuredAreaFloor;
+    // this.insuredAreaDescription = this.customersProvider.customerInsuredAreaDescription;
+    // this.insuredAreaType = this.customersProvider.customerInsuredAreaType;
+    // this.insuredAreaTypeOther = this.customersProvider.customerInsuredAreaTypeOther;
+    // this.areaPhone = this.customersProvider.customerAreaPhone;
+    // this.alarmUnitType = this.customersProvider.customerAlarmUnitType;
+    // this.format = this.customersProvider.customerFormat;
+    // this.frequency24HourTest = this.customersProvider.customerFrequency24HourTest;
+    // this.weeklyTimeMonitoring = this.customersProvider.customerWeeklyTimeMonitoring;
+    // this.policeStation = this.customersProvider.customerPoliceStation;
+    // this.directTransmissionPhones = this.customersProvider.customerDirectTransmissionPhones;
+    // this.operationControlHours = this.customersProvider.customerOperationControlHours;
+    // this.monthlyAlarmList = this.customersProvider.customerMonthlyAlarmList;
+    // this.otherRemarks = this.customersProvider.customerOtherRemarks;
+    // this.enabled = this.customersProvider.enabled;  
 
     this.customersProvider.addCustomer(
       {
@@ -300,41 +331,43 @@ export class NewCustomerPage implements OnInit {
       }
     );
 
-    this.storage.get('customers').then((value) => {
+    this.getDataStorage().then((value) => {
+      
+      let temp = value;
 
       console.log("Local Storage customers before", value);
 
-      if (value) {
-        value.push({
-          installerName: this.installerName,
-          customerPass: this.customerPass,
-          customerAuxiliaryPass: this.customerAuxiliaryPass,
-          duressCode: this.duressCode,
-          customerConnectionDate: this.customerConnectionDate,
-          subscriberName: this.subscriberName,
-          insuredAreaAddress: this.insuredAreaAddress,
-          insuredAreaCity: this.insuredAreaCity,
-          insuredAreaPostCode: this.insuredAreaPostCode,
-          insuredAreaFloor: this.insuredAreaFloor,
-          insuredAreaDescription: this.insuredAreaDescription,
-          insuredAreaType: this.insuredAreaType,
-          insuredAreaTypeOther: this.insuredAreaTypeOther,
-          areaPhone: this.areaPhone,
-          alarmUnitType: this.alarmUnitType,
-          format: this.format,
-          frequency24HourTest: this.frequency24HourTest,
-          weeklyTimeMonitoring: this.weeklyTimeMonitoring,
-          policeStation: this.policeStation,
-          directTransmissionPhones: this.directTransmissionPhones,
-          operationControlHours: this.operationControlHours,
-          monthlyAlarmList: this.monthlyAlarmList,
-          otherRemarks: this.otherRemarks,
+      if (temp != null) {
+        temp.push({
+          installerName: this.customersProvider.installerName,
+          customerPass: this.customersProvider.customerPass,
+          customerAuxiliaryPass: this.customersProvider.customerAuxiliaryPass,
+          duressCode: this.customersProvider.customerDuressCode,
+          customerConnectionDate: this.customersProvider.customerConnectionDate,
+          subscriberName: this.customersProvider.subscriberName,
+          insuredAreaAddress: this.customersProvider.customerInsuredAreaAddress,
+          insuredAreaCity: this.customersProvider.customerInsuredAreaCity,
+          insuredAreaPostCode: this.customersProvider.customerInsuredAreaPostCode,
+          insuredAreaFloor: this.customersProvider.customerInsuredAreaFloor,
+          insuredAreaDescription: this.customersProvider.customerInsuredAreaDescription,
+          insuredAreaType: this.customersProvider.customerInsuredAreaType,
+          insuredAreaTypeOther: this.customersProvider.customerInsuredAreaTypeOther,
+          areaPhone: this.customersProvider.customerAreaPhone,
+          alarmUnitType: this.customersProvider.customerAlarmUnitType,
+          format: this.customersProvider.customerFormat,
+          frequency24HourTest: this.customersProvider.customerFrequency24HourTest,
+          weeklyTimeMonitoring: this.customersProvider.customerWeeklyTimeMonitoring,
+          policeStation: this.customersProvider.customerPoliceStation,
+          directTransmissionPhones: this.customersProvider.customerDirectTransmissionPhones,
+          operationControlHours: this.customersProvider.customerOperationControlHours,
+          monthlyAlarmList: this.customersProvider.customerMonthlyAlarmList,
+          otherRemarks: this.customersProvider.customerOtherRemarks,
           datePublished: new Date(),
+          zones: this.customersProvider.zones,
+          phoneNotices: this.customersProvider.phoneNotices,
+          alarmUsers: this.customersProvider.alarmUsers,
           enabled: true,
-          zones: this.zones,
-          alarmUsers: this.alarmUsers,
-          phoneNotices: this.phoneNotices,
-          installer_name : this.installer_name,
+          installer_name : this.customersProvider.installerName,
           installer_afm : this.installer_afm,
           installer_proffesionalDescription : this.installer_proffesionalDescription,
           installer_insuredAreaAddress : this.installer_insuredAreaAddress,
@@ -351,38 +384,40 @@ export class NewCustomerPage implements OnInit {
           installer_fax: this.installer_fax
         });
 
-        this.storage.set('customers', value);
-        console.log("Local Storage customers before", value);
+        this.storage.set("customers", temp).then((data)=>{
+          console.log("Stored ", data)
+        });
       }
       else {
-        this.storage.set('customers', [{
-          installerName: this.installerName,
-          customerPass: this.customerPass,
-          customerAuxiliaryPass: this.customerAuxiliaryPass,
-          duressCode: this.duressCode,
-          customerConnectionDate: this.customerConnectionDate,
-          subscriberName: this.subscriberName,
-          insuredAreaAddress: this.insuredAreaAddress,
-          insuredAreaCity: this.insuredAreaCity,
-          insuredAreaPostCode: this.insuredAreaPostCode,
-          insuredAreaFloor: this.insuredAreaFloor,
-          insuredAreaDescription: this.insuredAreaDescription,
-          insuredAreaType: this.insuredAreaType,
-          insuredAreaTypeOther: this.insuredAreaTypeOther,
-          areaPhone: this.areaPhone,
-          alarmUnitType: this.alarmUnitType,
-          format: this.format,
-          frequency24HourTest: this.frequency24HourTest,
-          weeklyTimeMonitoring: this.weeklyTimeMonitoring,
-          policeStation: this.policeStation,
-          directTransmissionPhones: this.directTransmissionPhones,
-          operationControlHours: this.operationControlHours,
-          monthlyAlarmList: this.monthlyAlarmList,
-          otherRemarks: this.otherRemarks,
+        console.log("Local Storage Else");
+        this.storage.set("customers", [{
+          installerName: this.customersProvider.installerName,
+          customerPass: this.customersProvider.customerPass,
+          customerAuxiliaryPass: this.customersProvider.customerAuxiliaryPass,
+          duressCode: this.customersProvider.customerDuressCode,
+          customerConnectionDate: this.customersProvider.customerConnectionDate,
+          subscriberName: this.customersProvider.subscriberName,
+          insuredAreaAddress: this.customersProvider.customerInsuredAreaAddress,
+          insuredAreaCity: this.customersProvider.customerInsuredAreaCity,
+          insuredAreaPostCode: this.customersProvider.customerInsuredAreaPostCode,
+          insuredAreaFloor: this.customersProvider.customerInsuredAreaFloor,
+          insuredAreaDescription: this.customersProvider.customerInsuredAreaDescription,
+          insuredAreaType: this.customersProvider.customerInsuredAreaType,
+          insuredAreaTypeOther: this.customersProvider.customerInsuredAreaTypeOther,
+          areaPhone: this.customersProvider.customerAreaPhone,
+          alarmUnitType: this.customersProvider.customerAlarmUnitType,
+          format: this.customersProvider.customerFormat,
+          frequency24HourTest: this.customersProvider.customerFrequency24HourTest,
+          weeklyTimeMonitoring: this.customersProvider.customerWeeklyTimeMonitoring,
+          policeStation: this.customersProvider.customerPoliceStation,
+          directTransmissionPhones: this.customersProvider.customerDirectTransmissionPhones,
+          operationControlHours: this.customersProvider.customerOperationControlHours,
+          monthlyAlarmList: this.customersProvider.customerMonthlyAlarmList,
+          otherRemarks: this.customersProvider.customerOtherRemarks,
           datePublished: new Date(),
-          zones: this.zones,
-          phoneNotices: this.phoneNotices,
-          alarmUsers: this.alarmUsers,
+          zones: this.customersProvider.zones,
+          phoneNotices: this.customersProvider.phoneNotices,
+          alarmUsers: this.customersProvider.alarmUsers,
           enabled: true,
           installer_name : this.installer_name,
           installer_afm : this.installer_afm,
@@ -399,8 +434,11 @@ export class NewCustomerPage implements OnInit {
           installer_emailInvoice : this.installer_emailInvoice,
           installer_billingAddressOnly : this.installer_billingAddressOnly,
           installer_fax: this.installer_fax
-        }]);
+        }]).then((data)=>{
+          console.log("Stored ", data);
+        });
       }
+      
     });
 
     this.app.getRootNav().setRoot(CustomersPage);
@@ -424,6 +462,82 @@ export class NewCustomerPage implements OnInit {
 
   saveAuxiliaryPass():void{
     this.customersProvider.setCustomerAuxiliaryPass(this.customerAuxiliaryPass);
+  }
+
+  saveDuressCode():void{
+    this.customersProvider.setCustomerDuressCode(this.duressCode);
+  }
+
+  saveConnectionDate():void{
+    this.customersProvider.setCustomerConnectionDate(this.customerConnectionDate);
+  }
+
+  saveInsuredAreaAddress():void{
+    this.customersProvider.setCustomerInsuredAreaAddress(this.insuredAreaAddress);
+  }
+
+  saveInsuredAreaCity():void{
+    this.customersProvider.setCustomerInsuredAreaCity(this.insuredAreaCity);
+  }
+
+  saveInsuredAreaPostCode():void{
+    this.customersProvider.setCustomerInsuredAreaPostCode(this.insuredAreaPostCode);
+  }
+
+  saveInsuredAreaFloor():void{
+    this.customersProvider.setCustomerInsuredAreaFloor(this.insuredAreaFloor);
+  }
+
+  saveInsuredAreaDescription():void{
+    this.customersProvider.setCustomerInsuredAreaDescription(this.insuredAreaDescription);
+  }
+
+  saveInsuredAreaType():void{
+    this.customersProvider.setCustomerInsuredAreaType(this.insuredAreaType);
+  }
+
+  saveInsuredAreaTypeOther():void{
+    this.customersProvider.setCustomerInsuredAreaTypeOther(this.insuredAreaTypeOther);
+  }
+
+  saveAreaPhone():void{
+    this.customersProvider.setCustomerAreaPhone(this.areaPhone);
+  }
+
+  saveAlarmUnitType():void{
+    this.customersProvider.setCustomerAlarmUnitType(this.alarmUnitType);
+  }
+
+  saveFormat():void{
+    this.customersProvider.setCustomerFormat(this.format);
+  }
+
+  saveFrequency24HourTest():void{
+    this.customersProvider.setCustomerFrequency24HourTest(this.frequency24HourTest);
+  }
+
+  saveWeeklyTimeMonitoring():void{
+    this.customersProvider.setCustomerWeeklyTimeMonitoring(this.weeklyTimeMonitoring);
+  }
+
+  savePoliceStation():void{
+    this.customersProvider.setCustomerPoliceStation(this.policeStation);
+  }
+
+  saveDirectTransmissionPhones():void{
+    this.customersProvider.setCustomerDirectTransmissionPhones(this.directTransmissionPhones);
+  }
+
+  saveOperationControlHours():void{
+    this.customersProvider.setCustomerOperationControlHours(this.operationControlHours);
+  }
+
+  saveMonthlyAlarmList():void{
+    this.customersProvider.setCustomerMonthlyAlarmList(this.monthlyAlarmList);
+  }
+
+  saveOtherRemarks():void{
+    this.customersProvider.setCustomerOtherRemarks(this.otherRemarks);
   }
   
   savePhoneNotices():void{

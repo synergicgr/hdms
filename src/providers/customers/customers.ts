@@ -12,6 +12,25 @@ export class CustomersProvider {
   public installerName:string;
   public customerPass:string;
   public customerAuxiliaryPass:string;
+  public customerDuressCode:string;
+  public customerConnectionDate:string;
+  public customerInsuredAreaAddress:string;
+  public customerInsuredAreaCity:string;
+  public customerInsuredAreaPostCode:string;
+  public customerInsuredAreaFloor:string;
+  public customerInsuredAreaDescription:string;
+  public customerInsuredAreaType:string;
+  public customerInsuredAreaTypeOther:string;
+  public customerAreaPhone:string;
+  public customerAlarmUnitType:string;
+  public customerFormat:string;
+  public customerFrequency24HourTest:number;
+  public customerWeeklyTimeMonitoring:string;
+  public customerPoliceStation:string;
+  public customerDirectTransmissionPhones:string;
+  public customerOperationControlHours:string;
+  public customerMonthlyAlarmList:string;
+  public customerOtherRemarks:string;
 
   customers: Array<{ name: string, surname: string, city: string, visible: boolean, draft: boolean, publishedDate: string, enabled: boolean }> = [
     // {name:'Γρηγόρης', surname:'Σαμαράς', city:'Αθήνα', visible:true, draft:true, publishedDate:"", enabled:true}, 
@@ -134,6 +153,82 @@ export class CustomersProvider {
 
   setCustomerAuxiliaryPass(pass):void{
     this.customerAuxiliaryPass = pass;
+  }
+
+  setCustomerDuressCode(code):void{
+    this.customerDuressCode = code;
+  }
+
+  setCustomerConnectionDate(date):void{
+    this.customerConnectionDate = date;
+  }
+
+  setCustomerInsuredAreaAddress(address):void{
+    this.customerInsuredAreaAddress = address;
+  }
+
+  setCustomerInsuredAreaCity(city):void{
+    this.customerInsuredAreaCity = city;
+  }
+
+  setCustomerInsuredAreaPostCode(code):void{
+    this.customerInsuredAreaPostCode = code;
+  }
+
+  setCustomerInsuredAreaFloor(floor):void{
+    this.customerInsuredAreaFloor = floor;
+  }
+
+  setCustomerInsuredAreaDescription(description):void{
+    this.customerInsuredAreaDescription = description;
+  }
+
+  setCustomerInsuredAreaType(type):void{
+    this.customerInsuredAreaType = type;
+  }
+
+  setCustomerInsuredAreaTypeOther(other):void{
+    this.customerInsuredAreaTypeOther = other;
+  }
+
+  setCustomerAreaPhone(phone):void{
+    this.customerAreaPhone = phone;
+  }
+
+  setCustomerAlarmUnitType(type):void{
+    this.customerAlarmUnitType = type;
+  }
+
+  setCustomerFormat(format):void{
+    this.customerFormat = format;
+  }
+
+  setCustomerFrequency24HourTest(frequencyTest):void{
+    this.customerFrequency24HourTest = frequencyTest;
+  }
+
+  setCustomerWeeklyTimeMonitoring(weeklyTimeMonitoring):void{
+    this.customerWeeklyTimeMonitoring = weeklyTimeMonitoring;
+  }
+
+  setCustomerPoliceStation(station):void{
+    this.customerPoliceStation = station;
+  }
+
+  setCustomerDirectTransmissionPhones(phones):void{
+    this.customerDirectTransmissionPhones = phones;
+  }
+
+  setCustomerOperationControlHours(hours):void{
+    this.customerOperationControlHours = hours;
+  }
+
+  setCustomerMonthlyAlarmList(list):void{
+    this.customerMonthlyAlarmList = list;
+  }
+
+  setCustomerOtherRemarks(remarks):void{
+    this.customerOtherRemarks = remarks;
   }
 
   setPhoneNotices(phoneNotices:Array<{ name: string, phone: string, editable: boolean }>):void{
