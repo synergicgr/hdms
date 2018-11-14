@@ -1,4 +1,8 @@
 page-view-note {
+
+    span{
+        padding-top: 5px;
+    }
     input:focus~.floating-label,
     input:not(:focus):valid~.floating-label {
         top: 5px;
@@ -11,7 +15,7 @@ page-view-note {
         font-size: 14px;
         background: #272753;
         border: 0;
-        padding-left: 10px;
+        padding-left: 6px;
         color: #FFFFFF;
     }
     .floating-label {
