@@ -21,6 +21,7 @@ export class CustomersProvider {
 
   phoneNotices: Array<{ name: string, phone: string, editable: boolean }> = [];
   zones: Array<{ name: string, id: string, editable: boolean }>  = [];
+  alarmUsers: Array<{ username: string, name: string, editable: boolean }> = [];
 
   constructor(public http: HttpClient, private storage: Storage) {
     this.storage.get('customers').then((value) => {
@@ -141,5 +142,9 @@ export class CustomersProvider {
 
   setZones(zones: Array<{ name: string, id: string, editable: boolean }> ):void{
     this.zones = zones;
+  }
+
+  setAlarmUsers(alarmUsers: Array<{ username: string, name: string, editable: boolean }>):void{
+    this.alarmUsers = alarmUsers;
   }
 }

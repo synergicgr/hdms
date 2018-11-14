@@ -318,10 +318,10 @@
       <img src="assets/imgs/drag-icon.png" style="width:20px;height:20px;position: relative;top:10px;">
     </ion-col>
     <ion-col col-5 style="color:#ffffff" *ngIf="zone.editable === true">
-      <ion-input type="text" placeholder="Zone name" style="margin-left:-7px" [(ngModel)]="zones[i].name"></ion-input>
+      <ion-input type="text" placeholder="Zone name" style="margin-left:-7px" [(ngModel)]="zones[i].name" (ionChange)="saveZones()"></ion-input>
     </ion-col>
     <ion-col col-5 style="color:#ffffff" *ngIf="zone.editable === true">
-      <ion-input type="text" placeholder="Zone id" style="margin-left:-7px" [(ngModel)]="zones[i].id"></ion-input>
+      <ion-input type="text" placeholder="Zone id" style="margin-left:-7px" [(ngModel)]="zones[i].id" (ionChange)="saveZones()"></ion-input>
     </ion-col>
     <ion-col col-1 *ngIf="zone.editable === true">
       <ion-icon float-right name="close" style="color:#ffffff; margin-right:10px;position: relative;top:15px;" (click)="removeZone(i);"></ion-icon>
@@ -347,10 +347,10 @@
       <img src="assets/imgs/drag-icon.png" style="width:20px;height:20px;position: relative;top:10px;">
     </ion-col>
     <ion-col col-5 style="color:#ffffff" *ngIf="zones[zones.length-1].editable === true">
-      <ion-input type="text" placeholder="Zone name" style="margin-left:-7px" [(ngModel)]="zones[zones.length-1].name"></ion-input>
+      <ion-input type="text" placeholder="Zone name" style="margin-left:-7px" [(ngModel)]="zones[zones.length-1].name" (ionChange)="saveZones()"></ion-input>
     </ion-col>
     <ion-col col-5 style="color:#ffffff" *ngIf="zones[zones.length-1].editable === true">
-      <ion-input type="text" placeholder="Zone id" style="margin-left:-7px" [(ngModel)]="zones[zones.length-1].id"></ion-input>
+      <ion-input type="text" placeholder="Zone id" style="margin-left:-7px" [(ngModel)]="zones[zones.length-1].id" (ionChange)="saveZones()"></ion-input>
     </ion-col>
     <ion-col col-1 *ngIf="zones[zones.length-1].editable === true">
       <ion-icon float-right name="close" style="color:#ffffff; margin-right:10px;position: relative;top:15px;" (click)="removeZone(zones.length-1);"></ion-icon>
@@ -433,10 +433,10 @@
       <ion-icon float-right name="close" style="color:#ffffff; margin-right:10px" (click)="removeAlarmUser(i)"></ion-icon>
     </ion-col>
     <ion-col col-5 style="color:#ffffff" *ngIf="alarmUser.editable === true">
-      <ion-input type="text" placeholder="Χρήστης" style="position:relative;left:-7px;" [(ngModel)]="alarmUsers[i].username"></ion-input>
+      <ion-input type="text" placeholder="Χρήστης" style="position:relative;left:-7px;" [(ngModel)]="alarmUsers[i].username" (ionChange)="saveAlarmUsers()"></ion-input>
     </ion-col>
     <ion-col col-5 style="color:#ffffff" *ngIf="alarmUser.editable === true">
-      <ion-input type="text" placeholder="Όνομα" style="position:relative;left:-7px;" [(ngModel)]="alarmUsers[i].name"></ion-input>
+      <ion-input type="text" placeholder="Όνομα" style="position:relative;left:-7px;" [(ngModel)]="alarmUsers[i].name" (ionChange)="saveAlarmUsers"></ion-input>
     </ion-col>
     <ion-col col-2 *ngIf="alarmUser.editable === true">
       <ion-icon float-right name="close" style="color:#ffffff; margin-right:10px; position: relative;top:15px;" (click)="removeAlarmUser(i)"></ion-icon>
@@ -454,10 +454,10 @@
       <ion-icon float-right name="close" style="color:#ffffff; margin-right:10px" (click)="removeAlarmUser(-1)"></ion-icon>
     </ion-col>
     <ion-col col-5 style="color:#ffffff" *ngIf="alarmUsers[alarmUsers.length-1].editable === true">
-      <ion-input type="text" placeholder="Χρήστης" style="position:relative;left:-7px;" [(ngModel)]="alarmUsers[alarmUsers.length-1].username"></ion-input>
+      <ion-input type="text" placeholder="Χρήστης" style="position:relative;left:-7px;" [(ngModel)]="alarmUsers[alarmUsers.length-1].username" (ionChange)="saveAlarmUsers()"></ion-input>
     </ion-col>
     <ion-col col-5 style="color:#ffffff" *ngIf="alarmUsers[alarmUsers.length-1].editable === true">
-      <ion-input type="text" placeholder="Όνομα" style="position:relative;left:-7px;" [(ngModel)]="alarmUsers[alarmUsers.length-1].name"></ion-input>
+      <ion-input type="text" placeholder="Όνομα" style="position:relative;left:-7px;" [(ngModel)]="alarmUsers[alarmUsers.length-1].name" (ionChange)="saveAlarmUsers()"></ion-input>
     </ion-col>
     <ion-col col-2 *ngIf="alarmUsers[alarmUsers.length-1].editable === true">
       <ion-icon float-right name="close" style="color:#ffffff; margin-right:10px; position: relative;top:15px;" (click)="removeAlarmUser(-1)"></ion-icon>

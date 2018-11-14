@@ -86,6 +86,9 @@ export class NewCustomerPage implements OnInit {
   private zonesSource = new BehaviorSubject<{ name: string, id: string, editable: boolean }[]>([]);
   zonesData = this.zonesSource.asObservable();
 
+  private alarmUsersSource = new BehaviorSubject<{ username: string, name: string, editable: boolean }[]>([]);
+  alarmUsersData = this.alarmUsersSource.asObservable();
+
   constructor(
     public navCtrl: NavController,
     public navParams: NavParams,
@@ -111,6 +114,7 @@ export class NewCustomerPage implements OnInit {
     
     this.phoneNotices = this.customersProvider.phoneNotices;
     this.zones = this.customersProvider.zones;
+    this.alarmUsers = this.customersProvider.alarmUsers;
   }
 
   onPageWillLeave() {
@@ -126,7 +130,11 @@ export class NewCustomerPage implements OnInit {
 
     this.zonesData.subscribe(data =>{
       this.customersProvider.setZones(this.zones);
-    })
+    });
+
+    this.alarmUsersData.subscribe(data =>{
+      this.customersProvider.setAlarmUsers(this.alarmUsers);
+    });
 
     this.events.subscribe('installer-details-name', (data) =>{
       this.installer_name = data.name;
@@ -239,6 +247,7 @@ export class NewCustomerPage implements OnInit {
 
   removeAlarmUser(index): void {
     this.alarmUsers.splice(index, 1);
+    this.alarmUsersSource.next([]);
   }
 
   removePhoneNotice(index): void {
@@ -253,10 +262,12 @@ export class NewCustomerPage implements OnInit {
 
   addZone(): void {
     this.zones.push({ name: "", id: "", editable: true });
+    this.zonesSource.next([{ name: "", id: "", editable: true }]);
   }
 
   addAlarmUser(): void {
     this.alarmUsers.push({ username: "", name: "", editable: true });
+    this.alarmUsersSource.next([{  username: "", name: "", editable: true  }]);
   }
 
   isEmptyArray(data): any {
@@ -417,5 +428,13 @@ export class NewCustomerPage implements OnInit {
   
   savePhoneNotices():void{
     this.customersProvider.setPhoneNotices(this.phoneNotices);
+  }
+
+  saveAlarmUsers():void{
+    this.customersProvider.setAlarmUsers(this.alarmUsers);
+  }
+
+  saveZones():void{
+    this.customersProvider.setZones(this.zones);
   }
 }
