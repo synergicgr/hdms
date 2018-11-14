@@ -5,6 +5,12 @@ import { Storage } from '@ionic/storage';
 import { CustomersProvider } from '../../providers/customers/customers';
 import { CustomersPage } from '../customers/customers';
 import { updateNodeContext } from 'ionic-angular/umd/components/virtual-scroll/virtual-util';
+import { Observable } from 'rxjs/Observable';
+import { from } from 'rxjs/observable/from';
+import { Subject } from 'rxjs/Subject';
+import { BehaviorSubject } from 'rxjs/BehaviorSubject';
+
+
 
 @IonicPage()
 @Component({
@@ -54,11 +60,7 @@ export class NewCustomerPage implements OnInit {
   installer_emailInvoice: string;
   installer_billingAddressOnly: string;
 
-  phoneNotices: Array<{ name: string, phone: string, editable: boolean }> = [
-    // { name: "Ελένη Γεωργίου", phone: "211 45 55 456", editable:false },
-    // { name: "Βαγγέλης Γεωργίου", phone: "687 64 52 354", editable:false },
-    // { name: "Αγγελική Γεωργίου", phone: "687 64 52 354", editable:false },
-  ];
+  phoneNotices: Array<{ name: string, phone: string, editable: boolean }> = [];
 
   zones: Array<{ name: string, id: string, editable: boolean }> = [
     // { name: "ΖΩΝΗ 1", id: "ΑΒ1128336", editable:false },
@@ -78,6 +80,9 @@ export class NewCustomerPage implements OnInit {
     // { username: "K25LS", name: "Μαρία" , editable:false},
   ];
 
+  private source = new BehaviorSubject<{ name: string, phone: string, editable: boolean }[]>([]);
+  data$ = this.source.asObservable();
+
   constructor(
     public navCtrl: NavController,
     public navParams: NavParams,
@@ -87,31 +92,33 @@ export class NewCustomerPage implements OnInit {
     private platform: Platform,
     private events: Events
   ) {
+    
+    // this.phoneNoticesObservable = from(this.phoneNotices)
+    // .subscribe(v => {console.log(v)});
+
+    // const phoneNoticesObserver = {
+    //   next: data => console.log(this.phoneNotices)
+    // }
+
+    // this.phoneNoticesObservable.subscribe(phoneNoticesObserver);
 
     platform.registerBackButtonAction(() => {
       this.app.getRootNav().setRoot(CustomersPage);
     });
+    
+    this.phoneNotices = this.customersProvider.phoneNotices;
+  }
 
-    $(function () {
-
-      $('ion-item #textinput').focus(function () {
-        $('input:radio[id=radioSelection]').prop('checked', true);
-      });
-
-      $('ion-item #textinput').blur(function () {
-        $('input:radio[id=radioSelection]').prop('checked', false);
-      });
-
-      //Suggestion: You can add this so that when user clicks on the radio btn, it will fucos on the textbox      
-      $('input:radio[id=radioSelection]').click(function () {
-        $('ion-item #textinput').focus();
-        console.log("Selected");
-      });
-
+  onPageWillLeave() {
+    this.events.unsubscribe('submit' , ()=>{      
     });
   }
 
   ngOnInit() {
+
+    this.data$.subscribe(data => {
+      this.customersProvider.setPhoneNotices(this.phoneNotices);    
+    });
 
     this.events.subscribe('installer-details-name', (data) =>{
       this.installer_name = data.name;
@@ -210,7 +217,7 @@ export class NewCustomerPage implements OnInit {
             this.zones = element.zones;
             this.phoneNotices = element.phoneNotices;
             this.alarmUsers = element.alarmUsers;
-            this.enabled = element.enabled;
+            this.enabled = element.enabled;            
           }
         })
       });
@@ -231,6 +238,7 @@ export class NewCustomerPage implements OnInit {
 
   addPhoneNotices(): void {
     this.phoneNotices.push({ name: "", phone: "", editable: true });
+    this.source.next([{ name: "", phone: "", editable: true }]);
   }
 
   addZone(): void {
@@ -251,11 +259,13 @@ export class NewCustomerPage implements OnInit {
 
   submit(): void {    
 
+    console.log('In submit');
     const d = new Date();
 
     this.subscriberName = this.customersProvider.subscriberName;
     this.installerName = this.customersProvider.installerName;
     this.customerPass = this.customersProvider.customerPass;
+    this.customerAuxiliaryPass = this.customersProvider.customerAuxiliaryPass;
 
     this.customersProvider.addCustomer(
       {
@@ -390,4 +400,8 @@ export class NewCustomerPage implements OnInit {
   saveCustomerPass():void{
     this.customersProvider.setCustomerPass(this.customerPass);
   }
+
+  saveAuxiliaryPass():void{
+    this.customersProvider.setCustomerAuxiliaryPass(this.customerAuxiliaryPass);
+  }  
 }

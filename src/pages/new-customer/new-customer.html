@@ -16,7 +16,7 @@
 
   <ion-row style="margin-top:5px;">
     <ion-col col-12 col-lg no-padding>
-      <input type="text" style="width: 100%;height: 50px;border-radius: 5px;" class="inputText" no-margin [(ngModel)]="customerAuxiliaryPass">
+      <input type="text" style="width: 100%;height: 50px;border-radius: 5px;" class="inputText" no-margin [(ngModel)]="customerAuxiliaryPass" (change)="saveAuxiliaryPass()"> 
       <span class="floating-label">ΒΟΗΘΗΤΙΚΟΣ ΚΩΔΙΚΟΣ ΠΕΛΑΤΗ (PASSCODE 10ψηφια)</span>
     </ion-col>
   </ion-row>

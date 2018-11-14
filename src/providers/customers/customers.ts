@@ -11,12 +11,15 @@ export class CustomersProvider {
   public subscriberName:string;
   public installerName:string;
   public customerPass:string;
+  public customerAuxiliaryPass:string;
 
   customers: Array<{ name: string, surname: string, city: string, visible: boolean, draft: boolean, publishedDate: string, enabled: boolean }> = [
     // {name:'Γρηγόρης', surname:'Σαμαράς', city:'Αθήνα', visible:true, draft:true, publishedDate:"", enabled:true}, 
     // {name:'Χάρης', surname:'Γεωργακόπουλος', city:'Θεσσαλονίκη', visible:true, draft:true, publishedDate:"", enabled:true},
     // {name:'Ελένη', surname:'Ψαθά', city:'Χαλάνδρι', visible:true, draft:false, publishedDate:"2018-11-07", enabled:true},
   ];
+
+  phoneNotices: Array<{ name: string, phone: string, editable: boolean }> = [];
 
   constructor(public http: HttpClient, private storage: Storage) {
     this.storage.get('customers').then((value) => {
@@ -125,5 +128,13 @@ export class CustomersProvider {
   
   setCustomerPass(pass):void{
     this.customerPass = pass;
+  }
+
+  setCustomerAuxiliaryPass(pass):void{
+    this.customerAuxiliaryPass = pass;
+  }
+
+  setPhoneNotices(phoneNotices:Array<{ name: string, phone: string, editable: boolean }>):void{
+    this.phoneNotices = phoneNotices;
   }
 }
