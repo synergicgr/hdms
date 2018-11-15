@@ -112,7 +112,7 @@ export class InstallerDetailsPage {
         city: this.customersProvider.customerInsuredAreaCity,
         visible: true,
         draft: false,
-        publishedDate: d.getFullYear() + " " + d.getMonth() + " " + d.getDate() + " " + d.getHours() + " " + d.getMinutes(),
+        publishedDate: d.getFullYear() + "-" + d.getMonth() + "-" + d.getDate() + " " + d.getHours() + ":" + (d.getMinutes() < 10?"0"+d.getMinutes():d.getMinutes()),
         enabled: true
       }
     );
@@ -146,8 +146,9 @@ export class InstallerDetailsPage {
           operationControlHours: this.customersProvider.customerOperationControlHours,
           monthlyAlarmList: this.customersProvider.customerMonthlyAlarmList,
           otherRemarks: this.customersProvider.customerOtherRemarks,
-          datePublished: new Date(),
+          datePublished: d.getFullYear() + "-" + d.getMonth() + "-" + d.getDate() + " " + d.getHours() + ":" + (d.getMinutes() < 10?"0"+d.getMinutes():d.getMinutes()),
           enabled: true,
+          draft:false,
           zones: this.customersProvider.zones,
           alarmUsers: this.customersProvider.alarmUsers,
           phoneNotices: this.customersProvider.phoneNotices,
@@ -196,8 +197,9 @@ export class InstallerDetailsPage {
           operationControlHours: this.customersProvider.customerOperationControlHours,
           monthlyAlarmList: this.customersProvider.customerMonthlyAlarmList,
           otherRemarks: this.customersProvider.customerOtherRemarks,
-          datePublished: new Date(),
+          datePublished: d.getFullYear() + "-" + d.getMonth() + "-" + d.getDate() + " " + d.getHours() + ":" + (d.getMinutes() < 10?"0"+d.getMinutes():d.getMinutes()),
           enabled: true,
+          draft:false,
           zones: this.customersProvider.zones,
           alarmUsers: this.customersProvider.alarmUsers,
           phoneNotices: this.customersProvider.phoneNotices,

@@ -137,6 +137,8 @@ export class CustomersPage implements OnInit {
         this.customers[i].visible = false;
       }
     }
+
+    this.customers = this.readCustomers(value);
   }
 
   onCancel(event): void {
@@ -206,5 +208,21 @@ export class CustomersPage implements OnInit {
   onPageWillLeave() {
     this.events.unsubscribe('dismiss', () => { });
     this.events.unsubscribe('dismiss2', () => { });
+  }
+
+  readCustomers(searchString):Array<{ name: string, surname: string, city: string, visible: boolean, draft: boolean, publishedDate: string, enabled: boolean }>{
+    let temp = [];
+    this.storage.get("customers").then((value) => {
+      if(value)
+      {
+        value.forEach(element => {
+          if(element.subscriberName.split(" ")[0].startsWith(searchString) || element.subscriberName.split(" ")[1].startsWith(searchString) || element.insuredAreaCity.startsWith(searchString))
+          {
+            temp.push({name:element.subscriberName.split(" ")[0], surname:element.subscriberName.split(" ")[1], city:element.insuredAreaCity, visible:true, draft:element.draft, publishedDate:element.datePublished, enabled:element.enabled});            
+          }
+        });
+      }
+    });
+    return temp;
   }
 }

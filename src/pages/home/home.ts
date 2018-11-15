@@ -45,7 +45,6 @@ export class HomePage {
           this.rememberMe = false;
         }
       });
-
     });
   }
 

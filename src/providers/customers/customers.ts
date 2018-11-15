@@ -51,7 +51,7 @@ export class CustomersProvider {
           let city = element.insuredAreaCity;
           let visible = true;
           let draft = false;
-          let publishedDate = element.publishedDate;
+          let publishedDate = element.datePublished;
           let enabled = element.enabled;
 
           this.customers.push({ name: name, surname: surname, city: city, visible: visible, draft: draft, publishedDate: publishedDate, enabled: enabled });
