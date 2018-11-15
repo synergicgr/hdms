@@ -27,7 +27,7 @@
       {{notes[0].showDate}}
     </ion-col>
     <ion-col col-5 style="color:#8c8ca9;border-right: thin solid #5a5a7c;font-size: 12px;">
-      {{notes[0].content | truncate : 40}}
+      {{notes[0].title | truncate : 40}}
     </ion-col>
     <ion-col col-2 style="
       display: flex !important;
@@ -52,7 +52,7 @@
       </div>
     </ion-col>
     <ion-col col-5 style="color:#8c8ca9;border-right: thin solid #5a5a7c;font-size: 12px;">
-      {{notes[0].content | truncate : 40}}
+      {{notes[0].title | truncate : 40}}
     </ion-col>
     <ion-col col-2 style="display: flex !important;
     justify-content: center !important;
@@ -75,7 +75,7 @@
       </div>
     </ion-col>
     <ion-col col-5 style="color:#8c8ca9;border-right: thin solid #5a5a7c;font-size: 12px;">
-      {{note.content | truncate : 40}}
+      {{note.title | truncate : 40}}
     </ion-col>
     <ion-col col-2 style="display: flex !important;
     justify-content: center !important;
@@ -99,7 +99,7 @@
       </div>
     </ion-col>
     <ion-col col-5 style="color:#8c8ca9;border-right: thin solid #5a5a7c;font-size: 12px;">
-      {{notes[notes.length - 1].content | truncate : 40}}
+      {{notes[notes.length - 1].title | truncate : 40}}
     </ion-col>
     <ion-col col-2 style="display: flex !important;
     justify-content: center !important;

@@ -34,6 +34,15 @@ import { ChartsModule } from 'ng2-charts';
 import { NotificationsPage } from '../pages/notifications/notifications';
 import { TruncateModule } from '@yellowspot/ng-truncate';
 import { ViewNotePage } from '../pages/view-note/view-note';
+import { FileOpener } from '@ionic-native/file-opener'
+import { File } from '@ionic-native/file';
+import { FilePath } from '@ionic-native/file-path';
+import { DocumentViewer} from '@ionic-native/document-viewer';
+import { AddNotePage } from '../pages/add-note/add-note';
+import { CommonModule } from '@angular/common';
+import { CalendarModule } from "ion2-calendar";
+import { DatePicker } from '@ionic-native/date-picker';
+
 
 @NgModule({
   declarations: [
@@ -57,6 +66,7 @@ import { ViewNotePage } from '../pages/view-note/view-note';
     InstallerDetailsPage,
     NotificationsPage,
     ViewNotePage,
+    AddNotePage
     ],
   imports: [
     BrowserModule,    
@@ -64,7 +74,9 @@ import { ViewNotePage } from '../pages/view-note/view-note';
     IonicStorageModule.forRoot(),
     HttpClientModule,
     ChartsModule,
-    TruncateModule
+    TruncateModule,
+    CommonModule,    
+    CalendarModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -88,6 +100,7 @@ import { ViewNotePage } from '../pages/view-note/view-note';
     InstallerDetailsPage,
     NotificationsPage,
     ViewNotePage,
+    AddNotePage
   
   ],
   providers: [
@@ -98,7 +111,12 @@ import { ViewNotePage } from '../pages/view-note/view-note';
     PopOverPage,
     NativePageTransitions,
     { provide: ErrorHandler, useClass: IonicErrorHandler },
-    CustomersProvider
+    CustomersProvider,
+    FileOpener,
+    File,
+    FilePath,
+    DocumentViewer,
+    DatePicker
   ]
 })
 export class AppModule { }

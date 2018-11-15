@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { CustomersPage } from '../../pages/customers/customers';
 import { Storage } from '@ionic/storage';
+import { ValueTransformer } from '@angular/compiler/src/util';
 
 @Injectable()
 export class CustomersProvider {
@@ -41,6 +42,7 @@ export class CustomersProvider {
   phoneNotices: Array<{ name: string, phone: string, editable: boolean }> = [];
   zones: Array<{ name: string, id: string, editable: boolean }>  = [];
   alarmUsers: Array<{ username: string, name: string, editable: boolean }> = [];
+  notes:Array<{ showDate: string, title: string, content: string }>= [];
 
   constructor(public http: HttpClient, private storage: Storage) {
     this.storage.get('customers').then((value) => {
@@ -60,7 +62,19 @@ export class CustomersProvider {
       }
     });
 
+
+    this.storage.get('notes').then((value)=>{
+      if(value)
+      {
+        this.notes = value;
+      }
+    });
+
     console.log('Service Provider customers', this.customers);
+  }
+
+  setCustomers(customers):void{
+    this.customers = customers;
   }
 
   getCustomers(): Array<{ name: string, surname: string, city: string, visible: boolean, draft: boolean, publishedDate: string, enabled: boolean }> {
@@ -241,5 +255,24 @@ export class CustomersProvider {
 
   setAlarmUsers(alarmUsers: Array<{ username: string, name: string, editable: boolean }>):void{
     this.alarmUsers = alarmUsers;
+  }
+
+  setNotes(notes)
+  {
+    this.notes = notes;
+  }
+
+  addNote(note){
+    this.notes.push(note);
+    this.storage.set('notes', this.notes);
+  }
+
+  deleteNote(index): void {
+    this.notes.splice(index, 1);
+    this.storage.set('notes', this.notes);
+  }
+
+  getNotes():Array<{ showDate: string, title: string, content: string }>{
+    return this.notes;   
   }
 }

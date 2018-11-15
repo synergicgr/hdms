@@ -139,6 +139,7 @@ export class CustomersPage implements OnInit {
     }
 
     this.customers = this.readCustomers(value);
+    this.customersProvider.setCustomers(this.customers);
   }
 
   onCancel(event): void {

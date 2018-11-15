@@ -3,6 +3,10 @@ import { IonicPage, NavController, NavParams, Platform, PopoverController } from
 import { DashboardPage } from '../dashboard/dashboard';
 import { PopOverPage } from '../pop-over/pop-over';
 import { ViewNotePage } from '../view-note/view-note';
+import { Storage } from '@ionic/storage';
+import { BehaviorSubject } from 'rxjs/BehaviorSubject';
+import { AddNotePage } from '../add-note/add-note';
+import { CustomersProvider } from '../../providers/customers/customers';
 
 
 /**
@@ -20,27 +24,27 @@ import { ViewNotePage } from '../view-note/view-note';
 export class NotesPage {
 
   private popover;
-  open:boolean;
+  open: boolean;
 
-  notes: Array<{ creationDate:string, showDate: string, title:string, content: string}> = [
-    {creationDate:new Date().toDateString(), showDate: "2018-12-12 15:00", title:"Title 1", content:"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed posuere, ipsum non facilisis luctus, libero urna ullamcorper erat, nec suscipit nisl dui id justo. Sed venenatis congue mi sed consectetur. Proin et nisl ac enim fringilla facilisis. Vestibulum posuere mi eget pulvinar sollicitudin. Aliquam lacus elit, venenatis eget risus a, aliquam suscipit magna. Morbi sem nunc, feugiat id nulla at, pretium tincidunt tortor. Quisque porta eget mauris vitae finibus. Curabitur libero sapien, lobortis at sodales ut, pulvinar et turpis. Nulla fringilla lectus id ultricies faucibus. Curabitur vel varius augue. Praesent iaculis nec augue nec finibus."},
-    {creationDate:new Date().toDateString(), showDate: "2018-12-12 15:00", title:"Title 2", content:"Testing 1"},
-    {creationDate:new Date().toDateString(), showDate: "2018-12-12 15:00", title:"Title 3", content:"Testing 2"}
+  notes: Array<{ showDate: string, title: string, content: string }> = [
+    // {showDate:"21-07-1986 16:50", title:"Title", content:"Content"}    
   ];
 
-  constructor(public navCtrl: NavController, public navParams: NavParams,     public popoverCtrl: PopoverController, private platform:Platform) {    
+  constructor(public navCtrl: NavController, public navParams: NavParams, public popoverCtrl: PopoverController, private platform: Platform, private storage: Storage, private customersProvider:CustomersProvider) {
     platform.ready().then(() => {
       platform.registerBackButtonAction(() => {
-        if(this.open === true)
-        {
+        if (this.open === true) {
           this.popover.dismiss();
           this.open = false;
         }
-        else{
+        else {
           navCtrl.setRoot(DashboardPage);
-        }        
+        }
       });
-    });
+    });    
+
+    this.notes = customersProvider.getNotes();
+    console.log(this.notes.length+" notes in the array");
   }
 
   presentPopover(myEvent) {
@@ -48,19 +52,19 @@ export class NotesPage {
     this.popover.present({
       ev: myEvent,
     });
-    this.open = true;    
+    this.open = true;
   }
 
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad NotesPage');     
-    console.log(this.notes.slice(1,-1));
+  openNote(index): void {
+    this.navCtrl.setRoot(ViewNotePage, { note: this.notes[index] });
   }
 
-  openNote(index):void{
-    this.navCtrl.setRoot(ViewNotePage, {note:this.notes[index]});
+  deleteNote(index): void {
+    this.customersProvider.deleteNote(index);
+    this.notes = this.customersProvider.getNotes();
   }
 
-  deleteNote(index):void{
-    this.notes.splice(index, 1);
+  addNote():void{
+    this.navCtrl.setRoot(AddNotePage);
   }
 }

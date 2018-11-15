@@ -19,32 +19,35 @@
     Σημείωση
   </div>
 
+ 
+
   <ion-row style="margin-top:10px;">
     <ion-col col-12>
-      <input type="text" style="width: 100%;height: 60px;border-radius: 10px;" class="inputText" no-margin [(ngModel)]="note.showDate">
+      <input type="text" style="width: 100%;height: 60px;border-radius: 10px;" class="inputText" no-margin [(ngModel)]="date">
+      <span><ion-datetime [(ngModel)]="date" style="color:#36365f; height: 0px;"></ion-datetime></span>
       <span class="floating-label">ΗΜΕΡΟΜΗΝΙΑ</span>
     </ion-col>
   </ion-row>
 
-  <ion-row>
+  <ion-row style="margin-top:-30px;">
     <ion-col col-12>
-      <input type="text" style="width: 100%;height: 60px;border-radius: 10px;" class="inputText" no-margin [(ngModel)]="note.title">
+      <input type="text" style="width: 100%;height: 60px;border-radius: 10px;" class="inputText" no-margin [(ngModel)]="title">
       <span class="floating-label">ΤΙΤΛΟΣ</span>
     </ion-col>
   </ion-row>
 
   <ion-row style="background: #272753;border-top-left-radius: 10px;border-top-right-radius: 10px;">
-    <ion-col col-12 col-lg style="color:#8c8ca9;margin-left: 10px;">
+    <ion-col col-12 col-lg style="color:#8c8ca9;margin-left: 10px;font-size: 12px;">
       ΠΕΡΙΕΧΟΜΕΝΟ
     </ion-col>
   </ion-row>
-  <ion-row style="background: #272753;border-bottom-left-radius: 10px;border-bottom-right-radius: 10px;margin-top: -20px;">
+  <ion-row style="background: #272753;border-bottom-left-radius: 10px;border-bottom-right-radius: 10px;">
     <ion-col col-12>
-      <ion-textarea style="color:#ffffff; margin-left: 5px;" rows="8" [(ngModel)]="note.content"></ion-textarea>
+      <ion-textarea style="color:#ffffff; margin-left: 5px;" rows="8" [(ngModel)]="content"></ion-textarea>
     </ion-col>
   </ion-row>
 
-  <button ion-button full color="app-yellow" style="font-weight:bold;margin-top:20px;">
+  <button ion-button full color="app-yellow" style="font-weight:bold;margin-top:20px;" (click)="saveNote()">
     ΑΠΟΘΗΚΕΥΣΗ
   </button>
 

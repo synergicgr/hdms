@@ -1,0 +1,29 @@
+page-add-note {
+    span{
+        padding-top: 5px;
+    }
+    input:focus~.floating-label,
+    input:not(:focus):valid~.floating-label {
+        top: 5px;
+        bottom: 10px;
+        left: 10px;
+        font-size: 11px;
+        opacity: 1;
+    }
+    .inputText {
+        font-size: 14px;
+        background: #272753;
+        border: 0;
+        padding-left: 6px;
+        color: #FFFFFF;
+    }
+    .floating-label {
+        position: absolute;
+        pointer-events: none;
+        margin-left: 5px;
+        left: 20px;
+        top: 18px;
+        transition: 0.2s ease all;
+        color: #8c8ca9;
+    }
+}

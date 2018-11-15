@@ -19,7 +19,7 @@ export class ViewNotePage {
 
   open:boolean;
   private popover;
-  note:Array<{ creationDate:string, showDate: string, content: string}>;
+  private note;
 
   constructor(public navCtrl: NavController, public navParams: NavParams, private platform:Platform, private popoverCtrl:PopoverController) {
     this.note = this.navParams.get('note');

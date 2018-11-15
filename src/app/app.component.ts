@@ -14,8 +14,10 @@ import { UltraSyncAppPage } from '../pages/ultra-sync-app/ultra-sync-app';
 import { HellasDmsPage } from '../pages/hellas-dms/hellas-dms';
 import { Network } from '@ionic-native/network';
 import { InAppBrowser } from '@ionic-native/in-app-browser';
-
-
+import { FileOpener } from '@ionic-native/file-opener'
+import { File } from '@ionic-native/file';
+import { FilePath } from '@ionic-native/file-path';
+import { DocumentViewer, DocumentViewerOptions} from '@ionic-native/document-viewer';
 
 @Component({
   templateUrl: 'app.html'
@@ -27,6 +29,7 @@ export class MyApp {
   rootPage: any = HomePage;
 
   pages: Array<{ title: string, component: any, icon: string }>;
+ 
 
   constructor(
     private alertCtrl: AlertController,
@@ -35,7 +38,11 @@ export class MyApp {
     public statusBar: StatusBar,
     public splashScreen: SplashScreen,
     private inAppBrowser: InAppBrowser,
-    ) {
+    private fileOpener: FileOpener,
+    private file: File,
+    private filePath: FilePath,
+    private document: DocumentViewer
+  ) {
     this.initializeApp();
 
     // used for an example of ngFor and navigation
@@ -94,7 +101,32 @@ export class MyApp {
   }
 
   downloadPriceList(): void {
+    console.log(this.file.applicationDirectory);
 
+    this.file.listDir(this.file.applicationDirectory+'www/', 'assets').then((listing) => {
+      console.log(listing);
+    });
+
+    const options: DocumentViewerOptions = {
+      title: 'Τιμοκατάλογος',
+      openWith: {
+        enabled: true
+      }
+    }
+
+    // this.document.viewDocument('file:///android_asset/www/assets/HDMS.pdf', 'application/pdf', options);
+
+    this.fileOpener.open('file:///android_asset/www/assets/HDMS.pdf', 'application/pdf');
+    
+    // this.filePath.resolveNativePath('/www/assets/HDMS.pdf')
+    //   .then(path => {
+    //     this.fileOpener.open(path, 'application/pdf')
+    //     .then(() => console.log('File is opened'))
+    //     .catch(e => console.log('Error opening file', e));
+    //   })
+    //   .catch(err => console.log(err));
+
+    console.log(this.file.applicationDirectory + 'www/assets/HDMS.pdf');
   }
 
   public isOnline(): boolean {
