@@ -28,8 +28,13 @@ page-installer-details {
     input[type="radio"]:checked+label {
         color: #ffffff !important;
     }
-
-    .item-md .radio-md[item-left], .item-md .radio-md[item-start] {
+    .item-md .radio-md[item-left],
+    .item-md .radio-md[item-start] {
         margin: 11px 17px 10px -10px;
-    }
+    }    
+    textarea {
+        margin-top: 0px !important;
+        font-size: 12px;
+        margin-left: 5px !important;
+    }    
 }
