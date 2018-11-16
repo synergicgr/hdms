@@ -92,7 +92,7 @@ export class MyApp {
     // Reset the content nav to have just this page
     // we wouldn't want the back button to show in this scenario
 
-    if (index == 4) {
+    if (index == 4 || index == 6 || index == 7) {
       this.inAppBrowser.create("http://www.hellasdms.com/");
     }
     else {

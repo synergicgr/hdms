@@ -281,7 +281,7 @@ export class CustomersProvider {
       if(element.name == name && element.surname == surname)
       {
         element.enabled = enabled;
-      }      
+      }
     });
   }
 }
