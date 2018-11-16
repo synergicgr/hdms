@@ -20,23 +20,17 @@
   </div>
 
 
-  <ion-row *ngIf="notes.length === 1" style="background:#272753;margin-bottom: 2px; border-radius: 10px;">
+  <ion-row *ngIf="notes.length === 1" style="background:#272753;margin-bottom: 2px; border-radius: 10px;" (click)="openNote(0)">
     <ion-col col-3 style="color:#8c8ca9;display: flex!important;
       align-content: center!important;
       align-items: center!important;border-right: thin solid #5a5a7c;font-size: 12px;">
       {{notes[0].showDate}}
     </ion-col>
-    <ion-col col-5 style="color:#8c8ca9;border-right: thin solid #5a5a7c;font-size: 12px;display: flex!important;
+    <ion-col col-7 style="color:#8c8ca9;border-right: thin solid #5a5a7c;font-size: 12px;display: flex!important;
     align-content: center!important;
     align-items: center!important;vertical-align: middle;">
       {{notes[0].title | truncate : 40}}
-    </ion-col>
-    <ion-col col-2 style="
-      display: flex !important;
-    justify-content: center !important;
-    align-items: center !important; vertical-align: middle;border-right: thin solid #5a5a7c;">
-      <img src="assets/imgs/eye-icon.png" width="35" height="35" (click)="openNote(0)">
-    </ion-col>
+    </ion-col>    
     <ion-col col-2>
       <ion-icon name="trash" style="font-size: 20px;width: 100%;display: flex !important;
       justify-content: center !important;
@@ -44,7 +38,7 @@
     </ion-col>
   </ion-row>
 
-  <ion-row *ngIf="notes.length != 1 && notes.length > 0" style="background:#272753;margin-bottom: 2px; border-top-left-radius: 10px; border-top-right-radius: 10px;">
+  <ion-row *ngIf="notes.length != 1 && notes.length > 0" style="background:#272753;margin-bottom: 2px; border-top-left-radius: 10px; border-top-right-radius: 10px;" (click)="openNote(0)">
     <ion-col col-3 style="color:#8c8ca9;display: flex!important;
       align-content: center!important;
       align-items: center!important;border-right: thin solid #5a5a7c;">
@@ -53,16 +47,11 @@
         <div style="float:right; font-size: 12px;">{{notes[0].showDate.split(" ")[1]}}</div>
       </div>
     </ion-col>
-    <ion-col col-5 style="color:#8c8ca9;border-right: thin solid #5a5a7c;font-size: 12px;display: flex!important;
+    <ion-col col-7 style="color:#8c8ca9;border-right: thin solid #5a5a7c;font-size: 12px;display: flex!important;
     align-content: center!important;
     align-items: center!important;vertical-align: middle;">
       {{notes[0].title | truncate : 40}}
-    </ion-col>
-    <ion-col col-2 style="display: flex !important;
-    justify-content: center !important;
-    align-items: center !important; vertical-align: middle;border-right: thin solid #5a5a7c;">
-      <img src="assets/imgs/eye-icon.png" width="35" height="35"  (click)="openNote(0)">
-    </ion-col>
+    </ion-col>    
     <ion-col col-2 style="display: flex !important;
     justify-content: center !important;
     align-items: center !important; vertical-align: middle;">
@@ -70,7 +59,7 @@
     </ion-col>
   </ion-row>
 
-  <ion-row *ngFor="let note of notes.slice(1,-1); let i = index" style="background:#272753;margin-bottom: 2px;">
+  <ion-row *ngFor="let note of notes.slice(1,-1); let i = index" style="background:#272753;margin-bottom: 2px;" (click)="openNote(i+1)">
     <ion-col col-3 style="color:#8c8ca9;display: flex !important;
      vertical-align: middle;border-right: thin solid #5a5a7c;">
       <div>
@@ -78,15 +67,10 @@
         <div style="float:right;font-size: 12px">{{note.showDate.split(" ")[1]}}</div>
       </div>
     </ion-col>
-    <ion-col col-5 style="color:#8c8ca9;border-right: thin solid #5a5a7c;font-size: 12px;display: flex!important;
+    <ion-col col-7 style="color:#8c8ca9;border-right: thin solid #5a5a7c;font-size: 12px;display: flex!important;
     align-content: center!important;
     align-items: center!important;vertical-align: middle;">
       {{note.title | truncate : 40}}
-    </ion-col>
-    <ion-col col-2 style="display: flex !important;
-    justify-content: center !important;
-    align-items: center !important; vertical-align: middle;border-right: thin solid #5a5a7c;">
-      <img src="assets/imgs/eye-icon.png" width="35" height="35"  (click)="openNote(i+1)">
     </ion-col>
     <ion-col col-2 style="display: flex !important;
     justify-content: center !important;
@@ -95,7 +79,7 @@
     </ion-col>
   </ion-row>
 
-  <ion-row *ngIf="notes.length > 1" style="background:#272753;margin-bottom: 2px; border-bottom-left-radius: 10px; border-bottom-right-radius: 10px;">
+  <ion-row *ngIf="notes.length > 1" style="background:#272753;margin-bottom: 2px; border-bottom-left-radius: 10px; border-bottom-right-radius: 10px;" (click)="openNote(notes.length - 1)">
     <ion-col col-3 style="color:#8c8ca9;display: flex!important;
       align-content: center!important;
       align-items: center!important;border-right: thin solid #5a5a7c;">
@@ -104,15 +88,10 @@
         <div style="float:right;font-size: 12px;">{{notes[notes.length - 1].showDate.split(" ")[1]}}</div>
       </div>
     </ion-col>
-    <ion-col col-5 style="color:#8c8ca9;border-right: thin solid #5a5a7c;font-size: 12px;display: flex!important;
+    <ion-col col-7 style="color:#8c8ca9;border-right: thin solid #5a5a7c;font-size: 12px;display: flex!important;
     align-content: center!important;
     align-items: center!important;vertical-align: middle;">
       {{notes[notes.length - 1].title | truncate : 40}}
-    </ion-col>
-    <ion-col col-2 style="display: flex !important;
-    justify-content: center !important;
-    align-items: center !important; vertical-align: middle;border-right: thin solid #5a5a7c;">
-      <img src="assets/imgs/eye-icon.png" width="35" height="35"  (click)="openNote(notes.length - 1)">
     </ion-col>
     <ion-col col-2 style="display: flex !important;
     justify-content: center !important;
