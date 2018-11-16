@@ -81,4 +81,20 @@ export class CustomerInfoPage {
     }
     return true;
   }
+
+  saveEnabled():void{
+    this.storage.get('customers').then((value) => {
+      if (value) {
+        let temp = value;
+        value.forEach((element,index, array) => {
+          if (this.navParams.data.name == element.subscriberName.split(" ")[0] && this.navParams.data.surname == element.subscriberName.split(" ")[1]) {
+            temp[index].enabled = this.enabled;
+          }
+        });
+
+        this.customersProvider.setCustomerEnabled(this.navParams.data.name, this.navParams.data.surname, this.enabled);
+        this.storage.set('customers', temp);
+      }
+    });
+  }
 }

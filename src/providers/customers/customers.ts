@@ -275,4 +275,13 @@ export class CustomersProvider {
   getNotes():Array<{ showDate: string, title: string, content: string }>{
     return this.notes;   
   }
+
+  setCustomerEnabled(name, surname, enabled):void{
+    this.customers.forEach(element => {
+      if(element.name == name && element.surname == surname)
+      {
+        element.enabled = enabled;
+      }      
+    });
+  }
 }
