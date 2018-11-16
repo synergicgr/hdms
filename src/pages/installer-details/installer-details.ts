@@ -64,26 +64,28 @@ export class InstallerDetailsPage {
   ionViewDidLoad() {
 
     this.storage.get('customers').then((value) => {
-      value.forEach(element => {
-        if (element.subscriberName.split(" ")[0] === this.navParams.data.name && element.subscriberName.split(" ")[1] === this.navParams.data.surname) {
-          this.name = element.installer_name;
-          this.afm = element.installer_afm;
-          this.proffesionalDescription = element.installer_proffesionalDescription;
-          this.insuredAreaAddress = element.installer_insuredAreaAddress;
-          this.insuredAreaCity = element.installer_insuredAreaCity;
-          this.insuredAreaPostCode = element.installer_insuredAreaPostCode;
-          this.insuredAreaFloor = element.installer_insuredAreaFloor;
-          this.landlinePhone = element.installer_landlinePhone;
-          this.mobilePhone = element.installer_mobilePhone;
-          this.email = element.installer_email;
-          this.website = element.installer_website;
-          this.collectionPolicy = element.installer_collectionPolicy;
-          this.emailInvoice = element.installer_emailInvoice;
-          this.billingAddressOnly = element.installer_billingAddressOnly;
-          this.fax = element.installer_fax;
-          this.customer_phoneNotices = element.phoneNotices;
-        }
-      });
+      if (value) {
+        value.forEach(element => {
+          if (element.subscriberName.split(" ")[0] === this.navParams.data.name && element.subscriberName.split(" ")[1] === this.navParams.data.surname) {
+            this.name = element.installer_name;
+            this.afm = element.installer_afm;
+            this.proffesionalDescription = element.installer_proffesionalDescription;
+            this.insuredAreaAddress = element.installer_insuredAreaAddress;
+            this.insuredAreaCity = element.installer_insuredAreaCity;
+            this.insuredAreaPostCode = element.installer_insuredAreaPostCode;
+            this.insuredAreaFloor = element.installer_insuredAreaFloor;
+            this.landlinePhone = element.installer_landlinePhone;
+            this.mobilePhone = element.installer_mobilePhone;
+            this.email = element.installer_email;
+            this.website = element.installer_website;
+            this.collectionPolicy = element.installer_collectionPolicy;
+            this.emailInvoice = element.installer_emailInvoice;
+            this.billingAddressOnly = element.installer_billingAddressOnly;
+            this.fax = element.installer_fax;
+            this.customer_phoneNotices = element.phoneNotices;
+          }
+        });
+      }
     });
   }
 
@@ -112,7 +114,7 @@ export class InstallerDetailsPage {
         city: this.customersProvider.customerInsuredAreaCity,
         visible: true,
         draft: false,
-        publishedDate: d.getFullYear() + "-" + d.getMonth() + "-" + d.getDate() + " " + d.getHours() + ":" + (d.getMinutes() < 10?"0"+d.getMinutes():d.getMinutes()),
+        publishedDate: d.getFullYear() + "-" + d.getMonth() + "-" + d.getDate() + " " + d.getHours() + ":" + (d.getMinutes() < 10 ? "0" + d.getMinutes() : d.getMinutes()),
         enabled: true
       }
     );
@@ -146,9 +148,9 @@ export class InstallerDetailsPage {
           operationControlHours: this.customersProvider.customerOperationControlHours,
           monthlyAlarmList: this.customersProvider.customerMonthlyAlarmList,
           otherRemarks: this.customersProvider.customerOtherRemarks,
-          datePublished: d.getFullYear() + "-" + d.getMonth() + "-" + d.getDate() + " " + d.getHours() + ":" + (d.getMinutes() < 10?"0"+d.getMinutes():d.getMinutes()),
+          datePublished: d.getFullYear() + "-" + d.getMonth() + "-" + d.getDate() + " " + d.getHours() + ":" + (d.getMinutes() < 10 ? "0" + d.getMinutes() : d.getMinutes()),
           enabled: true,
-          draft:false,
+          draft: false,
           zones: this.customersProvider.zones,
           alarmUsers: this.customersProvider.alarmUsers,
           phoneNotices: this.customersProvider.phoneNotices,
@@ -197,9 +199,9 @@ export class InstallerDetailsPage {
           operationControlHours: this.customersProvider.customerOperationControlHours,
           monthlyAlarmList: this.customersProvider.customerMonthlyAlarmList,
           otherRemarks: this.customersProvider.customerOtherRemarks,
-          datePublished: d.getFullYear() + "-" + d.getMonth() + "-" + d.getDate() + " " + d.getHours() + ":" + (d.getMinutes() < 10?"0"+d.getMinutes():d.getMinutes()),
+          datePublished: d.getFullYear() + "-" + d.getMonth() + "-" + d.getDate() + " " + d.getHours() + ":" + (d.getMinutes() < 10 ? "0" + d.getMinutes() : d.getMinutes()),
           enabled: true,
-          draft:false,
+          draft: false,
           zones: this.customersProvider.zones,
           alarmUsers: this.customersProvider.alarmUsers,
           phoneNotices: this.customersProvider.phoneNotices,

@@ -93,7 +93,7 @@ export class MyApp {
     // we wouldn't want the back button to show in this scenario
 
     if (index == 4) {
-      this.inAppBrowser.create("http://www.google.com");
+      this.inAppBrowser.create("http://www.hellasdms.com/");
     }
     else {
       this.nav.setRoot(page.component);
@@ -103,10 +103,6 @@ export class MyApp {
   downloadPriceList(): void {
     console.log(this.file.applicationDirectory);
 
-    // this.file.listDir(this.file.applicationDirectory+'www/', 'assets').then((listing) => {
-    //   console.log(listing);
-    // });
-
     this.file.copyFile(this.file.applicationDirectory+ 'www/assets/', 'HDMS.pdf', this.file.dataDirectory, 'HDMS.pdf');
 
     this.file.listDir(this.file.dataDirectory,'').then((listing) => {
@@ -114,27 +110,7 @@ export class MyApp {
     });
 
     this.fileOpener.open(this.file.dataDirectory+'HDMS.pdf', 'application/pdf');
-
-    // const options: DocumentViewerOptions = {
-    //   title: 'Τιμοκατάλογος',
-    //   openWith: {
-    //     enabled: true
-    //   }
-    // }
-
-    // this.document.viewDocument('file:///android_asset/www/assets/HDMS.pdf', 'application/pdf', options);
-
-    // this.fileOpener.open('file:///android_asset/www/assets/HDMS.pdf', 'application/pdf');
     
-    // this.filePath.resolveNativePath('/www/assets/HDMS.pdf')
-    //   .then(path => {
-    //     this.fileOpener.open(path, 'application/pdf')
-    //     .then(() => console.log('File is opened'))
-    //     .catch(e => console.log('Error opening file', e));
-    //   })
-    //   .catch(err => console.log(err));
-
-    console.log(this.file.applicationDirectory + 'www/assets/HDMS.pdf');
   }
 
   public isOnline(): boolean {

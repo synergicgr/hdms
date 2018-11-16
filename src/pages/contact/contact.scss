@@ -1,6 +1,6 @@
 page-contact {
     .ion-content {
-        background: #07073b;
+        background: #36365f;
     }
     .tabs .tabbar {
         background-color: #36365f;
@@ -9,20 +9,23 @@ page-contact {
         color: white !important;
     }
     .tabs-md .tab-button[aria-selected=true] {
-        color: #FFC400 !important;
+        color: #ffc200 !important;
         border-bottom: 2px solid #ffc200;
+        opacity: 1 !important;
     }
     .tabs-md .tab-button[aria-selected=true] .tab-button-icon {
-        color: #FFC400 !important;
+        color: #ffc200;
     }
     .tabs-ios .tab-button[aria-selected=true] .tab-button-icon {
-        color: #FFC400 !important;
+        color: #ffc200
     }
-
     .tabs-md .tab-button[aria-selected=false] .tab-button-icon {
         color: #ffffff !important;
     }
     .tabs-ios .tab-button[aria-selected=false] .tab-button-icon {
         color: #ffffff !important;
+    }
+    .enable-hover a:hover {
+        opacity: 1 !important;
     }
 }
