@@ -49,7 +49,7 @@ export class HomePage {
   }
 
   signIn() {
-    // this.storage.clear();
+    this.storage.clear();
     if (this.rememberMe == true) {
       this.storage.set('rememberMe', true);
       this.storage.set('username', this.username);

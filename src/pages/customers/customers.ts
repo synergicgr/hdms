@@ -5,8 +5,7 @@ import { CustomersProvider } from '../../providers/customers/customers';
 import { DashboardPage } from '../dashboard/dashboard';
 import { CustomerInfoPage } from '../customer-info/customer-info';
 import { PopOverPage } from '../pop-over/pop-over';
-import { templateJitUrl, unescapeIdentifier } from '@angular/compiler';
-import { Storage, StorageConfigToken } from '@ionic/storage';
+import { Storage } from '@ionic/storage';
 
 @IonicPage()
 @Component({
@@ -21,7 +20,7 @@ export class CustomersPage implements OnInit {
   openPopOver2: boolean = false;
   searchInput: string;
 
-  customers: Array<{ name: string, surname: string, city: string, visible: boolean, draft: boolean, publishedDate: string, enabled: boolean }>;
+  customers: Array<{ name: string, surname: string, city: string, visible: boolean, draft: boolean, publishedDate: string, enabled: boolean }> = [];
 
   constructor(
     public navCtrl: NavController,
@@ -175,19 +174,36 @@ export class CustomersPage implements OnInit {
     let enabled = this.customersProvider.enabled;
     let disabled = this.customersProvider.disabled;
 
+    this.customers = this.customersProvider.getCustomers();
+
     for (let i = 0; i < this.customers.length; i++) {
 
-      if (this.customers[i].enabled == true && enabled == true && this.customers[i].visible == true) {
+      if (this.customers[i].enabled == true && enabled == true) {
         temp.push(this.customers[i]);
       }
-      else if (this.customers[i].enabled == false && disabled == true && this.customers[i].visible == true) {
+      else if (this.customers[i].enabled == false && disabled == true) {
         temp.push(this.customers[i]);
       }
-
-      // if (this.customers[i].visible === true) {
-      //   temp.push(this.customers[i]);
-      // }
     }
+
+    // this.storage.get('customers').then((value)=> {
+    //   if(value)
+    //   {
+    //     value.forEach(element => {
+    //       console.log("Element ",element);
+    //       if(element.enabled == true && enabled == true)
+    //       {
+    //         temp.push({name: element.subscriberName.split(" ")[0], surname: element.subscriberName.split(" ")[1], city: element.insuredAreaCity, visible: true, draft: element.draft, publishedDate: element.datePublished, enabled: element.enabled});
+    //       }
+    //       if(element.enabled == false && disabled == true)
+    //       {
+    //         temp.push({name: element.subscriberName.split(" ")[0], surname: element.subscriberName.split(" ")[1], city: element.insuredAreaCity, visible: true, draft: element.draft, publishedDate: element.datePublished, enabled: element.enabled});
+    //       }
+    //     });
+    //   }
+    // });
+
+    // this.customersProvider.setCustomers(temp);
 
     return temp;
   }

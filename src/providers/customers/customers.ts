@@ -2,36 +2,36 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { CustomersPage } from '../../pages/customers/customers';
 import { Storage } from '@ionic/storage';
-import { ValueTransformer } from '@angular/compiler/src/util';
+
 
 @Injectable()
 export class CustomersProvider {
 
   public enabled: boolean = true;
   public disabled: boolean = false;
-  public subscriberName:string;
-  public installerName:string;
-  public customerPass:string;
-  public customerAuxiliaryPass:string;
-  public customerDuressCode:string;
-  public customerConnectionDate:string;
-  public customerInsuredAreaAddress:string;
-  public customerInsuredAreaCity:string;
-  public customerInsuredAreaPostCode:string;
-  public customerInsuredAreaFloor:string;
-  public customerInsuredAreaDescription:string;
-  public customerInsuredAreaType:string;
-  public customerInsuredAreaTypeOther:string;
-  public customerAreaPhone:string;
-  public customerAlarmUnitType:string;
-  public customerFormat:string;
-  public customerFrequency24HourTest:number;
-  public customerWeeklyTimeMonitoring:string;
-  public customerPoliceStation:string;
-  public customerDirectTransmissionPhones:string;
-  public customerOperationControlHours:string;
-  public customerMonthlyAlarmList:string;
-  public customerOtherRemarks:string;
+  public subscriberName: string;
+  public installerName: string;
+  public customerPass: string;
+  public customerAuxiliaryPass: string;
+  public customerDuressCode: string;
+  public customerConnectionDate: string;
+  public customerInsuredAreaAddress: string;
+  public customerInsuredAreaCity: string;
+  public customerInsuredAreaPostCode: string;
+  public customerInsuredAreaFloor: string;
+  public customerInsuredAreaDescription: string;
+  public customerInsuredAreaType: string;
+  public customerInsuredAreaTypeOther: string;
+  public customerAreaPhone: string;
+  public customerAlarmUnitType: string;
+  public customerFormat: string;
+  public customerFrequency24HourTest: number;
+  public customerWeeklyTimeMonitoring: string;
+  public customerPoliceStation: string;
+  public customerDirectTransmissionPhones: string;
+  public customerOperationControlHours: string;
+  public customerMonthlyAlarmList: string;
+  public customerOtherRemarks: string;
 
   customers: Array<{ name: string, surname: string, city: string, visible: boolean, draft: boolean, publishedDate: string, enabled: boolean }> = [
     // {name:'Γρηγόρης', surname:'Σαμαράς', city:'Αθήνα', visible:true, draft:true, publishedDate:"", enabled:true}, 
@@ -40,9 +40,9 @@ export class CustomersProvider {
   ];
 
   phoneNotices: Array<{ name: string, phone: string, editable: boolean }> = [];
-  zones: Array<{ name: string, id: string, editable: boolean }>  = [];
+  zones: Array<{ name: string, id: string, editable: boolean }> = [];
   alarmUsers: Array<{ username: string, name: string, editable: boolean }> = [];
-  notes:Array<{ showDate: string, title: string, content: string }>= [];
+  notes: Array<{ showDate: string, title: string, content: string }> = [];
 
   constructor(public http: HttpClient, private storage: Storage) {
     this.storage.get('customers').then((value) => {
@@ -63,9 +63,8 @@ export class CustomersProvider {
     });
 
 
-    this.storage.get('notes').then((value)=>{
-      if(value)
-      {
+    this.storage.get('notes').then((value) => {
+      if (value) {
         this.notes = value;
       }
     });
@@ -73,11 +72,29 @@ export class CustomersProvider {
     console.log('Service Provider customers', this.customers);
   }
 
-  setCustomers(customers):void{
+  setCustomers(customers): void {
     this.customers = customers;
   }
 
   getCustomers(): Array<{ name: string, surname: string, city: string, visible: boolean, draft: boolean, publishedDate: string, enabled: boolean }> {
+    // let temp = [];
+    // this.storage.get('customers').then((value) => {
+    //   if(value){
+    //     value.forEach(element => {
+    //       let visible = false;
+    //       if(element.enabled == true && this.enabled == true)
+    //       {
+    //         visible = true;
+    //       }
+    //       if(element.enabled == false && this.disabled == true)
+    //       {
+    //         visible = true;
+    //       }
+    //       temp.push({ name: element.subscriberName.split(" ")[0], surname: element.subscriberName.split(" ")[1], city: element.insuredAreaCity, visible: visible, draft: element.draft, publishedDate: element.datePublished, enabled: element.enabled });
+    //     });
+    //   }
+    // });
+
     return this.customers;
   }
 
@@ -146,123 +163,160 @@ export class CustomersProvider {
 
   public setEnabled(enabled): void {
     this.enabled = enabled;
+
+    let temp = [];
+
+    this.storage.get('customers').then((value)=>{
+      if(value)
+      {
+        value.forEach(element => {
+          if(element.enabled == true && enabled == true)
+          {
+            temp.push({ name: element.subscriberName.split(" ")[0], surname: element.subscriberName.split(" ")[1], city: element.insuredAreaCity, visible: true, draft: element.draft, publishedDate: element.datePublished, enabled: element.enabled });
+          }
+          else if(element.enabled == false && this.disabled == true)
+          {
+            temp.push({ name: element.subscriberName.split(" ")[0], surname: element.subscriberName.split(" ")[1], city: element.insuredAreaCity, visible: true, draft: element.draft, publishedDate: element.datePublished, enabled: element.enabled });
+          }
+        });        
+      }
+    });    
+
+    this.setCustomers(temp);
   }
 
   public setDisabled(disabled) {
     this.disabled = disabled;
-  } 
-  
-  setSubscriber(name):void
-  {
+
+    let temp = [];
+    this.storage.get('customers').then((value)=>{
+      if(value)
+      {
+        value.forEach(element => {
+          if(element.enabled == true && this.enabled == true)
+          {
+            temp.push({ name: element.subscriberName.split(" ")[0], surname: element.subscriberName.split(" ")[1], city: element.insuredAreaCity, visible: true, draft: element.draft, publishedDate: element.datePublished, enabled: element.enabled });
+          }
+          else if(element.enabled == false && this.disabled == true)
+          {
+            temp.push({ name: element.subscriberName.split(" ")[0], surname: element.subscriberName.split(" ")[1], city: element.insuredAreaCity, visible: true, draft: element.draft, publishedDate: element.datePublished, enabled: element.enabled });
+          }
+        });        
+      }
+    });    
+
+    this.setCustomers(temp);
+  }
+
+  setSubscriber(name): void {
     this.subscriberName = name;
   }
 
-  setInstallerName(name):void{
+  setInstallerName(name): void {
     this.installerName = name;
   }
-  
-  setCustomerPass(pass):void{
+
+  setCustomerPass(pass): void {
     this.customerPass = pass;
   }
 
-  setCustomerAuxiliaryPass(pass):void{
+  setCustomerAuxiliaryPass(pass): void {
     this.customerAuxiliaryPass = pass;
   }
 
-  setCustomerDuressCode(code):void{
+  setCustomerDuressCode(code): void {
     this.customerDuressCode = code;
   }
 
-  setCustomerConnectionDate(date):void{
+  setCustomerConnectionDate(date): void {
     this.customerConnectionDate = date;
   }
 
-  setCustomerInsuredAreaAddress(address):void{
+  setCustomerInsuredAreaAddress(address): void {
     this.customerInsuredAreaAddress = address;
   }
 
-  setCustomerInsuredAreaCity(city):void{
+  setCustomerInsuredAreaCity(city): void {
     this.customerInsuredAreaCity = city;
   }
 
-  setCustomerInsuredAreaPostCode(code):void{
+  setCustomerInsuredAreaPostCode(code): void {
     this.customerInsuredAreaPostCode = code;
   }
 
-  setCustomerInsuredAreaFloor(floor):void{
+  setCustomerInsuredAreaFloor(floor): void {
     this.customerInsuredAreaFloor = floor;
   }
 
-  setCustomerInsuredAreaDescription(description):void{
+  setCustomerInsuredAreaDescription(description): void {
     this.customerInsuredAreaDescription = description;
   }
 
-  setCustomerInsuredAreaType(type):void{
+  setCustomerInsuredAreaType(type): void {
     this.customerInsuredAreaType = type;
   }
 
-  setCustomerInsuredAreaTypeOther(other):void{
+  setCustomerInsuredAreaTypeOther(other): void {
     this.customerInsuredAreaTypeOther = other;
   }
 
-  setCustomerAreaPhone(phone):void{
+  setCustomerAreaPhone(phone): void {
     this.customerAreaPhone = phone;
   }
 
-  setCustomerAlarmUnitType(type):void{
+  setCustomerAlarmUnitType(type): void {
     this.customerAlarmUnitType = type;
   }
 
-  setCustomerFormat(format):void{
+  setCustomerFormat(format): void {
     this.customerFormat = format;
   }
 
-  setCustomerFrequency24HourTest(frequencyTest):void{
+  setCustomerFrequency24HourTest(frequencyTest): void {
     this.customerFrequency24HourTest = frequencyTest;
   }
 
-  setCustomerWeeklyTimeMonitoring(weeklyTimeMonitoring):void{
+  setCustomerWeeklyTimeMonitoring(weeklyTimeMonitoring): void {
     this.customerWeeklyTimeMonitoring = weeklyTimeMonitoring;
   }
 
-  setCustomerPoliceStation(station):void{
+  setCustomerPoliceStation(station): void {
     this.customerPoliceStation = station;
   }
 
-  setCustomerDirectTransmissionPhones(phones):void{
+  setCustomerDirectTransmissionPhones(phones): void {
     this.customerDirectTransmissionPhones = phones;
   }
 
-  setCustomerOperationControlHours(hours):void{
+  setCustomerOperationControlHours(hours): void {
     this.customerOperationControlHours = hours;
   }
 
-  setCustomerMonthlyAlarmList(list):void{
+  setCustomerMonthlyAlarmList(list): void {
     this.customerMonthlyAlarmList = list;
   }
 
-  setCustomerOtherRemarks(remarks):void{
+  setCustomerOtherRemarks(remarks): void {
     this.customerOtherRemarks = remarks;
   }
 
-  setPhoneNotices(phoneNotices:Array<{ name: string, phone: string, editable: boolean }>):void{
+  setPhoneNotices(phoneNotices: Array<{ name: string, phone: string, editable: boolean }>): void {
     this.phoneNotices = phoneNotices;
   }
 
-  setZones(zones: Array<{ name: string, id: string, editable: boolean }> ):void{
+  setZones(zones: Array<{ name: string, id: string, editable: boolean }>): void {
     this.zones = zones;
   }
 
-  setAlarmUsers(alarmUsers: Array<{ username: string, name: string, editable: boolean }>):void{
+  setAlarmUsers(alarmUsers: Array<{ username: string, name: string, editable: boolean }>): void {
     this.alarmUsers = alarmUsers;
   }
 
-  setNotes(notes)
-  {
+  setNotes(notes) {
     this.notes = notes;
   }
 
-  addNote(note){
+  addNote(note) {
     this.notes.push(note);
     this.storage.set('notes', this.notes);
   }
@@ -272,14 +326,13 @@ export class CustomersProvider {
     this.storage.set('notes', this.notes);
   }
 
-  getNotes():Array<{ showDate: string, title: string, content: string }>{
-    return this.notes;   
+  getNotes(): Array<{ showDate: string, title: string, content: string }> {
+    return this.notes;
   }
 
-  setCustomerEnabled(name, surname, enabled):void{
+  setCustomerEnabled(name, surname, enabled): void {
     this.customers.forEach(element => {
-      if(element.name == name && element.surname == surname)
-      {
+      if (element.name == name && element.surname == surname) {
         element.enabled = enabled;
       }
     });
