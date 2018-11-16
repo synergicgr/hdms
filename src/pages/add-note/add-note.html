@@ -24,7 +24,7 @@
   <ion-row style="margin-top:10px;">
     <ion-col col-12>
       <input type="text" style="width: 100%;height: 60px;border-radius: 10px;" class="inputText" no-margin [(ngModel)]="date">
-      <span><ion-datetime [(ngModel)]="date" style="color:#36365f; height: 0px;"></ion-datetime></span>
+      <span><ion-datetime [(ngModel)]="date" style="color:#36365f; height: 0px;" [max]="maximumDate" doneText="ΕΝΤΑΞΕΙ" cancelText="ΑΚΥΡΟ"></ion-datetime></span>
       <span class="floating-label">ΗΜΕΡΟΜΗΝΙΑ</span>
     </ion-col>
   </ion-row>

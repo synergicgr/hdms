@@ -65,3 +65,13 @@ ion-header ion-icon.back-button-icon.icon {
 .tabs-md .tab-button {
     min-height: 4.6rem;
 }
+
+.picker-wrapper {
+    left: 0;
+    right: 0;
+    top: 190px;
+}
+
+.picker-toolbar-cancel > button.button-clear-md{
+    color: #808080;
+}

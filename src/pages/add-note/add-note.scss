@@ -26,8 +26,11 @@ page-add-note {
         transition: 0.2s ease all;
         color: #8c8ca9;
     }
-
     .text-input-md {
         margin: 13px 0px !important;
+    }
+    
+    .picker-toolbar-cancel{
+        background: #808080;
     }
 }

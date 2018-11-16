@@ -76,25 +76,7 @@ export class CustomersProvider {
     this.customers = customers;
   }
 
-  getCustomers(): Array<{ name: string, surname: string, city: string, visible: boolean, draft: boolean, publishedDate: string, enabled: boolean }> {
-    // let temp = [];
-    // this.storage.get('customers').then((value) => {
-    //   if(value){
-    //     value.forEach(element => {
-    //       let visible = false;
-    //       if(element.enabled == true && this.enabled == true)
-    //       {
-    //         visible = true;
-    //       }
-    //       if(element.enabled == false && this.disabled == true)
-    //       {
-    //         visible = true;
-    //       }
-    //       temp.push({ name: element.subscriberName.split(" ")[0], surname: element.subscriberName.split(" ")[1], city: element.insuredAreaCity, visible: visible, draft: element.draft, publishedDate: element.datePublished, enabled: element.enabled });
-    //     });
-    //   }
-    // });
-
+  getCustomers(): Array<{ name: string, surname: string, city: string, visible: boolean, draft: boolean, publishedDate: string, enabled: boolean }> {    
     return this.customers;
   }
 
