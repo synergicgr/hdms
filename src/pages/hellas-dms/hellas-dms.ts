@@ -53,4 +53,8 @@ export class HellasDmsPage {
   ionViewDidLoad() {
     console.log('ionViewDidLoad HellasDmsPage');
   }
+
+  goToDashboard():void{
+    this.navCtrl.setRoot(DashboardPage);
+  }
 }

@@ -242,4 +242,8 @@ export class CustomersPage implements OnInit {
     });
     return temp;
   }
+
+  goToDashboard():void{
+    this.navCtrl.setRoot(DashboardPage);
+  }
 }

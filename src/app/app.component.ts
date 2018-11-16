@@ -18,6 +18,7 @@ import { FileOpener } from '@ionic-native/file-opener'
 import { File } from '@ionic-native/file';
 import { FilePath } from '@ionic-native/file-path';
 import { DocumentViewer, DocumentViewerOptions} from '@ionic-native/document-viewer';
+import { DashboardPage } from '../pages/dashboard/dashboard';
 
 @Component({
   templateUrl: 'app.html'
@@ -65,27 +66,7 @@ export class MyApp {
       // Here you can do any higher level native things you might need.
       this.statusBar.styleDefault();
       this.splashScreen.hide();
-
-      this.listenConnection();
     });
-  }
-
-  listenConnection(): void {
-    this.network.onConnect().subscribe(() => {
-      this.online = true;
-    });
-
-    this.network.onDisconnect()
-      .subscribe(() => {
-        this.online = false;
-        console.log('network was disconnected :-(');
-        let alert = this.alertCtrl.create({
-          title: 'Internet Connection',
-          subTitle: 'You are in offline mode!!!',
-          buttons: ['Dismiss']
-        });
-        alert.present();
-      });
   }
 
   openPage(page, index) {
@@ -119,5 +100,9 @@ export class MyApp {
 
   public isOffline(): boolean {
     return this.online == false;
+  }
+
+  goToDashboard():void{
+    this.nav.setRoot(DashboardPage);    
   }
 }

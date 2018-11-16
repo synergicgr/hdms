@@ -89,6 +89,8 @@ export class NewCustomerPage implements OnInit {
   private alarmUsersSource = new BehaviorSubject<{ username: string, name: string, editable: boolean }[]>([]);
   alarmUsersData = this.alarmUsersSource.asObservable();
 
+  maximumDate:string = (new Date().getFullYear()+30)+"-12-31"
+
   constructor(
     public navCtrl: NavController,
     public navParams: NavParams,

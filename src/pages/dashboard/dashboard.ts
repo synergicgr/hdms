@@ -101,4 +101,8 @@ export class DashboardPage {
   logout(): void {
     this.navCtrl.setRoot(HomePage);
   }
+
+  goToDashboard():void{
+    this.navCtrl.setRoot(DashboardPage);
+  }
 }
