@@ -5,8 +5,6 @@ import { Storage } from '@ionic/storage';
 import { Keyboard } from 'ionic-native';
 import { NativePageTransitions, NativeTransitionOptions } from '@ionic-native/native-page-transitions';
 
-
-
 @Component({
   selector: 'page-home',
   templateUrl: 'home.html',
@@ -62,12 +60,7 @@ export class HomePage {
     this.navCtrl.setRoot(DashboardPage, {}, {animate:true, animation:'android-transition', duration:500, direction:'back'});
   }
 
-  signUp() {
-
-  }
-
   forgotPassword() {
-
   }
 
   ionViewDidEnter() {
@@ -81,8 +74,6 @@ export class HomePage {
       Keyboard.disableScroll(false);
     });
   }
-
-
 
   moveFocus(nextElement): void {
     nextElement.setFocus();

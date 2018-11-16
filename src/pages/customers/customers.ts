@@ -6,6 +6,7 @@ import { DashboardPage } from '../dashboard/dashboard';
 import { CustomerInfoPage } from '../customer-info/customer-info';
 import { PopOverPage } from '../pop-over/pop-over';
 import { Storage } from '@ionic/storage';
+import { elementAttribute } from '@angular/core/src/render3/instructions';
 
 @IonicPage()
 @Component({
@@ -152,20 +153,22 @@ export class CustomersPage implements OnInit {
   }
 
   getVisibleCustomersCount() {
-    let count = 0;
-    let enabled = this.customersProvider.enabled;
-    let disabled = this.customersProvider.disabled;
+    // let count = 0;
+    // let enabled = this.customersProvider.enabled;
+    // let disabled = this.customersProvider.disabled;
 
-    for (let i = 0; i < this.customers.length; i++) {
-      if (this.customers[i].enabled == true && enabled == true && this.customers[i].visible == true) {
-        count += 1;
-      }
-      else if (this.customers[i].enabled == false && disabled == true && this.customers[i].visible == true) {
-        count += 1;
-      }
-    }
+    // for (let i = 0; i < this.customers.length; i++) {
+    //   if (this.customers[i].enabled == true && enabled == true && this.customers[i].visible == true) {
+    //     count += 1;
+    //   }
+    //   else if (this.customers[i].enabled == false && disabled == true && this.customers[i].visible == true) {
+    //     count += 1;
+    //   }
+    // }
 
-    return count;
+    // return count;
+
+    return this.getVisibleCustomers().length;
   }
 
   public getVisibleCustomers() {
@@ -178,10 +181,10 @@ export class CustomersPage implements OnInit {
 
     for (let i = 0; i < this.customers.length; i++) {
 
-      if (this.customers[i].enabled == true && enabled == true) {
+      if ((this.customers[i].enabled == true && enabled == true) || this.customers[i].enabled == null) {
         temp.push(this.customers[i]);
       }
-      else if (this.customers[i].enabled == false && disabled == true) {
+      else if ((this.customers[i].enabled == false && disabled == true) || this.customers[i].enabled == null) {
         temp.push(this.customers[i]);
       }
     }

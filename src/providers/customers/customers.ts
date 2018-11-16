@@ -53,7 +53,7 @@ export class CustomersProvider {
           let surname = element.subscriberName.split(" ")[1];
           let city = element.insuredAreaCity;
           let visible = true;
-          let draft = false;
+          let draft = element.draft;
           let publishedDate = element.datePublished;
           let enabled = element.enabled;
 
@@ -152,10 +152,10 @@ export class CustomersProvider {
     this.storage.get('customers').then((value) => {
       if (value) {
         value.forEach(element => {
-          if (element.enabled == true && enabled == true) {
+          if ((element.enabled == true && enabled == true) || element.enabled == null) {
             temp.push({ name: element.subscriberName.split(" ")[0], surname: element.subscriberName.split(" ")[1], city: element.insuredAreaCity, visible: true, draft: element.draft, publishedDate: element.datePublished, enabled: element.enabled });
           }
-          else if (element.enabled == false && this.disabled == true) {
+          else if ((element.enabled == false && this.disabled == true) || element.enabled == null) {
             temp.push({ name: element.subscriberName.split(" ")[0], surname: element.subscriberName.split(" ")[1], city: element.insuredAreaCity, visible: true, draft: element.draft, publishedDate: element.datePublished, enabled: element.enabled });
           }
         });
@@ -172,10 +172,10 @@ export class CustomersProvider {
     this.storage.get('customers').then((value) => {
       if (value) {
         value.forEach(element => {
-          if (element.enabled == true && this.enabled == true) {
+          if ((element.enabled == true && this.enabled == true) || element.enabled == null) {
             temp.push({ name: element.subscriberName.split(" ")[0], surname: element.subscriberName.split(" ")[1], city: element.insuredAreaCity, visible: true, draft: element.draft, publishedDate: element.datePublished, enabled: element.enabled });
           }
-          else if (element.enabled == false && this.disabled == true) {
+          else if ((element.enabled == false && this.disabled == true) || element.enabled == null) {
             temp.push({ name: element.subscriberName.split(" ")[0], surname: element.subscriberName.split(" ")[1], city: element.insuredAreaCity, visible: true, draft: element.draft, publishedDate: element.datePublished, enabled: element.enabled });
           }
         });
@@ -306,7 +306,7 @@ export class CustomersProvider {
       }
     }
     );
-    
+
     this.deleteNoteAt(indexFound);
   }
 
