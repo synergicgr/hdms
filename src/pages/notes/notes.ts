@@ -75,7 +75,7 @@ export class NotesPage {
         {
           text: 'ΟΚ',
           handler: () => {
-            this.customersProvider.deleteNote(index);
+            this.customersProvider.deleteNoteAt(index);
             this.notes = this.customersProvider.getNotes();
           }
         }

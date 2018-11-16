@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { CustomersPage } from '../../pages/customers/customers';
 import { Storage } from '@ionic/storage';
+import { NotesPage } from '../../pages/notes/notes';
 
 
 @Injectable()
@@ -76,7 +77,7 @@ export class CustomersProvider {
     this.customers = customers;
   }
 
-  getCustomers(): Array<{ name: string, surname: string, city: string, visible: boolean, draft: boolean, publishedDate: string, enabled: boolean }> {    
+  getCustomers(): Array<{ name: string, surname: string, city: string, visible: boolean, draft: boolean, publishedDate: string, enabled: boolean }> {
     return this.customers;
   }
 
@@ -148,21 +149,18 @@ export class CustomersProvider {
 
     let temp = [];
 
-    this.storage.get('customers').then((value)=>{
-      if(value)
-      {
+    this.storage.get('customers').then((value) => {
+      if (value) {
         value.forEach(element => {
-          if(element.enabled == true && enabled == true)
-          {
+          if (element.enabled == true && enabled == true) {
             temp.push({ name: element.subscriberName.split(" ")[0], surname: element.subscriberName.split(" ")[1], city: element.insuredAreaCity, visible: true, draft: element.draft, publishedDate: element.datePublished, enabled: element.enabled });
           }
-          else if(element.enabled == false && this.disabled == true)
-          {
+          else if (element.enabled == false && this.disabled == true) {
             temp.push({ name: element.subscriberName.split(" ")[0], surname: element.subscriberName.split(" ")[1], city: element.insuredAreaCity, visible: true, draft: element.draft, publishedDate: element.datePublished, enabled: element.enabled });
           }
-        });        
+        });
       }
-    });    
+    });
 
     this.setCustomers(temp);
   }
@@ -171,21 +169,18 @@ export class CustomersProvider {
     this.disabled = disabled;
 
     let temp = [];
-    this.storage.get('customers').then((value)=>{
-      if(value)
-      {
+    this.storage.get('customers').then((value) => {
+      if (value) {
         value.forEach(element => {
-          if(element.enabled == true && this.enabled == true)
-          {
+          if (element.enabled == true && this.enabled == true) {
             temp.push({ name: element.subscriberName.split(" ")[0], surname: element.subscriberName.split(" ")[1], city: element.insuredAreaCity, visible: true, draft: element.draft, publishedDate: element.datePublished, enabled: element.enabled });
           }
-          else if(element.enabled == false && this.disabled == true)
-          {
+          else if (element.enabled == false && this.disabled == true) {
             temp.push({ name: element.subscriberName.split(" ")[0], surname: element.subscriberName.split(" ")[1], city: element.insuredAreaCity, visible: true, draft: element.draft, publishedDate: element.datePublished, enabled: element.enabled });
           }
-        });        
+        });
       }
-    });    
+    });
 
     this.setCustomers(temp);
   }
@@ -303,7 +298,19 @@ export class CustomersProvider {
     this.storage.set('notes', this.notes);
   }
 
-  deleteNote(index): void {
+  deleteNote(note): void {
+    let indexFound = undefined;
+    this.notes.forEach(function (element, index) {
+      if (note.title == element.title && note.content == element.content && note.showDate == element.showDate) {
+        indexFound = index;
+      }
+    }
+    );
+    
+    this.deleteNoteAt(indexFound);
+  }
+
+  deleteNoteAt(index): void {
     this.notes.splice(index, 1);
     this.storage.set('notes', this.notes);
   }

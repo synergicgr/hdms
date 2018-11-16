@@ -1,7 +1,8 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, Platform, PopoverController } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, Platform, PopoverController, AlertController } from 'ionic-angular';
 import { NotesPage } from '../notes/notes';
 import { PopOverPage } from '../pop-over/pop-over';
+import { CustomersProvider } from '../../providers/customers/customers';
 
 /**
  * Generated class for the ViewNotePage page.
@@ -17,11 +18,11 @@ import { PopOverPage } from '../pop-over/pop-over';
 })
 export class ViewNotePage {
 
-  open:boolean;
+  open: boolean;
   private popover;
   private note;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, private platform:Platform, private popoverCtrl:PopoverController) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, private platform: Platform, private popoverCtrl: PopoverController, private customersProvider: CustomersProvider, private alertCtrl:AlertController) {
     this.note = this.navParams.get('note');
     platform.ready().then(() => {
       platform.registerBackButtonAction(() => {
@@ -46,5 +47,30 @@ export class ViewNotePage {
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad ViewNotePage');
+  }
+
+  saveNote(): void {
+
+  }
+
+  deleteNote(): void {
+    let alert = this.alertCtrl.create({
+      title: 'Επιβεβαίωση διαγραφής',
+      message: 'Θέλετε όντως να διαγράψετε την σημείωση?',
+      buttons: [
+        {
+          text: 'Ακυρο',
+          role: 'cancel',
+        },
+        {
+          text: 'ΟΚ',
+          handler: () => {
+            this.customersProvider.deleteNote(this.note);
+            this.navCtrl.setRoot(NotesPage);
+          }
+        }
+      ]
+    });
+    alert.present();
   }
 }
