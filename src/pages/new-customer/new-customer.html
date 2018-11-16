@@ -39,7 +39,7 @@
   <ion-row style="margin-top:30px;">
     <ion-col col-12 col-lg no-padding>
       <input type="text" style="width: 100%;height: 50px;border-radius: 5px;" class="inputText" no-margin [(ngModel)]="subscriberName" (change)="saveSubscriber()">
-      <span class="floating-label">ΕΠΩΝΥΜΙΑ ΣΥΝΔΡΟΜΗΤΗ</span>
+      <span class="floating-label" style="margin-top:-10px;">ΕΠΩΝΥΜΙΑ ΣΥΝΔΡΟΜΗΤΗ<span style="color:red; margin-left: 5px; font-size: 20px;">*</span></span>
     </ion-col>
   </ion-row>
 
@@ -56,7 +56,7 @@
     </ion-col>
     <ion-col col-6 col-lg no-padding style="position:relative;top:10px;">
       <input type="text" style="width: 100%;height: 50px;" class="inputText" no-margin [(ngModel)]="insuredAreaCity" (change)="saveInsuredAreaCity()">
-      <span class="floating-label">ΠΟΛΗ</span>
+      <span class="floating-label" style="margin-top: -12px">ΠΟΛΗ<span style="color:red; margin-left: 5px; font-size: 20px;">*</span></span>
     </ion-col>
   </ion-row>
   <ion-row style="background: #272753; border-bottom-left-radius: 5px; border-bottom-right-radius: 5px;">
