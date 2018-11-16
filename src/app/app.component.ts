@@ -103,20 +103,28 @@ export class MyApp {
   downloadPriceList(): void {
     console.log(this.file.applicationDirectory);
 
-    this.file.listDir(this.file.applicationDirectory+'www/', 'assets').then((listing) => {
+    // this.file.listDir(this.file.applicationDirectory+'www/', 'assets').then((listing) => {
+    //   console.log(listing);
+    // });
+
+    this.file.copyFile(this.file.applicationDirectory+ 'www/assets/', 'HDMS.pdf', this.file.dataDirectory, 'HDMS.pdf');
+
+    this.file.listDir(this.file.dataDirectory,'').then((listing) => {
       console.log(listing);
     });
 
-    const options: DocumentViewerOptions = {
-      title: 'Τιμοκατάλογος',
-      openWith: {
-        enabled: true
-      }
-    }
+    this.fileOpener.open(this.file.dataDirectory+'HDMS.pdf', 'application/pdf');
+
+    // const options: DocumentViewerOptions = {
+    //   title: 'Τιμοκατάλογος',
+    //   openWith: {
+    //     enabled: true
+    //   }
+    // }
 
     // this.document.viewDocument('file:///android_asset/www/assets/HDMS.pdf', 'application/pdf', options);
 
-    this.fileOpener.open('file:///android_asset/www/assets/HDMS.pdf', 'application/pdf');
+    // this.fileOpener.open('file:///android_asset/www/assets/HDMS.pdf', 'application/pdf');
     
     // this.filePath.resolveNativePath('/www/assets/HDMS.pdf')
     //   .then(path => {

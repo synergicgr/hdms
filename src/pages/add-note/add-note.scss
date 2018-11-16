@@ -1,5 +1,5 @@
 page-add-note {
-    span{
+    span {
         padding-top: 5px;
     }
     input:focus~.floating-label,
@@ -14,7 +14,7 @@ page-add-note {
         font-size: 14px;
         background: #272753;
         border: 0;
-        padding-left: 6px;
+        padding-left: 10px;
         color: #FFFFFF;
     }
     .floating-label {
@@ -25,5 +25,9 @@ page-add-note {
         top: 18px;
         transition: 0.2s ease all;
         color: #8c8ca9;
+    }
+
+    .text-input-md {
+        margin: 13px 0px !important;
     }
 }
