@@ -5,6 +5,7 @@ import { CustomersProvider } from '../../providers/customers/customers';
 import { CustomersPage } from '../customers/customers';
 
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
+import { TouchID } from 'ionic-native';
 
 
 
@@ -290,13 +291,29 @@ export class NewCustomerPage implements OnInit {
 
     console.log('In submit');
     const d = new Date();
+    
+    let visible = undefined;
+    let enabled = this.customersProvider.enabled;
+    let disabled = this.customersProvider.disabled;
 
+    if(enabled == true && this.enabled == true)
+    {
+      visible = true;
+    }
+    else if(disabled == true && this.enabled == false)
+    {
+      visible = true;
+    }
+    else{
+      visible = false;
+    }
+  
     this.customersProvider.addCustomer(
       {
         name: this.subscriberName.split(" ")[0],
         surname: this.subscriberName.split(" ")[1],
         city: this.insuredAreaCity,
-        visible: true,
+        visible: visible,
         draft: false,
         publishedDate: d.getFullYear() + "-" + d.getMonth() + "-" + d.getDate() + " " + d.getHours() + ":" + (d.getMinutes() < 10 ? "0" + d.getMinutes() : d.getMinutes()),
         enabled: true

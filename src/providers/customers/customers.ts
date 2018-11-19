@@ -158,11 +158,19 @@ export class CustomersProvider {
     this.storage.get('customers').then((value) => {
       if (value) {
         value.forEach(element => {
-          if ((element.enabled == true && enabled == true) || element.enabled == null) {
+          if (element.enabled == true && enabled == true) {
             temp.push({ name: element.subscriberName.split(" ")[0], surname: element.subscriberName.split(" ")[1], city: element.insuredAreaCity, visible: true, draft: element.draft, publishedDate: element.datePublished, enabled: element.enabled });
           }
-          else if ((element.enabled == false && this.disabled == true) || element.enabled == null) {
+          else if (element.enabled == false && this.disabled == true) {
+            
             temp.push({ name: element.subscriberName.split(" ")[0], surname: element.subscriberName.split(" ")[1], city: element.insuredAreaCity, visible: true, draft: element.draft, publishedDate: element.datePublished, enabled: element.enabled });
+          }
+          else if(element.enabled == null)
+          {
+            temp.push({ name: element.subscriberName.split(" ")[0], surname: element.subscriberName.split(" ")[1], city: element.insuredAreaCity, visible: true, draft: element.draft, publishedDate: element.datePublished, enabled: element.enabled });
+          }
+          else{
+            temp.push({ name: element.subscriberName.split(" ")[0], surname: element.subscriberName.split(" ")[1], city: element.insuredAreaCity, visible: false, draft: element.draft, publishedDate: element.datePublished, enabled: element.enabled });
           }
         });
       }

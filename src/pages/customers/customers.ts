@@ -43,44 +43,42 @@ export class CustomersPage implements OnInit {
     let disabled = this.customersProvider.disabled;
     let ordering = this.customersProvider.order;
 
-    if(this.navParams.get("back") != null)
-    {
+    if (this.navParams.get("back") != null) {
+      console.log('In navparams check');
       this.customers = [];
-      this.storage.get("customers").then((value) =>{
-        if(value)
-        {
+      this.storage.get("customers").then((value) => {
+        if (value) {
           value.forEach(element => {
-            if((element.enabled == true && enabled == true) || (element.enabled == false && disabled == true) || (element.draft == true))
-            {
-              this.customers.push({name:element.subscriberName.split(" ")[0], surname: element.subscriberName.split(" ")[1], city:element.insuredAreaCity, visible:true, draft:element.draft, publishedDate:element.datePublished, enabled:element.enabled});
-            }            
+            if ((element.enabled == true && enabled == true) || (element.enabled == false && disabled == true) || (element.draft == true)) {
+              this.customers.push({ name: element.subscriberName.split(" ")[0], surname: element.subscriberName.split(" ")[1], city: element.insuredAreaCity, visible: true, draft: element.draft, publishedDate: element.datePublished, enabled: element.enabled });
+            }
+            else {
+              this.customers.push({ name: element.subscriberName.split(" ")[0], surname: element.subscriberName.split(" ")[1], city: element.insuredAreaCity, visible: false, draft: element.draft, publishedDate: element.datePublished, enabled: element.enabled });
+            }
           });
-          this.customersProvider.setCustomers(this.customers);
         }
       });
+      this.customersProvider.setCustomers(this.customers);
     }
-    else{
+    else {
       this.customers = this.customersProvider.getCustomers();
+
+      for (let i = 0; i < this.customers.length; i++) {
+        if (this.customers[i].enabled == true && enabled == true) {
+          this.customers[i].visible = true;
+        }
+        else if (this.customers[i].enabled == false && disabled == true) {
+          this.customers[i].visible = true;
+        }
+        else if (this.customers[i].draft == true) {
+          this.customers[i].visible = true;
+        }
+        else {
+          this.customers[i].visible = false;
+        }
+      }
     }
-    console.log('On init');            
-
-    // this.customers = this.readCustomers("");
-    // this.customersProvider.setCustomers(this.customers);
-
-    for (let i = 0; i < this.customers.length; i++) {
-      console.log("Customer at" + i + " " + this.customers[i].visible);
-    }
-
-    // this.customers.forEach(function (element, index) {
-    //   if((element.enabled == true && enabled == true) || (element.enabled == false && disabled == true) || (element.draft == true))
-    //   {
-    //     this.customers[index].visible = true;
-    //   }
-    //   else{
-    //     this.customers[index].visible = false;
-    //   }
-    // }
-    // );    
+    console.log('On init');
 
     if (ordering == "nameAZ") {
       this.customersProvider.doSort(1);
@@ -135,7 +133,6 @@ export class CustomersPage implements OnInit {
     this.popover.onDidDismiss(() => {
       this.openPopOver1 = false;
     });
-
   }
 
   presentPopover2(myEvent) {
@@ -208,65 +205,49 @@ export class CustomersPage implements OnInit {
   }
 
   getVisibleCustomersCount() {
-    let count = 0;
-    let enabled = this.customersProvider.enabled;
-    let disabled = this.customersProvider.disabled;
+    // let count = 0;
+    // let enabled = this.customersProvider.enabled;
+    // let disabled = this.customersProvider.disabled;
 
-    for (let i = 0; i < this.customers.length; i++) {
-      if (this.customers[i].enabled == true && enabled == true && this.customers[i].visible == true) {
-        count += 1;
-      }
-      else if (this.customers[i].enabled == false && disabled == true && this.customers[i].visible == true) {
-        count += 1;
-      }
-      else if (this.customers[i].draft == true) {
-        count += 1;
-      }
-    }
+    // for (let i = 0; i < this.customers.length; i++) {
+    //   if (this.customers[i].enabled == true && enabled == true && this.customers[i].visible == true) {
+    //     count += 1;
+    //   }
+    //   else if (this.customers[i].enabled == false && disabled == true && this.customers[i].visible == true) {
+    //     count += 1;
+    //   }
+    //   else if (this.customers[i].draft == true) {
+    //     count += 1;
+    //   }
+    // }
 
-    return count;
+    // return count;
 
-    // return this.getVisibleCustomers().length;
+    return this.getVisibleCustomers().length;
   }
 
   public getVisibleCustomers() {
-    let temp = [];
 
     let enabled = this.customersProvider.enabled;
     let disabled = this.customersProvider.disabled;
 
-    // this.customers = this.customersProvider.getCustomers();
+    this.customers = this.customersProvider.getCustomers();
+    let temp = [];
 
-    // this.storage.get("customers").then((value) => {
-    //   if(value)
-    //   {
-    //     value.forEach(element => {
-    //       if((element.enabled == true && enabled == true) || (element.enabled == false && disabled == true) || (element.draft == true))
-    //       {
-    //         temp.push({name:element.subscriberName.split(" ")[0], surname: element.subscriberName.split(" ")[1], city:element.insuredAreaCity, visible:true, draft:element.draft, publishedDate:element.datePublished, enabled:element.enabled});            
-    //       }
-    //     });
-    //   }      
-    // });
+    this.customers.forEach(element => {
+      if (element.enabled == true && enabled == true) {
+        temp.push(element);
+      }
+      else if (element.enabled == false && disabled == true) {
+        temp.push(element);
+      }
+      else if (element.draft == true) {
+        temp.push(element);
+      }
+    }
+    );
 
-    // this.customers = this.customersProvider.getCustomers();
-
-    // for (let i = 0; i < this.customers.length; i++) {
-
-    //   this.customers[i].visible = true;
-    //   // if (this.customers[i].enabled == true && enabled == true) {
-    //   //   this.customers[i].visible = true;
-    //   // }
-    //   // else if (this.customers[i].enabled == false && disabled == true) {
-    //   //   this.customers[i].visible = true;
-    //   // }
-    //   // else if (this.customers[i].draft == true) {
-    //   //   this.customers[i].visible = true;
-    //   // }
-    // }
-
-    console.log("Customers length:",this.customers.length);
-    return this.customers;
+    return temp;
   }
 
   public goToNewCustomer(): void {
