@@ -45,7 +45,7 @@ export class CustomersProvider {
   alarmUsers: Array<{ username: string, name: string, editable: boolean }> = [];
   notes: Array<{ showDate: string, title: string, content: string }> = [];
 
-  order:string = "none";
+  order: string = "none";
 
   constructor(public http: HttpClient, private storage: Storage) {
     this.storage.get('customers').then((value) => {
@@ -75,7 +75,7 @@ export class CustomersProvider {
     console.log('Service Provider customers', this.customers);
   }
 
-  setOrder(order):void{
+  setOrder(order): void {
     this.order = order;
   }
 
@@ -162,14 +162,13 @@ export class CustomersProvider {
             temp.push({ name: element.subscriberName.split(" ")[0], surname: element.subscriberName.split(" ")[1], city: element.insuredAreaCity, visible: true, draft: element.draft, publishedDate: element.datePublished, enabled: element.enabled });
           }
           else if (element.enabled == false && this.disabled == true) {
-            
+
             temp.push({ name: element.subscriberName.split(" ")[0], surname: element.subscriberName.split(" ")[1], city: element.insuredAreaCity, visible: true, draft: element.draft, publishedDate: element.datePublished, enabled: element.enabled });
           }
-          else if(element.enabled == null)
-          {
+          else if (element.enabled == null) {
             temp.push({ name: element.subscriberName.split(" ")[0], surname: element.subscriberName.split(" ")[1], city: element.insuredAreaCity, visible: true, draft: element.draft, publishedDate: element.datePublished, enabled: element.enabled });
           }
-          else{
+          else {
             temp.push({ name: element.subscriberName.split(" ")[0], surname: element.subscriberName.split(" ")[1], city: element.insuredAreaCity, visible: false, draft: element.draft, publishedDate: element.datePublished, enabled: element.enabled });
           }
         });
@@ -340,4 +339,27 @@ export class CustomersProvider {
       }
     });
   }
+
+  getCustomer(name: string, surname: string): any {
+    console.log("Finding customer with name:", name, " surname", surname);
+
+    for(let i = 0; i < this.customers.length; i++)
+    {
+      if (this.customers[i].name == name && this.customers[i].surname == surname) {
+        console.log("CUSTOMER FOUND");
+        return this.customers[i];
+      }
+    }    
+  }
+
+  replaceDraft(customer): void {
+
+    for(let i = 0; i < this.customers.length; i++)
+    {
+      if (this.customers[i].name == customer.name && this.customers[i].surname == customer.surname) {
+        this.customers[i] = customer;
+      }
+    }    
+  }
+
 }
