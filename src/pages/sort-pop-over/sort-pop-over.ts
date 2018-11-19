@@ -31,18 +31,22 @@ export class SortPopOverPage {
   }
 
   sortNameAZ():void{
+    this.customersProvider.setOrder("nameAZ");
     this.customersProvider.doSort(1);
   }
 
   sortNameZA():void{
+    this.customersProvider.setOrder("nameZA");
     this.customersProvider.doSort(2);
   }
 
   sortCityAZ():void{
+    this.customersProvider.setOrder("cityAZ");
     this.customersProvider.doSort(3);
   }
 
   sortCityZA():void{
+    this.customersProvider.setOrder("cityZA");
     this.customersProvider.doSort(4);
   }
 

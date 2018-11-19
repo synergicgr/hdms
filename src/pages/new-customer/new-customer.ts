@@ -98,7 +98,7 @@ export class NewCustomerPage implements OnInit {
   ) {
 
     platform.registerBackButtonAction(() => {
-      this.app.getRootNav().setRoot(CustomersPage);
+      this.app.getRootNav().setRoot(CustomersPage, {back:true});
     });
 
     // this.phoneNotices = this.customersProvider.phoneNotices;
@@ -291,33 +291,6 @@ export class NewCustomerPage implements OnInit {
     console.log('In submit');
     const d = new Date();
 
-    // this.subscriberName = this.customersProvider.subscriberName;
-    // this.customerPass = this.customersProvider.customerPass;
-    // this.customerAuxiliaryPass = this.customersProvider.customerAuxiliaryPass;
-    // this.installerName = this.customersProvider.installerName;
-    // this.customerPass = this.customersProvider.customerPass;
-    // this.duressCode = this.customersProvider.customerDuressCode;
-    // this.customerConnectionDate = this.customersProvider.customerConnectionDate;
-    // this.subscriberName = this.customersProvider.subscriberName;
-    // this.insuredAreaAddress = this.customersProvider.customerInsuredAreaAddress;
-    // this.insuredAreaCity = this.customersProvider.customerInsuredAreaCity;
-    // this.insuredAreaPostCode = this.customersProvider.customerInsuredAreaPostCode;
-    // this.insuredAreaFloor = this.customersProvider.customerInsuredAreaFloor;
-    // this.insuredAreaDescription = this.customersProvider.customerInsuredAreaDescription;
-    // this.insuredAreaType = this.customersProvider.customerInsuredAreaType;
-    // this.insuredAreaTypeOther = this.customersProvider.customerInsuredAreaTypeOther;
-    // this.areaPhone = this.customersProvider.customerAreaPhone;
-    // this.alarmUnitType = this.customersProvider.customerAlarmUnitType;
-    // this.format = this.customersProvider.customerFormat;
-    // this.frequency24HourTest = this.customersProvider.customerFrequency24HourTest;
-    // this.weeklyTimeMonitoring = this.customersProvider.customerWeeklyTimeMonitoring;
-    // this.policeStation = this.customersProvider.customerPoliceStation;
-    // this.directTransmissionPhones = this.customersProvider.customerDirectTransmissionPhones;
-    // this.operationControlHours = this.customersProvider.customerOperationControlHours;
-    // this.monthlyAlarmList = this.customersProvider.customerMonthlyAlarmList;
-    // this.otherRemarks = this.customersProvider.customerOtherRemarks;
-    // this.enabled = this.customersProvider.enabled;  
-
     this.customersProvider.addCustomer(
       {
         name: this.subscriberName.split(" ")[0],
@@ -439,7 +412,6 @@ export class NewCustomerPage implements OnInit {
           console.log("Stored ", data);
         });
       }
-
     });
 
     this.app.getRootNav().setRoot(CustomersPage);

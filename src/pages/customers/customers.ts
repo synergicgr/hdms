@@ -6,7 +6,7 @@ import { DashboardPage } from '../dashboard/dashboard';
 import { CustomerInfoPage } from '../customer-info/customer-info';
 import { PopOverPage } from '../pop-over/pop-over';
 import { Storage } from '@ionic/storage';
-import { elementAttribute } from '@angular/core/src/render3/instructions';
+import { Facebook } from 'ionic-native';
 
 @IonicPage()
 @Component({
@@ -38,7 +38,62 @@ export class CustomersPage implements OnInit {
   }
 
   ngOnInit() {
-    this.customers = this.customersProvider.getCustomers();
+
+    let enabled = this.customersProvider.enabled;
+    let disabled = this.customersProvider.disabled;
+    let ordering = this.customersProvider.order;
+
+    if(this.navParams.get("back") != null)
+    {
+      this.customers = [];
+      this.storage.get("customers").then((value) =>{
+        if(value)
+        {
+          value.forEach(element => {
+            if((element.enabled == true && enabled == true) || (element.enabled == false && disabled == true) || (element.draft == true))
+            {
+              this.customers.push({name:element.subscriberName.split(" ")[0], surname: element.subscriberName.split(" ")[1], city:element.insuredAreaCity, visible:true, draft:element.draft, publishedDate:element.datePublished, enabled:element.enabled});
+            }            
+          });
+          this.customersProvider.setCustomers(this.customers);
+        }
+      });
+    }
+    else{
+      this.customers = this.customersProvider.getCustomers();
+    }
+    console.log('On init');            
+
+    // this.customers = this.readCustomers("");
+    // this.customersProvider.setCustomers(this.customers);
+
+    for (let i = 0; i < this.customers.length; i++) {
+      console.log("Customer at" + i + " " + this.customers[i].visible);
+    }
+
+    // this.customers.forEach(function (element, index) {
+    //   if((element.enabled == true && enabled == true) || (element.enabled == false && disabled == true) || (element.draft == true))
+    //   {
+    //     this.customers[index].visible = true;
+    //   }
+    //   else{
+    //     this.customers[index].visible = false;
+    //   }
+    // }
+    // );    
+
+    if (ordering == "nameAZ") {
+      this.customersProvider.doSort(1);
+    }
+    else if (ordering == "nameZA") {
+      this.customersProvider.doSort(2);
+    }
+    else if (ordering == "cityAZ") {
+      this.customersProvider.doSort(3);
+    }
+    else if (ordering == "cityZA") {
+      this.customersProvider.doSort(4);
+    }
 
     this.popover = this.popOverController.create(SortPopOverPage, [], { cssClass: 'ion-popover' });
     this.popover2 = this.popOverController.create(PopOverPage);
@@ -84,7 +139,7 @@ export class CustomersPage implements OnInit {
   }
 
   presentPopover2(myEvent) {
-    
+
     this.popover2.present({
       ev: myEvent
     });
@@ -153,22 +208,25 @@ export class CustomersPage implements OnInit {
   }
 
   getVisibleCustomersCount() {
-    // let count = 0;
-    // let enabled = this.customersProvider.enabled;
-    // let disabled = this.customersProvider.disabled;
+    let count = 0;
+    let enabled = this.customersProvider.enabled;
+    let disabled = this.customersProvider.disabled;
 
-    // for (let i = 0; i < this.customers.length; i++) {
-    //   if (this.customers[i].enabled == true && enabled == true && this.customers[i].visible == true) {
-    //     count += 1;
-    //   }
-    //   else if (this.customers[i].enabled == false && disabled == true && this.customers[i].visible == true) {
-    //     count += 1;
-    //   }
-    // }
+    for (let i = 0; i < this.customers.length; i++) {
+      if (this.customers[i].enabled == true && enabled == true && this.customers[i].visible == true) {
+        count += 1;
+      }
+      else if (this.customers[i].enabled == false && disabled == true && this.customers[i].visible == true) {
+        count += 1;
+      }
+      else if (this.customers[i].draft == true) {
+        count += 1;
+      }
+    }
 
-    // return count;
+    return count;
 
-    return this.getVisibleCustomers().length;
+    // return this.getVisibleCustomers().length;
   }
 
   public getVisibleCustomers() {
@@ -177,52 +235,42 @@ export class CustomersPage implements OnInit {
     let enabled = this.customersProvider.enabled;
     let disabled = this.customersProvider.disabled;
 
-    this.customers = this.customersProvider.getCustomers();
+    // this.customers = this.customersProvider.getCustomers();
 
-    for (let i = 0; i < this.customers.length; i++) {
-
-      if ((this.customers[i].enabled == true && enabled == true) || this.customers[i].enabled == null) {
-        temp.push(this.customers[i]);
-      }
-      else if ((this.customers[i].enabled == false && disabled == true) || this.customers[i].enabled == null) {
-        temp.push(this.customers[i]);
-      }
-    }
-
-    // this.storage.get('customers').then((value)=> {
+    // this.storage.get("customers").then((value) => {
     //   if(value)
     //   {
     //     value.forEach(element => {
-    //       console.log("Element ",element);
-    //       if(element.enabled == true && enabled == true)
+    //       if((element.enabled == true && enabled == true) || (element.enabled == false && disabled == true) || (element.draft == true))
     //       {
-    //         temp.push({name: element.subscriberName.split(" ")[0], surname: element.subscriberName.split(" ")[1], city: element.insuredAreaCity, visible: true, draft: element.draft, publishedDate: element.datePublished, enabled: element.enabled});
-    //       }
-    //       if(element.enabled == false && disabled == true)
-    //       {
-    //         temp.push({name: element.subscriberName.split(" ")[0], surname: element.subscriberName.split(" ")[1], city: element.insuredAreaCity, visible: true, draft: element.draft, publishedDate: element.datePublished, enabled: element.enabled});
+    //         temp.push({name:element.subscriberName.split(" ")[0], surname: element.subscriberName.split(" ")[1], city:element.insuredAreaCity, visible:true, draft:element.draft, publishedDate:element.datePublished, enabled:element.enabled});            
     //       }
     //     });
-    //   }
+    //   }      
     // });
 
-    // this.customersProvider.setCustomers(temp);
+    // this.customers = this.customersProvider.getCustomers();
 
-    return temp;
+    // for (let i = 0; i < this.customers.length; i++) {
+
+    //   this.customers[i].visible = true;
+    //   // if (this.customers[i].enabled == true && enabled == true) {
+    //   //   this.customers[i].visible = true;
+    //   // }
+    //   // else if (this.customers[i].enabled == false && disabled == true) {
+    //   //   this.customers[i].visible = true;
+    //   // }
+    //   // else if (this.customers[i].draft == true) {
+    //   //   this.customers[i].visible = true;
+    //   // }
+    // }
+
+    console.log("Customers length:",this.customers.length);
+    return this.customers;
   }
 
   public goToNewCustomer(): void {
     this.navCtrl.push(CustomerInfoPage);
-  }
-
-  handleClick(event) {
-    // console.log(event.target.id);
-    // if (event.target.id == "filter") {
-    //   this.openPopOver1 = true;
-    // }
-    // else if (event.target.id == "account") {
-    //   this.openPopOver2 = true;
-    // }
   }
 
   onPageWillLeave() {
@@ -230,15 +278,13 @@ export class CustomersPage implements OnInit {
     this.events.unsubscribe('dismiss2', () => { });
   }
 
-  readCustomers(searchString):Array<{ name: string, surname: string, city: string, visible: boolean, draft: boolean, publishedDate: string, enabled: boolean }>{
+  readCustomers(searchString): Array<{ name: string, surname: string, city: string, visible: boolean, draft: boolean, publishedDate: string, enabled: boolean }> {
     let temp = [];
     this.storage.get("customers").then((value) => {
-      if(value)
-      {
+      if (value) {
         value.forEach(element => {
-          if(element.subscriberName.split(" ")[0].startsWith(searchString) || element.subscriberName.split(" ")[1].startsWith(searchString) || element.insuredAreaCity.startsWith(searchString))
-          {
-            temp.push({name:element.subscriberName.split(" ")[0], surname:element.subscriberName.split(" ")[1], city:element.insuredAreaCity, visible:true, draft:element.draft, publishedDate:element.datePublished, enabled:element.enabled});            
+          if (element.subscriberName.split(" ")[0].startsWith(searchString) || element.subscriberName.split(" ")[1].startsWith(searchString) || element.insuredAreaCity.startsWith(searchString)) {
+            temp.push({ name: element.subscriberName.split(" ")[0], surname: element.subscriberName.split(" ")[1], city: element.insuredAreaCity, visible: true, draft: element.draft, publishedDate: element.datePublished, enabled: element.enabled });
           }
         });
       }
@@ -246,7 +292,7 @@ export class CustomersPage implements OnInit {
     return temp;
   }
 
-  goToDashboard():void{
+  goToDashboard(): void {
     this.navCtrl.setRoot(DashboardPage);
   }
 }

@@ -45,6 +45,8 @@ export class CustomersProvider {
   alarmUsers: Array<{ username: string, name: string, editable: boolean }> = [];
   notes: Array<{ showDate: string, title: string, content: string }> = [];
 
+  order:string = "none";
+
   constructor(public http: HttpClient, private storage: Storage) {
     this.storage.get('customers').then((value) => {
       if (value) {
@@ -71,6 +73,10 @@ export class CustomersProvider {
     });
 
     console.log('Service Provider customers', this.customers);
+  }
+
+  setOrder(order):void{
+    this.order = order;
   }
 
   setCustomers(customers): void {

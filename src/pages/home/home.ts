@@ -3,7 +3,6 @@ import { NavController, MenuController, Platform } from 'ionic-angular';
 import { DashboardPage } from '../dashboard/dashboard';
 import { Storage } from '@ionic/storage';
 import { Keyboard } from 'ionic-native';
-import { NativePageTransitions, NativeTransitionOptions } from '@ionic-native/native-page-transitions';
 
 @Component({
   selector: 'page-home',
@@ -19,9 +18,7 @@ export class HomePage {
   constructor(public navCtrl: NavController,
     public menuCtrl: MenuController,
     private platform: Platform,
-    private storage: Storage,
-    private keyboard: Keyboard,
-    private nativePageTransitions: NativePageTransitions) {
+    private storage: Storage) {
 
     this.menuCtrl.enable(false, 'menu');
 
