@@ -10,29 +10,29 @@ export class CustomersProvider {
 
   public enabled: boolean = true;
   public disabled: boolean = false;
-  public subscriberName: string;
-  public installerName: string;
-  public customerPass: string;
-  public customerAuxiliaryPass: string;
-  public customerDuressCode: string;
-  public customerConnectionDate: string;
-  public customerInsuredAreaAddress: string;
-  public customerInsuredAreaCity: string;
-  public customerInsuredAreaPostCode: string;
-  public customerInsuredAreaFloor: string;
-  public customerInsuredAreaDescription: string;
-  public customerInsuredAreaType: string;
-  public customerInsuredAreaTypeOther: string;
-  public customerAreaPhone: string;
-  public customerAlarmUnitType: string;
-  public customerFormat: string;
-  public customerFrequency24HourTest: number;
-  public customerWeeklyTimeMonitoring: string;
-  public customerPoliceStation: string;
-  public customerDirectTransmissionPhones: string;
-  public customerOperationControlHours: string;
-  public customerMonthlyAlarmList: string;
-  public customerOtherRemarks: string;
+  public subscriberName: string = "";
+  public installerName: string = "";
+  public customerPass: string = "";
+  public customerAuxiliaryPass: string = "";
+  public customerDuressCode: string = "";
+  public customerConnectionDate: string = "";
+  public customerInsuredAreaAddress: string = "";
+  public customerInsuredAreaCity: string = "";
+  public customerInsuredAreaPostCode: string = "";
+  public customerInsuredAreaFloor: string = "";
+  public customerInsuredAreaDescription: string = "";
+  public customerInsuredAreaType: string = "";
+  public customerInsuredAreaTypeOther: string = "";
+  public customerAreaPhone: string = "";
+  public customerAlarmUnitType: string = "";
+  public customerFormat: string = "";
+  public customerFrequency24HourTest: number = 0;
+  public customerWeeklyTimeMonitoring: string = "";
+  public customerPoliceStation: string = "";
+  public customerDirectTransmissionPhones: string = "";
+  public customerOperationControlHours: string = "";
+  public customerMonthlyAlarmList: string = "";
+  public customerOtherRemarks: string = "";
 
   customers: Array<{ name: string, surname: string, city: string, visible: boolean, draft: boolean, publishedDate: string, enabled: boolean }> = [
     // {name:'Γρηγόρης', surname:'Σαμαράς', city:'Αθήνα', visible:true, draft:true, publishedDate:"", enabled:true}, 
