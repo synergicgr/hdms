@@ -5,8 +5,6 @@ import { CustomersProvider } from '../../providers/customers/customers';
 import { CustomersPage } from '../customers/customers';
 
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
-import { TouchID } from 'ionic-native';
-
 
 
 @IonicPage()
