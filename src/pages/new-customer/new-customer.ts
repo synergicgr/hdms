@@ -305,7 +305,7 @@ export class NewCustomerPage implements OnInit {
       visible = false;
     }
 
-    if (this.navParams.data) {
+    if (this.navParams.get('name') && this.navParams.get('surname')) {
       let customer = this.customersProvider.getCustomer(this.navParams.data.name, this.navParams.data.surname);
       console.log("Found customer ", customer.name);
       customer.draft = false;
