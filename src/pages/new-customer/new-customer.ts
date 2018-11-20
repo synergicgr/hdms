@@ -347,7 +347,7 @@ export class NewCustomerPage implements OnInit {
                 alarmUsers: this.alarmUsers,
                 enabled: true,
                 draft: false,
-                installer_name: this.installerName,
+                installer_name: this.installer_name,
                 installer_afm: this.installer_afm,
                 installer_proffesionalDescription: this.installer_proffesionalDescription,
                 installer_insuredAreaAddress: this.installer_insuredAreaAddress,
@@ -415,7 +415,7 @@ export class NewCustomerPage implements OnInit {
       });
 
       this.customersProvider.replaceDraft(customer);
-      this.app.getRootNav().pop();
+      this.app.getRootNav().setRoot(CustomersPage)
     } else {
       this.customersProvider.addCustomer(
         {
@@ -466,7 +466,7 @@ export class NewCustomerPage implements OnInit {
             alarmUsers: this.customersProvider.alarmUsers,
             enabled: true,
             draft: false,
-            installer_name: this.customersProvider.installerName,
+            installer_name: this.installer_name,
             installer_afm: this.installer_afm,
             installer_proffesionalDescription: this.installer_proffesionalDescription,
             installer_insuredAreaAddress: this.installer_insuredAreaAddress,
