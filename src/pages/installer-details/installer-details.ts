@@ -118,7 +118,8 @@ export class InstallerDetailsPage {
       visible = false;
     }
 
-    if (this.navParams.data) {
+    if (this.navParams.get('name') && this.navParams.get('surname')) {
+      console.log("NAV PARAMS", this.navParams.data);
       let customer = this.customersProvider.getCustomer(this.navParams.data.name, this.navParams.data.surname);
       console.log("Found customer ", customer.name);
       customer.draft = false;
@@ -210,21 +211,21 @@ export class InstallerDetailsPage {
         this.customersProvider.setZones([]);
         this.customersProvider.setPhoneNotices([]);
         this.customersProvider.setAlarmUsers([]);
-        // this.name = "";
-        // this.afm = "";
-        // this.installer_proffesionalDescription = "";
-        // this.installer_insuredAreaAddress = "";
-        // this.installer_insuredAreaCity = "";
-        // this.installer_insuredAreaPostCode = "";
-        // this.installer_insuredAreaFloor = "";
-        // this.installer_landlinePhone = "";
-        // this.installer_mobilePhone = "";
-        // this.installer_email = "";
-        // this.installer_website = "";
-        // this.installer_collectionPolicy = "";
-        // this.installer_emailInvoice = "";
-        // this.installer_billingAddressOnly = "";
-        // this.installer_fax = "";
+        // // this.name = "";
+        // // this.afm = "";
+        // // this.installer_proffesionalDescription = "";
+        // // this.installer_insuredAreaAddress = "";
+        // // this.installer_insuredAreaCity = "";
+        // // this.installer_insuredAreaPostCode = "";
+        // // this.installer_insuredAreaFloor = "";
+        // // this.installer_landlinePhone = "";
+        // // this.installer_mobilePhone = "";
+        // // this.installer_email = "";
+        // // this.installer_website = "";
+        // // this.installer_collectionPolicy = "";
+        // // this.installer_emailInvoice = "";
+        // // this.installer_billingAddressOnly = "";
+        // // this.installer_fax = "";
       });
 
       this.customersProvider.replaceDraft(customer);
