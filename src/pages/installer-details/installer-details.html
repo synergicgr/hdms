@@ -1,14 +1,14 @@
 <ion-content padding class="ion-content">
   <ion-row>
     <ion-col col-12 col-lg no-padding>
-      <input type="text" style="width: 100%;height: 50px;border-radius: 5px;" class="inputText" no-margin [(ngModel)]="name" (change)="submitName()">
+      <input type="text" style="width: 100%;height: 50px;border-radius: 5px;" class="inputText" no-margin [(ngModel)]="name" (change)="submitName()" [readonly]="navParams.data.draft == false">
       <span class="floating-label">ΕΠΩΝΥΜΙΑ</span>
     </ion-col>
   </ion-row>
 
   <ion-row style="margin-top:5px;">
     <ion-col col-12 col-lg no-padding>
-      <input type="text" style="width: 100%;height: 50px;border-radius: 5px;" class="inputText" no-margin [(ngModel)]="afm" (change)="submitAFM()">
+      <input type="text" style="width: 100%;height: 50px;border-radius: 5px;" class="inputText" no-margin [(ngModel)]="afm" (change)="submitAFM()" [readonly]="navParams.data.draft == false">
       <span class="floating-label">ΑΦΜ | ΔΟΥ</span>
     </ion-col>
   </ion-row>
@@ -21,7 +21,7 @@
 
   <ion-row style="background: #272753;border-bottom-left-radius: 5px;border-bottom-right-radius: 5px;">
     <ion-col col-12 col-lg no-padding>
-      <ion-textarea style="height:80px;color:#ffffff; margin-left: 5px;font-size: 12px;" [(ngModel)]="proffesionalDescription" (ionChange)="submitProfDescription()"></ion-textarea>
+      <ion-textarea style="height:80px;color:#ffffff; margin-left: 5px;font-size: 12px;" [(ngModel)]="proffesionalDescription" (ionChange)="submitProfDescription()" [readonly]="navParams.data.draft == false"></ion-textarea>
     </ion-col>
   </ion-row>
 
@@ -33,23 +33,23 @@
 
   <ion-row style="background: #272753;">
     <ion-col col-6 col-lg no-padding style="position:relative;top:10px;">
-      <input type="text" style="width: 100%;height: 50px;" class="inputText" no-margin [(ngModel)]="insuredAreaAddress" (change)="submitAddrNum()">
+      <input type="text" style="width: 100%;height: 50px;" class="inputText" no-margin [(ngModel)]="insuredAreaAddress" (change)="submitAddrNum()" [readonly]="navParams.data.draft == false">
       <span class="floating-label">ΟΔΟΣ - ΑΡΙΘΜΟΣ</span>
     </ion-col>
     <ion-col col-6 col-lg no-padding style="position:relative;top:10px;">
-      <input type="text" style="width: 100%;height: 50px;" class="inputText" no-margin [(ngModel)]="insuredAreaCity" (change)="submitCity()">
+      <input type="text" style="width: 100%;height: 50px;" class="inputText" no-margin [(ngModel)]="insuredAreaCity" (change)="submitCity()" [readonly]="navParams.data.draft == false">
       <span class="floating-label">ΠΟΛΗ</span>
     </ion-col>
   </ion-row>
   <ion-row style="background: #272753; border-bottom-left-radius: 5px; border-bottom-right-radius: 5px;">
     <ion-col col-6 col-lg no-padding>
       <input type="text" style="width: 100%;height: 50px;border-bottom-left-radius: 5px; border-bottom-right-radius: 5px;"
-        class="inputText" no-margin [(ngModel)]="insuredAreaPostCode" (change)="submitPostCode()">
+        class="inputText" no-margin [(ngModel)]="insuredAreaPostCode" (change)="submitPostCode()" [readonly]="navParams.data.draft == false">
       <span class="floating-label">ΤΚ</span>
     </ion-col>
     <ion-col col-6 col-lg no-padding>
       <input type="text" style="width: 100%;height: 50px;border-bottom-left-radius: 5px; border-bottom-right-radius: 5px;"
-        class="inputText" no-margin [(ngModel)]="insuredAreaFloor" (change)="submitFloor()">
+        class="inputText" no-margin [(ngModel)]="insuredAreaFloor" (change)="submitFloor()" [readonly]="navParams.data.draft == false">
       <span class="floating-label">ΟΡΟΦΟΣ</span>
     </ion-col>
   </ion-row>
@@ -57,20 +57,20 @@
   <ion-row style="margin-top:5px;">
     <ion-col col-12 no-padding>
       <input type="text" style="width: 100%;height: 50px;border-top-left-radius: 5px;border-top-right-radius: 5px;"
-        class="inputText" no-margin (change)="submitLandline()" [(ngModel)]="landlinePhone" (change)="submitLandline()">
+        class="inputText" no-margin (change)="submitLandline()" [(ngModel)]="landlinePhone" (change)="submitLandline()" [readonly]="navParams.data.draft == false">
       <span class="floating-label">ΣΤΑΘΕΡΟ ΤΗΛΕΦΩΝΟ</span>
     </ion-col>
   </ion-row>
   <ion-row>
     <ion-col col-12 no-padding>
-      <input type="text" style="width: 100%;height: 50px;" class="inputText" no-margin [(ngModel)]="fax" (change)="submitFax()">
+      <input type="text" style="width: 100%;height: 50px;" class="inputText" no-margin [(ngModel)]="fax" (change)="submitFax()" [readonly]="navParams.data.draft == false">
       <span class="floating-label">FAX</span>
     </ion-col>
   </ion-row>
   <ion-row>
     <ion-col col-12 no-padding>
       <input type="text" style="width: 100%;height: 50px;border-bottom-left-radius: 5px; border-bottom-right-radius: 5px;"
-        class="inputText" no-margin [(ngModel)]="mobilePhone" (change)="submitMobile()">
+        class="inputText" no-margin [(ngModel)]="mobilePhone" (change)="submitMobile()" [readonly]="navParams.data.draft == false">
       <span class="floating-label">ΚΙΝΗΤΟ ΤΗΛΕΦΩΝΟ</span>
     </ion-col>
   </ion-row>
@@ -78,14 +78,14 @@
   <ion-row style="margin-top:5px;">
     <ion-col col-12 no-padding>
       <input type="text" style="width: 100%;height: 50px;border-top-left-radius: 5px; border-top-right-radius: 5px;"
-        class="inputText" no-margin [(ngModel)]="email" (change)="submitEmail()">
+        class="inputText" no-margin [(ngModel)]="email" (change)="submitEmail()" [readonly]="navParams.data.draft == false">
       <span class="floating-label">EMAIL ΕΠΙΚΟΙΝΩΝΙΑΣ</span>
     </ion-col>
   </ion-row>
   <ion-row>
     <ion-col col-12 no-padding>
       <input type="text" style="width: 100%;height: 50px;border-bottom-left-radius: 5px; border-bottom-right-radius:5px;"
-        class="inputText" no-margin [(ngModel)]="website" (change)="submitWebsite()">
+        class="inputText" no-margin [(ngModel)]="website" (change)="submitWebsite()" [readonly]="navParams.data.draft == false">
       <span class="floating-label">WEB SITE</span>
     </ion-col>
   </ion-row>
@@ -101,12 +101,12 @@
       <ion-list radio-group no-lines [(ngModel)]="collectionPolicy" (ionChange)="submitCollection()">
         <ion-item style="background:  #272753;">
           <!-- <input name="selection" type="radio" value="selfCollection" style="margin-right: 10px;"> -->
-          <ion-radio item-left value="selfCollection" color="white"></ion-radio>
+          <ion-radio item-left value="selfCollection" color="white" [disabled]="navParams.data.draft == false"></ion-radio>
           <ion-label style="color:#8c8ca9;font-size: 12px;">Είσπραξη από τον ίδιο</ion-label>
         </ion-item>
         <ion-item style="background:  #272753;">
           <!-- <input name="selection" type="radio" value="hdmsCollection" style="margin-right: 10px;"> -->
-          <ion-radio item-left value="hdmsCollection" color="white"></ion-radio>
+          <ion-radio item-left value="hdmsCollection" color="white" [disabled]="navParams.data.draft == false"></ion-radio>
           <ion-label style="color:#8c8ca9;font-size: 12px;">Είσπραξη από HDMS</ion-label>
         </ion-item>
       </ion-list>
@@ -124,12 +124,12 @@
       <ion-list radio-group no-lines [(ngModel)]="emailInvoice" (ionChange)="submitEmailInvoice()">
         <ion-item style="background:  #272753;">
           <!-- <input name="selection2" type="radio" value="yes" style="margin-right: 10px;"> -->
-          <ion-radio item-left value="yes" color="white"></ion-radio>
+          <ion-radio item-left value="yes" color="white" [disabled]="navParams.data.draft == false"></ion-radio>
           <ion-label style="color:#8c8ca9;font-size: 12px;">YES</ion-label>
         </ion-item>
         <ion-item style="background:  #272753;">
           <!-- <input name="selection2" type="radio" value="no" style="margin-right: 10px;"> -->
-          <ion-radio value="no" item-left color="white"></ion-radio>
+          <ion-radio value="no" item-left color="white" [disabled]="navParams.data.draft == false"></ion-radio>
           <ion-label style="color:#8c8ca9;font-size: 12px;">NO</ion-label>
         </ion-item>
       </ion-list>
@@ -147,12 +147,12 @@
       <ion-list radio-group no-lines [(ngModel)]="billingAddressOnly" (ionChange)="submitBilling()">
         <ion-item style="background:  #272753;">
           <!-- <input name="selection3" type="radio" value="yes" style="margin-right: 10px;"> -->
-          <ion-radio value="yes" item-left color="white"></ion-radio>
+          <ion-radio value="yes" item-left color="white" [disabled]="navParams.data.draft == false"></ion-radio>
           <ion-label style="color:#8c8ca9;font-size: 12px;">YES</ion-label>
         </ion-item>
         <ion-item style="background:  #272753;">
           <!-- <input name="selection3" type="radio" value="no" style="margin-right: 10px;"> -->
-          <ion-radio value="no" item-left color="white"></ion-radio>
+          <ion-radio value="no" item-left color="white" [disabled]="navParams.data.draft == false"></ion-radio>
           <ion-label style="color:#8c8ca9;font-size: 12px;">NO</ion-label>
         </ion-item>
       </ion-list>

@@ -1,11 +1,11 @@
 page-new-customer {
-    input:focus~.floating-label,
-    input:not(:focus):valid~.floating-label {
-        top: 5px;
-        bottom: 10px;
-        left: 10px;
-        opacity: 1;
-    }
+    // input:focus~.floating-label,
+    // input:not(:focus):valid~.floating-label {
+    //     top: 5px;
+    //     bottom: 10px;
+    //     left: 10px;
+    //     opacity: 1;
+    // }
     .inputText {
         font-size: 12px;
         background: #272753;
@@ -16,8 +16,8 @@ page-new-customer {
     .floating-label {
         position: absolute;
         pointer-events: none;
-        left: 20px;
-        top: 18px;
+        left: 10px;
+        top: 5px;
         font-size: 9px;
         transition: 0.2s ease all;
         color: #8c8ca9;

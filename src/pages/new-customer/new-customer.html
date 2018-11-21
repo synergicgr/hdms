@@ -2,38 +2,38 @@
 
   <ion-row>    
     <ion-col col-12 col-lg no-padding>
-      <input type="text" style="width: 100%;height: 50px;border-radius: 5px;" class="inputText" no-margin [(ngModel)]="installerName" (change)="saveInstallerName()">
+      <input type="text" style="width: 100%;height: 50px;border-radius: 5px;" class="inputText" no-margin [(ngModel)]="installerName" (change)="saveInstallerName()" [readonly]="navParams.data.draft == false">
       <span class="floating-label">ΟΝΟΜΑ ΕΓΚΑΤΑΣΤΑΤΗ</span>
     </ion-col>
   </ion-row>
 
   <ion-row style="margin-top:5px;">
     <ion-col col-12 col-lg no-padding>
-      <input type="text" style="width: 100%;height: 50px;border-radius: 5px;" class="inputText" no-margin [(ngModel)]="customerPass" (change)="saveCustomerPass()">
+      <input type="text" style="width: 100%;height: 50px;border-radius: 5px;" class="inputText" no-margin [(ngModel)]="customerPass" (change)="saveCustomerPass()" [readonly]="navParams.data.draft == false">
       <span class="floating-label">ΚΩΔΙΚΟΣ ΠΕΛΑΤΗ (CSID 6ψηφια)</span>
     </ion-col>
   </ion-row>
 
   <ion-row style="margin-top:5px;">
     <ion-col col-12 col-lg no-padding>
-      <input type="text" style="width: 100%;height: 50px;border-radius: 5px;" class="inputText" no-margin [(ngModel)]="customerAuxiliaryPass" (change)="saveAuxiliaryPass()"> 
+      <input type="text" style="width: 100%;height: 50px;border-radius: 5px;" class="inputText" no-margin [(ngModel)]="customerAuxiliaryPass" (change)="saveAuxiliaryPass()" [readonly]="navParams.data.draft == false"> 
       <span class="floating-label">ΒΟΗΘΗΤΙΚΟΣ ΚΩΔΙΚΟΣ ΠΕΛΑΤΗ (PASSCODE 10ψηφια)</span>
     </ion-col>
   </ion-row>
 
   <ion-row style="margin-top:5px;">
     <ion-col col-12 col-lg no-padding>
-      <input type="text" style="width: 100%;height: 50px;border-radius: 5px;" class="inputText" no-margin [(ngModel)]="duressCode" (change)="saveDuressCode()">
+      <input type="text" style="width: 100%;height: 50px;border-radius: 5px;" class="inputText" no-margin [(ngModel)]="duressCode" (change)="saveDuressCode()" [readonly]="navParams.data.draft == false">
       <span class="floating-label">ΚΩΔΙΚΟΣ ΑΠΕΙΛΗΣ DURESS CODE (6ψηφια)</span>
     </ion-col>
   </ion-row>
 
   <ion-row style="margin-top:5px;">
     <ion-col col-12 col-lg no-padding>
-      <input type="text" style="width: 100%;height: 50px;border-radius: 5px;" class="inputText" no-margin [(ngModel)]="customerConnectionDate">
+      <input type="text" style="width: 100%;height: 50px;border-radius: 5px;" class="inputText" no-margin [(ngModel)]="customerConnectionDate" [readonly]="navParams.data.draft == false">
       <span>
         <ion-datetime [(ngModel)]="customerConnectionDate" style="color:#36365f; height: 0px;" [max]="maximumDate" doneText="ΕΝΤΑΞΕΙ"
-          cancelText="ΑΚΥΡΟ" (ngModelChange)="saveConnectionDate()"></ion-datetime>
+          cancelText="ΑΚΥΡΟ" (ngModelChange)="saveConnectionDate()" [disabled]="navParams.data.draft == false"></ion-datetime>
       </span>
       <span class="floating-label">ΗΜΕΡΟΜΗΝΙΑ ΣΥΝΔΕΣΗΣ ΠΕΛΑΤΗ</span>
     </ion-col>
@@ -41,7 +41,7 @@
 
   <ion-row style="margin-top:-10px;">
     <ion-col col-12 col-lg no-padding>
-      <input type="text" style="width: 100%;height: 50px;border-radius: 5px;" class="inputText" no-margin [(ngModel)]="subscriberName" (change)="saveSubscriber()">
+      <input type="text" style="width: 100%;height: 50px;border-radius: 5px;" class="inputText" no-margin [(ngModel)]="subscriberName" (change)="saveSubscriber()" [readonly]="navParams.data.draft == false">
       <span class="floating-label" style="margin-top:-10px;">ΕΠΩΝΥΜΙΑ ΣΥΝΔΡΟΜΗΤΗ<span style="color:red; margin-left: 5px; font-size: 20px;">*</span></span>
     </ion-col>
   </ion-row>
@@ -54,23 +54,23 @@
 
   <ion-row style="background: #272753;">
     <ion-col col-6 col-lg no-padding style="position:relative;top:10px;">
-      <input type="text" style="width: 100%;height: 50px;" class="inputText" no-margin [(ngModel)]="insuredAreaAddress" (change)="saveInsuredAreaAddress()">
+      <input type="text" style="width: 100%;height: 50px;" class="inputText" no-margin [(ngModel)]="insuredAreaAddress" (change)="saveInsuredAreaAddress()" [readonly]="navParams.data.draft == false">
       <span class="floating-label">ΟΔΟΣ - ΑΡΙΘΜΟΣ</span>
     </ion-col>
     <ion-col col-6 col-lg no-padding style="position:relative;top:10px;">
-      <input type="text" style="width: 100%;height: 50px;" class="inputText" no-margin [(ngModel)]="insuredAreaCity" (change)="saveInsuredAreaCity()">
+      <input type="text" style="width: 100%;height: 50px;" class="inputText" no-margin [(ngModel)]="insuredAreaCity" (change)="saveInsuredAreaCity()" [readonly]="navParams.data.draft == false">
       <span class="floating-label" style="margin-top: -12px">ΠΟΛΗ<span style="color:red; margin-left: 5px; font-size: 20px;">*</span></span>
     </ion-col>
   </ion-row>
   <ion-row style="background: #272753; border-bottom-left-radius: 5px; border-bottom-right-radius: 5px;">
     <ion-col col-6 col-lg no-padding>
       <input type="text" style="width: 100%;height: 50px;border-bottom-left-radius: 10px;" class="inputText" no-margin
-        [(ngModel)]="insuredAreaPostCode" (change)="saveInsuredAreaPostCode()">
+        [(ngModel)]="insuredAreaPostCode" (change)="saveInsuredAreaPostCode()" [readonly]="navParams.data.draft == false">
       <span class="floating-label">ΤΚ</span>
     </ion-col>
     <ion-col col-6 col-lg no-padding>
       <input type="text" style="width: 100%;height: 50px;border-bottom-left-radius: 5px; border-bottom-right-radius: 5px;"
-        class="inputText" no-margin [(ngModel)]="insuredAreaFloor" (change)="saveInsuredAreaFloor()">
+        class="inputText" no-margin [(ngModel)]="insuredAreaFloor" (change)="saveInsuredAreaFloor()" [readonly]="navParams.data.draft == false">
       <span class="floating-label">ΟΡΟΦΟΣ</span>
     </ion-col>
   </ion-row>
@@ -83,7 +83,7 @@
 
   <ion-row style="background: #272753;border-bottom-left-radius: 5px; border-bottom-right-radius: 5px;">
     <ion-col col-12 col-lg no-padding>
-      <ion-textarea style="height:80px;color:#ffffff;margin-left: 10px;" [(ngModel)]="insuredAreaDescription" (ionChange)="saveInsuredAreaDescription()"></ion-textarea>
+      <ion-textarea style="height:80px;color:#ffffff;margin-left: 10px;" [(ngModel)]="insuredAreaDescription" (ionChange)="saveInsuredAreaDescription()" [readonly]="navParams.data.draft == false"></ion-textarea>
     </ion-col>
   </ion-row>
 
@@ -98,38 +98,38 @@
       <ion-list radio-group no-lines [(ngModel)]="insuredAreaType">
         <ion-item style="background:  #272753;">
           <!-- <input name="selection" type="radio" value="store" style="margin-right: 10px;"> -->
-          <ion-radio item-left value="store" (ionSelect)="saveInsuredAreaType()" color="white"></ion-radio>
+          <ion-radio item-left value="store" (ionSelect)="saveInsuredAreaType()" color="white" [disabled]="navParams.data.draft == false"></ion-radio>
           <ion-label style="color:#8c8ca9;font-size:12px;">Κατάστημα</ion-label>
           <!-- <label style="color:#8c8ca9">Κατάστημα</label> -->
         </ion-item>
         <ion-item style="background:  #272753;">
           <!-- <input name="selection" type="radio" value="apartment" style="margin-right: 10px;"> -->
-          <ion-radio item-left value="apartment" (ionSelect)="saveInsuredAreaType()" color="white"></ion-radio>
+          <ion-radio item-left value="apartment" (ionSelect)="saveInsuredAreaType()" color="white" [disabled]="navParams.data.draft == false"></ion-radio>
           <!-- <label style="color:#8c8ca9">Διαμέρισμα</label> -->
           <ion-label style="color:#8c8ca9;font-size: 12px">Διαμέρισμα</ion-label>
         </ion-item>
         <ion-item style="background:  #272753;">
           <!-- <input name="selection" type="radio" value="office" style="margin-right: 10px;"> -->
-          <ion-radio item-left value="office" (ionSelect)="saveInsuredAreaType()" color="white"></ion-radio>
+          <ion-radio item-left value="office" (ionSelect)="saveInsuredAreaType()" color="white" [disabled]="navParams.data.draft == false"></ion-radio>
           <!-- <label style="color:#8c8ca9">Γραφείο</label> -->
           <ion-label style="color:#8c8ca9;font-size:12px;">Γραφείο</ion-label>
         </ion-item>
         <ion-item style="background:  #272753;">
           <!-- <input name="selection" type="radio" value="detachedHouse" style="margin-right: 10px;"> -->
-          <ion-radio item-left value="detachedHouse" (ionSelect)="saveInsuredAreaType()" color="white"></ion-radio>
+          <ion-radio item-left value="detachedHouse" (ionSelect)="saveInsuredAreaType()" color="white" [disabled]="navParams.data.draft == false"></ion-radio>
           <ion-label style="color:#8c8ca9;font-size:12px;">Μονοκατοικία</ion-label>
           <!-- <label style="color:#8c8ca9">Μονοκατοικία</label> -->
         </ion-item>
         <ion-item style="background:  #272753;">
           <!-- <input type="radio" name="selection" value="other" id="radioSelection" style="margin-right: 10px;"> -->
-          <ion-radio item-left value="other" (ionSelect)="saveInsuredAreaType()" color="white">
+          <ion-radio item-left value="other" (ionSelect)="saveInsuredAreaType()" color="white" [disabled]="navParams.data.draft == false">
           </ion-radio>
           <!-- <label style="margin-right: 10px;color:#8c8ca9">Άλλο</label> -->
           <ion-label style="color:#8c8ca9;margin-right: 20px; font-size: 12px;">Άλλο</ion-label>
         </ion-item>
         <ion-item *ngIf="insuredAreaType === 'other'" style="background:  #272753;border-bottom: none;box-shadow:none;" no-lines>
           <ion-label style="color:#8c8ca9;margin-right: 20px;font-size: 12px;">Παρακαλώ διευκρινήστε</ion-label>
-          <ion-input style="border-bottom: none;box-shadow:none; width:100%;background: #36365f;color:#ffffff;border: 0;font-size: 12px;" [(ngModel)]="insuredAreaTypeOther" (ionChange)="saveInsuredAreaTypeOther()"></ion-input>
+          <ion-input style="border-bottom: none;box-shadow:none; width:100%;background: #36365f;color:#ffffff;border: 0;font-size: 12px;" [(ngModel)]="insuredAreaTypeOther" (ionChange)="saveInsuredAreaTypeOther()" [readonly]="navParams.data.draft == false"></ion-input>
           <!-- <input type="text" style="width:100%;background: #36365f;color:#ffffff;border: 0;font-size: 12px;"
             [(ngModel)]="insuredAreaTypeOther" id="textinput"> -->
         </ion-item>
@@ -139,7 +139,7 @@
 
   <ion-row style="margin-top:5px;">
     <ion-col col-12 col-lg no-padding>
-      <input type="text" style="width: 100%;height: 50px;border-radius: 5px;" class="inputText" no-margin [(ngModel)]="areaPhone" (change)="saveAreaPhone()">
+      <input type="text" style="width: 100%;height: 50px;border-radius: 5px;" class="inputText" no-margin [(ngModel)]="areaPhone" (change)="saveAreaPhone()" [readonly]="navParams.data.draft == false">
       <span class="floating-label">ΤΗΛΕΦΩΝΟ ΧΩΡΟΥ</span>
     </ion-col>
   </ion-row>
@@ -148,7 +148,7 @@
     <ion-col col-11 style="color:#8c8ca9;padding-left: 10px;font-size: 9px">
       ΤΗΛΕΦΩΝΑ ΕΙΔΟΠΟΙΗΣΗΣ (ΣΕΙΡΑ ΠΡΟΤΕΡΑΙΟΤΗΤΑΣ)
     </ion-col>
-    <ion-col col-1>
+    <ion-col col-1 *ngIf="!navParams.data.name && !navParams.data.surname">
       <ion-icon float-right name="add" style="color: #ffc200;padding-right: 10px;font-size: 20px;" (click)="addPhoneNotices()"></ion-icon>
     </ion-col>
   </ion-row>
@@ -157,7 +157,7 @@
     <ion-col col-11 style="color:#8c8ca9;padding-left: 10px;font-size: 9px">
       ΤΗΛΕΦΩΝΑ ΕΙΔΟΠΟΙΗΣΗΣ (ΣΕΙΡΑ ΠΡΟΤΕΡΑΙΟΤΗΤΑΣ)
     </ion-col>
-    <ion-col col-1>
+    <ion-col col-1 *ngIf="!navParams.data.name && !navParams.data.surname">
       <ion-icon float-right name="add" style="color: #ffc200;padding-right: 10px;font-size: 20px;" (click)="addPhoneNotices()"></ion-icon>
     </ion-col>
   </ion-row>
@@ -172,7 +172,7 @@
     <ion-col col-5 style="color:#ffffff" *ngIf="phoneNotice.editable === false">
       {{phoneNotice.phone}}
     </ion-col>
-    <ion-col col-1 *ngIf="phoneNotice.editable === false">
+    <ion-col col-1 *ngIf="phoneNotice.editable === false && !navParams.data.name && !navParams.data.surname">
       <ion-icon float-right name="close" style="color:#ffffff; margin-right:10px" (click)="removePhoneNotice(i)"></ion-icon>
     </ion-col>
 
@@ -180,12 +180,12 @@
       <img src="assets/imgs/drag-icon.png" style="height:20px;width:20px;position: relative;top:10px;">
     </ion-col>
     <ion-col col-5 style="color:#ffffff" *ngIf="phoneNotice.editable === true">
-      <ion-input style="position: relative;left: -7px;" type="text" placeholder="Χρήστης" [(ngModel)]="phoneNotices[i].name" (ionChange)="savePhoneNotices()"></ion-input>
+      <ion-input style="position: relative;left: -7px;" type="text" placeholder="Χρήστης" [(ngModel)]="phoneNotices[i].name" (ionChange)="savePhoneNotices()" [readonly]="navParams.data.draft == false"></ion-input>
     </ion-col>
     <ion-col col-5 style="color:#ffffff" *ngIf="phoneNotice.editable === true">
-      <ion-input style="position: relative;left: -7px;" type="text" placeholder="Τηλέφωνο" [(ngModel)]="phoneNotices[i].phone" (ionChange)="savePhoneNotices()"></ion-input>
+      <ion-input style="position: relative;left: -7px;" type="text" placeholder="Τηλέφωνο" [(ngModel)]="phoneNotices[i].phone" (ionChange)="savePhoneNotices()" [readonly]="navParams.data.draft == false"></ion-input>
     </ion-col>
-    <ion-col col-1 *ngIf="phoneNotice.editable === true">
+    <ion-col col-1 *ngIf="phoneNotice.editable === true && !navParams.data.name && !navParams.data.surname">
       <ion-icon float-right name="close" style="color:#ffffff; margin-right:10px;position: relative;top:15px;" (click)="removePhoneNotice(i)"></ion-icon>
     </ion-col>
   </ion-row>
@@ -200,7 +200,7 @@
     <ion-col col-5 style="color:#ffffff" *ngIf="phoneNotices[phoneNotices.length-1].editable === false">
       {{phoneNotices[phoneNotices.length-1].phone}}
     </ion-col>
-    <ion-col col-1 *ngIf="phoneNotices[phoneNotices.length-1].editable === false">
+    <ion-col col-1 *ngIf="phoneNotices[phoneNotices.length-1].editable === false && !navParams.data.name && !navParams.data.surname">
       <ion-icon float-right name="close" style="color:#ffffff; margin-right:10px" (click)="removePhoneNotice(phoneNotices.length-1)"></ion-icon>
     </ion-col>
 
@@ -208,12 +208,12 @@
       <img src="assets/imgs/drag-icon.png" style="height:20px;width:20px;position: relative;top:10px;">
     </ion-col>
     <ion-col col-5 style="color:#ffffff" *ngIf="phoneNotices[phoneNotices.length-1].editable === true">
-      <ion-input style="position: relative;left: -7px;" type="text" placeholder="Χρήστης" [(ngModel)]="phoneNotices[phoneNotices.length-1].name" (ionChange)="savePhoneNotices()"></ion-input>
+      <ion-input style="position: relative;left: -7px;" type="text" placeholder="Χρήστης" [(ngModel)]="phoneNotices[phoneNotices.length-1].name" (ionChange)="savePhoneNotices()" [readonly]="navParams.data.draft == false"></ion-input>
     </ion-col>
     <ion-col col-5 style="color:#ffffff" *ngIf="phoneNotices[phoneNotices.length-1].editable === true">
-      <ion-input style="position: relative;left: -7px;" type="text" placeholder="Τηλέφωνο" [(ngModel)]="phoneNotices[phoneNotices.length-1].phone" (ionChange)="savePhoneNotices()"></ion-input>
+      <ion-input style="position: relative;left: -7px;" type="text" placeholder="Τηλέφωνο" [(ngModel)]="phoneNotices[phoneNotices.length-1].phone" (ionChange)="savePhoneNotices()" [readonly]="navParams.data.draft == false"></ion-input>
     </ion-col>
-    <ion-col col-1 *ngIf="phoneNotices[phoneNotices.length-1].editable === true">
+    <ion-col col-1 *ngIf="phoneNotices[phoneNotices.length-1].editable === true && !navParams.data.name && !navParams.data.surname">
       <ion-icon float-right name="close" style="color:#ffffff; margin-right:10px;position: relative;top:15px;" (click)="removePhoneNotice(phoneNotices.length-1)"></ion-icon>
     </ion-col>
   </ion-row>
@@ -226,7 +226,7 @@
 
   <ion-row style="background: #272753;border-bottom-left-radius: 5px; border-bottom-right-radius: 5px;">
     <ion-col col-12 col-lg no-padding>
-      <ion-textarea style="height:80px;color:#ffffff; margin-left: 10px;" [(ngModel)]="alarmUnitType" (ionChange)="saveAlarmUnitType()"></ion-textarea>
+      <ion-textarea style="height:80px;color:#ffffff; margin-left: 10px;" [(ngModel)]="alarmUnitType" (ionChange)="saveAlarmUnitType()" [readonly]="navParams.data.draft == false"></ion-textarea>
     </ion-col>
   </ion-row>
 
@@ -242,20 +242,20 @@
         <ion-item style="background:  #272753;">
           <!-- <label for="label4" style="color:#8c8ca9">CID</label> -->
           <ion-label style="color:#8c8ca9;font-size: 12px;">CID</ion-label>
-          <ion-radio item-left value="cid" (ionSelect)="saveFormat()" color="white"></ion-radio>
+          <ion-radio item-left value="cid" (ionSelect)="saveFormat()" color="white" [disabled]="navParams.data.draft == false"></ion-radio>
           <!-- <input name="selection2" type="radio" value="cid" style="margin-right: 10px;"> -->
 
         </ion-item>
         <ion-item style="background:  #272753;">
           <ion-label style="color:#8c8ca9;font-size: 12px;">SIA</ion-label>
           <!-- <label for="label4" style="color:#8c8ca9">SIA</label> -->
-          <ion-radio item-left value="sia" (ionSelect)="saveFormat()" color="white"></ion-radio>
+          <ion-radio item-left value="sia" (ionSelect)="saveFormat()" color="white" [disabled]="navParams.data.draft == false"></ion-radio>
           <!-- <input name="selection2" type="radio" value="sia" style="margin-right: 10px;"> -->
 
         </ion-item>
         <ion-item style="background:  #272753;">
           <ion-label style="color:#8c8ca9; font-size: 12px;">4+2</ion-label>
-          <ion-radio item-left value="fourPlusTwo" (ionSelect)="saveFormat()" color="white"></ion-radio>
+          <ion-radio item-left value="fourPlusTwo" (ionSelect)="saveFormat()" color="white" [disabled]="navParams.data.draft == false"></ion-radio>
           <!-- <input name="selection2" type="radio" value="fourPlusTwo" style="margin-right: 10px;"> -->
 
         </ion-item>
@@ -271,7 +271,7 @@
 
   <ion-row style="background: #272753;border-bottom-left-radius: 5px; border-bottom-right-radius: 5px;">
     <ion-col col-12>
-      <ion-range min="1" max="24" step="1" snaps="true" pin="true" color="app-yellow" [(ngModel)]="frequency24HourTest" (ionChange)="saveFrequency24HourTest()"></ion-range>
+      <ion-range min="1" max="24" step="1" snaps="true" pin="true" color="app-yellow" [(ngModel)]="frequency24HourTest" (ionChange)="saveFrequency24HourTest()" [disabled]="navParams.data.draft == false"></ion-range>
       <div style="position:relative; top:-20px;">
         <span style="position:relative; left:43px;color:#8c8ca9;">4</span>
         <span style="position:relative; left:85px;color:#8c8ca9;">8</span>
@@ -289,7 +289,7 @@
     <ion-col col-11 style="color:#8c8ca9;padding-left: 10px;font-size: 9px">
       ΖΩΝΟΠΟΙΗΣΗ ΣΥΣΤΗΜΑΤΟΣ
     </ion-col>
-    <ion-col col-1>
+    <ion-col col-1 *ngIf="!navParams.data.name && !navParams.data.surname">
       <ion-icon float-right name="add" style="color: #ffc200;padding-right: 10px;font-size: 20px;" (click)="addZone()"></ion-icon>
     </ion-col>
   </ion-row>
@@ -298,7 +298,7 @@
     <ion-col col-11 style="color:#8c8ca9;padding-left: 10px;font-size: 9px">
       ΖΩΝΟΠΟΙΗΣΗ ΣΥΣΤΗΜΑΤΟΣ
     </ion-col>
-    <ion-col col-1>
+    <ion-col col-1 *ngIf="!navParams.data.name && !navParams.data.surname">
       <ion-icon float-right name="add" style="color: #ffc200;padding-right: 10px;font-size: 20px;" (click)="addZone()"></ion-icon>
     </ion-col>
   </ion-row>
@@ -313,7 +313,7 @@
     <ion-col col-5 style="color:#ffffff" *ngIf="zone.editable === false">
       {{zone.id}}
     </ion-col>
-    <ion-col col-1 *ngIf="zone.editable === false">
+    <ion-col col-1 *ngIf="zone.editable === false && !navParams.data.name && !navParams.data.surname">
       <ion-icon float-right name="close" style="color:#ffffff; margin-right:10px" (click)="removeZone(i);"></ion-icon>
     </ion-col>
 
@@ -321,12 +321,12 @@
       <img src="assets/imgs/drag-icon.png" style="width:20px;height:20px;position: relative;top:10px;">
     </ion-col>
     <ion-col col-5 style="color:#ffffff" *ngIf="zone.editable === true">
-      <ion-input type="text" placeholder="Zone name" style="margin-left:-7px" [(ngModel)]="zones[i].name" (ionChange)="saveZones()"></ion-input>
+      <ion-input type="text" placeholder="Zone name" style="margin-left:-7px" [(ngModel)]="zones[i].name" (ionChange)="saveZones()" [readonly]="navParams.data.draft == false"></ion-input>
     </ion-col>
     <ion-col col-5 style="color:#ffffff" *ngIf="zone.editable === true">
-      <ion-input type="text" placeholder="Zone id" style="margin-left:-7px" [(ngModel)]="zones[i].id" (ionChange)="saveZones()"></ion-input>
+      <ion-input type="text" placeholder="Zone id" style="margin-left:-7px" [(ngModel)]="zones[i].id" (ionChange)="saveZones()" [readonly]="navParams.data.draft == false"></ion-input>
     </ion-col>
-    <ion-col col-1 *ngIf="zone.editable === true">
+    <ion-col col-1 *ngIf="zone.editable === true && !navParams.data.name && !navParams.data.surname">
       <ion-icon float-right name="close" style="color:#ffffff; margin-right:10px;position: relative;top:15px;" (click)="removeZone(i);"></ion-icon>
     </ion-col>
   </ion-row>
@@ -342,7 +342,7 @@
     <ion-col col-5 style="color:#ffffff" *ngIf="zones[zones.length-1].editable === false">
       {{zones[zones.length-1].id}}
     </ion-col>
-    <ion-col col-1 *ngIf="zones[zones.length-1].editable === false">
+    <ion-col col-1 *ngIf="zones[zones.length-1].editable === false && !navParams.data.name && !navParams.data.surname">
       <ion-icon float-right name="close" style="color:#ffffff; margin-right:10px" (click)="removeZone(zones.length-1);"></ion-icon>
     </ion-col>
 
@@ -350,12 +350,12 @@
       <img src="assets/imgs/drag-icon.png" style="width:20px;height:20px;position: relative;top:10px;">
     </ion-col>
     <ion-col col-5 style="color:#ffffff" *ngIf="zones[zones.length-1].editable === true">
-      <ion-input type="text" placeholder="Zone name" style="margin-left:-7px" [(ngModel)]="zones[zones.length-1].name" (ionChange)="saveZones()"></ion-input>
+      <ion-input type="text" placeholder="Zone name" style="margin-left:-7px" [(ngModel)]="zones[zones.length-1].name" (ionChange)="saveZones()" [readonly]="navParams.data.draft == false"></ion-input>
     </ion-col>
     <ion-col col-5 style="color:#ffffff" *ngIf="zones[zones.length-1].editable === true">
-      <ion-input type="text" placeholder="Zone id" style="margin-left:-7px" [(ngModel)]="zones[zones.length-1].id" (ionChange)="saveZones()"></ion-input>
+      <ion-input type="text" placeholder="Zone id" style="margin-left:-7px" [(ngModel)]="zones[zones.length-1].id" (ionChange)="saveZones()" [readonly]="navParams.data.draft == false"></ion-input>
     </ion-col>
-    <ion-col col-1 *ngIf="zones[zones.length-1].editable === true">
+    <ion-col col-1 *ngIf="zones[zones.length-1].editable === true && !navParams.data.name && !navParams.data.surname">
       <ion-icon float-right name="close" style="color:#ffffff; margin-right:10px;position: relative;top:15px;" (click)="removeZone(zones.length-1);"></ion-icon>
     </ion-col>
   </ion-row>
@@ -374,14 +374,14 @@
 
   <ion-row style="background: #272753;border-bottom-left-radius: 5px;border-bottom-right-radius: 5px">
     <ion-col col-12 col-lg no-padding>
-      <ion-textarea style="height:80px;color:#ffffff; margin-left: 10px;" [(ngModel)]="weeklyTimeMonitoring" (ionChange)="saveWeeklyTimeMonitoring()"></ion-textarea>
+      <ion-textarea style="height:80px;color:#ffffff; margin-left: 10px;" [(ngModel)]="weeklyTimeMonitoring" (ionChange)="saveWeeklyTimeMonitoring()" [readonly]="navParams.data.draft == false"></ion-textarea>
     </ion-col>
   </ion-row>
 
   <ion-row style="margin-top:5px;">
     <ion-col col-12 col-lg no-padding>
       <input type="text" style="width: 100%;height: 50px;border-top-left-radius: 5px;border-top-right-radius: 5px;"
-        class="inputText" no-margin [(ngModel)]="policeStation" (change)="savePoliceStation()">
+        class="inputText" no-margin [(ngModel)]="policeStation" (change)="savePoliceStation()" [readonly]="navParams.data.draft == false">
       <span class="floating-label">ΑΣΤΥΝΟΜΙΚΟ ΤΜΗΜΑ ΠΕΡΙΟΧΗΣ</span>
     </ion-col>
   </ion-row>
@@ -394,14 +394,14 @@
 
   <ion-row style="background: #272753;">
     <ion-col col-12 col-lg no-padding>
-      <ion-textarea style="height:80px;color:#ffffff;margin-left: 5px" [(ngModel)]="directTransmissionPhones" (ionChange)="saveDirectTransmissionPhones()"></ion-textarea>
+      <ion-textarea style="height:80px;color:#ffffff;margin-left: 5px" [(ngModel)]="directTransmissionPhones" (ionChange)="saveDirectTransmissionPhones()" [readonly]="navParams.data.draft == false"></ion-textarea>
     </ion-col>
   </ion-row>
 
   <ion-row>
     <ion-col col-12 col-lg no-padding>
       <input type="text" style="width: 100%;height: 50px;border-bottom-left-radius: 5px;border-bottom-right-radius: 5px;"
-        class="inputText" no-margin [(ngModel)]="operationControlHours" (change)="saveOperationControlHours()">
+        class="inputText" no-margin [(ngModel)]="operationControlHours" (change)="saveOperationControlHours()" [readonly]="navParams.data.draft == false">
       <span class="floating-label">ΩΡΕΣ ΕΛΕΓΧΟΥ ΕΠΕΜΒΑΣΗΣ</span>
     </ion-col>
   </ion-row>
@@ -411,7 +411,7 @@
     <ion-col col-11 style="color:#8c8ca9;padding-left: 10px;font-size: 9px">
       ΟΝΟΜΑΤΑ ΧΡΗΣΤΩΝ ΣΥΝΑΓΕΡΜΟΥ (Users)
     </ion-col>
-    <ion-col col-1>
+    <ion-col col-1 *ngIf="!navParams.data.name && !navParams.data.surname">
       <ion-icon float-right name="add" style="color: #ffc200;padding-right: 10px;font-size: 20px;" (click)="addAlarmUser()"></ion-icon>
     </ion-col>
   </ion-row>
@@ -420,7 +420,7 @@
     <ion-col col-11 style="color:#8c8ca9;padding-left: 10px;font-size: 9px">
       ΟΝΟΜΑΤΑ ΧΡΗΣΤΩΝ ΣΥΝΑΓΕΡΜΟΥ (Users)
     </ion-col>
-    <ion-col col-1>
+    <ion-col col-1 *ngIf="!navParams.data.name && !navParams.data.surname">
       <ion-icon float-right name="add" style="color: #ffc200;padding-right: 10px;font-size: 20px;" (click)="addAlarmUser()"></ion-icon>
     </ion-col>
   </ion-row>
@@ -432,16 +432,16 @@
     <ion-col col-5 style="color:#ffffff" *ngIf="alarmUser.editable === false">
       {{alarmUser.name}}
     </ion-col>
-    <ion-col col-2 *ngIf="alarmUser.editable === false">
+    <ion-col col-2 *ngIf="alarmUser.editable === false && !navParams.data.name && !navParams.data.surname">
       <ion-icon float-right name="close" style="color:#ffffff; margin-right:10px" (click)="removeAlarmUser(i)"></ion-icon>
     </ion-col>
     <ion-col col-5 style="color:#ffffff" *ngIf="alarmUser.editable === true">
-      <ion-input type="text" placeholder="Χρήστης" style="position:relative;left:-7px;" [(ngModel)]="alarmUsers[i].username" (ionChange)="saveAlarmUsers()"></ion-input>
+      <ion-input type="text" placeholder="Χρήστης" style="position:relative;left:-7px;" [(ngModel)]="alarmUsers[i].username" (ionChange)="saveAlarmUsers()" [readonly]="navParams.data.draft == false"></ion-input>
     </ion-col>
     <ion-col col-5 style="color:#ffffff" *ngIf="alarmUser.editable === true">
-      <ion-input type="text" placeholder="Όνομα" style="position:relative;left:-7px;" [(ngModel)]="alarmUsers[i].name" (ionChange)="saveAlarmUsers"></ion-input>
+      <ion-input type="text" placeholder="Όνομα" style="position:relative;left:-7px;" [(ngModel)]="alarmUsers[i].name" (ionChange)="saveAlarmUsers" [readonly]="navParams.data.draft == false"></ion-input>
     </ion-col>
-    <ion-col col-2 *ngIf="alarmUser.editable === true">
+    <ion-col col-2 *ngIf="alarmUser.editable === true && !navParams.data.name && !navParams.data.surname">
       <ion-icon float-right name="close" style="color:#ffffff; margin-right:10px; position: relative;top:15px;" (click)="removeAlarmUser(i)"></ion-icon>
     </ion-col>
   </ion-row>
@@ -453,23 +453,23 @@
     <ion-col col-5 style="color:#ffffff" *ngIf="alarmUsers[alarmUsers.length-1].editable === false">
       {{alarmUsers[alarmUsers.length-1].name}}
     </ion-col>
-    <ion-col col-2 *ngIf="alarmUsers[alarmUsers.length-1].editable === false">
+    <ion-col col-2 *ngIf="alarmUsers[alarmUsers.length-1].editable === false && !navParams.data.name && !navParams.data.surname">
       <ion-icon float-right name="close" style="color:#ffffff; margin-right:10px" (click)="removeAlarmUser(-1)"></ion-icon>
     </ion-col>
     <ion-col col-5 style="color:#ffffff" *ngIf="alarmUsers[alarmUsers.length-1].editable === true">
-      <ion-input type="text" placeholder="Χρήστης" style="position:relative;left:-7px;" [(ngModel)]="alarmUsers[alarmUsers.length-1].username" (ionChange)="saveAlarmUsers()"></ion-input>
+      <ion-input type="text" placeholder="Χρήστης" style="position:relative;left:-7px;" [(ngModel)]="alarmUsers[alarmUsers.length-1].username" (ionChange)="saveAlarmUsers()" [readonly]="navParams.data.draft == false"></ion-input>
     </ion-col>
     <ion-col col-5 style="color:#ffffff" *ngIf="alarmUsers[alarmUsers.length-1].editable === true">
-      <ion-input type="text" placeholder="Όνομα" style="position:relative;left:-7px;" [(ngModel)]="alarmUsers[alarmUsers.length-1].name" (ionChange)="saveAlarmUsers()"></ion-input>
+      <ion-input type="text" placeholder="Όνομα" style="position:relative;left:-7px;" [(ngModel)]="alarmUsers[alarmUsers.length-1].name" (ionChange)="saveAlarmUsers()" [readonly]="navParams.data.draft == false"></ion-input>
     </ion-col>
-    <ion-col col-2 *ngIf="alarmUsers[alarmUsers.length-1].editable === true">
+    <ion-col col-2 *ngIf="alarmUsers[alarmUsers.length-1].editable === true && !navParams.data.name && !navParams.data.surname">
       <ion-icon float-right name="close" style="color:#ffffff; margin-right:10px; position: relative;top:15px;" (click)="removeAlarmUser(-1)"></ion-icon>
     </ion-col>
   </ion-row>
 
   <ion-row style="margin-top:5px;">
     <ion-col col-12 col-lg no-padding>
-      <input type="text" style="width: 100%;height: 50px;border-radius: 5px;" class="inputText" no-margin [(ngModel)]="monthlyAlarmList" (change)="saveMonthlyAlarmList()"> 
+      <input type="text" style="width: 100%;height: 50px;border-radius: 5px;" class="inputText" no-margin [(ngModel)]="monthlyAlarmList" (change)="saveMonthlyAlarmList()" [readonly]="navParams.data.draft == false"> 
       <span class="floating-label">ΜΗΝΙΑΙΑ ΛΙΣΤΑ ΣΗΜΑΤΩΝ ΣΥΝΑΓΕΡΜΟΥ (REPORT)</span>
     </ion-col>
   </ion-row>
@@ -482,7 +482,7 @@
 
   <ion-row style="background: #272753;border-bottom-left-radius: 5px; border-bottom-right-radius: 5px;">
     <ion-col col-12 col-lg no-padding>
-      <ion-textarea style="height:80px;color:#ffffff;margin-left: 10px;" [(ngModel)]="otherRemarks" (ionChange)="saveOtherRemarks()"></ion-textarea>
+      <ion-textarea style="height:80px;color:#ffffff;margin-left: 10px;" [(ngModel)]="otherRemarks" (ionChange)="saveOtherRemarks()" [readonly]="navParams.data.draft == false"></ion-textarea>
     </ion-col>
   </ion-row>
 </ion-content>
