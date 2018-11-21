@@ -41,6 +41,7 @@ import { AddNotePage } from '../pages/add-note/add-note';
 import { CommonModule } from '@angular/common';
 import { CalendarModule } from "ion2-calendar";
 import { DatePicker } from '@ionic-native/date-picker';
+import { NetworkProvider } from '../providers/network/network';
 
 
 @NgModule({
@@ -114,7 +115,8 @@ import { DatePicker } from '@ionic-native/date-picker';
     File,
     FilePath,
     DocumentViewer,
-    DatePicker
+    DatePicker,
+    NetworkProvider
   ]
 })
 export class AppModule { }

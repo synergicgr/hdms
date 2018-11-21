@@ -30,15 +30,14 @@
 
   <ion-row style="margin-top:5px;">
     <ion-col col-12 col-lg no-padding>
-      <input type="text" style="width: 100%;height: 50px;border-radius: 5px;" class="inputText" no-margin [(ngModel)]="customerConnectionDate" (change)="saveConnectionDate()">
+      <input type="text" style="width: 100%;height: 50px;border-radius: 5px;" class="inputText" no-margin [(ngModel)]="customerConnectionDate">
       <span>
         <ion-datetime [(ngModel)]="customerConnectionDate" style="color:#36365f; height: 0px;" [max]="maximumDate" doneText="ΕΝΤΑΞΕΙ"
-          cancelText="ΑΚΥΡΟ"></ion-datetime>
+          cancelText="ΑΚΥΡΟ" (ngModelChange)="saveConnectionDate()"></ion-datetime>
       </span>
       <span class="floating-label">ΗΜΕΡΟΜΗΝΙΑ ΣΥΝΔΕΣΗΣ ΠΕΛΑΤΗ</span>
     </ion-col>
   </ion-row>
-
 
   <ion-row style="margin-top:-10px;">
     <ion-col col-12 col-lg no-padding>

@@ -4,6 +4,7 @@ import { HomePage } from '../home/home';
 import { NotesPage } from '../notes/notes';
 import { NotificationsPage } from '../notifications/notifications';
 import { PopOverPage } from '../pop-over/pop-over';
+import { NetworkProvider } from '../../providers/network/network';
 
 /**
  * Generated class for the DashboardPage page.
@@ -55,7 +56,8 @@ export class DashboardPage {
     public popoverCtrl: PopoverController,
     public menuCtrl: MenuController,
     private platform: Platform,
-    private events: Events) {
+    private events: Events,
+    private networkProvider:NetworkProvider) {
     this.menuCtrl.enable(true, 'menu');
 
     events.subscribe('logout', (user, time) => {

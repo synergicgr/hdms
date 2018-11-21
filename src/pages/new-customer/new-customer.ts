@@ -100,37 +100,11 @@ export class NewCustomerPage implements OnInit {
     platform.registerBackButtonAction(() => {
       this.app.getRootNav().setRoot(CustomersPage, { back: true });
     });
-
-    // this.phoneNotices = this.customersProvider.phoneNotices;
-    // this.zones = this.customersProvider.zones;
-    // this.alarmUsers = this.customersProvider.alarmUsers;
-
-    // this.installerName = this.customersProvider.installerName;
-    // this.customerPass = this.customersProvider.customerPass;
-    // this.duressCode = this.customersProvider.customerDuressCode;
-    // this.customerConnectionDate = this.customersProvider.customerConnectionDate;
-    // this.subscriberName = this.customersProvider.subscriberName;
-    // this.insuredAreaAddress = this.customersProvider.customerInsuredAreaAddress;
-    // this.insuredAreaCity = this.customersProvider.customerInsuredAreaCity;
-    // this.insuredAreaPostCode = this.customersProvider.customerInsuredAreaPostCode;
-    // this.insuredAreaFloor = this.customersProvider.customerInsuredAreaFloor;
-    // this.insuredAreaDescription = this.customersProvider.customerInsuredAreaDescription;
-    // this.insuredAreaType = this.customersProvider.customerInsuredAreaType;
-    // this.insuredAreaTypeOther = this.customersProvider.customerInsuredAreaTypeOther;
-    // this.areaPhone = this.customersProvider.customerAreaPhone;
-    // this.alarmUnitType = this.customersProvider.customerAlarmUnitType;
-    // this.format = this.customersProvider.customerFormat;
-    // this.frequency24HourTest = this.customersProvider.customerFrequency24HourTest;
-    // this.weeklyTimeMonitoring = this.customersProvider.customerWeeklyTimeMonitoring;
-    // this.policeStation = this.customersProvider.customerPoliceStation;
-    // this.directTransmissionPhones = this.customersProvider.customerDirectTransmissionPhones;
-    // this.operationControlHours = this.customersProvider.customerOperationControlHours;
-    // this.monthlyAlarmList = this.customersProvider.customerMonthlyAlarmList;
-    // this.otherRemarks = this.customersProvider.customerOtherRemarks;
-    // this.enabled = this.customersProvider.enabled;  
   }
 
   ngOnInit() {
+
+    console.log("ARE NAVPARAMS SET: "+this.navParams.get('name')+" "+this.navParams.get('surname'))
 
     this.phoneNoticeData.subscribe(data => {
       this.customersProvider.setPhoneNotices(this.phoneNotices);
@@ -204,14 +178,14 @@ export class NewCustomerPage implements OnInit {
       this.installer_fax = data.fax;
     });
 
-    if (this.navParams.data) {
+    if (this.navParams.get('name') && this.navParams.get('surname')) {
       this.getDataStorage().then((value) => {
         console.log("Storage array " + JSON.stringify(value));
         if (value) {
           value.forEach(element => {
             console.log("Storage loop");
             console.log("Element in Storage ", element);
-            if (element.subscriberName.split(" ")[0] === this.navParams.data.name && element.subscriberName.split(" ")[1] === this.navParams.data.surname) {
+            if (element.subscriberName.split(" ")[0] === this.navParams.get('name') && element.subscriberName.split(" ")[1] === this.navParams.get('surname')) {
               console.log("In Storage loop");
               this.subscriberName = element.subscriberName;
               this.installerName = element.installerName;
@@ -240,6 +214,21 @@ export class NewCustomerPage implements OnInit {
               this.phoneNotices = element.phoneNotices;
               this.alarmUsers = element.alarmUsers;
               this.enabled = element.enabled;
+              this.installer_name = element.installerName;
+              this.installer_afm = element.installer_afm;
+              this.installer_proffesionalDescription = element.installer_proffesionalDescription;
+              this.installer_insuredAreaAddress = element.installer_insuredAreaAddress;
+              this.installer_insuredAreaCity = element.installer_insuredAreaCity;
+              this.installer_insuredAreaPostCode = element.installer_insuredAreaPostCode;
+              this.installer_insuredAreaFloor = element.installer_insuredAreaFloor;
+              this.installer_fax = element.installer_fax;
+              this.installer_landlinePhone = element.installer_landlinePhone;
+              this.installer_mobilePhone = element.installer_mobilePhone;
+              this.installer_email = element.installer_email;
+              this.installer_website = element.installer_website;
+              this.installer_collectionPolicy = element.installer_collectionPolicy;
+              this.installer_emailInvoice = element.installer_emailInvoice;
+              this.installer_billingAddressOnly = element.installer_billingAddressOnly;
             }
           })
         }
@@ -287,9 +276,9 @@ export class NewCustomerPage implements OnInit {
 
   submit(): void {
 
-    if (this.subscriberName.length == 0) {
+    if (this.subscriberName.length == 0 || this.subscriberName.split(" ").length < 2) {
       let toast = this.toastCtrl.create({
-        message: 'Παρακαλώ εισάγετε υπονημία συνδρομητή',
+        message: 'Παρακαλώ εισάγετε επωνυμία συνδρομητή',
         duration: 3000,
         position: 'middle'
       });
@@ -389,47 +378,47 @@ export class NewCustomerPage implements OnInit {
             this.storage.set("customers", temp);
           }
 
-          this.customersProvider.setSubscriber("");
-          this.customersProvider.setInstallerName("");
-          this.customersProvider.setCustomerPass("");
-          this.customersProvider.setCustomerAuxiliaryPass("");
-          this.customersProvider.setCustomerDuressCode("");
-          this.customersProvider.setCustomerConnectionDate("");
-          this.customersProvider.setCustomerInsuredAreaAddress("");
-          this.customersProvider.setCustomerInsuredAreaCity("");
-          this.customersProvider.setCustomerInsuredAreaPostCode("");
-          this.customersProvider.setCustomerInsuredAreaFloor("");
-          this.customersProvider.setCustomerInsuredAreaDescription("");
-          this.customersProvider.setCustomerInsuredAreaType("");
-          this.customersProvider.setCustomerInsuredAreaTypeOther("")
-          this.customersProvider.setCustomerAreaPhone("")
-          this.customersProvider.setCustomerAlarmUnitType("");
-          this.customersProvider.setCustomerFormat("");
-          this.customersProvider.setCustomerFrequency24HourTest("");
-          this.customersProvider.setCustomerWeeklyTimeMonitoring("");
-          this.customersProvider.setCustomerPoliceStation("");
-          this.customersProvider.setCustomerDirectTransmissionPhones("");
-          this.customersProvider.setCustomerOperationControlHours("");
-          this.customersProvider.setCustomerMonthlyAlarmList("");
-          this.customersProvider.setCustomerOtherRemarks("");
-          this.customersProvider.setZones([]);
-          this.customersProvider.setPhoneNotices([]);
-          this.customersProvider.setAlarmUsers([]);
-          this.installerName = "";
-          this.installer_afm = "";
-          this.installer_proffesionalDescription = "";
-          this.installer_insuredAreaAddress = "";
-          this.installer_insuredAreaCity = "";
-          this.installer_insuredAreaPostCode = "";
-          this.installer_insuredAreaFloor = "";
-          this.installer_landlinePhone = "";
-          this.installer_mobilePhone = "";
-          this.installer_email = "";
-          this.installer_website = "";
-          this.installer_collectionPolicy = "";
-          this.installer_emailInvoice = "";
-          this.installer_billingAddressOnly = "";
-          this.installer_fax = "";
+          // this.customersProvider.setSubscriber("");
+          // this.customersProvider.setInstallerName("");
+          // this.customersProvider.setCustomerPass("");
+          // this.customersProvider.setCustomerAuxiliaryPass("");
+          // this.customersProvider.setCustomerDuressCode("");
+          // this.customersProvider.setCustomerConnectionDate("");
+          // this.customersProvider.setCustomerInsuredAreaAddress("");
+          // this.customersProvider.setCustomerInsuredAreaCity("");
+          // this.customersProvider.setCustomerInsuredAreaPostCode("");
+          // this.customersProvider.setCustomerInsuredAreaFloor("");
+          // this.customersProvider.setCustomerInsuredAreaDescription("");
+          // this.customersProvider.setCustomerInsuredAreaType("");
+          // this.customersProvider.setCustomerInsuredAreaTypeOther("")
+          // this.customersProvider.setCustomerAreaPhone("")
+          // this.customersProvider.setCustomerAlarmUnitType("");
+          // this.customersProvider.setCustomerFormat("");
+          // this.customersProvider.setCustomerFrequency24HourTest("");
+          // this.customersProvider.setCustomerWeeklyTimeMonitoring("");
+          // this.customersProvider.setCustomerPoliceStation("");
+          // this.customersProvider.setCustomerDirectTransmissionPhones("");
+          // this.customersProvider.setCustomerOperationControlHours("");
+          // this.customersProvider.setCustomerMonthlyAlarmList("");
+          // this.customersProvider.setCustomerOtherRemarks("");
+          // this.customersProvider.setZones([]);
+          // this.customersProvider.setPhoneNotices([]);
+          // this.customersProvider.setAlarmUsers([]);
+          // this.installerName = "";
+          // this.installer_afm = "";
+          // this.installer_proffesionalDescription = "";
+          // this.installer_insuredAreaAddress = "";
+          // this.installer_insuredAreaCity = "";
+          // this.installer_insuredAreaPostCode = "";
+          // this.installer_insuredAreaFloor = "";
+          // this.installer_landlinePhone = "";
+          // this.installer_mobilePhone = "";
+          // this.installer_email = "";
+          // this.installer_website = "";
+          // this.installer_collectionPolicy = "";
+          // this.installer_emailInvoice = "";
+          // this.installer_billingAddressOnly = "";
+          // this.installer_fax = "";
         });
 
         this.customersProvider.replaceDraft(customer);
@@ -588,6 +577,7 @@ export class NewCustomerPage implements OnInit {
   }
 
   saveConnectionDate(): void {
+    console.log("Connection Date:" + this.customerConnectionDate);
     this.customersProvider.setCustomerConnectionDate(this.customerConnectionDate);
   }
 
@@ -673,13 +663,27 @@ export class NewCustomerPage implements OnInit {
 
   save(): void {
 
+    if(this.navParams.get('name') !=null)
+    {
+      console.log('NAVPARAMS SPECIFIED');
+      this.storage.get('customers').then((value) => {
+        console.log("Customers in Save ",value);
+      });
+    }
+    else{
+      console.log('NAVPARAMS NOT SPECIFIED');
+    }    
+
     if (this.navParams.get('name') && this.navParams.get('surname')) {
       let customer = this.customersProvider.getCustomer(this.navParams.data.name, this.navParams.data.surname);
       this.storage.get("customers").then((value) => {
         let temp = [];
         if (value) {
           for (let i = 0; i < value.length; i++) {
-            if (value[i].subscriberName.split(" ")[0] == customer.name && value[i].subscriberName.split(" ")[1] == customer.surname) {
+            if (value[i].subscriberName.split(" ")[0] == this.navParams.get('name') && value[i].subscriberName.split(" ")[1] == this.navParams.get('surname')) {
+
+              console.log("Subscriber ", this.customersProvider.subscriberName);
+
               temp.push({
                 installerName: this.installerName,
                 customerPass: this.customerPass,
@@ -687,29 +691,29 @@ export class NewCustomerPage implements OnInit {
                 duressCode: this.duressCode,
                 customerConnectionDate: this.customerConnectionDate,
                 subscriberName: this.subscriberName,
-                insuredAreaAddress: this.insuredAreaAddress,
-                insuredAreaCity: this.insuredAreaCity,
-                insuredAreaPostCode: this.insuredAreaPostCode,
-                insuredAreaFloor: this.insuredAreaFloor,
-                insuredAreaDescription: this.insuredAreaDescription,
-                insuredAreaType: this.insuredAreaType,
-                insuredAreaTypeOther: this.insuredAreaTypeOther,
-                areaPhone: this.areaPhone,
-                alarmUnitType: this.alarmUnitType,
-                format: this.format,
-                frequency24HourTest: this.frequency24HourTest,
-                weeklyTimeMonitoring: this.weeklyTimeMonitoring,
-                policeStation: this.policeStation,
-                directTransmissionPhones: this.directTransmissionPhones,
-                operationControlHours: this.operationControlHours,
-                monthlyAlarmList: this.monthlyAlarmList,
-                otherRemarks: this.otherRemarks,
+                insuredAreaAddress: this.customersProvider.customerInsuredAreaAddress,
+                insuredAreaCity: this.customersProvider.customerInsuredAreaCity,
+                insuredAreaPostCode: this.customersProvider.customerInsuredAreaPostCode,
+                insuredAreaFloor: this.customersProvider.customerInsuredAreaFloor,
+                insuredAreaDescription: this.customersProvider.customerInsuredAreaDescription,
+                insuredAreaType: this.customersProvider.customerInsuredAreaType,
+                insuredAreaTypeOther: this.customersProvider.customerInsuredAreaTypeOther,
+                areaPhone: this.customersProvider.customerAreaPhone,
+                alarmUnitType: this.customersProvider.customerAlarmUnitType,
+                format: this.customersProvider.customerFormat,
+                frequency24HourTest: this.customersProvider.customerFrequency24HourTest,
+                weeklyTimeMonitoring: this.customersProvider.customerWeeklyTimeMonitoring,
+                policeStation: this.customersProvider.customerPoliceStation,
+                directTransmissionPhones: this.customersProvider.customerDirectTransmissionPhones,
+                operationControlHours: this.customersProvider.customerOperationControlHours,
+                monthlyAlarmList: this.customersProvider.customerMonthlyAlarmList,
+                otherRemarks: this.customersProvider.customerOtherRemarks,
                 datePublished: "",
                 enabled: null,
                 draft: true,
-                zones: this.zones,
-                alarmUsers: this.alarmUsers,
-                phoneNotices: this.phoneNotices,
+                zones: this.customersProvider.zones,
+                alarmUsers: this.customersProvider.alarmUsers,
+                phoneNotices: this.customersProvider.phoneNotices,
                 installer_name: this.installer_name,
                 installer_afm: this.installer_afm,
                 installer_proffesionalDescription: this.installer_proffesionalDescription,
@@ -725,58 +729,86 @@ export class NewCustomerPage implements OnInit {
                 installer_emailInvoice: this.installer_emailInvoice,
                 installer_billingAddressOnly: this.installer_billingAddressOnly,
                 installer_fax: this.installer_fax
+                // installerName: this.customersProvider.installerName,
+                // customerPass: this.customersProvider.customerPass,
+                // customerAuxiliaryPass: this.customersProvider.customerAuxiliaryPass,
+                // duressCode: this.customersProvider.customerDuressCode,
+                // customerConnectionDate: this.customersProvider.customerConnectionDate,
+                // subscriberName: this.customersProvider.subscriberName,
+                // insuredAreaAddress: this.customersProvider.customerInsuredAreaAddress,
+                // insuredAreaCity: this.customersProvider.customerInsuredAreaCity,
+                // insuredAreaPostCode: this.customersProvider.customerInsuredAreaPostCode,
+                // insuredAreaFloor: this.customersProvider.customerInsuredAreaFloor,
+                // insuredAreaDescription: this.customersProvider.customerInsuredAreaDescription,
+                // insuredAreaType: this.customersProvider.customerInsuredAreaType,
+                // insuredAreaTypeOther: this.customersProvider.customerInsuredAreaTypeOther,
+                // areaPhone: this.customersProvider.customerAreaPhone,
+                // alarmUnitType: this.customersProvider.customerAlarmUnitType,
+                // format: this.customersProvider.customerFormat,
+                // frequency24HourTest: this.customersProvider.customerFrequency24HourTest,
+                // weeklyTimeMonitoring: this.customersProvider.customerWeeklyTimeMonitoring,
+                // policeStation: this.customersProvider.customerPoliceStation,
+                // directTransmissionPhones: this.customersProvider.customerDirectTransmissionPhones,
+                // operationControlHours: this.customersProvider.customerOperationControlHours,
+                // monthlyAlarmList: this.customersProvider.customerMonthlyAlarmList,
+                // otherRemarks: this.customersProvider.customerOtherRemarks,
+                // datePublished: "",
+                // enabled: null,
+                // draft: true,
+                // zones: this.customersProvider.zones,
+                // alarmUsers: this.customersProvider.alarmUsers,
+                // phoneNotices: this.customersProvider.phoneNotices,
+                // installer_name: this.installer_name,
+                // installer_afm: this.installer_afm,
+                // installer_proffesionalDescription: this.installer_proffesionalDescription,
+                // installer_insuredAreaAddress: this.installer_insuredAreaAddress,
+                // installer_insuredAreaCity: this.installer_insuredAreaCity,
+                // installer_insuredAreaPostCode: this.installer_insuredAreaPostCode,
+                // installer_insuredAreaFloor: this.installer_insuredAreaFloor,
+                // installer_landlinePhone: this.installer_landlinePhone,
+                // installer_mobilePhone: this.installer_mobilePhone,
+                // installer_email: this.installer_email,
+                // installer_website: this.installer_website,
+                // installer_collectionPolicy: this.installer_collectionPolicy,
+                // installer_emailInvoice: this.installer_emailInvoice,
+                // installer_billingAddressOnly: this.installer_billingAddressOnly,
+                // installer_fax: this.installer_fax
               });
             }
             else {
               temp.push(value[i]);
             }
           }
+          // this.customersProvider.setSubscriber("");
+          // this.customersProvider.setInstallerName("");
+          // this.customersProvider.setCustomerPass("");
+          // this.customersProvider.setCustomerAuxiliaryPass("");
+          // this.customersProvider.setCustomerDuressCode("");
+          // this.customersProvider.setCustomerConnectionDate("");
+          // this.customersProvider.setCustomerInsuredAreaAddress("");
+          // this.customersProvider.setCustomerInsuredAreaCity("");
+          // this.customersProvider.setCustomerInsuredAreaPostCode("");
+          // this.customersProvider.setCustomerInsuredAreaFloor("");
+          // this.customersProvider.setCustomerInsuredAreaDescription("");
+          // this.customersProvider.setCustomerInsuredAreaType("");
+          // this.customersProvider.setCustomerInsuredAreaTypeOther("")
+          // this.customersProvider.setCustomerAreaPhone("")
+          // this.customersProvider.setCustomerAlarmUnitType("");
+          // this.customersProvider.setCustomerFormat("");
+          // this.customersProvider.setCustomerFrequency24HourTest("");
+          // this.customersProvider.setCustomerWeeklyTimeMonitoring("");
+          // this.customersProvider.setCustomerPoliceStation("");
+          // this.customersProvider.setCustomerDirectTransmissionPhones("");
+          // this.customersProvider.setCustomerOperationControlHours("");
+          // this.customersProvider.setCustomerMonthlyAlarmList("");
+          // this.customersProvider.setCustomerOtherRemarks("");
+          // this.customersProvider.setZones([]);
+          // this.customersProvider.setPhoneNotices([]);
+          // this.customersProvider.setAlarmUsers([]);
           this.storage.set("customers", temp);
-          this.customersProvider.replaceDraft(customer);
+          //this.customersProvider.replaceDraft(customer);          
           this.app.getRootNav().setRoot(CustomersPage)
         }
-
-        this.customersProvider.setSubscriber("");
-        this.customersProvider.setInstallerName("");
-        this.customersProvider.setCustomerPass("");
-        this.customersProvider.setCustomerAuxiliaryPass("");
-        this.customersProvider.setCustomerDuressCode("");
-        this.customersProvider.setCustomerConnectionDate("");
-        this.customersProvider.setCustomerInsuredAreaAddress("");
-        this.customersProvider.setCustomerInsuredAreaCity("");
-        this.customersProvider.setCustomerInsuredAreaPostCode("");
-        this.customersProvider.setCustomerInsuredAreaFloor("");
-        this.customersProvider.setCustomerInsuredAreaDescription("");
-        this.customersProvider.setCustomerInsuredAreaType("");
-        this.customersProvider.setCustomerInsuredAreaTypeOther("")
-        this.customersProvider.setCustomerAreaPhone("")
-        this.customersProvider.setCustomerAlarmUnitType("");
-        this.customersProvider.setCustomerFormat("");
-        this.customersProvider.setCustomerFrequency24HourTest("");
-        this.customersProvider.setCustomerWeeklyTimeMonitoring("");
-        this.customersProvider.setCustomerPoliceStation("");
-        this.customersProvider.setCustomerDirectTransmissionPhones("");
-        this.customersProvider.setCustomerOperationControlHours("");
-        this.customersProvider.setCustomerMonthlyAlarmList("");
-        this.customersProvider.setCustomerOtherRemarks("");
-        this.customersProvider.setZones([]);
-        this.customersProvider.setPhoneNotices([]);
-        this.customersProvider.setAlarmUsers([]);
-        // // this.name = "";
-        // // this.afm = "";
-        // // this.installer_proffesionalDescription = "";
-        // // this.installer_insuredAreaAddress = "";
-        // // this.installer_insuredAreaCity = "";
-        // // this.installer_insuredAreaPostCode = "";
-        // // this.installer_insuredAreaFloor = "";
-        // // this.installer_landlinePhone = "";
-        // // this.installer_mobilePhone = "";
-        // // this.installer_email = "";
-        // // this.installer_website = "";
-        // // this.installer_collectionPolicy = "";
-        // // this.installer_emailInvoice = "";
-        // // this.installer_billingAddressOnly = "";
-        // // this.installer_fax = "";
       });
     }
     else {
@@ -830,7 +862,7 @@ export class NewCustomerPage implements OnInit {
             alarmUsers: this.customersProvider.alarmUsers,
             enabled: null,
             draft: true,
-            installer_name: this.customersProvider.installerName,
+            installer_name: this.installer_name,
             installer_afm: this.installer_afm,
             installer_proffesionalDescription: this.installer_proffesionalDescription,
             installer_insuredAreaAddress: this.installer_insuredAreaAddress,

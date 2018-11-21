@@ -359,7 +359,7 @@ export class CustomersProvider {
       if (this.customers[i].name == customer.name && this.customers[i].surname == customer.surname) {
         this.customers[i] = customer;
       }
-    }    
+    }
   }
 
 }
