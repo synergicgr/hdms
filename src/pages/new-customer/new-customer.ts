@@ -429,7 +429,7 @@ export class NewCustomerPage implements OnInit {
             name: this.subscriberName.split(" ")[0],
             surname: this.subscriberName.split(" ")[1],
             city: this.insuredAreaCity,
-            visible: visible,
+            visible: true,
             draft: false,
             publishedDate: d.getFullYear() + "-" + d.getMonth() + "-" + d.getDate() + " " + d.getHours() + ":" + (d.getMinutes() < 10 ? "0" + d.getMinutes() : d.getMinutes()),
             enabled: true

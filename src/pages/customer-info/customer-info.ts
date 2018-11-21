@@ -32,14 +32,13 @@ export class CustomerInfoPage {
     public navParams: NavParams,
     private customersProvider: CustomersProvider,
     private alertCtrl: AlertController,
-    private storage: Storage) {
-    console.log(navParams.data);
+    private storage: Storage) {    
 
     if (navParams.data) {
       this.storage.get('customers').then((value) => {
         if (value) {
           value.forEach(element => {
-            if (navParams.data.name == element.subscriberName.split(" ")[0] && navParams.data.surname == element.subscriberName.split(" ")[1]) {
+            if (navParams.get('name') == element.subscriberName.split(" ")[0] && navParams.get('surname') == element.subscriberName.split(" ")[1]) {
               this.enabled = element.enabled;
             }
           });
@@ -87,7 +86,7 @@ export class CustomerInfoPage {
       if (value) {
         let temp = value;
         value.forEach((element,index, array) => {
-          if (this.navParams.data.name == element.subscriberName.split(" ")[0] && this.navParams.data.surname == element.subscriberName.split(" ")[1]) {
+          if (this.navParams.get('name') == element.subscriberName.split(" ")[0] && this.navParams.get('surname') == element.subscriberName.split(" ")[1]) {
             temp[index].enabled = this.enabled;
           }
         });
@@ -96,5 +95,9 @@ export class CustomerInfoPage {
         this.storage.set('customers', temp);
       }
     });
+  }
+
+  goBack():void{
+    this.navCtrl.setRoot(CustomersPage, {back:true});
   }
 }

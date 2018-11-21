@@ -34,80 +34,10 @@ export class CustomersPage implements OnInit {
     private storage: Storage,
     private menuCtrl: MenuController,
   ) {
-
-  }
-
-  ngOnInit() {
-
-    let enabled = this.customersProvider.enabled;
-    let disabled = this.customersProvider.disabled;
-    let ordering = this.customersProvider.order;
-
-    if (this.navParams.get("back") != null) {
-      console.log('In navparams check');
-      this.customers = [];
-      this.storage.get("customers").then((value) => {
-        if (value) {
-          value.forEach(element => {
-            if ((element.enabled == true && enabled == true) || (element.enabled == false && disabled == true) || (element.draft == true)) {
-              this.customers.push({ name: element.subscriberName.split(" ")[0], surname: element.subscriberName.split(" ")[1], city: element.insuredAreaCity, visible: true, draft: element.draft, publishedDate: element.datePublished, enabled: element.enabled });
-            }
-            else {
-              this.customers.push({ name: element.subscriberName.split(" ")[0], surname: element.subscriberName.split(" ")[1], city: element.insuredAreaCity, visible: false, draft: element.draft, publishedDate: element.datePublished, enabled: element.enabled });
-            }
-          });
-        }
-      });
-      this.customersProvider.setCustomers(this.customers);
-    }
-    else {
-      this.customers = this.customersProvider.getCustomers();
-
-      for (let i = 0; i < this.customers.length; i++) {
-        if (this.customers[i].enabled == true && enabled == true) {
-          this.customers[i].visible = true;
-        }
-        else if (this.customers[i].enabled == false && disabled == true) {
-          this.customers[i].visible = true;
-        }
-        else if (this.customers[i].draft == true) {
-          this.customers[i].visible = true;
-        }
-        else {
-          this.customers[i].visible = false;
-        }
-      }
-    }
-    console.log('On init');
-
-    if (ordering == "nameAZ") {
-      this.customersProvider.doSort(1);
-    }
-    else if (ordering == "nameZA") {
-      this.customersProvider.doSort(2);
-    }
-    else if (ordering == "cityAZ") {
-      this.customersProvider.doSort(3);
-    }
-    else if (ordering == "cityZA") {
-      this.customersProvider.doSort(4);
-    }
-
-    this.popover = this.popOverController.create(SortPopOverPage, [], { cssClass: 'ion-popover' });
-    this.popover2 = this.popOverController.create(PopOverPage);
-
-    this.events.subscribe('dismiss', (data, time) => {
-      this.popover.dismiss();
-    });
-
-    this.events.subscribe('dismiss2', (data, time) => {
-      this.popover2.dismiss();
-    });
-
     this.platform.ready().then(() => {
       this.platform.registerBackButtonAction(() => {
+        
         console.log("Back button popOver1:", this.openPopOver1, " popOver2:", this.openPopOver2);
-
         if (this.openPopOver1 === true) {
           this.popover.dismiss();
         }
@@ -119,6 +49,79 @@ export class CustomersPage implements OnInit {
         }
       });
     });
+  }
+
+  ngOnInit() {    
+
+    let enabled = this.customersProvider.enabled;
+    let disabled = this.customersProvider.disabled;
+    let ordering = this.customersProvider.order;
+
+    // this.customers = this.customersProvider.getCustomers();
+    if (this.navParams.get("back") != null) {
+      // this.customers = this.customersProvider.getCustomers();
+      // console.log('In navparams check');
+
+      console.log('In go back');
+      
+      this.storage.get("customers").then((value) => {
+        this.customers = [];
+        if (value) {
+          value.forEach(element => {
+            if ((element.enabled == true && enabled == true) || (element.enabled == false && disabled == true) || (element.draft == true)) {
+              this.customers.push({ name: element.subscriberName.split(" ")[0], surname: element.subscriberName.split(" ")[1], city: element.insuredAreaCity, visible: true, draft: element.draft, publishedDate: element.datePublished, enabled: element.enabled });
+            }
+            else {
+              this.customers.push({ name: element.subscriberName.split(" ")[0], surname: element.subscriberName.split(" ")[1], city: element.insuredAreaCity, visible: false, draft: element.draft, publishedDate: element.datePublished, enabled: element.enabled });
+            }
+          });
+        }
+        this.customersProvider.setCustomers(this.customers);
+      });
+    }
+    else {
+      this.customers = this.customersProvider.getCustomers();
+
+      // for (let i = 0; i < this.customers.length; i++) {
+      //   if (this.customers[i].enabled == true && enabled == true) {
+      //     this.customers[i].visible = true;
+      //   }
+      //   else if (this.customers[i].enabled == false && disabled == true) {
+      //     this.customers[i].visible = true;
+      //   }
+      //   else if (this.customers[i].draft == true) {
+      //     this.customers[i].visible = true;
+      //   }
+      //   else {
+      //     this.customers[i].visible = false;
+      //   }
+      // }
+    }
+    console.log('On init');
+
+    // if (ordering == "nameAZ") {
+    //   this.customersProvider.doSort(1);
+    // }
+    // else if (ordering == "nameZA") {
+    //   this.customersProvider.doSort(2);
+    // }
+    // else if (ordering == "cityAZ") {
+    //   this.customersProvider.doSort(3);
+    // }
+    // else if (ordering == "cityZA") {
+    //   this.customersProvider.doSort(4);
+    // }
+
+    this.popover = this.popOverController.create(SortPopOverPage, {}, { cssClass: 'ion-popover' });
+    this.popover2 = this.popOverController.create(PopOverPage);
+
+    this.events.subscribe('dismiss', (data, time) => {
+      this.popover.dismiss();
+    });
+
+    this.events.subscribe('dismiss2', (data, time) => {
+      this.popover2.dismiss();
+    });    
   }
 
   ionViewDidLoad() {
@@ -157,6 +160,8 @@ export class CustomersPage implements OnInit {
     let enabled = undefined;
     let disabled = undefined;
 
+    this.customers = this.readCustomers(value);
+
     enabled = this.customersProvider.enabled;
     disabled = this.customersProvider.disabled;
 
@@ -189,8 +194,7 @@ export class CustomersPage implements OnInit {
         this.customers[i].visible = false;
       }
     }
-
-    this.customers = this.readCustomers(value);
+    
     this.customersProvider.setCustomers(this.customers);
   }
 
@@ -231,19 +235,23 @@ export class CustomersPage implements OnInit {
     let enabled = this.customersProvider.enabled;
     let disabled = this.customersProvider.disabled;
 
-    this.customers = this.customersProvider.getCustomers();
     let temp = [];
+
+    // this.customers = this.customersProvider.getCustomers();
 
     this.customers.forEach(element => {
       if (element.enabled == true && enabled == true) {
+        element.visible = true;
         temp.push(element);
       }
       else if (element.enabled == false && disabled == true) {
+        element.visible = true;
         temp.push(element);
       }
       else if (element.draft == true) {
+        element.visible = true;
         temp.push(element);
-      }
+      }      
     }
     );
 
@@ -260,12 +268,21 @@ export class CustomersPage implements OnInit {
   }
 
   readCustomers(searchString): Array<{ name: string, surname: string, city: string, visible: boolean, draft: boolean, publishedDate: string, enabled: boolean }> {
+    let enabled = this.customersProvider.enabled;
+    let disabled = this.customersProvider.disabled;
+
     let temp = [];
     this.storage.get("customers").then((value) => {
       if (value) {
         value.forEach(element => {
           if (element.subscriberName.split(" ")[0].startsWith(searchString) || element.subscriberName.split(" ")[1].startsWith(searchString) || element.insuredAreaCity.startsWith(searchString)) {
-            temp.push({ name: element.subscriberName.split(" ")[0], surname: element.subscriberName.split(" ")[1], city: element.insuredAreaCity, visible: true, draft: element.draft, publishedDate: element.datePublished, enabled: element.enabled });
+            if((element.enabled == true && enabled == true) || (element.enabled == false && disabled == true) || element.draft == true)
+            {
+              temp.push({ name: element.subscriberName.split(" ")[0], surname: element.subscriberName.split(" ")[1], city: element.insuredAreaCity, visible: true, draft: element.draft, publishedDate: element.datePublished, enabled: element.enabled });
+            }
+            else{
+              temp.push({ name: element.subscriberName.split(" ")[0], surname: element.subscriberName.split(" ")[1], city: element.insuredAreaCity, visible: false, draft: element.draft, publishedDate: element.datePublished, enabled: element.enabled });
+            }
           }
         });
       }
