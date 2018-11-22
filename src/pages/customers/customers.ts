@@ -237,7 +237,7 @@ export class CustomersPage implements OnInit {
 
     let temp = [];
 
-    // this.customers = this.customersProvider.getCustomers();
+    this.customers = this.customersProvider.getCustomers();
 
     this.customers.forEach(element => {
       if (element.enabled == true && enabled == true) {
@@ -254,6 +254,10 @@ export class CustomersPage implements OnInit {
       }      
     }
     );
+
+    this.customers = temp;
+
+    // this.customersProvider.setCustomers(temp);
 
     return temp;
   }
