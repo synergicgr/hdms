@@ -136,10 +136,10 @@ export class InstallerDetailsPage {
     console.log('In submit');
     const d = new Date();
 
-    if(this.customersProvider.subscriberName.length == 0 || this.customersProvider.subscriberName.split(" ").length < 2)
+    if(this.customersProvider.subscriberName.length == 0 || this.customersProvider.subscriberName.split(" ")[1].length == 0)
     {
       let toast = this.toastCtrl.create({
-        message: 'Παρακαλώ εισάγετε επωνυμία συνδρομητή',
+        message: 'Παρακαλώ εισάγετε ονοματεπώνυμο συνδρομητή',
         duration: 3000,
         position: 'middle'
       });    
@@ -479,9 +479,9 @@ export class InstallerDetailsPage {
       });
     }
     else {
-      if (this.customersProvider.subscriberName.length == 0 || this.customersProvider.subscriberName.split(" ").length < 2) {
+      if (this.customersProvider.subscriberName.length == 0 || this.customersProvider.subscriberName.split(" ")[1].length == 0) {
         let toast = this.toastCtrl.create({
-          message: 'Παρακαλώ είσαγετε επωνυμία συνδρομητή',
+          message: 'Παρακαλώ είσαγετε ονοματεπώνυμο συνδρομητή',
           duration: 3000,
           position: 'middle'
         });
