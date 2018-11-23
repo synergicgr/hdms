@@ -40,7 +40,7 @@ export class DashboardPage {
 
   //Chart data
   public barChartData: any[] = [
-    { data: [66, 55, 83, 82, 56, 51, 43], label: "Ημέρες" },
+    { data: [2, 2, 5, 5, 2, 3, 2], label: "Ημέρες" },
   ];
 
   barChartColors: any[] = [

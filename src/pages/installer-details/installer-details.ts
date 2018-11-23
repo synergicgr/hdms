@@ -347,7 +347,33 @@ export class InstallerDetailsPage {
               installer_billingAddressOnly: this.billingAddressOnly,
               installer_fax: this.fax
             });
-  
+
+            this.customersProvider.setSubscriber("");
+            this.customersProvider.setInstallerName("");
+            this.customersProvider.setCustomerPass("");
+            this.customersProvider.setCustomerAuxiliaryPass("");
+            this.customersProvider.setCustomerDuressCode("");
+            this.customersProvider.setCustomerConnectionDate("");
+            this.customersProvider.setCustomerInsuredAreaAddress("");
+            this.customersProvider.setCustomerInsuredAreaCity("");
+            this.customersProvider.setCustomerInsuredAreaPostCode("");
+            this.customersProvider.setCustomerInsuredAreaFloor("");
+            this.customersProvider.setCustomerInsuredAreaDescription("");
+            this.customersProvider.setCustomerInsuredAreaType("");
+            this.customersProvider.setCustomerInsuredAreaTypeOther("");
+            this.customersProvider.setCustomerAreaPhone("");
+            this.customersProvider.setCustomerAlarmUnitType("");
+            this.customersProvider.setCustomerFormat("");            
+            this.customersProvider.setCustomerFrequency24HourTest(0);
+            this.customersProvider.setCustomerOperationControlHours("");
+            this.customersProvider.setCustomerWeeklyTimeMonitoring("");
+            this.customersProvider.setCustomerPoliceStation("");
+            this.customersProvider.setCustomerDirectTransmissionPhones("");
+            this.customersProvider.setCustomerMonthlyAlarmList("");
+            this.customersProvider.setCustomerOtherRemarks("");
+            this.customersProvider.setAlarmUsers([]);
+            this.customersProvider.setZones([]);
+            this.customersProvider.setPhoneNotices([]);  
             this.storage.set("customers", temp).then((data) => {
               console.log("Stored ", data)
             });
@@ -402,6 +428,33 @@ export class InstallerDetailsPage {
             }]).then((data) => {
               console.log("Stored ", data);
             });
+
+            this.customersProvider.setSubscriber("");
+            this.customersProvider.setInstallerName("");
+            this.customersProvider.setCustomerPass("");
+            this.customersProvider.setCustomerAuxiliaryPass("");
+            this.customersProvider.setCustomerDuressCode("");
+            this.customersProvider.setCustomerConnectionDate("");
+            this.customersProvider.setCustomerInsuredAreaAddress("");
+            this.customersProvider.setCustomerInsuredAreaCity("");
+            this.customersProvider.setCustomerInsuredAreaPostCode("");
+            this.customersProvider.setCustomerInsuredAreaFloor("");
+            this.customersProvider.setCustomerInsuredAreaDescription("");
+            this.customersProvider.setCustomerInsuredAreaType("");
+            this.customersProvider.setCustomerInsuredAreaTypeOther("");
+            this.customersProvider.setCustomerAreaPhone("");
+            this.customersProvider.setCustomerAlarmUnitType("");
+            this.customersProvider.setCustomerFormat("");            
+            this.customersProvider.setCustomerFrequency24HourTest(0);
+            this.customersProvider.setCustomerOperationControlHours("");
+            this.customersProvider.setCustomerWeeklyTimeMonitoring("");
+            this.customersProvider.setCustomerPoliceStation("");
+            this.customersProvider.setCustomerDirectTransmissionPhones("");
+            this.customersProvider.setCustomerMonthlyAlarmList("");
+            this.customersProvider.setCustomerOtherRemarks("");
+            this.customersProvider.setAlarmUsers([]);
+            this.customersProvider.setZones([]);
+            this.customersProvider.setPhoneNotices([]);
           }
         });
       }
@@ -565,6 +618,33 @@ export class InstallerDetailsPage {
               installer_fax: this.fax
             });
 
+            this.customersProvider.setSubscriber("");
+            this.customersProvider.setInstallerName("");
+            this.customersProvider.setCustomerPass("");
+            this.customersProvider.setCustomerAuxiliaryPass("");
+            this.customersProvider.setCustomerDuressCode("");
+            this.customersProvider.setCustomerConnectionDate("");
+            this.customersProvider.setCustomerInsuredAreaAddress("");
+            this.customersProvider.setCustomerInsuredAreaCity("");
+            this.customersProvider.setCustomerInsuredAreaPostCode("");
+            this.customersProvider.setCustomerInsuredAreaFloor("");
+            this.customersProvider.setCustomerInsuredAreaDescription("");
+            this.customersProvider.setCustomerInsuredAreaType("");
+            this.customersProvider.setCustomerInsuredAreaTypeOther("");
+            this.customersProvider.setCustomerAreaPhone("");
+            this.customersProvider.setCustomerAlarmUnitType("");
+            this.customersProvider.setCustomerFormat("");            
+            this.customersProvider.setCustomerFrequency24HourTest(0);
+            this.customersProvider.setCustomerOperationControlHours("");
+            this.customersProvider.setCustomerWeeklyTimeMonitoring("");
+            this.customersProvider.setCustomerPoliceStation("");
+            this.customersProvider.setCustomerDirectTransmissionPhones("");
+            this.customersProvider.setCustomerMonthlyAlarmList("");
+            this.customersProvider.setCustomerOtherRemarks("");
+            this.customersProvider.setAlarmUsers([]);
+            this.customersProvider.setZones([]);
+            this.customersProvider.setPhoneNotices([]);
+
             this.storage.set("customers", temp).then((data) => {
               console.log("Stored ", data)
             });
@@ -619,6 +699,33 @@ export class InstallerDetailsPage {
             }]).then((data) => {
               console.log("Stored ", data);
             });
+
+            this.customersProvider.setSubscriber("");
+            this.customersProvider.setInstallerName("");
+            this.customersProvider.setCustomerPass("");
+            this.customersProvider.setCustomerAuxiliaryPass("");
+            this.customersProvider.setCustomerDuressCode("");
+            this.customersProvider.setCustomerConnectionDate("");
+            this.customersProvider.setCustomerInsuredAreaAddress("");
+            this.customersProvider.setCustomerInsuredAreaCity("");
+            this.customersProvider.setCustomerInsuredAreaPostCode("");
+            this.customersProvider.setCustomerInsuredAreaFloor("");
+            this.customersProvider.setCustomerInsuredAreaDescription("");
+            this.customersProvider.setCustomerInsuredAreaType("");
+            this.customersProvider.setCustomerInsuredAreaTypeOther("");
+            this.customersProvider.setCustomerAreaPhone("");
+            this.customersProvider.setCustomerAlarmUnitType("");
+            this.customersProvider.setCustomerFormat("");            
+            this.customersProvider.setCustomerFrequency24HourTest(0);
+            this.customersProvider.setCustomerOperationControlHours("");
+            this.customersProvider.setCustomerWeeklyTimeMonitoring("");
+            this.customersProvider.setCustomerPoliceStation("");
+            this.customersProvider.setCustomerDirectTransmissionPhones("");
+            this.customersProvider.setCustomerMonthlyAlarmList("");
+            this.customersProvider.setCustomerOtherRemarks("");
+            this.customersProvider.setAlarmUsers([]);
+            this.customersProvider.setZones([]);
+            this.customersProvider.setPhoneNotices([]);
           }
         });
         this.app.getRootNav().setRoot(CustomersPage);

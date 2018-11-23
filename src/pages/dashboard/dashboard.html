@@ -4,12 +4,12 @@
       <ion-icon name="menu"></ion-icon>
     </button>
     <ion-title style="text-align:center;">
-      <img alt="logo" height="50px" src="assets/imgs/Hellas-Dns-logo.png" style="position:relative;right:10px;" (click)="goToDashboard()">
+      <img alt="logo" height="50px" src="assets/imgs/Hellas-Dns-logo.png"  (click)="goToDashboard()">
     </ion-title>
     <ion-buttons end>
-      <div style="border-radius:50%;background:green;width: 20px;height: 20px;display: inline-block;position: relative;top:8px;" *ngIf="networkProvider.isOnline()">
+      <div style="border-radius:50%;background:green;width: 15px;height: 15px;display: inline-block;position: relative;top:8px;;" *ngIf="networkProvider.isOnline()">
       </div>
-      <div style="border-radius:50%;background:red;width: 20px;height:20px;display: inline-block;position: relative;top:8px;" *ngIf="!networkProvider.isOnline()">
+      <div style="border-radius:50%;background:red;width: 15px;height:15px;display: inline-block;position: relative;top:8px;" *ngIf="!networkProvider.isOnline()">
       </div>
       <button ion-button color="white" style="margin-right: 8px;" icon-only menuClose (click)="presentPopover($event)">
         <ion-icon name="person"></ion-icon>
@@ -60,7 +60,7 @@
   <hr>
 
   <div style="margin-top: 20px;">
-    <div style="display:inline-block;color:#ffc200; font-size: 40px;">10</div>
+    <div style="display:inline-block;color:#ffc200; font-size: 40px;">21</div>
     <div style="display:inline-block;color:#ffffff;width:100px;border-right:1px solid white;">Εβδομαδιαίες εγγραφές</div>
     <div style="display:inline-block;color:#ffffff;width:120px;margin-left: 10px;position: relative; bottom: 7px;">Οι
       εγγραφές σας</div>
