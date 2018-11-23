@@ -104,6 +104,8 @@ export class NewCustomerPage implements OnInit {
 
   ngOnInit() {
 
+    console.log(this.navParams);
+
     console.log("ARE NAVPARAMS SET: " + this.navParams.get('name') + " " + this.navParams.get('surname'))
 
     this.phoneNoticeData.subscribe(data => {
