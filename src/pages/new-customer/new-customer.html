@@ -173,7 +173,7 @@
       {{phoneNotice.phone}}
     </ion-col>
     <ion-col col-1 *ngIf="phoneNotice.editable === false && (navParams.data.draft == true || isEmptyArray(navParams.data))">
-      <ion-icon float-right name="close" style="color:#ffffff; margin-right:10px" (click)="removePhoneNotice(i)"></ion-icon>
+      <ion-icon float-right name="close" style="color:#ffffff; margin-right:10px;width: 100%;" (click)="removePhoneNotice(i)"></ion-icon>
     </ion-col>
 
     <ion-col col-1 *ngIf="phoneNotice.editable === true">
@@ -186,7 +186,7 @@
       <ion-input style="position: relative;left: -7px;" type="text" placeholder="Τηλέφωνο" [(ngModel)]="phoneNotices[i].phone" (ionChange)="savePhoneNotices()" [readonly]="navParams.data.draft == false"></ion-input>
     </ion-col>
     <ion-col col-1 *ngIf="phoneNotice.editable === true && (navParams.data.draft == true || isEmptyArray(navParams.data))">
-      <ion-icon float-right name="close" style="color:#ffffff; margin-right:10px;position: relative;top:15px;" (click)="removePhoneNotice(i)"></ion-icon>
+      <ion-icon float-right name="close" style="color:#ffffff; margin-right:10px;position: relative;top:15px;width: 100%;" (click)="removePhoneNotice(i)"></ion-icon>
     </ion-col>
   </ion-row>
 
@@ -214,7 +214,7 @@
       <ion-input style="position: relative;left: -7px;" type="text" placeholder="Τηλέφωνο" [(ngModel)]="phoneNotices[phoneNotices.length-1].phone" (ionChange)="savePhoneNotices()" [readonly]="navParams.data.draft == false"></ion-input>
     </ion-col>
     <ion-col col-1 *ngIf="phoneNotices[phoneNotices.length-1].editable === true && (navParams.data.draft == true || isEmptyArray(navParams.data))">
-      <ion-icon float-right name="close" style="color:#ffffff; margin-right:10px;position: relative;top:15px;" (click)="removePhoneNotice(phoneNotices.length-1)"></ion-icon>
+      <ion-icon float-right name="close" style="color:#ffffff; margin-right:10px;position: relative;top:15px;width: 100%;" (click)="removePhoneNotice(phoneNotices.length-1)"></ion-icon>
     </ion-col>
   </ion-row>
 
@@ -327,7 +327,7 @@
       <ion-input type="text" placeholder="Zone id" style="margin-left:-7px" [(ngModel)]="zones[i].id" (ionChange)="saveZones()" [readonly]="navParams.data.draft == false"></ion-input>
     </ion-col>
     <ion-col col-1 *ngIf="zone.editable === true && (navParams.data.draft == true || isEmptyArray(navParams.data))">
-      <ion-icon float-right name="close" style="color:#ffffff; margin-right:10px;position: relative;top:15px;" (click)="removeZone(i);"></ion-icon>
+      <ion-icon float-right name="close" style="color:#ffffff; margin-right:10px;position: relative;top:15px;width: 100%;" (click)="removeZone(i);"></ion-icon>
     </ion-col>
   </ion-row>
 
@@ -343,7 +343,7 @@
       {{zones[zones.length-1].id}}
     </ion-col>
     <ion-col col-1 *ngIf="zones[zones.length-1].editable === false && (navParams.data.draft == true || isEmptyArray(navParams.data))">
-      <ion-icon float-right name="close" style="color:#ffffff; margin-right:10px" (click)="removeZone(zones.length-1);"></ion-icon>
+      <ion-icon float-right name="close" style="color:#ffffff; margin-right:10px;width: 100%;" (click)="removeZone(zones.length-1);"></ion-icon>
     </ion-col>
 
     <ion-col col-1 *ngIf="zones[zones.length-1].editable === true">
@@ -356,7 +356,7 @@
       <ion-input type="text" placeholder="Zone id" style="margin-left:-7px" [(ngModel)]="zones[zones.length-1].id" (ionChange)="saveZones()" [readonly]="navParams.data.draft == false"></ion-input>
     </ion-col>
     <ion-col col-1 *ngIf="zones[zones.length-1].editable === true && (navParams.data.draft == true || isEmptyArray(navParams.data))">
-      <ion-icon float-right name="close" style="color:#ffffff; margin-right:10px;position: relative;top:15px;" (click)="removeZone(zones.length-1);"></ion-icon>
+      <ion-icon float-right name="close" style="color:#ffffff; margin-right:10px;position: relative;top:15px;width: 100%;" (click)="removeZone(zones.length-1);"></ion-icon>
     </ion-col>
   </ion-row>
 
@@ -436,7 +436,7 @@
       {{alarmUser.name}}
     </ion-col>
     <ion-col col-1 *ngIf="alarmUser.editable === false && (navParams.data.draft == true || isEmptyArray(navParams.data))">
-      <ion-icon float-right name="close" style="color:#ffffff; margin-right:10px" (click)="removeAlarmUser(i)"></ion-icon>
+      <ion-icon float-right name="close" style="color:#ffffff; margin-right:10px; width: 100%;" (click)="removeAlarmUser(i)"></ion-icon>
     </ion-col>
 
     <ion-col col-1 *ngIf="alarmUser.editable === true">
@@ -449,7 +449,7 @@
       <ion-input type="text" placeholder="Όνομα" style="position:relative;left:-7px;" [(ngModel)]="alarmUsers[i].name" (ionChange)="saveAlarmUsers" [readonly]="navParams.data.draft == false"></ion-input>
     </ion-col>
     <ion-col col-1 *ngIf="alarmUser.editable === true && (navParams.data.draft == true || isEmptyArray(navParams.data))">
-      <ion-icon float-right name="close" style="color:#ffffff; margin-right:10px; position: relative;top:15px;" (click)="removeAlarmUser(i)"></ion-icon>
+      <ion-icon float-right name="close" style="color:#ffffff; margin-right:10px; position: relative;top:15px;width: 100%;" (click)="removeAlarmUser(i)"></ion-icon>
     </ion-col>
   </ion-row>
 
@@ -476,7 +476,7 @@
       <ion-input type="text" placeholder="Όνομα" style="position:relative;left:-7px;" [(ngModel)]="alarmUsers[alarmUsers.length-1].name" (ionChange)="saveAlarmUsers()" [readonly]="navParams.data.draft == false"></ion-input>
     </ion-col>
     <ion-col col-1 *ngIf="alarmUsers[alarmUsers.length-1].editable === true && (navParams.data.draft == true || isEmptyArray(navParams.data))">
-      <ion-icon float-right name="close" style="color:#ffffff; margin-right:10px; position: relative;top:15px;" (click)="removeAlarmUser(-1)"></ion-icon>
+      <ion-icon float-right name="close" style="color:#ffffff; margin-right:10px; position: relative;top:15px;width: 100%;" (click)="removeAlarmUser(-1)"></ion-icon>
     </ion-col>
   </ion-row>
 
