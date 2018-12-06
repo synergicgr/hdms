@@ -42,6 +42,8 @@ import { CommonModule } from '@angular/common';
 import { CalendarModule } from "ion2-calendar";
 import { DatePicker } from '@ionic-native/date-picker';
 import { NetworkProvider } from '../providers/network/network';
+import { ProfilePage } from '../pages/profile/profile';
+import { InstallerProvider } from '../providers/installer/installer';
 
 
 @NgModule({
@@ -66,7 +68,8 @@ import { NetworkProvider } from '../providers/network/network';
     InstallerDetailsPage,
     NotificationsPage,
     ViewNotePage,
-    AddNotePage
+    AddNotePage,
+    ProfilePage
     ],
   imports: [
     BrowserModule,    
@@ -100,7 +103,8 @@ import { NetworkProvider } from '../providers/network/network';
     InstallerDetailsPage,
     NotificationsPage,
     ViewNotePage,
-    AddNotePage
+    AddNotePage,
+    ProfilePage
   ],
   providers: [
     Network,
@@ -116,7 +120,8 @@ import { NetworkProvider } from '../providers/network/network';
     FilePath,
     DocumentViewer,
     DatePicker,
-    NetworkProvider
+    NetworkProvider,
+    InstallerProvider
   ]
 })
 export class AppModule { }

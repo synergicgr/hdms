@@ -502,5 +502,5 @@
 
 <ion-footer *ngIf="navParams.data.draft == true || isEmptyArray(navParams.data)" style="text-align:center;">
   <button ion-button color="app-yellow" style="color:#000000;font-weight:bold;" (click)="save()" style="display:inline-block;width: 45%">Αποθηκευση</button>
-  <button ion-button color="app-yellow" style="color:#000000;font-weight:bold;" (click)="submit()" style="display:inline-block;width: 45%;">Αποστολη</button>  
+  <button ion-button color="app-yellow" style="color:#000000;font-weight:bold;" (click)="submit()" style="display:inline-block;width: 45%;" [ngClass]="{buttonDisabled:!networkProvider.isOnline()}">Αποστολη</button>  
 </ion-footer>

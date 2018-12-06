@@ -36,7 +36,7 @@ export class CustomersPage implements OnInit {
   ) {
     this.platform.ready().then(() => {
       this.platform.registerBackButtonAction(() => {
-        
+
         console.log("Back button popOver1:", this.openPopOver1, " popOver2:", this.openPopOver2);
         if (this.openPopOver1 === true) {
           this.popover.dismiss();
@@ -51,7 +51,7 @@ export class CustomersPage implements OnInit {
     });
   }
 
-  ngOnInit() {    
+  ngOnInit() {
 
     let enabled = this.customersProvider.enabled;
     let disabled = this.customersProvider.disabled;
@@ -63,7 +63,7 @@ export class CustomersPage implements OnInit {
       // console.log('In navparams check');
 
       console.log('In go back');
-      
+
       this.storage.get("customers").then((value) => {
         this.customers = [];
         if (value) {
@@ -121,7 +121,7 @@ export class CustomersPage implements OnInit {
 
     this.events.subscribe('dismiss2', (data, time) => {
       this.popover2.dismiss();
-    });    
+    });
   }
 
   ionViewDidLoad() {
@@ -194,7 +194,7 @@ export class CustomersPage implements OnInit {
         this.customers[i].visible = false;
       }
     }
-    
+
     this.customersProvider.setCustomers(this.customers);
   }
 
@@ -208,7 +208,7 @@ export class CustomersPage implements OnInit {
     this.onInput(event);
   }
 
-  getVisibleCustomersCount() {
+  public getVisibleCustomersCount() {
     // let count = 0;
     // let enabled = this.customersProvider.enabled;
     // let disabled = this.customersProvider.disabled;
@@ -227,7 +227,8 @@ export class CustomersPage implements OnInit {
 
     // return count;
 
-    return this.getVisibleCustomers().length;
+    let temp = this.getVisibleCustomers();
+    return temp.length;
   }
 
   public getVisibleCustomers() {
@@ -260,6 +261,26 @@ export class CustomersPage implements OnInit {
     // this.customersProvider.setCustomers(temp);
 
     return temp;
+
+    // let enabled = this.customersProvider.enabled;
+    // let disabled = this.customersProvider.disabled;
+    // let temp = [];
+
+    // let customersTemp = await this.storage.get('customers');
+
+    // customersTemp.forEach(element => {
+    //   if (element.enabled == true && enabled == true) {
+    //     temp.push({name:element.subscriberName.split(" ")[0], surname:element.subscriberName.split(" ")[1], city: element.insuredAreaCity, visible:true, draft:element.draft, publishedDate:element.datePublished, enabled:true});
+    //   }
+    //   else if (element.enabled == false && disabled == true) {
+    //     temp.push({name:element.subscriberName.split(" ")[0], surname:element.subscriberName.split(" ")[1], city: element.insuredAreaCity, visible:true, draft:element.draft, publishedDate:element.datePublished, enabled:false});
+    //   }
+    //   else if (element.draft == true) {
+    //     temp.push({name:element.subscriberName.split(" ")[0], surname:element.subscriberName.split(" ")[1], city: element.insuredAreaCity, visible:true, draft:element.draft, publishedDate:"", enabled:true});
+    //   }
+    // });            
+    
+    // return temp;
   }
 
   public goToNewCustomer(): void {
@@ -280,11 +301,10 @@ export class CustomersPage implements OnInit {
       if (value) {
         value.forEach(element => {
           if (element.subscriberName.split(" ")[0].startsWith(searchString) || element.subscriberName.split(" ")[1].startsWith(searchString) || element.insuredAreaCity.startsWith(searchString)) {
-            if((element.enabled == true && enabled == true) || (element.enabled == false && disabled == true) || element.draft == true)
-            {
+            if ((element.enabled == true && enabled == true) || (element.enabled == false && disabled == true) || element.draft == true) {
               temp.push({ name: element.subscriberName.split(" ")[0], surname: element.subscriberName.split(" ")[1], city: element.insuredAreaCity, visible: true, draft: element.draft, publishedDate: element.datePublished, enabled: element.enabled });
             }
-            else{
+            else {
               temp.push({ name: element.subscriberName.split(" ")[0], surname: element.subscriberName.split(" ")[1], city: element.insuredAreaCity, visible: false, draft: element.draft, publishedDate: element.datePublished, enabled: element.enabled });
             }
           }

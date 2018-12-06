@@ -141,6 +141,7 @@ export class CustomersProvider {
       console.log("data name ", data.name, " data surname ", data.surname);
       console.log("Customer: ", this.customers[i].name, " ", this.customers[i].surname);
       if (this.customers[i].name === data.name && this.customers[i].surname === data.surname) {
+        console.log("Found customer to delete at index ", i);
         index = i;
       }
     }

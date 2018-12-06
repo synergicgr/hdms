@@ -19,6 +19,7 @@ import { File } from '@ionic-native/file';
 import { FilePath } from '@ionic-native/file-path';
 import { DocumentViewer, DocumentViewerOptions} from '@ionic-native/document-viewer';
 import { DashboardPage } from '../pages/dashboard/dashboard';
+import { ProfilePage } from '../pages/profile/profile';
 
 @Component({
   templateUrl: 'app.html'
@@ -104,5 +105,9 @@ export class MyApp {
 
   goToDashboard():void{
     this.nav.setRoot(DashboardPage);    
+  }
+
+  openProfile():void{
+    this.nav.setRoot(ProfilePage);
   }
 }

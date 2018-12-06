@@ -65,6 +65,21 @@ export class CustomerInfoPage {
           text: 'Ενταξει',
           handler: () => {
             this.customersProvider.delete(this.navParams.data);
+            this.storage.get("customers").then((value) => {
+              let temp = [];
+              if(value)
+              {
+                value.forEach(element => {
+                  if(element.subscriberName.split(" ")[0]===this.navParams.data.name && element.subscriberName.split(" ")[1] === this.navParams.data.surname)
+                  {                    
+                  }
+                  else{
+                    temp.push(element);
+                  }
+                });
+              }
+              this.storage.set("customers", temp);
+            });            
             this.navCtrl.setRoot(CustomersPage);
           }
         }
