@@ -16,12 +16,18 @@ page-hellas-dms {
     .col1 {
         font-size: 20px;
         color: white;
-        opacity: 0.3;
+        opacity: 0.3;        
     }
     .col2 {
         font-size: 20px;
+        // color: white;        
+    }
+
+    .col2 a{
+        text-decoration: none;
         color: white;
     }
+
     hr {
         display: block;
         height: 1px;
