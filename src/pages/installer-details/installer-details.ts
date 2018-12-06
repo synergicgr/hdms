@@ -4,7 +4,7 @@ import { Storage } from '@ionic/storage';
 import { CustomersProvider } from '../../providers/customers/customers';
 import { CustomersPage } from '../customers/customers';
 
-@IonicPage()
+// @IonicPage()
 @Component({
   selector: 'page-installer-details',
   templateUrl: 'installer-details.html',

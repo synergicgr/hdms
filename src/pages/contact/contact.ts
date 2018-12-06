@@ -12,7 +12,7 @@ import { DashboardPage } from '../dashboard/dashboard';
  * Ionic pages and navigation.
  */
 
-@IonicPage()
+// @IonicPage()
 @Component({
   selector: 'page-contact',
   templateUrl: 'contact.html',

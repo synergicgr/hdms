@@ -15,7 +15,7 @@ import { Storage } from '@ionic/storage';
  * Ionic pages and navigation.
  */
 
-@IonicPage()
+// @IonicPage()
 @Component({
   selector: 'page-customer-info',
   templateUrl: 'customer-info.html',

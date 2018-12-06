@@ -7,7 +7,7 @@ import { CustomersPage } from '../customers/customers';
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 
 
-@IonicPage()
+// @IonicPage()
 @Component({
   selector: 'page-new-customer',
   templateUrl: 'new-customer.html',

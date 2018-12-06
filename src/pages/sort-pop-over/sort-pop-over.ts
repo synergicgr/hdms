@@ -11,7 +11,7 @@ import { Storage } from '@ionic/storage';
  * Ionic pages and navigation.
  */
 
-@IonicPage()
+// @IonicPage()
 @Component({
   selector: 'page-sort-pop-over',
   templateUrl: 'sort-pop-over.html',

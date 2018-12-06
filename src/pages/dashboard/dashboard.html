@@ -7,9 +7,11 @@
       <img alt="logo" height="50px" src="assets/imgs/Hellas-Dns-logo.png"  (click)="goToDashboard()">
     </ion-title>
     <ion-buttons end>
-      <div style="border-radius:50%;background:green;width: 15px;height: 15px;display: inline-block;position: relative;top:8px;;" *ngIf="networkProvider.isOnline()">
+      <div style="color:green;display: inline-block;position: relative;top:8px;" *ngIf="networkProvider.isOnline()" (click)="displayConnectionToast()">
+        Online
       </div>
-      <div style="border-radius:50%;background:red;width: 15px;height:15px;display: inline-block;position: relative;top:8px;" *ngIf="!networkProvider.isOnline()">
+      <div style="color:red;display: inline-block;position: relative;top:8px;" *ngIf="!networkProvider.isOnline()" (click)="displayConnectionToast()">
+        Offline
       </div>
       <button ion-button color="white" style="margin-right: 8px;" icon-only menuClose (click)="presentPopover($event)">
         <ion-icon name="person"></ion-icon>

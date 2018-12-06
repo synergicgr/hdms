@@ -11,7 +11,7 @@ import { PopOverPage } from '../pop-over/pop-over';
  * Ionic pages and navigation.
  */
 
-@IonicPage()
+// @IonicPage()
 @Component({
   selector: 'page-hellas-dms',
   templateUrl: 'hellas-dms.html',

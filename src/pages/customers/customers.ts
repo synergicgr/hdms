@@ -8,7 +8,7 @@ import { PopOverPage } from '../pop-over/pop-over';
 import { Storage } from '@ionic/storage';
 import { Facebook } from 'ionic-native';
 
-@IonicPage()
+// @IonicPage()
 @Component({
   selector: 'page-customers',
   templateUrl: 'customers.html',

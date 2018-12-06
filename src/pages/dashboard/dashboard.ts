@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, MenuController, Platform, PopoverController, Events } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, MenuController, Platform, PopoverController, Events, ToastController } from 'ionic-angular';
 import { HomePage } from '../home/home';
 import { NotesPage } from '../notes/notes';
 import { NotificationsPage } from '../notifications/notifications';
@@ -13,7 +13,7 @@ import { NetworkProvider } from '../../providers/network/network';
  * Ionic pages and navigation.
  */
 
-@IonicPage()
+// @IonicPage()
 @Component({
   selector: 'page-dashboard',
   templateUrl: 'dashboard.html',
@@ -57,7 +57,8 @@ export class DashboardPage {
     public menuCtrl: MenuController,
     private platform: Platform,
     private events: Events,
-    private networkProvider:NetworkProvider) {
+    private networkProvider:NetworkProvider,
+    private toastCtrl: ToastController) {
     this.menuCtrl.enable(true, 'menu');
 
     events.subscribe('logout', (user, time) => {
@@ -106,5 +107,26 @@ export class DashboardPage {
 
   goToDashboard():void{
     this.navCtrl.setRoot(DashboardPage);
+  }
+
+  displayConnectionToast():void{
+
+    let message = "";
+    if(this.networkProvider.isOnline())
+    {
+      message = "You are in online mode!!!";
+    }
+    else{
+      message = "You are in offline mode!!!";
+    }
+
+    let toast = this.toastCtrl.create({
+      message: message,
+      duration: 3000,
+      position: 'middle',
+      cssClass: "toast"
+    });
+
+    toast.present();
   }
 }

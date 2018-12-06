@@ -18,7 +18,7 @@ import {
  * Ionic pages and navigation.
  */
 
-@IonicPage()
+// @IonicPage()
 @Component({
   selector: 'page-google-maps',
   templateUrl: 'google-maps.html',
