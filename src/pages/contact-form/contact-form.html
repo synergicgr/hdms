@@ -6,6 +6,16 @@
 -->
 
 <ion-content padding class="ion-content">
-    <ion-textarea [(ngModel)]="message" style="color:white;border:1px solid white;" rows="15" placeholder="Εισάγετε το μήνυμα σας"></ion-textarea>
-    <button ion-button style="background: #ffc200;color:black;font-weight: bold;" full (click)="sendMessage()">Αποστολη</button>
+  <ion-row style="background: #272753;margin-top: 5px;border-top-left-radius: 5px;border-top-right-radius: 5px;">
+    <ion-col col-12 col-lg style="color:#8c8ca9;font-size: 14px;">
+      Εισάγετε το μήνυμα σας
+    </ion-col>
+  </ion-row>
+
+  <ion-row style="background: #272753;border-bottom-left-radius: 5px; border-bottom-right-radius: 5px;">
+    <ion-col col-12 col-lg no-padding>
+      <ion-textarea [(ngModel)]="message" style="color:white;" rows="15"></ion-textarea>
+    </ion-col>
+  </ion-row>
+  <button ion-button style="background: #ffc200;color:black;font-weight: bold; margin-top: 10px;" full (click)="sendMessage()">Αποστολη</button>
 </ion-content>
