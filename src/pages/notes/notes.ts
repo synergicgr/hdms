@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { IonicPage, NavController, NavParams, Platform, PopoverController, AlertController, Events } from 'ionic-angular';
 import { DashboardPage } from '../dashboard/dashboard';
 import { PopOverPage } from '../pop-over/pop-over';
@@ -22,14 +22,14 @@ import { NotesPopoverPage } from '../notes-popover/notes-popover';
   selector: 'page-notes',
   templateUrl: 'notes.html',
 })
-export class NotesPage {
+export class NotesPage implements OnInit{
 
   private popover;
   open: boolean;
   private popover2;
   open2: boolean;
 
-  notes: Array<{ showDate: string, title: string, content: string }> = [
+  notes: Array<{ showDate: string, title: string, content: string, status:string }> = [
     // {showDate:"21-07-1986 16:50", title:"Title", content:"Content"}    
   ];
 
@@ -40,11 +40,7 @@ export class NotesPage {
     private storage: Storage,
     private customersProvider: CustomersProvider,
     private alertCtrl: AlertController,
-    private events: Events) {
-
-    this.events.subscribe("dismissNotesPopover", (user, time) => {
-      this.popover2.dismiss();
-    });
+    private events: Events) {    
 
     platform.ready().then(() => {
       platform.registerBackButtonAction(() => {
@@ -71,6 +67,12 @@ export class NotesPage {
     console.log(this.notes.length + " notes in the array");
   }
 
+  ngOnInit(){
+    this.events.subscribe('dismissNotesPopover', (user, time) => {
+      this.popover2.dismiss();
+    });
+  }
+
   presentPopover(myEvent) {
     this.popover = this.popoverCtrl.create(PopOverPage);
     this.popover.present({
@@ -84,10 +86,10 @@ export class NotesPage {
     this.open = true;
   }
 
-  presentPopover2(myEvent) {
+  presentPopover2(event){
     this.popover2 = this.popoverCtrl.create(NotesPopoverPage, {}, { cssClass: "notes-popover" });
     this.popover2.present({
-      ev: myEvent,
+      ev: event,
     });
     this.open2 = true;
 

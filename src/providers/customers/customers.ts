@@ -43,7 +43,7 @@ export class CustomersProvider {
   phoneNotices: Array<{ name: string, phone: string, editable: boolean }> = [];
   zones: Array<{ name: string, id: string, editable: boolean }> = [];
   alarmUsers: Array<{ username: string, name: string, editable: boolean }> = [];
-  notes: Array<{ showDate: string, title: string, content: string }> = [];
+  notes: Array<{ showDate: string, title: string, content: string, status:string }> = [];
 
   order: string = "none";
 
@@ -380,7 +380,7 @@ export class CustomersProvider {
     this.storage.set('notes', this.notes);
   }
 
-  getNotes(): Array<{ showDate: string, title: string, content: string }> {
+  getNotes(): Array<{ showDate: string, title: string, content: string, status:string }> {
     return this.notes;
   }
 

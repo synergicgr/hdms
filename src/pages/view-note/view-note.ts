@@ -21,9 +21,11 @@ export class ViewNotePage {
   open: boolean;
   private popover;
   private note;
+  private status;
 
   constructor(public navCtrl: NavController, public navParams: NavParams, private platform: Platform, private popoverCtrl: PopoverController, private customersProvider: CustomersProvider, private alertCtrl:AlertController) {
     this.note = this.navParams.get('note');
+    this.status = this.note.status;
     platform.ready().then(() => {
       platform.registerBackButtonAction(() => {
         if (this.open === true) {

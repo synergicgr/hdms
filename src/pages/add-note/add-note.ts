@@ -27,6 +27,7 @@ export class AddNotePage {
   title: string;
   content: string;
   date: string;
+  status:string;
   maximumDate:string = (new Date().getFullYear()+30)+"-12-31";
 
   constructor(public navCtrl: NavController, public navParams: NavParams, private customersProvider: CustomersProvider, private storage: Storage, private datePicker:DatePicker, private platform:Platform) {
@@ -49,7 +50,7 @@ export class AddNotePage {
   }
 
   saveNote(): void {    
-    this.customersProvider.addNote({ showDate: this.date, title: this.title, content: this.content });    
+    this.customersProvider.addNote({ showDate: this.date, title: this.title, content: this.content, status:this.status });    
     // this.customersProvider.addNote({showDate:this.date, title:this.title, content:this.content});
     this.navCtrl.setRoot(NotesPage);
   }

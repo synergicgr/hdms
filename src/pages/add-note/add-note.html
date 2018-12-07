@@ -37,6 +37,19 @@
     </ion-col>
   </ion-row>
 
+  <ion-row style="background: #272753;margin-bottom: 10px;border-radius: 5px;margin-left: 5px; margin-right: 5px;">
+    <ion-col col-12>
+      <ion-item no-lines no-padding>
+        <ion-label>Status</ion-label>
+        <ion-select  [(ngModel)]="status" multiple="false">
+          <ion-option>Σε εκρεμότητα</ion-option>
+          <ion-option>Να κάνω</ion-option>
+          <ion-option>Έγινε</ion-option>          
+        </ion-select>
+      </ion-item>
+    </ion-col>
+  </ion-row>
+
   <ion-row style="background: #272753;border-top-left-radius: 10px;border-top-right-radius: 10px;margin-left: 5px; margin-right: 5px;">
     <ion-col col-12 col-lg style="color:#8c8ca9;font-size: 12px; ">
       ΠΕΡΙΕΧΟΜΕΝΟ

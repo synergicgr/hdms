@@ -28,5 +28,23 @@ page-add-note {
     }
     .text-input-md {
         margin: 13px 0px !important;
-    }        
+    }
+    
+    .item-md{
+        background: #272753;
+    }
+
+    ion-select{
+        background: #272753;
+        color:#ffffff;
+    }
+
+    ion-label{
+        background: #272753;        
+        font-size: 12px;
+    }
+       
+    .select-text{
+        font-size: 12px;
+    } 
 }
