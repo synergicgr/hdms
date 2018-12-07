@@ -3,13 +3,7 @@ import { IonicPage, NavController, NavParams, Platform, PopoverController, Alert
 import { NotesPage } from '../notes/notes';
 import { PopOverPage } from '../pop-over/pop-over';
 import { CustomersProvider } from '../../providers/customers/customers';
-
-/**
- * Generated class for the ViewNotePage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
+import { Storage } from '@ionic/storage';
 
 // @IonicPage()
 @Component({
@@ -22,9 +16,12 @@ export class ViewNotePage {
   private popover;
   private note;
   private status;
+  private index;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, private platform: Platform, private popoverCtrl: PopoverController, private customersProvider: CustomersProvider, private alertCtrl:AlertController) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, private platform: Platform, private popoverCtrl: PopoverController, private customersProvider: CustomersProvider, private alertCtrl:AlertController, private storage:Storage) {
     this.note = this.navParams.get('note');
+    this.index = this.navParams.get('index');
+
     this.status = this.note.status;
     platform.ready().then(() => {
       platform.registerBackButtonAction(() => {
@@ -52,7 +49,12 @@ export class ViewNotePage {
   }
 
   saveNote(): void {
-
+    this.storage.get('notes').then((value) => {
+      let temp = value;
+      temp[this.index] = this.note;
+      this.storage.set('notes',temp);
+    });
+    this.navCtrl.setRoot(NotesPage);    
   }
 
   deleteNote(): void {

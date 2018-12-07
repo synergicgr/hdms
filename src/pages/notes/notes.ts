@@ -92,7 +92,7 @@ export class NotesPage implements OnInit {
   }
 
   openNote(index): void {
-    this.navCtrl.setRoot(ViewNotePage, { note: this.customersProvider.notes[index] });
+    this.navCtrl.setRoot(ViewNotePage, { note: this.customersProvider.notes[index], index:index });
   }
 
   deleteNote(index): void {
