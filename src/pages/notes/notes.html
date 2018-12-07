@@ -16,7 +16,7 @@
 
 <ion-content padding class="ion-content">
   <div style="color:#ffc200;font-size: 20px;margin-bottom: 20px;float: left;">
-    {{customersProvider.notes.length}} Σημειώσεις
+    Σημειώσεις ({{customersProvider.notes.length}})
   </div>
 
   <div style="float:right;">
@@ -27,6 +27,46 @@
 
   <div style="clear:both"></div>
 
+  <ion-row *ngIf="customersProvider.notes.length === 1" style="background:#272753;margin-bottom: 2px; border-radius: 10px;">
+    <ion-col col-12 (click)="openNote(0)">
+      <div>
+        <div style="display: inline-block;color:#fff;font-size: 13px;margin-left: 10px;">{{customersProvider.notes[0].title | truncate:30}}</div>
+        <div style="position:relative; top: 10px; float:right;color:#747490;font-size: 12px;margin-right: 10px;">{{customersProvider.notes[0].showDate}}</div>
+        <div style="color:#747490;font-size: 11px;margin-left: 10px;">{{customersProvider.notes[0].status}}</div>
+      </div>
+    </ion-col>
+  </ion-row>
+
+  <ion-row *ngIf="customersProvider.notes.length != 1 && customersProvider.notes.length > 0" style="background:#272753;margin-bottom: 2px; border-top-left-radius: 10px; border-top-right-radius: 10px;">
+      <ion-col col-12 (click)="openNote(0)">
+          <div>
+            <div style="display: inline-block;color:#fff;font-size: 13px;margin-left: 10px;">{{customersProvider.notes[0].title | truncate : 30}}</div>
+            <div style="position:relative; top: 10px; float:right;color:#747490;font-size: 12px;margin-right: 10px;">{{customersProvider.notes[0].showDate}}</div>
+            <div style="color:#747490;font-size: 11px;margin-left: 10px;">{{customersProvider.notes[0].status}}</div>
+          </div>
+        </ion-col>
+  </ion-row>
+  
+  <ion-row *ngFor="let note of customersProvider.notes.slice(1,-1); let i = index" style="background:#272753;margin-bottom: 2px;">
+      <ion-col col-12 (click)="openNote(i+1)">
+          <div>
+            <div style="display: inline-block;color:#fff;font-size: 13px;margin-left: 10px;">{{note.title | truncate : 30}}</div>
+            <div style="position:relative; top: 10px; float:right;color:#747490;font-size: 12px;margin-right: 10px;">{{note.showDate}}</div>
+            <div style="color:#747490;font-size: 11px;margin-left: 10px;">{{note.status}}</div>
+          </div>
+        </ion-col>
+  </ion-row>
+
+  <ion-row *ngIf="customersProvider.notes.length > 1" style="background:#272753;margin-bottom: 2px; border-bottom-left-radius: 10px; border-bottom-right-radius: 10px;">
+      <ion-col col-12 (click)="openNote(customersProvider.notes.length - 1)">
+          <div>
+            <div style="display: inline-block;color:#fff;font-size: 13px;margin-left: 10px;">{{customersProvider.notes[customersProvider.notes.length-1].title | truncate:30}}</div>
+            <div style="position:relative; top: 10px; float:right;color:#747490;font-size: 12px;margin-right: 10px;">{{customersProvider.notes[customersProvider.notes.length-1].showDate}}</div>
+            <div style="color:#747490;font-size: 11px;margin-left: 10px;">{{customersProvider.notes[customersProvider.notes.length-1].status}}</div>
+          </div>
+        </ion-col>
+  </ion-row>
+  <!-- 
   <ion-row *ngIf="customersProvider.notes.length === 1" style="background:#272753;margin-bottom: 2px; border-radius: 10px;">
     <ion-col col-12 style="color:#ffffff;" (click)="openNote(0)">
       Ημερομηνία: {{customersProvider.notes[0].showDate}}
@@ -73,7 +113,7 @@
         <ion-col col-1>
           <ion-icon name="trash" style="font-size: 20px;float: right;margin-top:-20px;width:100%;" color="white" (click)="deleteNote(customersProvider.notes.length-1)"></ion-icon>
         </ion-col>
-  </ion-row>
+  </ion-row> -->
 
   <!-- <ion-row *ngIf="customersProvider.notes.length === 1" style="background:#272753;margin-bottom: 2px; border-radius: 10px;">
     <ion-col col-3 style="color:#8c8ca9;display: flex!important;
@@ -163,8 +203,6 @@
       <ion-icon name="trash" style="font-size: 20px;width: 100%;margin-left: 10px;" color="white" (click)="deleteNote(notes.length - 1)"></ion-icon>
     </ion-col>
   </ion-row> -->
-
-
 
   <ion-fab bottom right>
     <button ion-fab color="app-yellow" (click)="addNote()">

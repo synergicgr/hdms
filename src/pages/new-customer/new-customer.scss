@@ -37,35 +37,27 @@ page-new-customer {
     .range-ios .range-knob-handle .range-pin {
         transform: translate3d(0, 0, 0) scale(1);
     }
-
     ion-textarea {
         margin-top: -15px !important;
         font-size: 12px;
         margin-left: 5px !important;
     }
-    
     .item-md .radio-md[item-left],
     .item-md .radio-md[item-start] {
         margin: 11px 17px 10px -10px;
     }
-    
     $radio-md-icon-height: 5px;
-
-    .buttonDisabled{
+    .buttonDisabled {
         opacity: 0.4;
         background-color: #7C8AA9;
         color: #565F75;
     }
 }
 
-.toast{
+.toast {
     text-align: center;
 }
 
 // .toast-container{
 //     background-color: transparent !important;
 // }
-
-.toast-wrapper {
-    background: transparent !important;
-}
