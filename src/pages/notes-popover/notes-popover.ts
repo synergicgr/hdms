@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, Events } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, Events, ViewController } from 'ionic-angular';
 import { CustomersProvider } from '../../providers/customers/customers';
 
 /**
@@ -16,42 +16,47 @@ import { CustomersProvider } from '../../providers/customers/customers';
 })
 export class NotesPopoverPage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, private events:Events, private customersProvider:CustomersProvider) {
+  constructor(public navCtrl: NavController,
+    public navParams: NavParams,
+    private events: Events,
+    private customersProvider: CustomersProvider,
+    private viewCtrl: ViewController) {
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad NotesPopoverPage');
   }
 
-  dismissPopover():void{
-    this.events.publish('dismissNotesPopover', {}, Date.now());
+  dismissNotesPopover(): void {
+    // this.events.publish('dismissNotesPopover', {}, Date.now());
+    this.viewCtrl.dismiss();
   }
 
-  sortTitleAZ():void{
+  sortTitleAZ(): void {
     console.log("Sort Notes 1 Called!!!!");
-    console.log("Notes before sorting", this.customersProvider.notes);    
+    console.log("Notes before sorting", this.customersProvider.notes);
     this.customersProvider.sortNotes(1);
-    console.log("Notes after sorting", this.customersProvider.notes);    
+    console.log("Notes after sorting", this.customersProvider.notes);
   }
 
-  sortTitleZA():void{
+  sortTitleZA(): void {
     console.log("Sort Notes 2 Called!!!!");
-    console.log("Notes before sorting", this.customersProvider.notes);    
+    console.log("Notes before sorting", this.customersProvider.notes);
     this.customersProvider.sortNotes(2);
     console.log("Notes after sorting", this.customersProvider.notes);
   }
 
-  sortDateRecent():void{
+  sortDateRecent(): void {
     console.log("Sort Notes 3 Called!!!!");
-    console.log("Notes before sorting", this.customersProvider.notes);    
+    console.log("Notes before sorting", this.customersProvider.notes);
     this.customersProvider.sortNotes(3);
-    console.log("Notes after sorting", this.customersProvider.notes);    
+    console.log("Notes after sorting", this.customersProvider.notes);
   }
 
-  sortDateLast():void{
+  sortDateLast(): void {
     console.log("Sort Notes 4 Called!!!!");
-    console.log("Notes before sorting", this.customersProvider.notes);    
+    console.log("Notes before sorting", this.customersProvider.notes);
     this.customersProvider.sortNotes(4);
-    console.log("Notes after sorting", this.customersProvider.notes);    
+    console.log("Notes after sorting", this.customersProvider.notes);
   }
 }

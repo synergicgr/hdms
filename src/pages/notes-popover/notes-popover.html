@@ -1,6 +1,6 @@
 <ion-content no-padding style="background:#36365f;">
   <ion-buttons end>
-    <button ion-button color="white" style="background:#36365f;font-size: 16px;" clear (click)="dismissPopover()">
+    <button ion-button color="white" style="background:#36365f;font-size: 16px;" clear (click)="dismissNotesPopover()">
       <ion-icon name="close"></ion-icon>
     </button>
   </ion-buttons>
@@ -12,14 +12,14 @@
   </ion-row>
 
   <ion-list no-lines>
-    <button ion-item style="background:#36365f;color:#aaaac0;text-transform: none;text-align: left;" (click)="sortTitleAZ();">Τίτλος
+    <button ion-item style="background:#36365f;color:#aaaac0;text-transform: none;text-align: left;" (click)="sortTitleAZ();dismissNotesPopover();">Τίτλος
       Α-Ζ</button>
-    <button ion-item style="background:#36365f;color:#aaaac0;text-transform: none;text-align: left;" (click)="sortTitleZA();">Τίτλος
+    <button ion-item style="background:#36365f;color:#aaaac0;text-transform: none;text-align: left;" (click)="sortTitleZA();dismissNotesPopover();">Τίτλος
       Ζ-Α</button>
-    <button ion-item style="background:#36365f;color:#aaaac0;text-transform: none;text-align: left;" (click)="sortDateRecent();">Ημ.
+    <button ion-item style="background:#36365f;color:#aaaac0;text-transform: none;text-align: left;" (click)="sortDateRecent();dismissNotesPopover();">Ημ.
       πιο πρόσφατη
     </button>
-    <button ion-item float-left style="background:#36365f;color:#aaaac0;text-transform: none;text-align: left;" (click)="sortDateLast();">Ημ.
+    <button ion-item float-left style="background:#36365f;color:#aaaac0;text-transform: none;text-align: left;" (click)="sortDateLast();dismissNotesPopover();">Ημ.
       πιο παλία</button>
   </ion-list>
 </ion-content>

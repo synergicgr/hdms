@@ -1,35 +1,26 @@
 import { Component, OnInit } from '@angular/core';
-import { IonicPage, NavController, NavParams, Platform, PopoverController, AlertController, Events } from 'ionic-angular';
+import { NavController, NavParams, Platform, PopoverController, AlertController, Events } from 'ionic-angular';
 import { DashboardPage } from '../dashboard/dashboard';
 import { PopOverPage } from '../pop-over/pop-over';
 import { ViewNotePage } from '../view-note/view-note';
 import { Storage } from '@ionic/storage';
-import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 import { AddNotePage } from '../add-note/add-note';
 import { CustomersProvider } from '../../providers/customers/customers';
 import { NotesPopoverPage } from '../notes-popover/notes-popover';
-
-
-/**
- * Generated class for the NotesPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
 
 // @IonicPage()
 @Component({
   selector: 'page-notes',
   templateUrl: 'notes.html',
 })
-export class NotesPage implements OnInit{
+export class NotesPage implements OnInit {
 
   private popover;
   open: boolean;
   private popover2;
   open2: boolean;
 
-  notes: Array<{ showDate: string, title: string, content: string, status:string }> = [
+  notes: Array<{ showDate: string, title: string, content: string, status: string }> = [
     // {showDate:"21-07-1986 16:50", title:"Title", content:"Content"}    
   ];
 
@@ -40,7 +31,7 @@ export class NotesPage implements OnInit{
     private storage: Storage,
     private customersProvider: CustomersProvider,
     private alertCtrl: AlertController,
-    private events: Events) {    
+    private events: Events) {
 
     platform.ready().then(() => {
       platform.registerBackButtonAction(() => {
@@ -67,9 +58,11 @@ export class NotesPage implements OnInit{
     console.log(this.notes.length + " notes in the array");
   }
 
-  ngOnInit(){
+  ngOnInit() {
     this.events.subscribe('dismissNotesPopover', (user, time) => {
-      this.popover2.dismiss();
+      if (this.popover2) {
+        this.popover2.dismiss();
+      }
     });
   }
 
@@ -86,7 +79,7 @@ export class NotesPage implements OnInit{
     this.open = true;
   }
 
-  presentPopover2(event){
+  presentNotesPopover(event) {
     this.popover2 = this.popoverCtrl.create(NotesPopoverPage, {}, { cssClass: "notes-popover" });
     this.popover2.present({
       ev: event,
