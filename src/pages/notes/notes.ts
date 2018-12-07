@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, Platform, PopoverController, AlertController } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, Platform, PopoverController, AlertController, Events } from 'ionic-angular';
 import { DashboardPage } from '../dashboard/dashboard';
 import { PopOverPage } from '../pop-over/pop-over';
 import { ViewNotePage } from '../view-note/view-note';
@@ -7,6 +7,7 @@ import { Storage } from '@ionic/storage';
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 import { AddNotePage } from '../add-note/add-note';
 import { CustomersProvider } from '../../providers/customers/customers';
+import { NotesPopoverPage } from '../notes-popover/notes-popover';
 
 
 /**
@@ -25,18 +26,36 @@ export class NotesPage {
 
   private popover;
   open: boolean;
+  private popover2;
+  open2: boolean;
 
   notes: Array<{ showDate: string, title: string, content: string }> = [
     // {showDate:"21-07-1986 16:50", title:"Title", content:"Content"}    
   ];
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public popoverCtrl: PopoverController, private platform: Platform, private storage: Storage, private customersProvider: CustomersProvider, private alertCtrl: AlertController) {
+  constructor(public navCtrl: NavController,
+    public navParams: NavParams,
+    public popoverCtrl: PopoverController,
+    private platform: Platform,
+    private storage: Storage,
+    private customersProvider: CustomersProvider,
+    private alertCtrl: AlertController,
+    private events: Events) {
+
+    this.events.subscribe("dismissNotesPopover", (user, time) => {
+      this.popover2.dismiss();
+    });
+
     platform.ready().then(() => {
       platform.registerBackButtonAction(() => {
         if (this.open === true) {
           this.popover.dismiss();
-          this.open = false;
         }
+
+        if (this.open2 === true) {
+          this.popover2.dismiss();
+        }
+
         else {
           navCtrl.setRoot(DashboardPage);
         }
@@ -48,6 +67,7 @@ export class NotesPage {
         this.notes = value;
       }
     });
+
     console.log(this.notes.length + " notes in the array");
   }
 
@@ -56,11 +76,28 @@ export class NotesPage {
     this.popover.present({
       ev: myEvent,
     });
+
+    this.popover.onDidDismiss(() => {
+      this.open = false;
+    })
+
     this.open = true;
   }
 
+  presentPopover2(myEvent) {
+    this.popover2 = this.popoverCtrl.create(NotesPopoverPage, {}, { cssClass: "notes-popover" });
+    this.popover2.present({
+      ev: myEvent,
+    });
+    this.open2 = true;
+
+    this.popover2.onDidDismiss(() => {
+      this.open2 = false;
+    })
+  }
+
   openNote(index): void {
-    this.navCtrl.setRoot(ViewNotePage, { note: this.notes[index] });
+    this.navCtrl.setRoot(ViewNotePage, { note: this.customersProvider.notes[index] });
   }
 
   deleteNote(index): void {
@@ -70,7 +107,7 @@ export class NotesPage {
       buttons: [
         {
           text: 'Ακυρο',
-          role: 'cancel',        
+          role: 'cancel',
         },
         {
           text: 'ΟΚ',

@@ -130,6 +130,57 @@ export class CustomersProvider {
     }
   }
 
+  public sortNotes(code:number):void
+  {
+    if(code == 1)
+    {
+      this.notes.sort(
+        function(a,b){
+          if(a.title > b.title)
+          {
+            return 1;
+          }
+          else{
+            return -1;
+          }
+      });
+    }
+    else if(code == 2)
+    {
+      this.notes.sort(
+        function(a,b){
+          if(a.title < b.title)
+          {
+            return 1;
+          }
+          else{
+            return -1;
+          }
+        }
+      )
+    }
+    else if(code == 3)
+    {
+      this.notes.sort(
+        function(a,b){
+          let aTemp = a.showDate.split('-').reverse().join('');
+          let bTemp = b.showDate.split('-').reverse().join('');
+          return aTemp > bTemp ? 1 : aTemp < bTemp ? -1 : 0;
+        }
+      )
+    }
+    else if(code == 4)
+    {
+      this.notes.sort(
+        function(a,b){
+          let aTemp = a.showDate.split('-').reverse().join('');
+          let bTemp = b.showDate.split('-').reverse().join('');
+          return aTemp < bTemp ? 1 : aTemp > bTemp ? -1 : 0;
+        }
+      )
+    }
+  }
+
   public addCustomer(customer): void {
     console.log("Customer to add ", customer);
     this.customers.push(customer);

@@ -44,6 +44,7 @@ import { DatePicker } from '@ionic-native/date-picker';
 import { NetworkProvider } from '../providers/network/network';
 import { ProfilePage } from '../pages/profile/profile';
 import { InstallerProvider } from '../providers/installer/installer';
+import { NotesPopoverPage } from '../pages/notes-popover/notes-popover';
 
 
 @NgModule({
@@ -69,7 +70,8 @@ import { InstallerProvider } from '../providers/installer/installer';
     NotificationsPage,
     ViewNotePage,
     AddNotePage,
-    ProfilePage
+    ProfilePage,
+    NotesPopoverPage
     ],
   imports: [
     BrowserModule,    
@@ -104,7 +106,8 @@ import { InstallerProvider } from '../providers/installer/installer';
     NotificationsPage,
     ViewNotePage,
     AddNotePage,
-    ProfilePage
+    ProfilePage,
+    NotesPopoverPage
   ],
   providers: [
     Network,

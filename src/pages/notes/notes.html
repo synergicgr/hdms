@@ -15,43 +15,56 @@
 </ion-header>
 
 <ion-content padding class="ion-content">
-  <div style="color:#ffc200;font-size: 20px;margin-bottom: 20px;">
-    Σημειώσεις
+  <div style="color:#ffc200;font-size: 20px;margin-bottom: 20px;float: left;">
+    {{customersProvider.notes.length}} Σημειώσεις
   </div>
 
+  <div style="float:right;">
+    <button (click)="presentPopover2($event);" style="background: transparent !important;">
+      <img id="filter" width="30" height="30" alt="sorting" src="assets/imgs/FILTRA-icon.png">
+    </button>
+  </div>
 
-  <ion-row *ngIf="notes.length === 1" style="background:#272753;margin-bottom: 2px; border-radius: 10px;">
+  <div style="clear:both"></div>
+
+
+  <ion-row *ngIf="customersProvider.notes.length === 1" style="background:#272753;margin-bottom: 2px; border-radius: 10px;">
     <ion-col col-3 style="color:#8c8ca9;display: flex!important;
       align-content: center!important;
-      align-items: center!important;border-right: thin solid #5a5a7c;font-size: 12px;" (click)="openNote(0)">
-      {{notes[0].showDate}}
+      align-items: center!important;border-right: thin solid #5a5a7c;font-size: 12px;"
+      (click)="openNote(0)">
+      {{customersProvider.notes[0].showDate}}
     </ion-col>
     <ion-col col-7 style="color:#8c8ca9;border-right: thin solid #5a5a7c;font-size: 12px;display: flex!important;
     align-content: center!important;
-    align-items: center!important;vertical-align: middle;" (click)="openNote(0)">
-      {{notes[0].title | truncate : 40}}
-    </ion-col>    
+    align-items: center!important;vertical-align: middle;"
+      (click)="openNote(0)">
+      {{customersProvider.notes[0].title | truncate : 40}}
+    </ion-col>
     <ion-col col-2>
       <ion-icon name="trash" style="font-size: 20px;width: 100%;display: flex !important;
       justify-content: center !important;
-      align-items: center !important; vertical-align: middle !important;" color="white" (click)="deleteNote(0)"></ion-icon>
+      align-items: center !important; vertical-align: middle !important;"
+        color="white" (click)="deleteNote(0)"></ion-icon>
     </ion-col>
   </ion-row>
 
-  <ion-row *ngIf="notes.length != 1 && notes.length > 0" style="background:#272753;margin-bottom: 2px; border-top-left-radius: 10px; border-top-right-radius: 10px;" >
+  <ion-row *ngIf="customersProvider.notes.length != 1 && customersProvider.notes.length > 0" style="background:#272753;margin-bottom: 2px; border-top-left-radius: 10px; border-top-right-radius: 10px;">
     <ion-col col-3 style="color:#8c8ca9;display: flex!important;
       align-content: center!important;
-      align-items: center!important;border-right: thin solid #5a5a7c;" (click)="openNote(0)">
+      align-items: center!important;border-right: thin solid #5a5a7c;"
+      (click)="openNote(0)">
       <div>
-        <div style="font-size:12px;">{{notes[0].showDate.split(" ")[0]}}</div>
-        <div style="float:right; font-size: 12px;">{{notes[0].showDate.split(" ")[1]}}</div>
+        <div style="font-size:12px;">{{customersProvider.notes[0].showDate.split(" ")[0]}}</div>
+        <div style="float:right; font-size: 12px;">{{customersProvider.notes[0].showDate.split(" ")[1]}}</div>
       </div>
     </ion-col>
     <ion-col col-7 style="color:#8c8ca9;border-right: thin solid #5a5a7c;font-size: 12px;display: flex!important;
     align-content: center!important;
-    align-items: center!important;vertical-align: middle;" (click)="openNote(0)">
-      {{notes[0].title | truncate : 40}}
-    </ion-col>    
+    align-items: center!important;vertical-align: middle;"
+      (click)="openNote(0)">
+      {{customersProvider.notes[0].title | truncate : 40}}
+    </ion-col>
     <ion-col col-2 style="display: flex !important;
     justify-content: center !important;
     align-items: center !important; vertical-align: middle;">
@@ -59,9 +72,10 @@
     </ion-col>
   </ion-row>
 
-  <ion-row *ngFor="let note of notes.slice(1,-1); let i = index" style="background:#272753;margin-bottom: 2px;">
+  <ion-row *ngFor="let note of customersProvider.notes.slice(1,-1); let i = index" style="background:#272753;margin-bottom: 2px;">
     <ion-col col-3 style="color:#8c8ca9;display: flex !important;
-     vertical-align: middle;border-right: thin solid #5a5a7c;" (click)="openNote(i+1)">
+     vertical-align: middle;border-right: thin solid #5a5a7c;"
+      (click)="openNote(i+1)">
       <div>
         <div style="font-size:12px">{{note.showDate.split(" ")[0]}}</div>
         <div style="float:right;font-size: 12px">{{note.showDate.split(" ")[1]}}</div>
@@ -69,7 +83,8 @@
     </ion-col>
     <ion-col col-7 style="color:#8c8ca9;border-right: thin solid #5a5a7c;font-size: 12px;display: flex!important;
     align-content: center!important;
-    align-items: center!important;vertical-align: middle;" (click)="openNote(i+1)">
+    align-items: center!important;vertical-align: middle;"
+      (click)="openNote(i+1)">
       {{note.title | truncate : 40}}
     </ion-col>
     <ion-col col-2 style="display: flex !important;
@@ -79,19 +94,21 @@
     </ion-col>
   </ion-row>
 
-  <ion-row *ngIf="notes.length > 1" style="background:#272753;margin-bottom: 2px; border-bottom-left-radius: 10px; border-bottom-right-radius: 10px;">
+  <ion-row *ngIf="customersProvider.notes.length > 1" style="background:#272753;margin-bottom: 2px; border-bottom-left-radius: 10px; border-bottom-right-radius: 10px;">
     <ion-col col-3 style="color:#8c8ca9;display: flex!important;
       align-content: center!important;
-      align-items: center!important;border-right: thin solid #5a5a7c;" (click)="openNote(notes.length - 1)">
+      align-items: center!important;border-right: thin solid #5a5a7c;"
+      (click)="openNote(notes.length - 1)">
       <div>
-        <div style="font-size: 12px;">{{notes[notes.length - 1].showDate.split(" ")[0]}}</div>
-        <div style="float:right;font-size: 12px;">{{notes[notes.length - 1].showDate.split(" ")[1]}}</div>
+        <div style="font-size: 12px;">{{customersProvider.notes[customersProvider.notes.length - 1].showDate.split(" ")[0]}}</div>
+        <div style="float:right;font-size: 12px;">{{customersProvider.notes[customersProvider.notes.length - 1].showDate.split(" ")[1]}}</div>
       </div>
     </ion-col>
     <ion-col col-7 style="color:#8c8ca9;border-right: thin solid #5a5a7c;font-size: 12px;display: flex!important;
     align-content: center!important;
-    align-items: center!important;vertical-align: middle;" (click)="openNote(notes.length - 1)">
-      {{notes[notes.length - 1].title | truncate : 40}}
+    align-items: center!important;vertical-align: middle;"
+      (click)="openNote(notes.length - 1)">
+      {{customersProvider.notes[customersProvider.notes.length - 1].title | truncate : 40}}
     </ion-col>
     <ion-col col-2 style="display: flex !important;
     justify-content: center !important;

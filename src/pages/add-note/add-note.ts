@@ -52,7 +52,7 @@ export class AddNotePage {
     this.customersProvider.addNote({ showDate: this.date, title: this.title, content: this.content });    
     // this.customersProvider.addNote({showDate:this.date, title:this.title, content:this.content});
     this.navCtrl.setRoot(NotesPage);
-  }  
+  }
 
   presentPopover(myEvent) {
     this.popover.present({
