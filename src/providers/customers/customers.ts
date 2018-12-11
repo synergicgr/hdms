@@ -34,7 +34,7 @@ export class CustomersProvider {
   public customerMonthlyAlarmList: string = "";
   public customerOtherRemarks: string = "";
 
-  customers: Array<{ name: string, surname: string, city: string, visible: boolean, draft: boolean, publishedDate: string, enabled: boolean }> = [
+  customers: Array<{ subscriberName: string, city: string, visible: boolean, draft: boolean, publishedDate: string, enabled: boolean }> = [
     // {name:'Γρηγόρης', surname:'Σαμαράς', city:'Αθήνα', visible:true, draft:true, publishedDate:"", enabled:true}, 
     // {name:'Χάρης', surname:'Γεωργακόπουλος', city:'Θεσσαλονίκη', visible:true, draft:true, publishedDate:"", enabled:true},
     // {name:'Ελένη', surname:'Ψαθά', city:'Χαλάνδρι', visible:true, draft:false, publishedDate:"2018-11-07", enabled:true},
@@ -50,16 +50,15 @@ export class CustomersProvider {
   constructor(public http: HttpClient, private storage: Storage) {
     this.storage.get('customers').then((value) => {
       if (value) {
-        value.forEach(element => {
-          let name = element.subscriberName.split(" ")[0];
-          let surname = element.subscriberName.split(" ")[1];
+        value.forEach(element => {         
+          let subscriberName = element.subscriberName;
           let city = element.insuredAreaCity;
           let visible = true;
           let draft = element.draft;
           let publishedDate = element.datePublished;
           let enabled = element.enabled;
 
-          this.customers.push({ name: name, surname: surname, city: city, visible: visible, draft: draft, publishedDate: publishedDate, enabled: enabled });
+          this.customers.push({ subscriberName:subscriberName, city: city, visible: visible, draft: draft, publishedDate: publishedDate, enabled: enabled });
         });
         console.log('Local storage customers', value);
       }
@@ -83,14 +82,14 @@ export class CustomersProvider {
     this.customers = customers;
   }
 
-  getCustomers(): Array<{ name: string, surname: string, city: string, visible: boolean, draft: boolean, publishedDate: string, enabled: boolean }> {
+  getCustomers(): Array<{ subscriberName: string, city: string, visible: boolean, draft: boolean, publishedDate: string, enabled: boolean }> {
     return this.customers;
   }
 
   public doSort(code: number): void {
     if (code == 1) {
       this.customers.sort(function (a, b) {
-        if (a.name > b.name) {
+        if (a.subscriberName > b.subscriberName) {
           return 1;
         }
         else {
@@ -100,7 +99,7 @@ export class CustomersProvider {
     }
     else if (code === 2) {
       this.customers.sort(function (a, b) {
-        if (a.name < b.name) {
+        if (a.subscriberName < b.subscriberName) {
           return 1;
         }
         else {
@@ -189,9 +188,7 @@ export class CustomersProvider {
   public delete(data): void {
     let index = 0;
     for (let i = 0; i < this.customers.length; i++) {
-      console.log("data name ", data.name, " data surname ", data.surname);
-      console.log("Customer: ", this.customers[i].name, " ", this.customers[i].surname);
-      if (this.customers[i].name === data.name && this.customers[i].surname === data.surname) {
+      if (this.customers[i].subscriberName === data.subscriberName ) {
         console.log("Found customer to delete at index ", i);
         index = i;
       }
@@ -211,17 +208,17 @@ export class CustomersProvider {
       if (value) {
         value.forEach(element => {
           if (element.enabled == true && enabled == true) {
-            temp.push({ name: element.subscriberName.split(" ")[0], surname: element.subscriberName.split(" ")[1], city: element.insuredAreaCity, visible: true, draft: element.draft, publishedDate: element.datePublished, enabled: element.enabled });
+            temp.push({ subscriberName: element.subscriberName, city: element.insuredAreaCity, visible: true, draft: element.draft, publishedDate: element.datePublished, enabled: element.enabled });
           }
           else if (element.enabled == false && this.disabled == true) {
 
-            temp.push({ name: element.subscriberName.split(" ")[0], surname: element.subscriberName.split(" ")[1], city: element.insuredAreaCity, visible: true, draft: element.draft, publishedDate: element.datePublished, enabled: element.enabled });
+            temp.push({ subscriberName: element.subscriberName, city: element.insuredAreaCity, visible: true, draft: element.draft, publishedDate: element.datePublished, enabled: element.enabled });
           }
           else if (element.enabled == null) {
-            temp.push({ name: element.subscriberName.split(" ")[0], surname: element.subscriberName.split(" ")[1], city: element.insuredAreaCity, visible: true, draft: element.draft, publishedDate: element.datePublished, enabled: element.enabled });
+            temp.push({ subscriberName:element.subscriberName, city: element.insuredAreaCity, visible: true, draft: element.draft, publishedDate: element.datePublished, enabled: element.enabled });
           }
           else {
-            temp.push({ name: element.subscriberName.split(" ")[0], surname: element.subscriberName.split(" ")[1], city: element.insuredAreaCity, visible: false, draft: element.draft, publishedDate: element.datePublished, enabled: element.enabled });
+            temp.push({ subscriberName:element.subscriberName, city: element.insuredAreaCity, visible: false, draft: element.draft, publishedDate: element.datePublished, enabled: element.enabled });
           }
         });
       }
@@ -238,10 +235,10 @@ export class CustomersProvider {
       if (value) {
         value.forEach(element => {
           if ((element.enabled == true && this.enabled == true) || element.enabled == null) {
-            temp.push({ name: element.subscriberName.split(" ")[0], surname: element.subscriberName.split(" ")[1], city: element.insuredAreaCity, visible: true, draft: element.draft, publishedDate: element.datePublished, enabled: element.enabled });
+            temp.push({ subscriberName:element.subscriberName, city: element.insuredAreaCity, visible: true, draft: element.draft, publishedDate: element.datePublished, enabled: element.enabled });
           }
           else if ((element.enabled == false && this.disabled == true) || element.enabled == null) {
-            temp.push({ name: element.subscriberName.split(" ")[0], surname: element.subscriberName.split(" ")[1], city: element.insuredAreaCity, visible: true, draft: element.draft, publishedDate: element.datePublished, enabled: element.enabled });
+            temp.push({ subscriberName:element.subscriberName, city: element.insuredAreaCity, visible: true, draft: element.draft, publishedDate: element.datePublished, enabled: element.enabled });
           }
         });
       }
@@ -384,20 +381,19 @@ export class CustomersProvider {
     return this.notes;
   }
 
-  setCustomerEnabled(name, surname, enabled): void {
+  setCustomerEnabled(subscriberName, enabled): void {
     this.customers.forEach(element => {
-      if (element.name == name && element.surname == surname) {
+      if (element.subscriberName == subscriberName) {
         element.enabled = enabled;
       }
     });
   }
 
-  getCustomer(name: string, surname: string): any {
-    console.log("Finding customer with name:", name, " surname", surname);
+  getCustomer(subscriberName:string): any {    
 
     for(let i = 0; i < this.customers.length; i++)
     {
-      if (this.customers[i].name == name && this.customers[i].surname == surname) {
+      if (this.customers[i].subscriberName == subscriberName) {
         console.log("CUSTOMER FOUND");
         return this.customers[i];
       }
@@ -408,7 +404,7 @@ export class CustomersProvider {
 
     for(let i = 0; i < this.customers.length; i++)
     {
-      if (this.customers[i].name == customer.name && this.customers[i].surname == customer.surname) {
+      if (this.customers[i].subscriberName == customer.subscriberName) {
         this.customers[i] = customer;
       }
     }

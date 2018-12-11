@@ -38,7 +38,7 @@ export class CustomerInfoPage {
       this.storage.get('customers').then((value) => {
         if (value) {
           value.forEach(element => {
-            if (navParams.get('name') == element.subscriberName.split(" ")[0] && navParams.get('surname') == element.subscriberName.split(" ")[1]) {
+            if (navParams.get('subscriberName') == element.subscriberName) {
               this.enabled = element.enabled;
             }
           });
@@ -70,7 +70,7 @@ export class CustomerInfoPage {
               if(value)
               {
                 value.forEach(element => {
-                  if(element.subscriberName.split(" ")[0]===this.navParams.data.name && element.subscriberName.split(" ")[1] === this.navParams.data.surname)
+                  if(element.subscriberName === this.navParams.data.subscriberName)
                   {                    
                   }
                   else{
@@ -101,12 +101,12 @@ export class CustomerInfoPage {
       if (value) {
         let temp = value;
         value.forEach((element,index, array) => {
-          if (this.navParams.get('name') == element.subscriberName.split(" ")[0] && this.navParams.get('surname') == element.subscriberName.split(" ")[1]) {
+          if (this.navParams.get('subscriberName') == element.subscriberName) {
             temp[index].enabled = this.enabled;
           }
         });
 
-        this.customersProvider.setCustomerEnabled(this.navParams.data.name, this.navParams.data.surname, this.enabled);
+        this.customersProvider.setCustomerEnabled(this.navParams.data.subscriberName, this.enabled);
         this.storage.set('customers', temp);
       }
     });

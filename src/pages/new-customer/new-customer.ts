@@ -110,8 +110,6 @@ export class NewCustomerPage implements OnInit {
 
     console.log(this.navParams);
 
-    console.log("ARE NAVPARAMS SET: " + this.navParams.get('name') + " " + this.navParams.get('surname'))
-
     this.phoneNoticeData.subscribe(data => {
       this.customersProvider.setPhoneNotices(this.phoneNotices);
     });
@@ -184,14 +182,14 @@ export class NewCustomerPage implements OnInit {
       this.installer_fax = data.fax;
     });
 
-    if (this.navParams.get('name') && this.navParams.get('surname')) {
+    if (this.navParams.get('subscriberName')) {
       this.getDataStorage().then((value) => {
         console.log("Storage array " + JSON.stringify(value));
         if (value) {
           value.forEach(element => {
             console.log("Storage loop");
             console.log("Element in Storage ", element);
-            if (element.subscriberName.split(" ")[0] === this.navParams.get('name') && element.subscriberName.split(" ")[1] === this.navParams.get('surname')) {
+            if (element.subscriberName == this.navParams.get('subscriberName')) {
               console.log("In Storage loop");
               this.subscriberName = element.subscriberName;
               this.installerName = element.installerName;
@@ -243,7 +241,7 @@ export class NewCustomerPage implements OnInit {
     else {
 
       this.storage.get('installer').then((value) => {
-        this.installer_name = value.name;
+        this.installer_name = value.installerName;
         this.installer_afm = value.afm;
         this.installer_proffesionalDescription = value.proffesionalDescription;
         this.installer_insuredAreaAddress = value.insuredAreaAddress;
@@ -258,7 +256,7 @@ export class NewCustomerPage implements OnInit {
         this.installer_collectionPolicy = value.collectionPolicy;
         this.installer_emailInvoice = value.emailInvoice;
         this.installer_billingAddressOnly = value.billingAddressOnly;
-      });      
+      });
     }
   }
 
@@ -304,7 +302,7 @@ export class NewCustomerPage implements OnInit {
 
     if (this.networkProvider.isOnline()) {
 
-      if (this.subscriberName.length == 0 || this.subscriberName.split(" ")[1].length == 0) {
+      if (this.subscriberName.length == 0) {
         let toast = this.toastCtrl.create({
           message: 'Παρακαλώ εισάγετε ονοματεπώνυμο συνδρομητή',
           duration: 3000,
@@ -340,8 +338,8 @@ export class NewCustomerPage implements OnInit {
           visible = false;
         }
 
-        if (this.navParams.get('name') && this.navParams.get('surname')) {
-          let customer = this.customersProvider.getCustomer(this.navParams.data.name, this.navParams.data.surname);
+        if (this.navParams.get('subscriberName')) {
+          let customer = this.customersProvider.getCustomer(this.navParams.data.subscriberName);
           console.log("Found customer ", customer.name);
           customer.draft = false;
           customer.publishedDate = d.getFullYear() + "-" + d.getMonth() + "-" + d.getDate() + " " + d.getHours() + ":" + (d.getMinutes() < 10 ? "0" + d.getMinutes() : d.getMinutes());
@@ -351,7 +349,7 @@ export class NewCustomerPage implements OnInit {
             let temp = [];
             if (value) {
               for (let i = 0; i < value.length; i++) {
-                if (value[i].subscriberName.split(" ")[0] == customer.name && value[i].subscriberName.split(" ")[1] == customer.surname) {
+                if (value[i].subscriberName == customer.subscriberName) {
                   temp.push({
                     installerName: this.installerName,
                     customerPass: this.customerPass,
@@ -413,8 +411,7 @@ export class NewCustomerPage implements OnInit {
         } else {
           this.customersProvider.addCustomer(
             {
-              name: this.subscriberName.split(" ")[0],
-              surname: this.subscriberName.split(" ")[1],
+              subscriberName: this.subscriberName,
               city: this.insuredAreaCity,
               visible: true,
               draft: false,
@@ -712,7 +709,7 @@ export class NewCustomerPage implements OnInit {
   }
 
   save(): void {
-    if (this.subscriberName.length == 0 || this.subscriberName.split(" ")[1].length == 0) {
+    if (this.subscriberName.length == 0) {
       let toast = this.toastCtrl.create({
         message: 'Παρακαλώ εισάγετε ονοματεπώνυμο συνδρομητή',
         duration: 3000,
@@ -731,13 +728,14 @@ export class NewCustomerPage implements OnInit {
       toast.present();
     }
     else {
-      if (this.navParams.get('name') && this.navParams.get('surname')) {
-        let customer = this.customersProvider.getCustomer(this.navParams.data.name, this.navParams.data.surname);
+      console.log("Else 1");
+      if (this.navParams.get('subscriberName')) {
+        let customer = this.customersProvider.getCustomer(this.navParams.data.subscriberName);
         this.storage.get("customers").then((value) => {
           let temp = [];
           if (value) {
             for (let i = 0; i < value.length; i++) {
-              if (value[i].subscriberName.split(" ")[0] == this.navParams.get('name') && value[i].subscriberName.split(" ")[1] == this.navParams.get('surname')) {
+              if (value[i].subscriberName == this.navParams.get('subscriberName')) {
 
                 console.log("Subscriber ", this.customersProvider.subscriberName);
 
@@ -793,17 +791,44 @@ export class NewCustomerPage implements OnInit {
               }
             }
 
+            this.customersProvider.setSubscriber("");
+            this.customersProvider.setInstallerName("");
+            this.customersProvider.setCustomerPass("");
+            this.customersProvider.setCustomerAuxiliaryPass("");
+            this.customersProvider.setCustomerDuressCode("");
+            this.customersProvider.setCustomerConnectionDate("");
+            this.customersProvider.setCustomerInsuredAreaAddress("");
+            this.customersProvider.setCustomerInsuredAreaCity("");
+            this.customersProvider.setCustomerInsuredAreaPostCode("");
+            this.customersProvider.setCustomerInsuredAreaFloor("");
+            this.customersProvider.setCustomerInsuredAreaDescription("");
+            this.customersProvider.setCustomerInsuredAreaType("");
+            this.customersProvider.setCustomerInsuredAreaTypeOther("");
+            this.customersProvider.setCustomerAreaPhone("");
+            this.customersProvider.setCustomerAlarmUnitType("");
+            this.customersProvider.setCustomerFormat("");
+            this.customersProvider.setCustomerFrequency24HourTest(0);
+            this.customersProvider.setCustomerOperationControlHours("");
+            this.customersProvider.setCustomerWeeklyTimeMonitoring("");
+            this.customersProvider.setCustomerPoliceStation("");
+            this.customersProvider.setCustomerDirectTransmissionPhones("");
+            this.customersProvider.setCustomerMonthlyAlarmList("");
+            this.customersProvider.setCustomerOtherRemarks("");
+            this.customersProvider.setAlarmUsers([]);
+            this.customersProvider.setZones([]);
+            this.customersProvider.setPhoneNotices([]);
+
             this.storage.set("customers", temp);
             this.app.getRootNav().setRoot(CustomersPage)
           }
         });
       }
       else {
+        console.log("Else 2")
         let d = new Date();
         this.customersProvider.addCustomer(
           {
-            name: this.subscriberName.split(" ")[0],
-            surname: this.subscriberName.split(" ")[1],
+            subscriberName: this.subscriberName,
             city: this.insuredAreaCity,
             visible: true,
             draft: true,
@@ -819,6 +844,7 @@ export class NewCustomerPage implements OnInit {
           console.log("Local Storage customers before", value);
 
           if (temp != null) {
+            console.log("If 1");
             temp.push({
               installerName: this.customersProvider.installerName,
               customerPass: this.customersProvider.customerPass,
@@ -898,7 +924,7 @@ export class NewCustomerPage implements OnInit {
             });
           }
           else {
-            console.log("Local Storage Else");
+            console.log("Else 3");
             this.storage.set("customers", [{
               installerName: this.customersProvider.installerName,
               customerPass: this.customersProvider.customerPass,

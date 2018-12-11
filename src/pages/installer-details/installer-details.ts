@@ -95,7 +95,7 @@ export class InstallerDetailsPage {
         if (value) {
           console.log("Storage Array:", value);
           value.forEach(element => {
-            if (element.subscriberName.split(" ")[0] === this.navParams.data.name && element.subscriberName.split(" ")[1] === this.navParams.data.surname) {
+            if (element.subscriberName === this.navParams.data.subscriberName) {
               this.name = element.installer_name;
               this.afm = element.installer_afm;
               this.proffesionalDescription = element.installer_proffesionalDescription;
@@ -160,7 +160,7 @@ export class InstallerDetailsPage {
     const d = new Date();
 
     if (this.networkProvider.isOnline()) {
-      if (this.customersProvider.subscriberName.length == 0 || this.customersProvider.subscriberName.split(" ")[1].length == 0) {
+      if (this.customersProvider.subscriberName.length == 0 ) {
         let toast = this.toastCtrl.create({
           message: 'Παρακαλώ εισάγετε ονοματεπώνυμο συνδρομητή',
           duration: 3000,
@@ -191,9 +191,9 @@ export class InstallerDetailsPage {
           visible = false;
         }
 
-        if (this.navParams.get('name') && this.navParams.get('surname')) {
-          console.log("NAV PARAMS", this.navParams.data);
-          let customer = this.customersProvider.getCustomer(this.navParams.data.name, this.navParams.data.surname);
+        if (this.navParams.get('subscriberName') ){
+          
+          let customer = this.customersProvider.getCustomer(this.navParams.data.subscriberName);
           console.log("Found customer ", customer.name);
           customer.draft = false;
           customer.publishedDate = d.getFullYear() + "-" + d.getMonth() + "-" + d.getDate() + " " + d.getHours() + ":" + (d.getMinutes() < 10 ? "0" + d.getMinutes() : d.getMinutes());
@@ -203,7 +203,7 @@ export class InstallerDetailsPage {
             let temp = [];
             if (value) {
               for (let i = 0; i < value.length; i++) {
-                if (value[i].subscriberName.split(" ")[0] == customer.name && value[i].subscriberName.split(" ")[1] == customer.surname) {
+                if (value[i].subscriberName == customer.subscriberName) {
                   temp.push({
                     installerName: this.customer_installerName,
                     customerPass: this.customer_customerPass,
@@ -306,8 +306,7 @@ export class InstallerDetailsPage {
         } else {
           this.customersProvider.addCustomer(
             {
-              name: this.customersProvider.subscriberName.split(" ")[0],
-              surname: this.customersProvider.subscriberName.split(" ")[1],
+              subscriberName: this.customersProvider.subscriberName,              
               city: this.customersProvider.customerInsuredAreaCity,
               visible: true,
               draft: false,
@@ -496,7 +495,7 @@ export class InstallerDetailsPage {
   }
 
   save(): void {
-    if (this.navParams.get('name') && this.navParams.get('surname')) {
+    if (this.navParams.get('subscriberName')) {
       // let customer = this.customersProvider.getCustomer(this.navParams.data.name, this.navParams.data.surname);
 
       let temp = [];
@@ -506,7 +505,7 @@ export class InstallerDetailsPage {
 
         if (value) {
           for (let i = 0; i < value.length; i++) {
-            if (value[i].subscriberName.split(" ")[0] == this.navParams.get('name') && value[i].subscriberName.split(" ")[1] == this.navParams.get('surname')) {
+            if (value[i].subscriberName == this.navParams.get('subscriberName')) {
               temp.push({
                 installerName: this.customer_installerName,
                 customerPass: this.customer_customerPass,
@@ -564,7 +563,7 @@ export class InstallerDetailsPage {
       });
     }
     else {
-      if (this.customersProvider.subscriberName.length == 0 || this.customersProvider.subscriberName.split(" ")[1].length == 0) {
+      if (this.customersProvider.subscriberName.length == 0) {
         let toast = this.toastCtrl.create({
           message: 'Παρακαλώ είσαγετε ονοματεπώνυμο συνδρομητή',
           duration: 3000,
@@ -586,8 +585,7 @@ export class InstallerDetailsPage {
         let d = new Date();
         this.customersProvider.addCustomer(
           {
-            name: this.customersProvider.subscriberName.split(" ")[0],
-            surname: this.customersProvider.subscriberName.split(" ")[1],
+            subscriberName: this.customersProvider.subscriberName,          
             city: this.customersProvider.customerInsuredAreaCity,
             visible: true,
             draft: true,

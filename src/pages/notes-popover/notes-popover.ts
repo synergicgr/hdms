@@ -9,7 +9,7 @@ import { CustomersProvider } from '../../providers/customers/customers';
  * Ionic pages and navigation.
  */
 
-@IonicPage()
+// @IonicPage()
 @Component({
   selector: 'page-notes-popover',
   templateUrl: 'notes-popover.html',

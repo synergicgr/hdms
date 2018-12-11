@@ -21,7 +21,7 @@ export class CustomersPage implements OnInit {
   openPopOver2: boolean = false;
   searchInput: string;
 
-  customers: Array<{ name: string, surname: string, city: string, visible: boolean, draft: boolean, publishedDate: string, enabled: boolean }> = [];
+  customers: Array<{ subscriberName: string, city: string, visible: boolean, draft: boolean, publishedDate: string, enabled: boolean }> = [];
 
   constructor(
     public navCtrl: NavController,
@@ -69,10 +69,10 @@ export class CustomersPage implements OnInit {
         if (value) {
           value.forEach(element => {
             if ((element.enabled == true && enabled == true) || (element.enabled == false && disabled == true) || (element.draft == true)) {
-              this.customers.push({ name: element.subscriberName.split(" ")[0], surname: element.subscriberName.split(" ")[1], city: element.insuredAreaCity, visible: true, draft: element.draft, publishedDate: element.datePublished, enabled: element.enabled });
+              this.customers.push({ subscriberName: element.subscriberName, city: element.insuredAreaCity, visible: true, draft: element.draft, publishedDate: element.datePublished, enabled: element.enabled });
             }
             else {
-              this.customers.push({ name: element.subscriberName.split(" ")[0], surname: element.subscriberName.split(" ")[1], city: element.insuredAreaCity, visible: false, draft: element.draft, publishedDate: element.datePublished, enabled: element.enabled });
+              this.customers.push({ subscriberName: element.subscriberName, city: element.insuredAreaCity, visible: false, draft: element.draft, publishedDate: element.datePublished, enabled: element.enabled });
             }
           });
         }
@@ -151,7 +151,6 @@ export class CustomersPage implements OnInit {
   }
 
   openCustomer(index: number): void {
-    console.log("Customer ", this.customers[index].name);
     this.navCtrl.push(CustomerInfoPage, this.customers[index]);
   }
 
@@ -171,18 +170,16 @@ export class CustomersPage implements OnInit {
       }
       else if (
         (
-          (this.customers[i].name.startsWith(value)
-            || this.customers[i].surname.startsWith(value)
-            || this.customers[i].city.startsWith(value)
+          (this.customers[i].subscriberName.includes(value)
+            || this.customers[i].city.includes(value)
           )
           && this.customers[i].enabled == true
           && enabled == true
         )
         ||
         (
-          (this.customers[i].name.startsWith(value)
-            || this.customers[i].surname.startsWith(value)
-            || this.customers[i].city.startsWith(value)
+          (this.customers[i].subscriberName.includes(value)            
+            || this.customers[i].city.includes(value)
           )
           && this.customers[i].enabled == false
           && disabled == true
@@ -292,7 +289,7 @@ export class CustomersPage implements OnInit {
     this.events.unsubscribe('dismiss2', () => { });
   }
 
-  readCustomers(searchString): Array<{ name: string, surname: string, city: string, visible: boolean, draft: boolean, publishedDate: string, enabled: boolean }> {
+  readCustomers(searchString): Array<{ subscriberName: string, city: string, visible: boolean, draft: boolean, publishedDate: string, enabled: boolean }> {
     let enabled = this.customersProvider.enabled;
     let disabled = this.customersProvider.disabled;
 
@@ -300,12 +297,12 @@ export class CustomersPage implements OnInit {
     this.storage.get("customers").then((value) => {
       if (value) {
         value.forEach(element => {
-          if (element.subscriberName.split(" ")[0].startsWith(searchString) || element.subscriberName.split(" ")[1].startsWith(searchString) || element.insuredAreaCity.startsWith(searchString)) {
+          if (element.subscriberName.includes(searchString) || element.insuredAreaCity.includes(searchString)) {
             if ((element.enabled == true && enabled == true) || (element.enabled == false && disabled == true) || element.draft == true) {
-              temp.push({ name: element.subscriberName.split(" ")[0], surname: element.subscriberName.split(" ")[1], city: element.insuredAreaCity, visible: true, draft: element.draft, publishedDate: element.datePublished, enabled: element.enabled });
+              temp.push({ subscriberName: element.subscriberName, city: element.insuredAreaCity, visible: true, draft: element.draft, publishedDate: element.datePublished, enabled: element.enabled });
             }
             else {
-              temp.push({ name: element.subscriberName.split(" ")[0], surname: element.subscriberName.split(" ")[1], city: element.insuredAreaCity, visible: false, draft: element.draft, publishedDate: element.datePublished, enabled: element.enabled });
+              temp.push({ subscriberName: element.subscriberName, city: element.insuredAreaCity, visible: false, draft: element.draft, publishedDate: element.datePublished, enabled: element.enabled });
             }
           }
         });
