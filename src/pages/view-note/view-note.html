@@ -37,11 +37,13 @@
     </ion-col>
   </ion-row>
 
-  <ion-row style="background: #272753;margin-bottom: 10px;border-radius: 5px;margin-left: 5px; margin-right: 5px;">
+  <ion-row style="background: #272753;border-radius: 5px; margin-left: 5px; margin-right: 5px; margin-bottom: 10px;height: 70px;">
+    <ion-col col-12>
+      <ion-label style="font-size: 11px;margin-top: -5px;">ΚΑΤΑΣΤΑΣΗ</ion-label>
+    </ion-col>
     <ion-col col-12>
       <ion-item no-lines no-padding>
-        <ion-label>Status</ion-label>
-        <ion-select  [(ngModel)]="note.status" multiple="false">
+        <ion-select item-left [(ngModel)]="note.status" multiple="false">
           <ion-option>Σε εκρεμότητα</ion-option>
           <ion-option>Να κάνω</ion-option>
           <ion-option>Έγινε</ion-option>          

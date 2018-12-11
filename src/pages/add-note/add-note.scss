@@ -37,14 +37,25 @@ page-add-note {
     ion-select{
         background: #272753;
         color:#ffffff;
+        max-width: 100%;
+        margin-top: -2px !important;
     }
 
     ion-label{
         background: #272753;        
         font-size: 12px;
+        color: #8c8ca9;
     }
        
     .select-text{
         font-size: 12px;
-    } 
+    }
+
+    .select-md {
+        padding: 5px 8px 0 16px;
+    }
+
+    .item-md [item-left], .item-md [item-right], .item-md [item-start], .item-md [item-end] {
+        margin: 9px 9px 9px -15px;
+    }
 }
